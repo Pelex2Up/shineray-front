@@ -1,0 +1,49 @@
+@import '../../../../scss/mixin.scss';
+
+.menuWrapper {
+  @include display(flex, column, center, center);
+  gap: 1rem;
+  background: white;
+}
+
+.typeTabs {
+  @include display(flex, row, center, center);
+  text-align: center;
+  gap: 2rem;
+
+  &_tab {
+    cursor: pointer;
+    padding: 1rem;
+    border-bottom: 2px solid transparent;
+    transition: ease-in 0.2s;
+  }
+}
+
+.modelCars {
+  @include display(flex, row, center, center);
+  text-align: center;
+  gap: 2rem;
+  margin-bottom: 2em;
+
+  &_car {
+    @include display(flex, column, center);
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: ease-in 0.3s;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &_carImg {
+    }
+
+    &_carName {
+      @include font(500, 1rem);
+    }
+  }
+}
+
+.active {
+  border-bottom: 2px solid red;
+}

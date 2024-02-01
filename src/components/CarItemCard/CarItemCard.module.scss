@@ -1,0 +1,48 @@
+@import '../../scss/mixin.scss';
+
+.autoCard {
+  transition: ease-in 0.3s;
+  cursor: pointer;
+  border: 1px solid #f3f3f3;
+
+  &_buttonsBlock {
+    width: 100%;
+    padding: 0 3rem;
+    text-decoration: none;
+
+    &_detailsButton {
+      margin: 15px auto 0;
+      text-align: center;
+      line-height: 38px;
+      height: 2.5rem;
+      font-size: 1.25rem;
+      color: #fff;
+      display: block;
+      background: #c22231;
+      transform: skew(-25deg);
+      text-decoration: none;
+      transition: ease-in 0.3s;
+
+      &:visited {
+        text-decoration: none;
+      }
+    }
+  }
+
+  img {
+    transition: ease-in 0.3s;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &:hover {
+    img {
+      transform: scale(1.05);
+    }
+
+    a {
+      color: white;
+      background: black;
+    }
+  }
+}

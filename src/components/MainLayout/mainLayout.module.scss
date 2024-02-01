@@ -1,0 +1,6 @@
+@import "../../scss/mixin.scss";
+
+.wrapper {
+  @include display(flex, column, center);
+  width: 100vw;
+}

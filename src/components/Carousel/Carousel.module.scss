@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap');
+
+.carouselWrapper {
+  position: sticky;
+  border-radius: 10px;
+  height: 350px;
+  width: 100%;
+  margin: auto;
+  overflow: hidden;
+
+  span {
+    margin: auto;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    object-fit: contain;
+  }
+
+  &_slide_direction {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &_left,
+  &_right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto 50px;
+    height: 2rem;
+    width: 2rem;
+    color: #6f6f6f;
+    cursor: pointer;
+  }
+
+  &_left {
+    left: 0;
+  }
+
+  &_right {
+    right: 0;
+  }
+}
+
+@media (max-width: 1224px) {
+  .carouselWrapper_left,
+  .carouselWrapper_right {
+    margin: auto 10px;
+  }
+}

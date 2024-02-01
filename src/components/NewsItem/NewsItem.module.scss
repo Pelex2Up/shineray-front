@@ -1,0 +1,39 @@
+@import '../../scss/mixin.scss';
+
+.container {
+  max-width: 24rem;
+  height: 100%;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background-color: white;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  cursor: pointer;
+  transition: ease-in 0.2s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  img {
+    width: 100%;
+  }
+
+  &_description {
+    padding: 1rem 1.5rem 2rem;
+
+    &_title {
+      @include font(800, 1.1rem);
+      margin-bottom: 0.5rem;
+    }
+
+    &_text {
+      color: rgb(110, 110, 110);
+      @include font(600, 0.7rem);
+    }
+  }
+}
+
+@media (max-width: 1224px) {
+  .container {
+  }
+}
