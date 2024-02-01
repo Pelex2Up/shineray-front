@@ -1,0 +1,28 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'Alibaba PuHuiTi 2.0 35 Thin Regular';
+  src: url('./fonts/AlibabaPuHuiTi-2-55-Regular.ttf') format('truetype');
+}
+
+body {
+  overflow-x: hidden;
+  font-family: 'Alibaba PuHuiTi 2.0 35 Thin Regular';
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #fefefe;
+  @media only screen and (min-width: 481px) and (max-width: 1024px) {
+    height: 100%;
+  }
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+

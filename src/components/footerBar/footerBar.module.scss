@@ -1,0 +1,91 @@
+@import '../../scss/mixin.scss';
+
+.footerWrapper {
+  @include display(flex, row, space-between, flex-start);
+  background: rgb(45, 45, 45);
+  width: 100vw;
+  max-width: 100vw;
+  height: auto;
+  padding: 2em 4em;
+  gap: 2em;
+
+  &_linkBar {
+    @include display(flex, column, flex-start);
+    gap: 0.5rem;
+
+    &_title {
+      color: rgb(255, 255, 255);
+      @include font(600, 2rem);
+    }
+
+    &_link {
+      color: rgb(198, 198, 198);
+      padding: 0 0 0.2rem 0;
+      @include font(400, 1rem);
+      width: max-content;
+      cursor: pointer;
+      border-bottom: 2px solid rgb(45, 45, 45);
+      transition: ease-in 0.3s;
+
+      &:hover {
+        border-bottom: 2px solid rgb(198, 198, 198);
+      }
+    }
+  }
+
+  &_infoBar {
+    @include display(flex, column, flex-start);
+
+    gap: 1.5rem;
+
+    &_logo {
+      max-height: 4rem;
+      max-width: 20rem;
+    }
+
+    &_contacts {
+      @include display(flex, row, center);
+      align-items: center;
+      color: rgb(198, 198, 198);
+      padding: 0 0 0.2rem 0;
+      @include font(600, 1.5rem);
+      width: max-content;
+      cursor: pointer;
+      border-bottom: 2px solid rgb(45, 45, 45);
+      transition: ease-in 0.3s;
+      gap: 0.4rem;
+
+      &:hover {
+        border-bottom: 2px solid rgb(198, 198, 198);
+      }
+    }
+
+    &_contactInfo {
+      @include display(flex, row, flex-start);
+      align-items: center;
+      color: rgb(255, 255, 255);
+      @include font(400, 1rem);
+      gap: 0.4rem;
+
+      &_icon {
+        cursor: pointer;
+        transition: ease-in 0.3s;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1224px) {
+  .footerWrapper {
+    @include display(flex, column, flex-start);
+    padding: 2rem 4rem;
+
+    &_linkBar {
+      @include display(flex, column, center);
+    }
+  }
+}
