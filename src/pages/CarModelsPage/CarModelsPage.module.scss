@@ -1,0 +1,54 @@
+@import '../../scss/mixin.scss';
+
+.carsPageWrapper {
+  max-width: 100vw;
+  width: 100vw;
+  overflow-x: hidden;
+
+  &_container {
+    @include display(flex, row, flex-start);
+    padding: 2rem 4rem;
+    gap: 6rem;
+
+    &_leftNavMenu {
+      background: #f7f7f7;
+      width: 310px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      height: fit-content;
+
+      &_title {
+        border-radius: 10px 10px 0 0;
+        font-size: 1.5rem;
+        display: block;
+        font-weight: bold;
+        color: #fff;
+        height: 4rem;
+        line-height: 4rem;
+        padding: 0 0 0 2rem;
+        background: #c22231;
+        position: relative;
+      }
+
+      &_category {
+        @include font(400, 1.1rem);
+        border-top: 1px solid #ededed;
+        padding: 0.8rem 0.8rem 0.8rem 2rem;
+        list-style: none;
+        cursor: pointer;
+        transition: ease-in 0.3s;
+
+        &:hover {
+          color: #c22231;
+          background: #ffffff;
+        }
+      }
+    }
+
+    &_rightModelsBlock {
+      @include display(flex, row, flex-start);
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+  }
+}

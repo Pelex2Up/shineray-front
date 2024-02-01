@@ -1,0 +1,190 @@
+@import '../../scss/mixin.scss';
+
+.headerWrapper {
+  @include display(flex, row, space-around, center);
+
+  &_header {
+    @include position_t_l(fixed, 0, 0, 20);
+    @include display(flex, row, space-between, center);
+    margin: 0 auto;
+    gap: 1em;
+    width: 100%;
+    height: 74px;
+    background: rgba(0, 0, 0, 0.15);
+    flex-wrap: wrap;
+    padding-right: 3em;
+    transition: ease-in 0.4s;
+
+    &_logo {
+      display: flex;
+      vertical-align: middle;
+      margin-left: 2rem;
+      padding: 10px;
+      color: #fff;
+      font-size: 24px;
+      font-weight: bold;
+      text-decoration: none;
+      max-height: 74px;
+      max-width: 250px;
+
+      a,
+      img {
+        max-height: 100%;
+        max-width: 100%;
+        object-fit: fill;
+      }
+    }
+    &_buttonsBlock {
+      @include display(flex, row, flex-start, center);
+      gap: 2.5em;
+      height: 100%;
+      text-align: center;
+    }
+  }
+}
+
+@media (max-width: 1224px) {
+  .headerWrapper {
+    &_header {
+      height: 4rem;
+      padding: 0;
+
+      &_logo {
+        margin-left: 1rem;
+      }
+    }
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+.dropdownMenu {
+  display: block;
+  position: absolute;
+  width: 100vw;
+  top: 100%;
+  left: 0;
+  background-color: #ffffff;
+  padding: 0.5rem;
+  opacity: 0;
+  transform: translateY(-10px);
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+
+  a {
+    display: block;
+    padding: 0.25rem;
+    text-decoration: none;
+    &:hover {
+      background-color: #ddd;
+    }
+  }
+}
+
+.open {
+  animation-name: slideDown;
+}
+
+.closed {
+  animation-name: slideUp;
+  pointer-events: none;
+}
+
+.scrolledBg {
+  background: rgb(45, 45, 45);
+}
+
+.mobileMenuWrapper {
+  display: none;
+  transition: ease-in 0.3s;
+  height: calc(100vh - 4rem);
+  width: 100vw;
+  position: fixed;
+  top: 4rem;
+  right: 0;
+  z-index: 30;
+  overflow: auto;
+  background: rgba(45, 45, 45, 1);
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  transition: ease-in-out 0.5s;
+  border-top: 1px solid #cdd0d2;
+
+  &_button {
+    @include display(flex, row, space-between);
+    @include font(800, 1.5rem);
+    align-items: center;
+    color: white;
+    padding: 0 1rem;
+    height: 4rem;
+    border-bottom: 1px solid #cdd0d2;
+    text-decoration: none;
+  }
+}
+
+@keyframes slideRight {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  90% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 0;
+    display: none;
+    transform: translateX(100%);
+  }
+}
+
+@keyframes slideLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.mobileMenuOpen {
+  display: block;
+  animation-name: slideLeft;
+}
+
+.mobileMenuClose {
+  animation-name: slideRight;
+  display: block;
+}

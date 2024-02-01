@@ -1,0 +1,20 @@
+@import '../../../../scss/mixin.scss';
+
+.buttonWrapper {
+  padding: 1.5em 0.2em 0.6em 0.2em;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  text-align: center;
+  @include font(600, 1rem);
+  color: rgba(255, 255, 255);
+  transition: ease-in 0.4s;
+  border-bottom: 4px solid transparent;
+  z-index: 30;
+
+  &:hover {
+    border-bottom: 4px solid red;
+    // background-color: rgb(189, 49, 49, .8);
+  }
+}
