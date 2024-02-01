@@ -1,10 +1,8 @@
-import React, { FC, useState } from 'react'
+import { FC, useState } from 'react'
 import styles from './ModelCarsMenu.module.scss'
 import { HeaderT } from 'types/componentTypes'
 
-
-
-export const ModelCarsMenu: FC<HeaderT> = ({data}) => {
+export const ModelCarsMenu: FC<HeaderT> = ({ data }) => {
   const [currentType, setCurrentType] = useState<number>(0)
 
   return (

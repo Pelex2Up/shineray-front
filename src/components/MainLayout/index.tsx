@@ -1,9 +1,9 @@
-import React, { FC, useEffect } from 'react'
+import { FC, useEffect } from 'react'
 import styles from './mainLayout.module.scss'
-import { HeaderBar } from '../../components/headerBar'
+import { HeaderBar } from 'components/headerBar'
 import { Outlet } from 'react-router-dom'
-import { Footer } from '../../components/footerBar'
-import { useBoolean } from '../../customHooks/useBoolean'
+import { Footer } from 'components/footerBar'
+import { useBoolean } from 'customHooks/useBoolean'
 
 export const MainLayout: FC = () => {
   const [headerColoured, { open: colorBg, close: uncolorBg }] = useBoolean()

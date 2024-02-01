@@ -1,19 +1,17 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { PersistGate } from "redux-persist/integration/react";
-import { persistStore } from "redux-persist";
-import { BrowserRouter } from "react-router-dom";
-import { Provider } from "react-redux";
-import { App } from "./App";
-import { store } from "./redux/store";
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { PersistGate } from 'redux-persist/integration/react'
+import { persistStore } from 'redux-persist'
+import { BrowserRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import { App } from './App'
+import { store } from './redux/store'
 
-import "./index.css";
+import './index.css'
 
-const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement,
-);
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
-const persistor = persistStore(store);
+const persistor = persistStore(store)
 
 // const screenWidth = window.screen.width;
 
@@ -27,4 +25,4 @@ root.render(
       </Provider>
     </BrowserRouter>
   </React.StrictMode>,
-);
+)

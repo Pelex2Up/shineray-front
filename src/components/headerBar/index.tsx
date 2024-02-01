@@ -1,15 +1,15 @@
-import React, { FC, RefAttributes, RefObject, forwardRef, useEffect, useRef } from 'react'
+import { FC, RefAttributes, RefObject, forwardRef, useEffect, useRef } from 'react'
 import styles from './headerBar.module.scss'
-import { Path } from '../../enum/PathE'
+import { Path } from 'enum/PathE'
 import { Button } from './components/button'
 import { useMediaQuery } from 'react-responsive'
 import { IconButton } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
-import { useBoolean } from '../../customHooks/useBoolean'
+import { useBoolean } from 'customHooks/useBoolean'
 import { ModelCarsMenu } from './components/ModelCarsMenu'
 import { Close } from '@mui/icons-material'
 import { useNavigate } from 'react-router-dom'
-import { useFetchHeaderDataQuery } from '../../api/headerService'
+import { useFetchHeaderDataQuery } from 'api/headerService'
 
 interface IHeader {
   color: boolean
@@ -24,7 +24,7 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>((props, ref)
   const [mobileMenu, { open: openMobileMenu, close: closeMobileMenu, onToggle: toggleMobileMenu }] = useBoolean()
   const menuRef: HTMLButtonElement | null = null
   const timerRef = useRef<NodeJS.Timeout | null>(null)
-  const {data: headerData} = useFetchHeaderDataQuery()
+  const { data: headerData } = useFetchHeaderDataQuery()
 
   const openModels = () => {
     if (timerRef.current) {
@@ -87,7 +87,7 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>((props, ref)
             <Button text="Мир Shineray" />
             <Button text="Новости" />
             <div className={`${styles.dropdownMenu}  ${dropDownCars ? styles.open : styles.closed}`} data-dropdown="menu-cars">
-              {headerData && <ModelCarsMenu data={headerData}/>}
+              {headerData && <ModelCarsMenu data={headerData} />}
             </div>
           </div>
         ) : (
@@ -100,7 +100,7 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>((props, ref)
       </nav>
       {mobileMenu && (
         <nav className={`${styles.mobileMenuWrapper} ${mobileMenu ? styles.mobileMenuOpen : styles.mobileMenuClose}`}>
-          <a href={Path.Cars} rel='nofollow' className={styles.mobileMenuWrapper_button}>
+          <a href={Path.Cars} rel="nofollow" className={styles.mobileMenuWrapper_button}>
             Модельный ряд
             <span />
           </a>

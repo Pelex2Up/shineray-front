@@ -1,9 +1,9 @@
-import { FC, useState } from 'react'
+import { FC, MouseEventHandler, useState } from 'react'
 import styles from './homePage.module.scss'
-import { Carousel } from '../../components/Carousel'
-import { HeaderSlider } from '../../components/HeaderCarousel'
-import { NewsItem } from '../../components/NewsItem'
-import { useFetchHomePageDataQuery } from '../../api/homePageService'
+import { Carousel } from 'components/Carousel'
+import { HeaderSlider } from 'components/HeaderCarousel'
+import { NewsItem } from 'components/NewsItem'
+import { useFetchHomePageDataQuery } from 'api/homePageService'
 
 const News = [
   {

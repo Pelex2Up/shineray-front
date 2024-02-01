@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import { FC, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import styles from './Carousel.module.scss'
 import ArrowCircleRightSharpIcon from '@mui/icons-material/ArrowCircleRightSharp'

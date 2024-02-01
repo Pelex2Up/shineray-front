@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import Slider from 'react-slick'
 import styles from './HeaderCarousel.module.scss'
 import { ISliderImage } from 'types/componentTypes'
@@ -22,7 +22,7 @@ export const HeaderSlider: FC<HeaderSliderT> = ({ images }) => {
       {images.length > 1 ? (
         <Slider {...settings}>
           {images.map(({ image }, index) => (
-            <img src={`http://93.177.124.158/media/${image}`} key={index} />
+            <img src={`http://93.177.124.158/media/${image}`} key={index} loading="lazy" />
           ))}
         </Slider>
       ) : (

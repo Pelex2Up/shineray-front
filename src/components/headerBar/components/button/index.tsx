@@ -1,6 +1,6 @@
-import React, { FC } from "react";
+import { FC } from 'react'
 import styles from './defaultButton.module.scss'
-import { ButtonT } from "types/componentTypes";
+import { ButtonT } from 'types/componentTypes'
 
 export const Button: FC<ButtonT> = ({ text, children, ...restProps }) => {
   return (
@@ -8,5 +8,5 @@ export const Button: FC<ButtonT> = ({ text, children, ...restProps }) => {
       {children}
       {text}
     </button>
-  );
-};
+  )
+}

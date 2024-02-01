@@ -1,7 +1,7 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import styles from './CarModelsPage.module.scss'
-import { HeaderSlider } from '../../components/HeaderCarousel'
-import { CarItemCard } from '../../components/CarItemCard'
+import { HeaderSlider } from 'components/HeaderCarousel'
+import { CarItemCard } from 'components/CarItemCard'
 
 const ModelHeader = [{ image: 'https://www.shineray.com/upload/sort/1679365664565824.jpg' }]
 const cars = [

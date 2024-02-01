@@ -1,8 +1,8 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import styles from './footerBar.module.scss'
 import { SvgIcon } from '@mui/material'
 import { Phone } from '@mui/icons-material'
-import { useFetchHeaderDataQuery } from '../../api/headerService'
+import { useFetchHeaderDataQuery } from 'api/headerService'
 
 const Customers = [
   { name: 'Сервисное обслуживание' },

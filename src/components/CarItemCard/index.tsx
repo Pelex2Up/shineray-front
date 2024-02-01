@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import styles from './CarItemCard.module.scss'
 import { Card, CardContent, Typography } from '@mui/material'
 
