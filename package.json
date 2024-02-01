@@ -1,6 +1,7 @@
 {
   "name": "shineray-front",
   "version": "0.1.0",
+  "license": "Shineray",
   "private": true,
   "packageManager": "yarn@1.22.19",
   "devDependencies": {
@@ -55,7 +56,7 @@
     "yarn": "^1.22.21"
   },
   "scripts": {
-    "start": "set HTTPS=true&&react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "build-prod": "webpack --mode=production",
     "clean": "rd /s /q dist",
@@ -68,7 +69,10 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "rules": {
+      "no-warning-comments": "off"
+    }
   },
   "browserslist": {
     "production": [
