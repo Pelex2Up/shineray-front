@@ -1,4 +1,4 @@
-FROM node:17-alpine3.12
+FROM node:latest
 WORKDIR /code
 COPY yarn.lock /code/
 RUN yarn
