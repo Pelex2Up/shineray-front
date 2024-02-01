@@ -2,7 +2,7 @@
   "name": "shineray-front",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "yarn@4.1.0",
+  "packageManager": "yarn@3.6.4",
   "devDependencies": {
     "@types/eslint": "^8",
     "@types/react-slick": "^0",
