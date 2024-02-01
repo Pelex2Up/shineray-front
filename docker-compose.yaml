@@ -1,7 +1,7 @@
 version: "3.9"
 
 services:
-  clock-in-flow-front:
+  shineray-front:
     build: .
     image: front
     command: yarn start

@@ -1,9 +1,5 @@
-FROM node:18.14.0
-RUN yarn --version
+FROM node:17-alpine3.12
 WORKDIR /code
 COPY yarn.lock /code/
-RUN yarn install
+RUN yarn
 COPY . /code/
-RUN yarn build
-
-CMD ["yarn", "start"]
