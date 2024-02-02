@@ -23,23 +23,21 @@ export const ModelCarsMenu: FC<HeaderT> = ({ data }) => {
       </div>
       <div className={styles.modelCars}>
         {data.menu.automobile[currentType].car_models.map((car, index) => (
-          <div
-            className={styles.modelCars_car}
+          <a
+            style={{ textDecoration: "none" }}
             key={index + car.id}
-            onClick={() =>
-              navigate(
-                generatePath(Path.ModelAuto, {
-                  carModel: `${car.id}-shineray-automobile-${car.name}`,
-                }),
-              )
-            }
+            href={generatePath(Path.ModelAuto, {
+              carModel: `${car.id}-shineray-automobile-${car.name}`,
+            })}
           >
-            <img
-              className={styles.modelCars_car_carImg}
-              src={`http://93.177.124.158/media/${car.image}`}
-            />
-            <span className={styles.modelCars_car_carName}>{car.name}</span>
-          </div>
+            <div className={styles.modelCars_car}>
+              <img
+                className={styles.modelCars_car_carImg}
+                src={`http://93.177.124.158/media/${car.image}`}
+              />
+              <span className={styles.modelCars_car_carName}>{car.name}</span>
+            </div>
+          </a>
         ))}
       </div>
     </div>

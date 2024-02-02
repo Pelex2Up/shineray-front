@@ -1,4 +1,4 @@
-@import '../../../../scss/mixin.scss';
+@import "../../../../scss/mixin.scss";
 
 .menuWrapper {
   @include display(flex, column, center, center);
@@ -25,11 +25,25 @@
   gap: 2rem;
   margin-bottom: 2em;
 
+  a {
+    color: inherit;
+    text-decoration: none;
+    background: white;
+  }
+
+  a:hover {
+    text-decoration: none;
+    color: inherit;
+    background: white;
+  }
+
   &_car {
     @include display(flex, column, center);
     gap: 0.5rem;
     cursor: pointer;
     transition: ease-in 0.3s;
+    text-decoration: none;
+    background: white;
 
     &:hover {
       transform: scale(1.05);
