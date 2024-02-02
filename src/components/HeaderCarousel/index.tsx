@@ -1,13 +1,15 @@
-import { FC } from 'react'
-import Slider from 'react-slick'
-import styles from './HeaderCarousel.module.scss'
-import { ISliderImage } from 'types/componentTypes'
+import { FC } from "react";
+import Slider from "react-slick";
+import styles from "./HeaderCarousel.module.scss";
+import { ISliderImage } from "types/componentTypes";
+import { motion } from "framer-motion";
 
 type HeaderSliderT = {
-  images: ISliderImage[]
-}
+  images?: ISliderImage[];
+  image?: string;
+};
 
-export const HeaderSlider: FC<HeaderSliderT> = ({ images }) => {
+export const HeaderSlider: FC<HeaderSliderT> = ({ images, image }) => {
   const settings = {
     infinite: true,
     slidesToShow: 1,
@@ -15,19 +17,41 @@ export const HeaderSlider: FC<HeaderSliderT> = ({ images }) => {
     autoplay: true,
     autoplaySpeed: 2000,
     pauseOnHover: true,
-  }
+  };
 
   return (
-    <div className={styles.wrapper} id={'header-slider'}>
-      {images.length > 1 ? (
+    <motion.div
+      initial={{ x: "-100%", opacity: 0 }}
+      animate={{
+        x: 0,
+        opacity: 1,
+      }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
+      className={styles.wrapper}
+      id={"header-slider"}
+    >
+      {images ? (
         <Slider {...settings}>
           {images.map(({ image }, index) => (
-            <img src={`http://93.177.124.158/media/${image}`} key={index} loading="lazy" />
+            <img
+              src={`http://93.177.124.158/media/${image}`}
+              key={index}
+              loading="lazy"
+            />
           ))}
         </Slider>
       ) : (
-        <img className={styles.soloImage} src={images[0].image} loading="lazy" />
+        <motion.img
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+          className={styles.soloImage}
+          src={`http://93.177.124.158/media/${image}`}
+          loading="lazy"
+        />
       )}
-    </div>
-  )
-}
+    </motion.div>
+  );
+};

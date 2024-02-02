@@ -13,3 +13,13 @@ export type HomePageRespT = {
         car_models: ICar[]
     }
 }
+
+export type CategoryT = {
+    id: number
+    active: boolean
+    order: number
+    name: string
+    description: string
+    image: string
+    car_models: ICar[]
+}

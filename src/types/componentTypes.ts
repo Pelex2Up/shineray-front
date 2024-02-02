@@ -51,6 +51,7 @@ export interface ICar {
   big_text_description: string
   active: boolean
   image: string
+  image_xl: string
   header_image: string
   engine: string
   battery: string
