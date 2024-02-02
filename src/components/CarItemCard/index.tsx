@@ -43,7 +43,7 @@ export const CarItemCard: FC<CardItemT> = ({ car }) => {
             <a
               className={styles.autoCard_buttonsBlock_detailsButton}
               href={generatePath(Path.ModelAuto, {
-                carModel: `${car.name}?=${car.id}`,
+                carModel: `${car.id}-shineray-automobile-${car.name}`,
               })}
             >
               Подробнее

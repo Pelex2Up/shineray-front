@@ -12,6 +12,8 @@ export const rootReducer = combineReducers({
   [services.HomePageService.reducerPath]: services.HomePageService.reducer,
   [services.CarModelsPageService.reducerPath]:
     services.CarModelsPageService.reducer,
+  [services.CarDetailsPageService.reducerPath]:
+    services.CarDetailsPageService.reducer,
 });
 
 const persistConfig = {
@@ -34,6 +36,7 @@ export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
         services.HeaderService.middleware,
         services.HomePageService.middleware,
         services.CarModelsPageService.middleware,
+        services.CarDetailsPageService.middleware,
       ),
   });
 };

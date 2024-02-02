@@ -1,11 +1,4 @@
-import {
-  FC,
-  RefAttributes,
-  RefObject,
-  forwardRef,
-  useEffect,
-  useRef,
-} from "react";
+import { FC, RefAttributes, forwardRef, useEffect, useRef } from "react";
 import styles from "./headerBar.module.scss";
 import { Path } from "enum/PathE";
 import { Button } from "./components/button";
@@ -61,11 +54,11 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
 
     useEffect(() => {
       if (mobileMenu) {
-        document.body.style.overflowY ='hidden'
+        document.body.style.overflowY = "hidden";
       } else {
-        document.body.style.overflowY = 'auto'
+        document.body.style.overflowY = "auto";
       }
-    }, [mobileMenu])
+    }, [mobileMenu]);
 
     useEffect(() => {
       const button = document.querySelector('[data-popup="menu-cars"]');

@@ -88,6 +88,7 @@
   transition: ease-in 0.3s;
   margin-bottom: 2em;
   transform: perspective(0.72rem) rotateX(2deg);
+  text-decoration: none;
 
   &:hover {
     background-color: rgba(208, 37, 37, 0.9);
@@ -124,5 +125,6 @@
   .modelCarDetail {
     @include font(600, 1.5rem);
     margin: auto;
+    text-decoration: none;
   }
 }
