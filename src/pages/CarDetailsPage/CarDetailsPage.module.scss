@@ -13,9 +13,10 @@
     padding: 2rem 5rem;
 
     &_preview {
-      @include display(flex, row, space-between);
+      @include display(flex, row, center);
       width: 100%;
       gap: 50px;
+
       &_swiper {
         max-width: clamp(40px, 40dvw, 650px);
       }
@@ -23,7 +24,6 @@
       &_shortDescription {
         @include display(flex, column, flex-start);
         width: 100%;
-        min-width: 550px;
 
         hr {
           background: url("https://www.shineray.com/template/pc/default/images/line2.png")
@@ -102,23 +102,25 @@
       @include display(flex, column);
       padding: 2rem 2rem;
 
-      &_swiper {
-        max-width: calc(100vw - 4rem);
-      }
+      &_preview {
+        flex-direction: column;
+        &_swiper {
+          max-width: calc(100vw - 4rem);
+        }
 
-      &_shortDescription {
-        margin: 0;
-        min-width: 100%;
-        &_title {
-          text-align: center;
+        &_shortDescription {
+          margin: 0;
+          min-width: 100%;
+          &_title {
+            text-align: center;
+          }
         }
       }
-    }
-
-    &_proText {
-      padding: 0;
-      &_title {
-        @include font(800, 30px);
+      &_proText {
+        padding: 0;
+        &_title {
+          @include font(800, 30px);
+        }
       }
     }
   }

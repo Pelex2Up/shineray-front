@@ -125,7 +125,9 @@ export const CarDetailsPage: FC = () => {
                 style={{
                   fontSize: "22px",
                   marginBottom: "15px",
-                  borderBottom: "2px solid red",
+                  padding: "5px 15px",
+                  borderRadius: "5px",
+                  border: "3px dashed rgba(255, 0, 0, .55)",
                 }}
               >
                 Краткие технические характеристики:{" "}
