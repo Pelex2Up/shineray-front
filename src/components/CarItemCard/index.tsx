@@ -23,7 +23,7 @@ export const CarItemCard: FC<CardItemT> = ({ car }) => {
     >
       <Card
         sx={{
-          width: `${isDesktopOrMobile ? "260px" : "100%"}`,
+          width: `${isDesktopOrMobile ? "clamp(260px, 20vw, 25vw)" : "100%"}`,
           minWidth: `${isDesktopOrMobile ? "" : "100%"}`,
           borderRadius: "1rem",
         }}
