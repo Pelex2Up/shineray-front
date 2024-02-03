@@ -8,6 +8,8 @@
 
   &_container {
     @include display(flex, row, flex-start);
+    max-width: 1400px;
+    margin: 0 auto;
     padding: 2rem 5rem;
     gap: 6rem;
 

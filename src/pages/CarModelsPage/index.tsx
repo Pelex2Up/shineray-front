@@ -5,36 +5,6 @@ import { CarItemCard } from "components/CarItemCard";
 import { useFetchCategoryDataQuery } from "api/carModelsPageService";
 import { motion } from "framer-motion";
 
-const ModelHeader = [
-  { image: "https://www.shineray.com/upload/sort/1679365664565824.jpg" },
-];
-const cars = [
-  {
-    id: 1,
-    name: "G01",
-    image:
-      "https://www.shineray.com/upload/images/310_200/1678964537963553.jpg",
-  },
-  {
-    id: 2,
-    name: "G01F",
-    image:
-      "https://www.shineray.com/upload/images/310_200/1677226251780981.jpg",
-  },
-  {
-    id: 3,
-    name: "G03",
-    image:
-      "https://www.shineray.com/upload/images/310_200/1668999505403821.jpg",
-  },
-  {
-    id: 4,
-    name: "G03F",
-    image:
-      "https://www.shineray.com/upload/images/310_200/1678366216128336.jpg",
-  },
-];
-
 export const CarModelsPage: FC = () => {
   const { data: CarModels } = useFetchCategoryDataQuery();
   const [currentCategory, setCurrentCategory] = useState<number>(0);

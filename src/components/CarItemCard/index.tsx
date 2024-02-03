@@ -6,6 +6,7 @@ import { Path } from "enum/PathE";
 import { ICar } from "types/componentTypes";
 import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
+import { LinkButton } from "components/common/Buttons";
 
 type CardItemT = {
   car: ICar;
@@ -13,7 +14,7 @@ type CardItemT = {
 
 export const CarItemCard: FC<CardItemT> = ({ car }) => {
   const isDesktopOrMobile = useMediaQuery({ minDeviceWidth: 1224 });
-  console.log(isDesktopOrMobile)
+  console.log(isDesktopOrMobile);
 
   return (
     <motion.div
@@ -41,14 +42,12 @@ export const CarItemCard: FC<CardItemT> = ({ car }) => {
             {`Shineray ${car.name}`}
           </Typography>
           <div className={styles.autoCard_buttonsBlock}>
-            <a
-              className={styles.autoCard_buttonsBlock_detailsButton}
+            <LinkButton
+              text={"Подробнее"}
               href={generatePath(Path.ModelAuto, {
                 carModel: `${car.id}-shineray-automobile-${car.name}`,
               })}
-            >
-              Подробнее
-            </a>
+            />
           </div>
         </CardContent>
       </Card>

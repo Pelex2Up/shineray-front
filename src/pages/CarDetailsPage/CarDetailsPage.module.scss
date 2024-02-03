@@ -1,61 +1,63 @@
 @import "../../scss/mixin.scss";
 
 .wrapper {
-  width: 100vw;
+  width: 100dvw;
   @include display(flex, column);
 
   &_main {
     @include display(flex, row, space-between);
-    gap: 2rem;
+    max-width: 1600px;
+    margin: 0 auto;
+    gap: 50px;
     padding: 2rem 5rem;
 
     &_swiper {
-      max-width: clamp(450px, 40dvw, 700px);
+      max-width: clamp(40px, 40dvw, 650px);
     }
 
     &_shortDescription {
       @include display(flex, column, flex-start);
       width: 100%;
-      margin-left: 6rem;
+      min-width: 550px;
 
       hr {
         background: url("https://www.shineray.com/template/pc/default/images/line2.png")
           repeat-x;
         height: 4px;
-        margin: 25px 0;
+        margin: 15px 0;
         opacity: 0.2;
       }
 
       &_title {
-        @include font(800, 3vw);
+        @include font(800, 28px);
       }
 
       &_tech {
-        @include font(400, 1.5vw);
-        padding-left: 1rem;
+        @include font(400, 22px);
+        padding-left: 22px;
       }
     }
   }
 
   &_proText {
     @include display(flex, column, center, center);
-    padding: 2rem 4rem;
+    padding: 2rem 5rem;
     text-align: center;
     width: 100dvw;
 
     &_title {
-      @include font(800, 4vw);
-      //   border-bottom: 5px solid red;
-      color: #a02a2a;
+      @include font(800, 30px);
+        border-bottom: 3px solid red;
+      // color: #a02a2a;
       text-align: center;
     }
 
     &_description {
-      font-size: 1.5vw;
-      margin: 1rem 3rem 3rem;
+      font-size: 22px;
+      margin: 1rem 2rem 3rem;
       text-align: start;
       padding: 0 1rem;
-      border-left: 3px double rgb(193, 193, 193);
+      // border-left: 3px double rgb(193, 193, 193);
     }
   }
 }
@@ -97,19 +99,28 @@
       padding: 2rem 2rem;
 
       &_swiper {
-        max-width: 100dvw;
+        max-width: calc(100vw - 4rem);
       }
 
       &_shortDescription {
         margin: 0;
+        min-width: 100%;
+        &_title {
+          text-align: center;
+        }
       }
     }
 
     &_proText {
       padding: 0;
       &_title {
-        @include font(800, 2rem);
+        @include font(800, 30px);
       }
     }
   }
+}
+
+.engines {
+  @include display(flex, column, flex-start, stretch);
+  padding: 0 5px;
 }

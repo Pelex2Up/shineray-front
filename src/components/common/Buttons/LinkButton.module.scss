@@ -1,0 +1,22 @@
+@import "../../../scss/mixin.scss";
+@import "../../../scss/variable.scss";
+
+.button {
+  font-weight: 600;
+  font-size: $font-default-size;
+  padding: 0.5rem 1rem;
+  color: white;
+  background-color: rgba(186, 35, 35, 0.9);
+  box-shadow:
+    0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: ease-in 0.3s;
+  margin-bottom: 2em;
+  text-decoration: none;
+
+  &:hover {
+    background-color: rgba(208, 37, 37, 0.9);
+  }
+}

@@ -20,10 +20,10 @@ export const NewsItem: FC<NewsItemT> = data => {
       <img src={imageUrl} alt="News image" />
       <div className={styles.container_description}>
         <div className={styles.container_description_title}>{title}</div>
-        <p className={styles.container_description_text}>
+        <h1 className={styles.container_description_text}>
           {description.slice(0, 100)}
           {description.length > 100 ? '...' : ''}
-        </p>
+        </h1>
       </div>
     </div>
   )

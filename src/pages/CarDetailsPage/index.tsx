@@ -11,14 +11,12 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
-import { useMediaQuery } from "react-responsive";
 
 export const CarDetailsPage: FC = () => {
   const params = useParams();
   const { carModel } = params;
   const [fetchData, { data: AutoModel, isSuccess }] =
     useLazyFetchCarModelDataQuery();
-  const isDesktopOrMobile = useMediaQuery({ minDeviceWidth: 1224 });
   const [currentCar, setCurrentCar] = useState<number>(0);
   const [instance, setInstance] = useState<SwiperClass | null>(null);
   const [instance2, setInstance2] = useState<SwiperClass | null>(null);
@@ -54,7 +52,7 @@ export const CarDetailsPage: FC = () => {
               <Swiper
                 loop={true}
                 spaceBetween={10}
-                navigation={isDesktopOrMobile? true: false}
+                navigation={true}
                 centeredSlides={true}
                 ref={swiperRef}
                 normalizeSlideIndex
@@ -115,6 +113,23 @@ export const CarDetailsPage: FC = () => {
             {AutoModel?.description}
           </h1>
           <hr></hr>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              textAlign: "center",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "22px",
+                marginBottom: "15px",
+                borderBottom: "2px solid red",
+              }}
+            >
+              Краткие технические характеристики:{" "}
+            </p>
+          </div>
           <ul className={styles.wrapper_main_shortDescription_tech}>
             {AutoModel?.name && (
               <li>
@@ -124,8 +139,14 @@ export const CarDetailsPage: FC = () => {
             )}
             {AutoModel?.engine && (
               <li>
-                <strong>Двигатель: </strong>
-                {AutoModel.engine}
+                <div style={{ display: "flex", flexDirection: "row" }}>
+                  <strong>{"Двигатель: "}</strong>
+                  <div className={styles.engines}>
+                    {AutoModel.engine.split(";").map((engine, index) => (
+                      <p>{engine}</p>
+                    ))}
+                  </div>
+                </div>
               </li>
             )}
             {AutoModel?.drive && (
@@ -164,10 +185,10 @@ export const CarDetailsPage: FC = () => {
                 {AutoModel.seats}
               </li>
             )}
-            {AutoModel?.certification_standart && (
+            {AutoModel?.certification_standard && (
               <li>
                 <strong>Сертификат: </strong>
-                {AutoModel.certification_standart}
+                {AutoModel.certification_standard}
               </li>
             )}
           </ul>

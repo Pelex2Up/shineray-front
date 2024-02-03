@@ -6,6 +6,7 @@ import { NewsItem } from "components/NewsItem";
 import { useFetchHomePageDataQuery } from "api/homePageService";
 import { generatePath } from "react-router-dom";
 import { Path } from "enum/PathE";
+import { LinkButton } from "components/common/Buttons";
 
 const News = [
   {
@@ -55,7 +56,7 @@ export const HomePage: FC = () => {
         <HeaderSlider images={HomePageData.body.main_slider.images} />
       )}
       <div className={styles.container_carSelector}>
-        <p className={styles.container_carSelector_title}>Модели SHINERAY</p>
+        <p className={styles.container_carSelector_title}>Модельный ряд</p>
         <div className={styles.container_carSelector_models}>
           {HomePageData?.body.car_models.map(({ name }, index) => (
             <span
@@ -80,15 +81,14 @@ export const HomePage: FC = () => {
             />
           )}
 
-          <a
+          <LinkButton
+            text={"Подробнее о модели"}
             href={generatePath(Path.ModelAuto, {
               carModel: `${HomePageData?.body.car_models[currentIndex].id}-shineray-automobile-${HomePageData?.body.car_models[currentIndex].name}`,
             })}
             className={styles.modelCarDetail}
             key={currentIndex}
-          >
-            Подробнее о модели
-          </a>
+          />
         </div>
         <div className={styles.newsWrapper}>
           <p className={styles.container_news_title}>Новости</p>

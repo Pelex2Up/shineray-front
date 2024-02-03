@@ -104,6 +104,12 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
           {isDesktopOrMobile ? (
             <div className={styles.headerWrapper_header_buttonsBlock}>
               <Button
+                text="Главная"
+                onClick={() => {
+                  navigate(Path.Home);
+                }}
+              />
+              <Button
                 text="Модельный ряд"
                 ref={ref}
                 data-popup="menu-cars"

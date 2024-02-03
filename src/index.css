@@ -2,6 +2,8 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  --font-title-size: 28px;
+  --font-default-size: 22px;
 }
 
 @font-face {
@@ -18,9 +20,5 @@ body {
   background: #fefefe;
   @media only screen and (min-width: 481px) and (max-width: 1024px) {
     height: 100%;
-  }
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  };
 }

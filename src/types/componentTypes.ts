@@ -61,6 +61,6 @@ export interface ICar {
   dimensions: string
   cargo_size: string
   seats: string
-  certification_standart: string
+  certification_standard: string
   category: number
 }
