@@ -1,11 +1,11 @@
 import { FC } from "react";
 import styles from "./CarItemCard.module.scss";
 import { Card, CardContent, Typography } from "@mui/material";
-import { useMediaQuery } from "react-responsive";
 import { generatePath } from "react-router-dom";
 import { Path } from "enum/PathE";
 import { ICar } from "types/componentTypes";
 import { motion } from "framer-motion";
+import { useMediaQuery } from "react-responsive";
 
 type CardItemT = {
   car: ICar;
@@ -13,6 +13,7 @@ type CardItemT = {
 
 export const CarItemCard: FC<CardItemT> = ({ car }) => {
   const isDesktopOrMobile = useMediaQuery({ minDeviceWidth: 1224 });
+  console.log(isDesktopOrMobile)
 
   return (
     <motion.div

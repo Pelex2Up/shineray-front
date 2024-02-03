@@ -1,4 +1,4 @@
-@import '../../scss/mixin.scss';
+@import "../../scss/mixin.scss";
 
 .container {
   width: 100vw;
@@ -9,7 +9,8 @@
 
   &_news {
     &_title {
-      @include font(800, 3.5vw);
+      font-size: clamp(2rem, 3vw, 3.5vw);
+      font-weight: 800;
       justify-self: center;
       text-align: center;
     }
@@ -39,7 +40,8 @@
     gap: 1em;
 
     &_title {
-      @include font(800, 4vw);
+      font-weight: 800;
+      font-size: clamp(3rem, 3.5vw, 4vw);
       justify-self: center;
       text-align: center;
     }
@@ -49,7 +51,8 @@
       gap: 0.5em;
 
       &_carModel {
-        @include font(600, 1vw);
+        font-weight: 600;
+        font-size: clamp(1rem, 0.8vw, 1vw);
         padding: 0.6em;
         text-align: center;
         color: rgb(0, 0, 0);
@@ -82,7 +85,9 @@
   padding: 0.5rem 1rem;
   color: white;
   background-color: rgba(186, 35, 35, 0.9);
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  box-shadow:
+    0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
   border-radius: 1rem;
   cursor: pointer;
   transition: ease-in 0.3s;
@@ -108,7 +113,8 @@
   border-bottom: 2px solid rgb(237, 237, 237);
   transition: ease-in 0.2s;
   cursor: pointer;
-  @include font(600, 1vw);
+  font-size: clamp(1.5rem, 20vw, 2rem);
+  font-weight: 600;
 
   &:hover {
     border-bottom: 2px solid red;
@@ -125,7 +131,7 @@
 
   .modelCarDetail {
     @include font(600, 1.5rem);
-    margin: auto;
+    margin: 0 auto 2em;
     text-decoration: none;
   }
 }
