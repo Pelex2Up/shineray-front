@@ -3,7 +3,7 @@
 .carouselWrapper {
   position: sticky;
   border-radius: 10px;
-  height: 350px;
+  height: clamp(350px, 50vh, 800px);
   width: 100%;
   margin: auto;
   overflow: hidden;

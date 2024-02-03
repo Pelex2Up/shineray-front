@@ -11,19 +11,28 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
+import { useMediaQuery } from "react-responsive";
 
 export const CarDetailsPage: FC = () => {
   const params = useParams();
   const { carModel } = params;
   const [fetchData, { data: AutoModel, isSuccess }] =
     useLazyFetchCarModelDataQuery();
+  const isDesktopOrMobile = useMediaQuery({ minDeviceWidth: 1224 });
   const [currentCar, setCurrentCar] = useState<number>(0);
   const [instance, setInstance] = useState<SwiperClass | null>(null);
   const [instance2, setInstance2] = useState<SwiperClass | null>(null);
   const swiperRef = useRef<SwiperRef | null>(null);
   const thumbsRef = useRef<SwiperRef | null>(null);
 
-  console.log(AutoModel);
+  const btnNext = document.querySelectorAll(".swiper-button-next");
+  btnNext.forEach(
+    (el: Element) => ((el as HTMLElement).style.transition = "ease-in 0.3s"),
+  );
+  const btnPrev = document.querySelectorAll(".swiper-button-prev");
+  btnPrev.forEach(
+    (el: Element) => ((el as HTMLElement).style.transition = "ease-in 0.3s"),
+  );
 
   useEffect(() => {
     if (carModel) {
@@ -45,15 +54,14 @@ export const CarDetailsPage: FC = () => {
               <Swiper
                 loop={true}
                 spaceBetween={10}
-                navigation={true}
+                navigation={isDesktopOrMobile? true: false}
                 centeredSlides={true}
                 ref={swiperRef}
                 normalizeSlideIndex
                 onSwiper={setInstance}
                 modules={[Navigation, Thumbs]}
                 className={styles.swiper}
-                onNavigationNext={(swiper) => setCurrentCar(swiper.realIndex)}
-                onNavigationPrev={(swiper) => setCurrentCar(swiper.realIndex)}
+                onSlideChange={(swiper) => setCurrentCar(swiper.realIndex)}
               >
                 {AutoModel.slider_1.images.map((el, index) => (
                   <SwiperSlide key={el.id + el.name}>
@@ -62,7 +70,7 @@ export const CarDetailsPage: FC = () => {
                         objectFit: "cover",
                         height: "100%",
                         width: "100%",
-                        border: "1px solid rgb(129, 109, 109)",
+                        border: "1px solid rgba(193, 193, 193, 0.6)",
                         borderRadius: "0.3rem",
                       }}
                       src={`http://93.177.124.158/media/${el.image}`}

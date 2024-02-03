@@ -3,13 +3,20 @@ import styles from "./ModelCarsMenu.module.scss";
 import { HeaderT } from "types/componentTypes";
 import { generatePath, useNavigate } from "react-router-dom";
 import { Path } from "enum/PathE";
+import { motion } from "framer-motion";
 
 export const ModelCarsMenu: FC<HeaderT> = ({ data }) => {
   const [currentType, setCurrentType] = useState<number>(0);
   const navigate = useNavigate();
 
   return (
-    <div className={styles.menuWrapper}>
+    <motion.div
+      className={styles.menuWrapper}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <div className={styles.typeTabs}>
         {data.menu.automobile.map((obj, index) => (
           <span
@@ -40,6 +47,6 @@ export const ModelCarsMenu: FC<HeaderT> = ({ data }) => {
           </a>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 };

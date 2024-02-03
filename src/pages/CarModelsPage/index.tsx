@@ -38,7 +38,7 @@ const cars = [
 export const CarModelsPage: FC = () => {
   const { data: CarModels } = useFetchCategoryDataQuery();
   const [currentCategory, setCurrentCategory] = useState<number>(0);
-  console.log(CarModels);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
