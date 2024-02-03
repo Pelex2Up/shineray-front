@@ -5,59 +5,63 @@
   @include display(flex, column);
 
   &_main {
-    @include display(flex, row, space-between);
+    @include display(flex, column, center, center);
     max-width: 1600px;
+    width: 100%;
     margin: 0 auto;
     gap: 50px;
     padding: 2rem 5rem;
 
-    &_swiper {
-      max-width: clamp(40px, 40dvw, 650px);
+    &_preview {
+      @include display(flex, row, space-between);
+      width: 100%;
+      gap: 50px;
+      &_swiper {
+        max-width: clamp(40px, 40dvw, 650px);
+      }
+
+      &_shortDescription {
+        @include display(flex, column, flex-start);
+        width: 100%;
+        min-width: 550px;
+
+        hr {
+          background: url("https://www.shineray.com/template/pc/default/images/line2.png")
+            repeat-x;
+          height: 4px;
+          margin: 15px 0;
+          opacity: 0.2;
+        }
+
+        &_title {
+          @include font(800, 28px);
+        }
+
+        &_tech {
+          @include font(400, 22px);
+          padding-left: 22px;
+        }
+      }
     }
 
-    &_shortDescription {
-      @include display(flex, column, flex-start);
-      width: 100%;
-      min-width: 550px;
-
-      hr {
-        background: url("https://www.shineray.com/template/pc/default/images/line2.png")
-          repeat-x;
-        height: 4px;
-        margin: 15px 0;
-        opacity: 0.2;
-      }
+    &_proText {
+      @include display(flex, column, center, center);
+      padding: 2rem 0;
+      text-align: center;
 
       &_title {
-        @include font(800, 28px);
-      }
-
-      &_tech {
-        @include font(400, 22px);
-        padding-left: 22px;
-      }
-    }
-  }
-
-  &_proText {
-    @include display(flex, column, center, center);
-    padding: 2rem 5rem;
-    text-align: center;
-    width: 100dvw;
-
-    &_title {
-      @include font(800, 30px);
+        @include font(800, 30px);
         border-bottom: 3px solid red;
-      // color: #a02a2a;
-      text-align: center;
-    }
+        // color: #a02a2a;
+        text-align: center;
+      }
 
-    &_description {
-      font-size: 22px;
-      margin: 1rem 2rem 3rem;
-      text-align: start;
-      padding: 0 1rem;
-      // border-left: 3px double rgb(193, 193, 193);
+      &_description {
+        font-size: 22px;
+        margin: 1rem 0 3rem;
+        text-align: start;
+        // border-left: 3px double rgb(193, 193, 193);
+      }
     }
   }
 }

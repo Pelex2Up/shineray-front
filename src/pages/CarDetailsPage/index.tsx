@@ -46,158 +46,160 @@ export const CarDetailsPage: FC = () => {
     <motion.div className={styles.wrapper}>
       {AutoModel && <HeaderSlider image={AutoModel.header_image} />}
       <div className={styles.wrapper_main}>
-        <div className={styles.wrapper_main_swiper}>
-          {AutoModel && (
-            <>
-              <Swiper
-                loop={true}
-                spaceBetween={10}
-                navigation={true}
-                centeredSlides={true}
-                ref={swiperRef}
-                normalizeSlideIndex
-                onSwiper={setInstance}
-                modules={[Navigation, Thumbs]}
-                className={styles.swiper}
-                onSlideChange={(swiper) => setCurrentCar(swiper.realIndex)}
-              >
-                {AutoModel.slider_1.images.map((el, index) => (
-                  <SwiperSlide key={el.id + el.name}>
-                    <img
-                      style={{
-                        objectFit: "cover",
-                        height: "100%",
-                        width: "100%",
-                        border: "1px solid rgba(193, 193, 193, 0.6)",
-                        borderRadius: "0.3rem",
-                      }}
-                      src={`http://93.177.124.158/media/${el.image}`}
-                      alt={`Slide ${index + 1}`}
-                    />
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-              <Swiper
-                onSwiper={setInstance2}
-                ref={thumbsRef}
-                normalizeSlideIndex
-                slidesPerView={5}
-                centeredSlides={true}
-                centeredSlidesBounds={true}
-                className={styles.thumbsWrapper}
-              >
-                {AutoModel?.slider_1.images.map((el, index) => (
-                  <SwiperSlide key={el.image}>
-                    <img
-                      className={`${styles.thumbsWrapper_thumbs} ${currentCar === index ? styles.active : ""}`}
-                      src={`http://93.177.124.158/media/${el.image}`}
-                      alt={`Thumb ${index + 1}`}
-                      onClick={() => {
-                        instance?.slideTo(
-                          index + 1 === AutoModel?.slider_1.images.length
-                            ? 0
-                            : index + 1,
-                        );
-                        instance2?.slideTo(index);
-                        setCurrentCar(index);
-                      }}
-                    />
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </>
-          )}
-        </div>
-        <div className={styles.wrapper_main_shortDescription}>
-          <h1 className={styles.wrapper_main_shortDescription_title}>
-            {AutoModel?.description}
-          </h1>
-          <hr></hr>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              textAlign: "center",
-            }}
-          >
-            <p
+        <div className={styles.wrapper_main_preview}>
+          <div className={styles.wrapper_main_preview_swiper}>
+            {AutoModel && (
+              <>
+                <Swiper
+                  loop={true}
+                  spaceBetween={10}
+                  navigation={true}
+                  centeredSlides={true}
+                  ref={swiperRef}
+                  normalizeSlideIndex
+                  onSwiper={setInstance}
+                  modules={[Navigation, Thumbs]}
+                  className={styles.swiper}
+                  onSlideChange={(swiper) => setCurrentCar(swiper.realIndex)}
+                >
+                  {AutoModel.slider_1.images.map((el, index) => (
+                    <SwiperSlide key={el.id + el.name}>
+                      <img
+                        style={{
+                          objectFit: "cover",
+                          height: "100%",
+                          width: "100%",
+                          border: "1px solid rgba(193, 193, 193, 0.6)",
+                          borderRadius: "0.3rem",
+                        }}
+                        src={`http://93.177.124.158/media/${el.image}`}
+                        alt={`Slide ${index + 1}`}
+                      />
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+                <Swiper
+                  onSwiper={setInstance2}
+                  ref={thumbsRef}
+                  normalizeSlideIndex
+                  slidesPerView={5}
+                  centeredSlides={true}
+                  centeredSlidesBounds={true}
+                  className={styles.thumbsWrapper}
+                >
+                  {AutoModel?.slider_1.images.map((el, index) => (
+                    <SwiperSlide key={el.image}>
+                      <img
+                        className={`${styles.thumbsWrapper_thumbs} ${currentCar === index ? styles.active : ""}`}
+                        src={`http://93.177.124.158/media/${el.image}`}
+                        alt={`Thumb ${index + 1}`}
+                        onClick={() => {
+                          instance?.slideTo(
+                            index + 1 === AutoModel?.slider_1.images.length
+                              ? 0
+                              : index + 1,
+                          );
+                          instance2?.slideTo(index);
+                          setCurrentCar(index);
+                        }}
+                      />
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </>
+            )}
+          </div>
+          <div className={styles.wrapper_main_preview_shortDescription}>
+            <h1 className={styles.wrapper_main_preview_shortDescription_title}>
+              {AutoModel?.description}
+            </h1>
+            <hr></hr>
+            <div
               style={{
-                fontSize: "22px",
-                marginBottom: "15px",
-                borderBottom: "2px solid red",
+                display: "flex",
+                justifyContent: "center",
+                textAlign: "center",
               }}
             >
-              Краткие технические характеристики:{" "}
-            </p>
-          </div>
-          <ul className={styles.wrapper_main_shortDescription_tech}>
-            {AutoModel?.name && (
-              <li>
-                <strong>Модель: </strong>
-                Shineray {AutoModel.name}
-              </li>
-            )}
-            {AutoModel?.engine && (
-              <li>
-                <div style={{ display: "flex", flexDirection: "row" }}>
-                  <strong>{"Двигатель: "}</strong>
-                  <div className={styles.engines}>
-                    {AutoModel.engine.split(";").map((engine, index) => (
-                      <p>{engine}</p>
-                    ))}
+              <p
+                style={{
+                  fontSize: "22px",
+                  marginBottom: "15px",
+                  borderBottom: "2px solid red",
+                }}
+              >
+                Краткие технические характеристики:{" "}
+              </p>
+            </div>
+            <ul className={styles.wrapper_main_preview_shortDescription_tech}>
+              {AutoModel?.name && (
+                <li>
+                  <strong>Модель: </strong>
+                  Shineray {AutoModel.name}
+                </li>
+              )}
+              {AutoModel?.engine && (
+                <li>
+                  <div style={{ display: "flex", flexDirection: "row" }}>
+                    <strong>{"Двигатель: "}</strong>
+                    <div className={styles.engines}>
+                      {AutoModel.engine.split(";").map((engine, index) => (
+                        <p>{engine}</p>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              </li>
-            )}
-            {AutoModel?.drive && (
-              <li>
-                <strong>Привод: </strong>
-                {AutoModel.drive}
-              </li>
-            )}
-            {AutoModel?.transmission && (
-              <li>
-                <strong>Трансмиссия: </strong>
-                {AutoModel.transmission}
-              </li>
-            )}
-            {AutoModel?.range && (
-              <li>
-                <strong>Запас хода: </strong>
-                {AutoModel.range}
-              </li>
-            )}
-            {AutoModel?.dimensions && (
-              <li>
-                <strong>Размеры: </strong>
-                {AutoModel.dimensions}
-              </li>
-            )}
-            {AutoModel?.cargo_size && (
-              <li>
-                <strong>Размер грузового отсека: </strong>
-                {AutoModel.cargo_size}
-              </li>
-            )}
-            {AutoModel?.seats && (
-              <li>
-                <strong>Количество мест: </strong>
-                {AutoModel.seats}
-              </li>
-            )}
-            {AutoModel?.certification_standard && (
-              <li>
-                <strong>Сертификат: </strong>
-                {AutoModel.certification_standard}
-              </li>
-            )}
-          </ul>
+                </li>
+              )}
+              {AutoModel?.drive && (
+                <li>
+                  <strong>Привод: </strong>
+                  {AutoModel.drive}
+                </li>
+              )}
+              {AutoModel?.transmission && (
+                <li>
+                  <strong>Трансмиссия: </strong>
+                  {AutoModel.transmission}
+                </li>
+              )}
+              {AutoModel?.range && (
+                <li>
+                  <strong>Запас хода: </strong>
+                  {AutoModel.range}
+                </li>
+              )}
+              {AutoModel?.dimensions && (
+                <li>
+                  <strong>Размеры: </strong>
+                  {AutoModel.dimensions}
+                </li>
+              )}
+              {AutoModel?.cargo_size && (
+                <li>
+                  <strong>Размер грузового отсека: </strong>
+                  {AutoModel.cargo_size}
+                </li>
+              )}
+              {AutoModel?.seats && (
+                <li>
+                  <strong>Количество мест: </strong>
+                  {AutoModel.seats}
+                </li>
+              )}
+              {AutoModel?.certification_standard && (
+                <li>
+                  <strong>Сертификат: </strong>
+                  {AutoModel.certification_standard}
+                </li>
+              )}
+            </ul>
+          </div>
         </div>
-      </div>
-      <div className={styles.wrapper_proText}>
-        <h3 className={styles.wrapper_proText_title}>Описание модели</h3>
-        <div className={styles.wrapper_proText_description}>
-          {parse(String(AutoModel?.big_text_description))}
+        <div className={styles.wrapper_main_proText}>
+          <h3 className={styles.wrapper_main_proText_title}>Описание модели</h3>
+          <div className={styles.wrapper_main_proText_description}>
+            {parse(String(AutoModel?.big_text_description))}
+          </div>
         </div>
       </div>
     </motion.div>
