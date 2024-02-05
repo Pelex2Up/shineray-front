@@ -5,32 +5,30 @@ import { FC, useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { HeaderSlider } from "components/HeaderCarousel";
 import { Swiper, SwiperSlide, SwiperRef, SwiperClass } from "swiper/react";
-import { Navigation, Thumbs } from "swiper/modules";
+import { Navigation, Thumbs, Zoom } from "swiper/modules";
 import parse from "html-react-parser";
+import "./customArrows.css";
 import "swiper/css";
-import "swiper/css/free-mode";
+import "swiper/css/zoom";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
+import { useBoolean } from "customHooks/useBoolean";
+import { PreviewModal } from "components/modal/PreviewModal";
 
 export const CarDetailsPage: FC = () => {
   const params = useParams();
   const { carModel } = params;
-  const [fetchData, { data: AutoModel, isSuccess }] =
-    useLazyFetchCarModelDataQuery();
-  const [currentCar, setCurrentCar] = useState<number>(0);
+  const [fetchData, { data: AutoModel }] = useLazyFetchCarModelDataQuery();
+  const [
+    imagePreview,
+    { onToggle: toggleImage, open: openPreview, close: closePreview },
+  ] = useBoolean(false);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [instance, setInstance] = useState<SwiperClass | null>(null);
   const [instance2, setInstance2] = useState<SwiperClass | null>(null);
   const swiperRef = useRef<SwiperRef | null>(null);
   const thumbsRef = useRef<SwiperRef | null>(null);
-
-  const btnNext = document.querySelectorAll(".swiper-button-next");
-  btnNext.forEach(
-    (el: Element) => ((el as HTMLElement).style.transition = "ease-in 0.3s"),
-  );
-  const btnPrev = document.querySelectorAll(".swiper-button-prev");
-  btnPrev.forEach(
-    (el: Element) => ((el as HTMLElement).style.transition = "ease-in 0.3s"),
-  );
+  const swiper2Ref = useRef<SwiperRef | null>(null);
 
   useEffect(() => {
     if (carModel) {
@@ -40,10 +38,38 @@ export const CarDetailsPage: FC = () => {
         fetchData(id);
       }
     }
-  }, [carModel]);
+  }, [carModel, fetchData]);
+
+  useEffect(() => {
+    if (imagePreview) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflowX = "hidden";
+      document.body.style.overflowY = "auto";
+    }
+
+    console.log(imagePreview);
+  }, [imagePreview]);
 
   return (
     <motion.div className={styles.wrapper}>
+      {AutoModel && (
+        <PreviewModal
+          slides={AutoModel.slider_1.images}
+          toggleModal={toggleImage}
+          changeIndex={setCurrentIndex}
+          currentIndex={currentIndex}
+          imagePreview={imagePreview}
+        />
+      )}
+      {/* {imagePreview && AutoModel && (
+        <PreviewModal
+          slides={AutoModel.slider_2.images}
+          toggleModal={toggleImage}
+          changeIndex={setCurrentIndex}
+          currentIndex={currentIndex}
+        />
+      )} */}
       {AutoModel && <HeaderSlider image={AutoModel.header_image} />}
       <div className={styles.wrapper_main}>
         <div className={styles.wrapper_main_preview}>
@@ -56,19 +82,22 @@ export const CarDetailsPage: FC = () => {
                   navigation={true}
                   centeredSlides={true}
                   ref={swiperRef}
+                  lazyPreloadPrevNext={1}
                   normalizeSlideIndex
                   onSwiper={setInstance}
                   modules={[Navigation, Thumbs]}
                   className={styles.swiper}
                   onSlideChange={(swiper) => {
-                    setCurrentCar(swiper.realIndex);
+                    setCurrentIndex(swiper.realIndex);
                     instance2?.slideTo(swiper.realIndex);
                   }}
                 >
                   {AutoModel.slider_1.images.map((el, index) => (
                     <SwiperSlide key={el.id + el.name}>
                       <img
+                        onClick={toggleImage}
                         style={{
+                          cursor: "zoom-in",
                           objectFit: "cover",
                           height: "100%",
                           width: "100%",
@@ -76,7 +105,7 @@ export const CarDetailsPage: FC = () => {
                           borderRadius: "0.3rem",
                         }}
                         src={`http://93.177.124.158/media/${el.image}`}
-                        alt={`Slide ${index + 1}`}
+                        alt={`Slide ${el.name} ${index + 1}`}
                       />
                     </SwiperSlide>
                   ))}
@@ -93,9 +122,9 @@ export const CarDetailsPage: FC = () => {
                   {AutoModel?.slider_1.images.map((el, index) => (
                     <SwiperSlide key={el.image}>
                       <img
-                        className={`${styles.thumbsWrapper_thumbs} ${currentCar === index ? styles.active : ""}`}
+                        className={`${styles.thumbsWrapper_thumbs} ${currentIndex === index ? styles.active : ""}`}
                         src={`http://93.177.124.158/media/${el.image}`}
-                        alt={`Thumb ${index + 1}`}
+                        alt={`Thumb ${el.name} ${index + 1}`}
                         onClick={() => {
                           instance?.slideTo(
                             index + 1 === AutoModel?.slider_1.images.length
@@ -103,7 +132,7 @@ export const CarDetailsPage: FC = () => {
                               : index + 1,
                           );
                           instance2?.slideTo(index);
-                          setCurrentCar(index);
+                          setCurrentIndex(index);
                         }}
                       />
                     </SwiperSlide>
@@ -128,9 +157,7 @@ export const CarDetailsPage: FC = () => {
                 style={{
                   fontSize: "22px",
                   marginBottom: "15px",
-                  padding: "5px 15px",
-                  borderRadius: "5px",
-                  border: "3px dashed rgba(255, 0, 0, .55)",
+                  borderBottom: "3px solid rgb(255, 0, 0)",
                 }}
               >
                 Краткие технические характеристики:{" "}
@@ -149,7 +176,7 @@ export const CarDetailsPage: FC = () => {
                     <strong>{"Двигатель: "}</strong>
                     <div className={styles.engines}>
                       {AutoModel.engine.split(";").map((engine, index) => (
-                        <p>{engine}</p>
+                        <p key={engine + index}>{engine}</p>
                       ))}
                     </div>
                   </div>
@@ -205,6 +232,38 @@ export const CarDetailsPage: FC = () => {
           <div className={styles.wrapper_main_proText_description}>
             {parse(String(AutoModel?.big_text_description))}
           </div>
+        </div>
+        <div className={styles.wrapper_main_beautifulSlides}>
+          <h2 className={styles.wrapper_main_beautifulSlides_title}>
+            Wonderful Appreciation
+          </h2>
+          {AutoModel && (
+            <Swiper
+              spaceBetween={10}
+              navigation={true}
+              ref={swiper2Ref}
+              normalizeSlideIndex
+              slidesPerView={2}
+              modules={[Navigation]}
+              className={styles.swiper}
+            >
+              {AutoModel.slider_2.images.map((el, index) => (
+                <SwiperSlide key={el.id + el.order}>
+                  <img
+                    style={{
+                      objectFit: "cover",
+                      height: "100%",
+                      width: "100%",
+                      border: "1px solid rgba(193, 193, 193, 0.6)",
+                      borderRadius: "0.5rem",
+                    }}
+                    src={`http://93.177.124.158/media/${el.image}`}
+                    alt={`Slide ${index + 1}`}
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          )}
         </div>
       </div>
     </motion.div>
