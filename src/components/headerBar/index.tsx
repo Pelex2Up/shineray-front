@@ -89,7 +89,7 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
 
     return (
       <header className={styles.headerWrapper}>
-        <nav
+        <div
           className={`${styles.headerWrapper_header} ${("color" in props && props.color) || mobileMenu ? styles.scrolledBg : ""}`}
         >
           <div className={styles.headerWrapper_header_logo}>
@@ -102,7 +102,7 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
             </a>
           </div>
           {isDesktopOrMobile ? (
-            <div className={styles.headerWrapper_header_buttonsBlock}>
+            <nav className={styles.headerWrapper_header_buttonsBlock}>
               <Button
                 text="Главная"
                 onClick={() => {
@@ -118,7 +118,7 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
                   navigate(Path.Cars);
                 }}
               />
-              <Button text="Дилеры" />
+              <Button onClick={() => navigate(Path.Dealer)} text="Дилеры" />
               <Button text="Владельцам" />
               <Button text="Контакты" />
               <Button text="Мир Shineray" />
@@ -129,9 +129,9 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
               >
                 {headerData && <ModelCarsMenu data={headerData} />}
               </div>
-            </div>
+            </nav>
           ) : (
-            <div className={styles.headerWrapper_header_buttonsBlock}>
+            <nav className={styles.headerWrapper_header_buttonsBlock}>
               <IconButton
                 size="large"
                 edge="start"
@@ -141,9 +141,9 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
               >
                 {mobileMenu ? <Close /> : <MenuIcon />}
               </IconButton>
-            </div>
+            </nav>
           )}
-        </nav>
+        </div>
         {mobileMenu && (
           <nav
             className={`${styles.mobileMenuWrapper} ${mobileMenu ? styles.mobileMenuOpen : styles.mobileMenuClose}`}
@@ -156,7 +156,11 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
               Модельный ряд
               <span />
             </a>
-            <a href="#" className={styles.mobileMenuWrapper_button}>
+            <a
+              href={Path.Dealer}
+              rel="nofollow"
+              className={styles.mobileMenuWrapper_button}
+            >
               Дилеры
               <span />
             </a>

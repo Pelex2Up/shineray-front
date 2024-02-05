@@ -6,6 +6,7 @@ import { HomePage } from "pages/HomePage";
 import { CarModelsPage } from "pages/CarModelsPage";
 import { AnimatePresence } from "framer-motion";
 import { CarDetailsPage } from "pages/CarDetailsPage";
+import { DealersPage } from "pages/DealersPage";
 
 export const App = () => {
   return (
@@ -16,6 +17,7 @@ export const App = () => {
             <Route index element={<HomePage />} />
             <Route path={Path.Cars} element={<CarModelsPage />} />
             <Route path={Path.ModelAuto} element={<CarDetailsPage />} />
+            <Route path={Path.Dealer} element={<DealersPage />} />
           </Route>
         </Routes>
       </AnimatePresence>
