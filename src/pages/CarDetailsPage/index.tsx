@@ -60,7 +60,10 @@ export const CarDetailsPage: FC = () => {
                   onSwiper={setInstance}
                   modules={[Navigation, Thumbs]}
                   className={styles.swiper}
-                  onSlideChange={(swiper) => setCurrentCar(swiper.realIndex)}
+                  onSlideChange={(swiper) => {
+                    setCurrentCar(swiper.realIndex);
+                    instance2?.slideTo(swiper.realIndex);
+                  }}
                 >
                   {AutoModel.slider_1.images.map((el, index) => (
                     <SwiperSlide key={el.id + el.name}>

@@ -81,8 +81,8 @@
 
 @media (max-width: 1224px) {
   .footerWrapper {
-    @include display(flex, column, flex-start);
-    padding: 2rem 4rem;
+    @include display(flex, column, center, flex-start);
+    padding: 2rem 2.5rem;
 
     &_linkBar {
       @include display(flex, column, center);

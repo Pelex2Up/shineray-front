@@ -6,6 +6,7 @@
   border: 1px solid #f3f3f3;
 
   &_buttonsBlock {
+    @include display(flex, center, center);
     width: 100%;
     padding: 0 3rem;
     text-decoration: none;
@@ -18,8 +19,7 @@
       font-size: 1.25rem;
       color: #fff;
       display: block;
-      background: #c22231;
-      transform: skew(-25deg);
+      // transform: skew(-25deg);
       text-decoration: none;
       transition: ease-in 0.3s;
 
@@ -38,11 +38,6 @@
   &:hover {
     img {
       transform: scale(1.05);
-    }
-
-    a {
-      color: white;
-      background: black;
     }
   }
 }
