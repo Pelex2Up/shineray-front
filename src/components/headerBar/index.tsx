@@ -121,7 +121,10 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
               <Button onClick={() => navigate(Path.Dealer)} text="Дилеры" />
               <Button text="Владельцам" />
               <Button text="Контакты" />
-              <Button text="Мир Shineray" />
+              <Button
+                text="Мир Shineray"
+                onClick={() => navigate(Path.MirShineray)}
+              />
               <Button text="Новости" />
               <div
                 className={`${styles.dropdownMenu}  ${dropDownCars ? styles.open : styles.closed}`}
@@ -168,7 +171,10 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
               Владельцам
               <span />
             </a>
-            <a href="#" className={styles.mobileMenuWrapper_button}>
+            <a
+              href={Path.MirShineray}
+              className={styles.mobileMenuWrapper_button}
+            >
               Мир Shineray
               <span />
             </a>
