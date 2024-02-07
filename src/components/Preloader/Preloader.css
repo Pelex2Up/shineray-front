@@ -1,0 +1,140 @@
+.preloaderWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ffffff;
+  width: 100vw;
+  height: 100dh;
+  z-index: 999;
+  transition: ease-in-out 0.3s;
+}
+
+.spin {
+  -webkit-animation: spin 750ms infinite linear;
+  -moz-animation: spin 750ms infinite linear;
+  animation: spin 750ms infinite linear;
+}
+@keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@-moz-keyframes spin {
+  to {
+    -moz-transform: rotate(360deg);
+  }
+}
+.rspin {
+  -webkit-animation: rspin 2250ms infinite linear;
+  -moz-animation: rspin 2250ms infinite linear;
+  animation: rspin 2250ms infinite linear;
+}
+
+@keyframes rspin {
+  to {
+    -webkit-transform: rotate(-360deg);
+  }
+}
+
+@-webkit-keyframes rspin {
+  to {
+    -webkit-transform: rotate(-360deg);
+  }
+}
+@-moz-keyframes rspin {
+  to {
+    -moz-transform: rotate(-360deg);
+  }
+}
+
+.loader {
+  background-color: #eeeeee;
+  border-radius: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 55px;
+  width: 55px;
+  overflow: hidden;
+  z-index: 99999;
+}
+
+.loader .c {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -34% 0 0 -34%;
+  width: 68%;
+  height: 68%;
+  background-color: #ffffff;
+  border-radius: 100%;
+  z-index: 3;
+}
+
+.loader .d {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.loader .d .e {
+  z-index: 10;
+  position: absolute;
+  top: 1%;
+  left: 50%;
+  margin: 0 0 0 -5.5px;
+  border-top: 11px solid #cccccc;
+  border-left: 3.3px solid transparent;
+  border-right: 3.3px solid transparent;
+  height: 0;
+  width: 11px;
+  transform: rotate(10deg);
+  -webkit-transform: rotate(10deg);
+  -moz-transform: rotate(10deg);
+  border-radius: 5px 5px 0 0;
+}
+
+.loader .r {
+  z-index: 2;
+  position: absolute;
+  left: 50%;
+  top: -1px;
+  bottom: -1px;
+  margin-left: -2.75px;
+  background-color: #ffffff;
+  width: 5.5px;
+}
+
+.loader .r1 {
+  transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+}
+
+.loader .r2 {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+}
+
+.loader .r3 {
+  transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+}
+
+.loader .r4 {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+  -moz-transform: rotate(135deg);
+}

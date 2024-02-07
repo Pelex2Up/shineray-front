@@ -3,7 +3,7 @@ import {
   configureStore,
   PreloadedState,
 } from "@reduxjs/toolkit";
-import { persistReducer } from "redux-persist";
+import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import * as services from "../api/index";
 
@@ -19,7 +19,6 @@ export const rootReducer = combineReducers({
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: [],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -42,6 +41,8 @@ export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
 };
 
 export const store = setupStore();
+export const persistor = persistStore(store);
 export type RootState = ReturnType<typeof rootReducer>;
 export type AppStore = ReturnType<typeof setupStore>;
 export type AppDispatch = AppStore["dispatch"];
+

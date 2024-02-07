@@ -4,10 +4,15 @@ import { HeaderSlider } from "components/HeaderCarousel";
 import { CarItemCard } from "components/CarItemCard";
 import { useFetchCategoryDataQuery } from "api/carModelsPageService";
 import { motion } from "framer-motion";
+import { Preloader } from "components/Preloader";
 
 export const CarModelsPage: FC = () => {
-  const { data: CarModels } = useFetchCategoryDataQuery();
+  const { data: CarModels, isFetching } = useFetchCategoryDataQuery();
   const [currentCategory, setCurrentCategory] = useState<number>(0);
+
+  if (!CarModels || isFetching) {
+    return <Preloader />;
+  }
 
   return (
     <motion.div

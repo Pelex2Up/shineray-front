@@ -8,6 +8,7 @@ import { AnimatePresence } from "framer-motion";
 import { CarDetailsPage } from "pages/CarDetailsPage";
 import { DealersPage } from "pages/DealersPage";
 import { MirShinerayPage } from "pages/MirShinerayPage";
+import { Preloader } from "components/Preloader";
 
 export const App = () => {
   return (
@@ -20,6 +21,7 @@ export const App = () => {
             <Route path={Path.ModelAuto} element={<CarDetailsPage />} />
             <Route path={Path.Dealer} element={<DealersPage />} />
             <Route path={Path.MirShineray} element={<MirShinerayPage />} />
+            {/* <Route path={Path.AboutCompany} element={<Preloader />} /> */}
           </Route>
         </Routes>
       </AnimatePresence>

@@ -14,11 +14,13 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import { useBoolean } from "customHooks/useBoolean";
 import { PreviewModal } from "components/modal/PreviewModal";
+import { Preloader } from "components/Preloader";
 
 export const CarDetailsPage: FC = () => {
   const params = useParams();
   const { carModel } = params;
-  const [fetchData, { data: AutoModel }] = useLazyFetchCarModelDataQuery();
+  const [fetchData, { data: AutoModel, isFetching }] =
+    useLazyFetchCarModelDataQuery();
   const [
     imagePreview,
     { onToggle: toggleImage, open: openPreview, close: closePreview },
@@ -50,6 +52,10 @@ export const CarDetailsPage: FC = () => {
 
     console.log(imagePreview);
   }, [imagePreview]);
+
+  if (!AutoModel || isFetching) {
+    return <Preloader />;
+  }
 
   return (
     <motion.div className={styles.wrapper}>

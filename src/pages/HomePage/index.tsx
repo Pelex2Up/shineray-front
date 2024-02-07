@@ -1,12 +1,14 @@
-import { FC, useState } from "react";
+import { FC, useRef, useState } from "react";
 import styles from "./homePage.module.scss";
-import { Carousel } from "components/Carousel";
 import { HeaderSlider } from "components/HeaderCarousel";
 import { NewsItem } from "components/NewsItem";
 import { useFetchHomePageDataQuery } from "api/homePageService";
 import { generatePath } from "react-router-dom";
 import { Path } from "enum/PathE";
 import { LinkButton } from "components/common/Buttons";
+import { Swiper, SwiperClass, SwiperRef, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import { Preloader } from "components/Preloader";
 
 const News = [
   {
@@ -44,11 +46,22 @@ const News = [
 
 export const HomePage: FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const { data: HomePageData } = useFetchHomePageDataQuery();
+  const { data: HomePageData, isFetching } = useFetchHomePageDataQuery();
+  const swiperRef = useRef<SwiperRef | null>(null);
+  const [instance, setInstance] = useState<SwiperClass | null>(null);
 
   const handleClickModel = (index: number) => {
-    setCurrentIndex(index);
+    if (HomePageData) {
+      setCurrentIndex(index + 1);
+      instance?.slideTo(
+        index !== HomePageData.body.car_models.length - 1 ? index + 1 : 0,
+      );
+    }
   };
+
+  if (!HomePageData || isFetching) {
+    return <Preloader />;
+  }
 
   return (
     <div className={styles.container}>
@@ -73,13 +86,43 @@ export const HomePage: FC = () => {
           ))}
         </div>
         <div className={styles.container_carSelector_modelPreview}>
-          {HomePageData && (
-            <Carousel
-              currentIndex={currentIndex}
-              setCurrentIndex={setCurrentIndex}
-              data={HomePageData.body.car_models}
-            />
-          )}
+          <Swiper
+            navigation={true}
+            ref={swiperRef}
+            loop={true}
+            normalizeSlideIndex
+            spaceBetween={100}
+            modules={[Navigation]}
+            className={styles.swiper}
+            onSwiper={setInstance}
+            centeredSlides
+            onSlideChange={(swiper) => {
+              setCurrentIndex(swiper.realIndex);
+            }}
+          >
+            {HomePageData &&
+              // <Carousel
+              //   currentIndex={currentIndex}
+              //   setCurrentIndex={setCurrentIndex}
+              //   data={HomePageData.body.car_models}
+              // />
+              HomePageData.body.car_models.map((el, index) => (
+                <SwiperSlide
+                  key={el.id + el.order}
+                  className={styles.container_carSelector_modelPreview_slider}
+                >
+                  <img
+                    style={{
+                      objectFit: "contain",
+                      height: "100%",
+                      width: "100%",
+                    }}
+                    src={`http://93.177.124.158/media/${el.image_xl}`}
+                    alt={`Slide ${index + 1}`}
+                  />
+                </SwiperSlide>
+              ))}
+          </Swiper>
 
           <LinkButton
             text={"Подробнее о модели"}
