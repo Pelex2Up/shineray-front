@@ -79,12 +79,12 @@ export const AboutCompanyPage: FC = () => {
                         console.log(index);
                         return (
                           <li>
-                            <a>
+                            <div>
                               <img
                                 src={`http://93.177.124.158/media/${element.image}`}
-                                alt="Factory small image"
+                                alt="Factory small"
                               />
-                            </a>
+                            </div>
                           </li>
                         );
                       }
@@ -95,11 +95,12 @@ export const AboutCompanyPage: FC = () => {
                       styles.wrapper_container_factory_swiper_imageBox_bigImage
                     }
                   >
-                    <a>
+                    <div>
                       <img
                         src={`http://93.177.124.158/media/${el[el.length - 1].image}`}
+                        alt="Factory Big"
                       />
-                    </a>
+                    </div>
                   </div>
                 </div>
                 {/* <img

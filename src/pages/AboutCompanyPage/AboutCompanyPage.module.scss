@@ -127,32 +127,32 @@
     }
 
     &_factory {
-      @include display(flex, row, center, center);
+      @include display(flex);
 
       &_swiper {
         position: relative;
         cursor: grab;
-        margin: 50px 20px 0;
+        margin: 4rem 4rem 2rem;
         border-radius: 2rem;
 
         &_imageBox {
           display: -webkit-flex;
           display: flex;
           flex-direction: row;
+          height: 100%;
 
           &_bigImage {
             width: 47.6%;
             margin-left: 1px;
+            max-height: 500px;
 
-            a {
+            div {
               height: 100%;
               width: 100%;
               display: block;
-              border: 1px solid white;
               box-sizing: border-box;
               overflow: hidden;
               position: relative;
-              text-decoration: none;
 
               &:hover {
                 img {
@@ -179,20 +179,20 @@
             justify-content: space-between;
             -webkit-flex-wrap: wrap;
             flex-wrap: wrap;
+            max-height: 500px;
 
             li {
               width: calc(50% - 0.5px);
+              height: calc(50% - 0.5px);
               box-sizing: border-box;
 
-              a {
+              div {
                 height: 100%;
                 width: 100%;
                 display: block;
                 box-sizing: border-box;
-                border: 1px solid white;
                 overflow: hidden;
                 position: relative;
-                text-decoration: none;
 
                 &:hover {
                   img {
