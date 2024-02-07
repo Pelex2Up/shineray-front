@@ -7,6 +7,6 @@ export enum Path {
   Dealer = "/dealers/",
   MirShineray = "/shineray-world/",
   AboutCompany = "/shineray-world/about/",
-  CompanyHistory = "/shineray-world/history/",
+  AboutBelarus = "/shineray-world/representative-office/",
   LegalInformation = "/shineray-world/legal-information/",
 }

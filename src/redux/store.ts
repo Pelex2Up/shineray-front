@@ -14,6 +14,8 @@ export const rootReducer = combineReducers({
     services.CarModelsPageService.reducer,
   [services.CarDetailsPageService.reducerPath]:
     services.CarDetailsPageService.reducer,
+  [services.MirShinerayService.reducerPath]:
+    services.MirShinerayService.reducer,
 });
 
 const persistConfig = {
@@ -36,6 +38,7 @@ export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
         services.HomePageService.middleware,
         services.CarModelsPageService.middleware,
         services.CarDetailsPageService.middleware,
+        services.MirShinerayService.middleware,
       ),
   });
 };
@@ -45,4 +48,3 @@ export const persistor = persistStore(store);
 export type RootState = ReturnType<typeof rootReducer>;
 export type AppStore = ReturnType<typeof setupStore>;
 export type AppDispatch = AppStore["dispatch"];
-

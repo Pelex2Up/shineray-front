@@ -109,6 +109,8 @@
   cursor: pointer;
   font-size: $font-default-size;
   font-weight: 600;
+  text-decoration: none;
+  color: #cf2626;
 
   &:hover {
     border-bottom: 2px solid red;

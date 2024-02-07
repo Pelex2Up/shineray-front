@@ -1,4 +1,4 @@
-import { FC, useRef, useState } from "react";
+import { FC, memo, useRef, useState } from "react";
 import styles from "./homePage.module.scss";
 import { HeaderSlider } from "components/HeaderCarousel";
 import { NewsItem } from "components/NewsItem";
@@ -44,7 +44,7 @@ const News = [
   },
 ];
 
-export const HomePage: FC = () => {
+export const HomePage: FC = memo(() => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const { data: HomePageData, isFetching } = useFetchHomePageDataQuery();
   const swiperRef = useRef<SwiperRef | null>(null);
@@ -52,7 +52,7 @@ export const HomePage: FC = () => {
 
   const handleClickModel = (index: number) => {
     if (HomePageData) {
-      setCurrentIndex(index + 1);
+      setCurrentIndex(index);
       instance?.slideTo(
         index !== HomePageData.body.car_models.length - 1 ? index + 1 : 0,
       );
@@ -78,6 +78,7 @@ export const HomePage: FC = () => {
                   ? `${styles.container_carSelector_models_carModel_active}`
                   : ""
               }`}
+              id={String(index)}
               key={index}
               onClick={() => handleClickModel(index)}
             >
@@ -139,10 +140,10 @@ export const HomePage: FC = () => {
             {News.slice(0, 3).map((data, index) => (
               <NewsItem data={data} key={index} />
             ))}
-            <a className={styles.moreButton}>Еще...</a>
+            <a className={styles.moreButton} href={Path.Home}>Еще...</a>
           </div>
         </div>
       </div>
     </div>
   );
-};
+});

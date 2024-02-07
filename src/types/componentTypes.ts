@@ -72,3 +72,17 @@ export interface ICar {
   certification_standard: string;
   category: number;
 }
+
+export type AboutCompanyT = {
+  id: number;
+  slider_1: ISlider;
+  slider_2: ISlider;
+  create_date: string;
+  image_header: string;
+  image_small_header: string;
+  title: string;
+  description: string;
+  content_1: string;
+  image_top_content: string;
+  content_2: string;
+};

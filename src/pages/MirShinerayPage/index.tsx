@@ -1,6 +1,7 @@
 import { FC, memo } from "react";
 import styles from "./MirShineray.module.scss";
 import { HeaderSlider } from "components/HeaderCarousel";
+import { Path } from "enum/PathE";
 
 export const MirShinerayPage: FC = memo(() => {
   return (
@@ -16,7 +17,7 @@ export const MirShinerayPage: FC = memo(() => {
                 className={
                   styles.pageWrapper_index_content_buttonsBlock_button_linkWrapper
                 }
-                href="#"
+                href={Path.AboutCompany}
               >
                 <img
                   src="https://www.shineray.com/upload/sort/1648688801826070.jpg"
@@ -27,7 +28,7 @@ export const MirShinerayPage: FC = memo(() => {
                     styles.pageWrapper_index_content_buttonsBlock_button_textWrapper
                   }
                 >
-                  <p>О компании</p>
+                  <p>Про компанию Shineray</p>
                 </div>
               </a>
             </li>
@@ -38,18 +39,18 @@ export const MirShinerayPage: FC = memo(() => {
                 className={
                   styles.pageWrapper_index_content_buttonsBlock_button_linkWrapper
                 }
-                href="#"
+                href={Path.AboutBelarus}
               >
                 <img
                   src="https://www.shineray.com/upload/sort/1679415923164074.jpg"
-                  alt="Shineray history"
+                  alt="Shineray belarus"
                 />
                 <div
                   className={
                     styles.pageWrapper_index_content_buttonsBlock_button_textWrapper
                   }
                 >
-                  <p>История компании</p>
+                  <p>Про нас</p>
                 </div>
               </a>
             </li>
@@ -60,7 +61,7 @@ export const MirShinerayPage: FC = memo(() => {
                 className={
                   styles.pageWrapper_index_content_buttonsBlock_button_linkWrapper
                 }
-                href="#"
+                href={Path.LegalInformation}
               >
                 <img
                   src="https://www.shineray.com/upload/sort/1679449587137329.jpg"

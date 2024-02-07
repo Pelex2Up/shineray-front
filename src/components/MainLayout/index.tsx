@@ -1,36 +1,44 @@
-import { FC, useEffect } from 'react'
-import styles from './mainLayout.module.scss'
-import { HeaderBar } from 'components/headerBar'
-import { Outlet } from 'react-router-dom'
-import { Footer } from 'components/footerBar'
-import { useBoolean } from 'customHooks/useBoolean'
+import { FC, useEffect } from "react";
+import styles from "./mainLayout.module.scss";
+import { HeaderBar } from "components/headerBar";
+import { Outlet } from "react-router-dom";
+import { Footer } from "components/footerBar";
+import { useBoolean } from "customHooks/useBoolean";
+import { motion } from "framer-motion";
 
 export const MainLayout: FC = () => {
-  const [headerColoured, { open: colorBg, close: uncolorBg }] = useBoolean()
+  const [headerColoured, { open: colorBg, close: uncolorBg }] = useBoolean();
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY
-      const blockHeight = document.getElementById('header-slider')?.offsetHeight ?? 0
+      const scrollPosition = window.scrollY;
+      const blockHeight =
+        document.getElementById("header-slider")?.offsetHeight ?? 0;
 
       if (scrollPosition > blockHeight - 50) {
-        colorBg()
+        colorBg();
       } else {
-        uncolorBg()
+        uncolorBg();
       }
-    }
+    };
 
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
-    <div className={styles.wrapper}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+      className={styles.wrapper}
+    >
       <HeaderBar color={headerColoured} />
       <Outlet />
       <Footer />
-    </div>
-  )
-}
+    </motion.div>
+  );
+};
