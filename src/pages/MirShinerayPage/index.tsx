@@ -2,11 +2,19 @@ import { FC, memo } from "react";
 import styles from "./MirShineray.module.scss";
 import { HeaderSlider } from "components/HeaderCarousel";
 import { Path } from "enum/PathE";
+import { useFetchMirShinerayPageDataQuery } from "api/mirShinerayService";
+import { Preloader } from "components/Preloader";
 
 export const MirShinerayPage: FC = memo(() => {
+  const { data: MirShineray, isFetching } = useFetchMirShinerayPageDataQuery();
+
+  if (!MirShineray || isFetching) {
+    return <Preloader />;
+  }
+  console.log(MirShineray);
   return (
     <div className={styles.pageWrapper}>
-      <HeaderSlider image="uploads/headers/about_header.jpg" />
+      <HeaderSlider image={MirShineray.body.page_header.image} />
       <div className={styles.pageWrapper_index}>
         <div className={styles.pageWrapper_index_content}>
           <ul className={styles.pageWrapper_index_content_buttonsBlock}>
@@ -20,7 +28,7 @@ export const MirShinerayPage: FC = memo(() => {
                 href={Path.AboutCompany}
               >
                 <img
-                  src="https://www.shineray.com/upload/sort/1648688801826070.jpg"
+                  src={`http://93.177.124.158/media/${MirShineray.body.content.about_company.image_header}`}
                   alt="Shineray about"
                 />
                 <div
@@ -28,7 +36,7 @@ export const MirShinerayPage: FC = memo(() => {
                     styles.pageWrapper_index_content_buttonsBlock_button_textWrapper
                   }
                 >
-                  <p>Про компанию Shineray</p>
+                  <p>{MirShineray.body.content.about_company.title}</p>
                 </div>
               </a>
             </li>
@@ -42,7 +50,7 @@ export const MirShinerayPage: FC = memo(() => {
                 href={Path.AboutBelarus}
               >
                 <img
-                  src="https://www.shineray.com/upload/sort/1679415923164074.jpg"
+                  src={`http://93.177.124.158/media/${MirShineray.body.content.about_us.image_header}`}
                   alt="Shineray belarus"
                 />
                 <div
@@ -50,7 +58,7 @@ export const MirShinerayPage: FC = memo(() => {
                     styles.pageWrapper_index_content_buttonsBlock_button_textWrapper
                   }
                 >
-                  <p>Про нас</p>
+                  <p>{MirShineray.body.content.about_us.title}</p>
                 </div>
               </a>
             </li>
@@ -64,7 +72,7 @@ export const MirShinerayPage: FC = memo(() => {
                 href={Path.LegalInformation}
               >
                 <img
-                  src="https://www.shineray.com/upload/sort/1679449587137329.jpg"
+                  src={`http://93.177.124.158/media/${MirShineray.body.content.legal_information.image_header}`}
                   alt="Shineray legal information"
                 />
                 <div
@@ -72,7 +80,7 @@ export const MirShinerayPage: FC = memo(() => {
                     styles.pageWrapper_index_content_buttonsBlock_button_textWrapper
                   }
                 >
-                  <p>Юридическая информация</p>
+                  <p>{MirShineray.body.content.legal_information.title}</p>
                 </div>
               </a>
             </li>
