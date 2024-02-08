@@ -1,5 +1,5 @@
-@import '../../scss/mixin.scss';
-@import '../../scss/variable.scss';
+@import "../../scss/mixin.scss";
+@import "../../scss/variable.scss";
 
 .headerWrapper {
   @include display(flex, row, space-around, center);
@@ -140,6 +140,15 @@
   animation-fill-mode: forwards;
   transition: ease-in-out 0.5s;
   border-top: 1px solid #cdd0d2;
+
+  &_accordionButton {
+    @include font(bold, $font-subtitle-size);
+    color: white !important;
+    background: rgba(45, 45, 45, 1) !important;
+    min-height: 4rem;
+    border-bottom: 1px solid #cdd0d2;
+    text-decoration: none;
+  }
 
   &_button {
     @include display(flex, row, space-between);

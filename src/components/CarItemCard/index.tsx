@@ -25,7 +25,7 @@ export const CarItemCard: FC<CardItemT> = ({ car }) => {
     >
       <Card
         sx={{
-          width: `${isDesktopOrMobile ? "clamp(260px, 20vw, 25vw)" : "100%"}`,
+          width: `${isDesktopOrMobile ? "300px" : "100%"}`,
           minWidth: `${isDesktopOrMobile ? "" : "100%"}`,
           borderRadius: "1rem",
         }}
@@ -37,7 +37,7 @@ export const CarItemCard: FC<CardItemT> = ({ car }) => {
             gutterBottom
             variant="h5"
             component="div"
-            sx={{ textAlign: "center" }}
+            sx={{ textAlign: "center", fontSize: '20px'}}
           >
             {`Shineray ${car.name}`}
           </Typography>

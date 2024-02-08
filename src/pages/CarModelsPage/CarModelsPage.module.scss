@@ -9,10 +9,10 @@
 
   &_container {
     @include display(flex, row, flex-start);
-    max-width: 1400px;
+    max-width: 1600px;
     margin: 0 auto;
-    padding: 2rem 5rem;
-    gap: 6rem;
+    padding: 2rem 1rem;
+    gap: 50px;
 
     &_leftNavMenu {
       background: #f7f7f7;

@@ -3,11 +3,16 @@ import styles from "./headerBar.module.scss";
 import { Path } from "enum/PathE";
 import { Button } from "./components/button";
 import { useMediaQuery } from "react-responsive";
-import { IconButton } from "@mui/material";
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  IconButton,
+} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useBoolean } from "customHooks/useBoolean";
 import { ModelCarsMenu } from "./components/ModelCarsMenu";
-import { Close } from "@mui/icons-material";
+import { Close, ExpandMore } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import { useFetchHeaderDataQuery } from "api/headerService";
 
@@ -151,14 +156,28 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
           <nav
             className={`${styles.mobileMenuWrapper} ${mobileMenu ? styles.mobileMenuOpen : styles.mobileMenuClose}`}
           >
-            <a
-              href={Path.Cars}
-              rel="nofollow"
-              className={styles.mobileMenuWrapper_button}
-            >
-              Модельный ряд
-              <span />
-            </a>
+            <Accordion className={styles.mobileMenuWrapper_accordionButton}>
+              <AccordionSummary
+                expandIcon={<ExpandMore sx={{ color: "white" }} />}
+                aria-controls="panel1-content"
+                id="panel1-header"
+              >
+                Модельный ряд
+              </AccordionSummary>
+              <AccordionDetails sx={{ paddingBottom: "2rem" }}>
+                {headerData &&
+                  headerData.menu.automobile.map((cat, index) => (
+                    <a
+                      href={Path.Cars}
+                      rel="nofollow"
+                      className={styles.mobileMenuWrapper_button}
+                    >
+                      {cat.name}
+                      <span />
+                    </a>
+                  ))}
+              </AccordionDetails>
+            </Accordion>
             <a
               href={Path.Dealer}
               rel="nofollow"
@@ -171,13 +190,39 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
               Владельцам
               <span />
             </a>
-            <a
-              href={Path.MirShineray}
-              className={styles.mobileMenuWrapper_button}
-            >
-              Мир Shineray
-              <span />
-            </a>
+            <Accordion className={styles.mobileMenuWrapper_accordionButton}>
+              <AccordionSummary
+                expandIcon={<ExpandMore sx={{ color: "white" }} />}
+                aria-controls="panel1-content"
+                id="panel1-header"
+              >
+                Мир Shineray
+              </AccordionSummary>
+              <AccordionDetails sx={{ paddingBottom: "2rem" }}>
+                <a
+                  href={Path.AboutCompany}
+                  className={styles.mobileMenuWrapper_button}
+                >
+                  О компании Shineray Group
+                  <span />
+                </a>
+                <a
+                  href={Path.AboutBelarus}
+                  className={styles.mobileMenuWrapper_button}
+                >
+                  О нас и бренде Shineray
+                  <span />
+                </a>
+                <a
+                  href={Path.LegalInformation}
+                  className={styles.mobileMenuWrapper_button}
+                >
+                  Юридическая информация
+                  <span />
+                </a>
+              </AccordionDetails>
+            </Accordion>
+
             <a href="#" className={styles.mobileMenuWrapper_button}>
               Новости
               <span />

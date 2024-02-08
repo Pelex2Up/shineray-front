@@ -1,4 +1,5 @@
 @import '../../../../scss/mixin.scss';
+@import '../../../../scss/variable.scss';
 
 .buttonWrapper {
   padding: 1.5em 0.2em 0.6em 0.2em;
@@ -7,7 +8,7 @@
   background: transparent;
   cursor: pointer;
   text-align: center;
-  @include font(600, 1rem);
+  @include font(bold, $font-default-size);
   color: rgba(255, 255, 255);
   transition: ease-in 0.4s;
   border-bottom: 4px solid transparent;

@@ -5,7 +5,7 @@ import { FC, useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { HeaderSlider } from "components/HeaderCarousel";
 import { Swiper, SwiperSlide, SwiperRef, SwiperClass } from "swiper/react";
-import { Navigation, Thumbs, Zoom } from "swiper/modules";
+import { Navigation, Thumbs } from "swiper/modules";
 import parse from "html-react-parser";
 import "./customArrows.css";
 import "swiper/css";
