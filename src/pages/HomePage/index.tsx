@@ -140,7 +140,7 @@ export const HomePage: FC = memo(() => {
               <NewsItem data={data} key={index} />
             ))}
           </div>
-          <LinkButton style={{maxWidth: 'fit-content'}} text="Все новости"/>
+          <LinkButton style={{ maxWidth: "fit-content" }} text="Все новости" />
         </div>
       </div>
     </div>

@@ -48,8 +48,6 @@ export const CarDetailsPage: FC = () => {
       document.body.style.overflowX = "hidden";
       document.body.style.overflowY = "auto";
     }
-
-    console.log(imagePreview);
   }, [imagePreview]);
 
   if (!AutoModel || isFetching) {
@@ -93,8 +91,8 @@ export const CarDetailsPage: FC = () => {
                   modules={[Navigation, Thumbs]}
                   className={styles.swiper}
                   onSlideChange={(swiper) => {
-                    setCurrentIndex(swiper.realIndex);
-                    instance2?.slideTo(swiper.realIndex);
+                    swiper && setCurrentIndex(swiper.realIndex);
+                    swiper && instance2?.slideTo(swiper.realIndex);
                   }}
                 >
                   {AutoModel.slider_1.images.map((el, index) => (

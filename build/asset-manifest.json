@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.5dd44177.css",
-    "main.js": "/static/js/main.c2cb91f8.js",
+    "main.css": "/static/css/main.dce9a479.css",
+    "main.js": "/static/js/main.57732a4f.js",
     "static/media/AlibabaPuHuiTi-2-55-Regular.ttf": "/static/media/AlibabaPuHuiTi-2-55-Regular.ec42239dbbf0e9008b5b.ttf",
     "index.html": "/index.html",
-    "main.5dd44177.css.map": "/static/css/main.5dd44177.css.map",
-    "main.c2cb91f8.js.map": "/static/js/main.c2cb91f8.js.map"
+    "main.dce9a479.css.map": "/static/css/main.dce9a479.css.map",
+    "main.57732a4f.js.map": "/static/js/main.57732a4f.js.map"
   },
   "entrypoints": [
-    "static/css/main.5dd44177.css",
-    "static/js/main.c2cb91f8.js"
+    "static/css/main.dce9a479.css",
+    "static/js/main.57732a4f.js"
   ]
 }

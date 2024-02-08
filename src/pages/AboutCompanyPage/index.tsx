@@ -67,7 +67,8 @@ export const AboutCompanyPage: FC = () => {
             slidesPerView={1}
             lazyPreloadPrevNext={1}
             normalizeSlideIndex
-            autoplay
+            autoplay={true}
+            speed={500}
             modules={[Navigation]}
             className={styles.wrapper_container_factory_swiper}
           >
