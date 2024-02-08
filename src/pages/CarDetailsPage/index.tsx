@@ -1,32 +1,29 @@
 import { useLazyFetchCarModelDataQuery } from "api/carDetailsPageService";
-import styles from "./CarDetailsPage.module.scss";
 import { motion } from "framer-motion";
 import { FC, useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { HeaderSlider } from "components/HeaderCarousel";
 import { Swiper, SwiperSlide, SwiperRef, SwiperClass } from "swiper/react";
 import { Navigation, Thumbs } from "swiper/modules";
-import parse from "html-react-parser";
-import "./customArrows.css";
-import "swiper/css";
-import "swiper/css/zoom";
-import "swiper/css/navigation";
-import "swiper/css/thumbs";
 import { useBoolean } from "customHooks/useBoolean";
 import { PreviewModal } from "components/modal/PreviewModal";
 import { Preloader } from "components/Preloader";
 import { LinkButton } from "components/common/Buttons";
 import { PictureAsPdf } from "@mui/icons-material";
+import parse from "html-react-parser";
+
+import styles from "./CarDetailsPage.module.scss";
+import "swiper/css";
+import "swiper/css/zoom";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
 
 export const CarDetailsPage: FC = () => {
   const params = useParams();
   const { carModel } = params;
   const [fetchData, { data: AutoModel, isFetching }] =
     useLazyFetchCarModelDataQuery();
-  const [
-    imagePreview,
-    { onToggle: toggleImage, open: openPreview, close: closePreview },
-  ] = useBoolean(false);
+  const [imagePreview, { onToggle: toggleImage }] = useBoolean(false);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [instance, setInstance] = useState<SwiperClass | null>(null);
   const [instance2, setInstance2] = useState<SwiperClass | null>(null);
@@ -237,7 +234,7 @@ export const CarDetailsPage: FC = () => {
               className={styles.techButton}
               text={`Технические характеристики`}
             >
-              <PictureAsPdf style={{marginRight: '0.2rem'}}/>
+              <PictureAsPdf style={{ marginRight: "0.2rem" }} />
             </LinkButton>
           </div>
         </div>
@@ -248,9 +245,7 @@ export const CarDetailsPage: FC = () => {
           </div>
         </div>
         <div className={styles.wrapper_main_beautifulSlides}>
-          <h2 className={styles.wrapper_main_beautifulSlides_title}>
-            Галерея
-          </h2>
+          <h2 className={styles.wrapper_main_beautifulSlides_title}>Галерея</h2>
           {AutoModel && (
             <Swiper
               spaceBetween={10}

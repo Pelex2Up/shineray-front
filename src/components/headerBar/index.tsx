@@ -28,34 +28,10 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
     const navigate = useNavigate();
     const [dropDownCars, { open: openDropDown, close: closeDropDown }] =
       useBoolean(false);
-    const [
-      mobileMenu,
-      {
-        open: openMobileMenu,
-        close: closeMobileMenu,
-        onToggle: toggleMobileMenu,
-      },
-    ] = useBoolean();
+    const [mobileMenu, { onToggle: toggleMobileMenu }] = useBoolean();
     const menuRef: HTMLButtonElement | null = null;
     const timerRef = useRef<NodeJS.Timeout | null>(null);
     const { data: headerData } = useFetchHeaderDataQuery();
-
-    const openModels = () => {
-      if (timerRef.current) {
-        clearTimeout(timerRef.current);
-        timerRef.current = null;
-      }
-      openDropDown();
-    };
-
-    const closeModels = () => {
-      timerRef.current = setTimeout(() => {
-        closeDropDown();
-        if (menuRef) {
-          closeDropDown();
-        }
-      }, 100);
-    };
 
     useEffect(() => {
       if (mobileMenu) {
@@ -66,6 +42,23 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
     }, [mobileMenu]);
 
     useEffect(() => {
+      const openModels = () => {
+        if (timerRef.current) {
+          clearTimeout(timerRef.current);
+          timerRef.current = null;
+        }
+        openDropDown();
+      };
+
+      const closeModels = () => {
+        timerRef.current = setTimeout(() => {
+          closeDropDown();
+          if (menuRef) {
+            closeDropDown();
+          }
+        }, 100);
+      };
+
       const button = document.querySelector('[data-popup="menu-cars"]');
 
       if (button) {
@@ -90,7 +83,7 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
           menu.addEventListener("mouseleave", closeModels);
         }
       };
-    }, [openModels, closeModels]);
+    }, [openDropDown, closeDropDown]);
 
     return (
       <header className={styles.headerWrapper}>
@@ -100,6 +93,7 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
           <div className={styles.headerWrapper_header_logo}>
             <a href={Path.Home} rel="nofollow">
               <img
+                alt="Logo"
                 src={
                   "https://www.shineray.com/upload/logo/1703907286103471.png"
                 }
@@ -192,7 +186,7 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
               Дилеры
               <span />
             </a>
-            <a href="#" className={styles.mobileMenuWrapper_button}>
+            <a href={Path.Home} className={styles.mobileMenuWrapper_button}>
               Владельцам
               <span />
             </a>
@@ -230,7 +224,7 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
               </AccordionDetails>
             </Accordion>
 
-            <a href="#" className={styles.mobileMenuWrapper_button}>
+            <a href={Path.Home} className={styles.mobileMenuWrapper_button}>
               Новости
               <span />
             </a>

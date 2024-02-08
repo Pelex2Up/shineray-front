@@ -17,7 +17,7 @@ export const NewsItem: FC<NewsItemT> = data => {
   const { source, imageUrl, title, description, date } = data.data
   return (
     <div className={styles.container}>
-      <img src={imageUrl} alt="News image" />
+      <img src={imageUrl} alt={`${title}`}/>
       <div className={styles.container_description}>
         <h1 className={styles.container_description_title}>{title}</h1>
         <p className={styles.container_description_text}>
