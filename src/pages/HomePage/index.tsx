@@ -80,7 +80,7 @@ export const HomePage: FC = memo(() => {
               }`}
               id={String(index)}
               key={index}
-              onClick={() => handleClickModel(index)}
+              onClick={() => handleClickModel(index - 1)}
             >
               {name}
             </span>
@@ -90,7 +90,6 @@ export const HomePage: FC = memo(() => {
           <Swiper
             navigation={true}
             ref={swiperRef}
-            loop={true}
             normalizeSlideIndex
             spaceBetween={100}
             modules={[Navigation]}

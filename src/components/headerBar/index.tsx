@@ -168,9 +168,15 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
                 {headerData &&
                   headerData.menu.automobile.map((cat, index) => (
                     <a
+                      style={{
+                        border:
+                          index === headerData.menu.automobile.length - 1
+                            ? "none"
+                            : "",
+                      }}
                       href={Path.Cars}
                       rel="nofollow"
-                      className={styles.mobileMenuWrapper_button}
+                      className={styles.mobileMenuWrapper_accordionButton_link}
                     >
                       {cat.name}
                       <span />
@@ -201,21 +207,22 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
               <AccordionDetails sx={{ paddingBottom: "2rem" }}>
                 <a
                   href={Path.AboutCompany}
-                  className={styles.mobileMenuWrapper_button}
+                  className={styles.mobileMenuWrapper_accordionButton_link}
                 >
                   О компании Shineray Group
                   <span />
                 </a>
                 <a
                   href={Path.AboutBelarus}
-                  className={styles.mobileMenuWrapper_button}
+                  className={styles.mobileMenuWrapper_accordionButton_link}
                 >
                   О нас и бренде Shineray
                   <span />
                 </a>
                 <a
                   href={Path.LegalInformation}
-                  className={styles.mobileMenuWrapper_button}
+                  style={{ border: "none" }}
+                  className={styles.mobileMenuWrapper_accordionButton_link}
                 >
                   Юридическая информация
                   <span />

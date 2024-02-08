@@ -128,26 +128,40 @@
 .mobileMenuWrapper {
   display: none;
   transition: ease-in 0.3s;
-  height: 100dvh;
+  min-height: 100dvh;
+  height: auto;
   width: 100vw;
-  position: fixed;
+  position: absolute;
   top: 4rem;
   right: 0;
   z-index: 30;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
   background: rgba(45, 45, 45, 1);
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
   transition: ease-in-out 0.5s;
-  border-top: 1px solid #cdd0d2;
+  border-top: rgba(205, 208, 210, 0.4);
 
   &_accordionButton {
     @include font(bold, $font-subtitle-size);
     color: white !important;
     background: rgba(45, 45, 45, 1) !important;
     min-height: 4rem;
-    border-bottom: 1px solid #cdd0d2;
+    border-bottom: 1px solid rgba(205, 208, 210, 0.4);
     text-decoration: none;
+    box-shadow: none !important;
+
+    &_link {
+      @include display(flex, row, space-between);
+      @include font(bold, $font-default-size);
+      align-items: center;
+      color: white;
+      padding: 0 1rem;
+      height: 3rem;
+      // border-bottom: 1px solid rgba(205, 208, 210, 0.4);
+      text-decoration: none;
+    }
   }
 
   &_button {
@@ -157,7 +171,7 @@
     color: white;
     padding: 0 1rem;
     height: 4rem;
-    border-bottom: 1px solid #cdd0d2;
+    border-bottom: 1px solid rgba(205, 208, 210, 0.4);
     text-decoration: none;
   }
 }
