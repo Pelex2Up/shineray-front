@@ -68,7 +68,7 @@
 
           &_textWrapper {
             background: rgba(0, 0, 0, 0.4);
-            font-size: 14px;
+            font-size: $font-small-size;
             box-sizing: border-box;
             position: absolute;
             left: 0;
@@ -87,7 +87,7 @@
             p {
               color: #fff;
               font-weight: bold;
-              font-size: 24px;
+              font-size: $font-subtitle-size;
             }
           }
         }

@@ -1,4 +1,5 @@
 @import '../../scss/mixin.scss';
+@import '../../scss/variable.scss';
 
 .headerWrapper {
   @include display(flex, row, space-around, center);
@@ -21,7 +22,7 @@
       margin-left: 2rem;
       padding: 10px;
       color: #fff;
-      font-size: 24px;
+      font-size: $font-subtitle-size;
       font-weight: bold;
       text-decoration: none;
       max-height: 74px;
@@ -142,7 +143,7 @@
 
   &_button {
     @include display(flex, row, space-between);
-    @include font(800, 1.5rem);
+    @include font(bold, $font-subtitle-size);
     align-items: center;
     color: white;
     padding: 0 1rem;

@@ -137,7 +137,7 @@
       &_proText {
         padding: 0;
         &_title {
-          @include font(800, 30px);
+          @include font(800, $font-title-size);
         }
       }
     }

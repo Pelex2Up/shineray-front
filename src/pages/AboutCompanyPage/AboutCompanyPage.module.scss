@@ -51,14 +51,14 @@
         }
 
         &_text {
-          font-size: 16px;
+          font-size: $font-small-size;
           color: #000;
           line-height: 32px;
           max-width: 660px;
           padding: 35px 0;
 
           @media (max-width: 1224px) {
-            font-size: 15px;
+            font-size: $font-small-size;
             line-height: 24px;
             max-width: none;
             padding: 15px 0 0;
