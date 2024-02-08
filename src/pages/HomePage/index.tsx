@@ -140,8 +140,8 @@ export const HomePage: FC = memo(() => {
             {News.slice(0, 3).map((data, index) => (
               <NewsItem data={data} key={index} />
             ))}
-            <a className={styles.moreButton} href={Path.Home}>Еще...</a>
           </div>
+          <LinkButton style={{maxWidth: 'fit-content'}} text="Все новости"/>
         </div>
       </div>
     </div>

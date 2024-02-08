@@ -15,6 +15,8 @@ import "swiper/css/thumbs";
 import { useBoolean } from "customHooks/useBoolean";
 import { PreviewModal } from "components/modal/PreviewModal";
 import { Preloader } from "components/Preloader";
+import { LinkButton } from "components/common/Buttons";
+import { PictureAsPdf } from "@mui/icons-material";
 
 export const CarDetailsPage: FC = () => {
   const params = useParams();
@@ -149,20 +151,20 @@ export const CarDetailsPage: FC = () => {
           </div>
           <div className={styles.wrapper_main_preview_shortDescription}>
             <h1 className={styles.wrapper_main_preview_shortDescription_title}>
-              {AutoModel?.description}
+              {AutoModel.title}
             </h1>
+            <h4 style={{ fontWeight: "400" }}>{AutoModel?.description}</h4>
             <hr></hr>
             <div
               style={{
                 display: "flex",
-                justifyContent: "center",
-                textAlign: "center",
               }}
             >
               <p
                 style={{
-                  fontSize: "22px",
+                  fontSize: "24px",
                   marginBottom: "15px",
+                  fontWeight: "800",
                   borderBottom: "3px solid rgb(255, 0, 0)",
                 }}
               >
@@ -231,6 +233,12 @@ export const CarDetailsPage: FC = () => {
                 </li>
               )}
             </ul>
+            <LinkButton
+              className={styles.techButton}
+              text={`Технические характеристики`}
+            >
+              <PictureAsPdf style={{marginRight: '0.2rem'}}/>
+            </LinkButton>
           </div>
         </div>
         <div className={styles.wrapper_main_proText}>
@@ -241,7 +249,7 @@ export const CarDetailsPage: FC = () => {
         </div>
         <div className={styles.wrapper_main_beautifulSlides}>
           <h2 className={styles.wrapper_main_beautifulSlides_title}>
-            Wonderful Appreciation
+            Галерея
           </h2>
           {AutoModel && (
             <Swiper

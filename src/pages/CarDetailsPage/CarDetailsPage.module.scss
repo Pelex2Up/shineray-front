@@ -35,12 +35,13 @@
         }
 
         &_title {
-          @include font(800, 28px);
+          font-size: $font-title-size;
+          font-weight: 800;
         }
 
         &_tech {
-          @include font(400, 22px);
-          padding-left: 22px;
+          font-size: $font-default-size;
+          font-weight: 400;
         }
       }
     }
@@ -50,14 +51,16 @@
       text-align: center;
 
       &_title {
-        @include font(800, 30px);
+        font-size: $font-subtitle-size;
+        font-weight: bold;
         border-bottom: 3px solid red;
         // color: #a02a2a;
         text-align: center;
       }
 
       &_description {
-        font-size: 22px;
+        font-size: $font-default-size;
+        font-weight: 400;
         margin: 1rem 0 0;
         text-align: start;
         // border-left: 3px double rgb(193, 193, 193);
@@ -73,8 +76,8 @@
       gap: 1rem;
 
       &_title {
-        font-size: $font-title-size;
-        font-weight: 800;
+        font-size: $font-subtitle-size;
+        font-weight: bold;
         padding: 0.3rem 0;
         border-bottom: 3px solid red;
       }
@@ -115,6 +118,7 @@
 
       &_preview {
         flex-direction: column;
+
         &_swiper {
           max-width: calc(100vw - 4rem);
         }
@@ -122,6 +126,9 @@
         &_shortDescription {
           margin: 0;
           min-width: 100%;
+          h4 {
+            text-align: center;
+          }
           &_title {
             text-align: center;
           }
@@ -140,4 +147,9 @@
 .engines {
   @include display(flex, column, flex-start, stretch);
   padding: 0 5px;
+}
+
+.techButton {
+  margin-top: 2rem;
+  max-width: fit-content;
 }

@@ -4,7 +4,7 @@
 .button {
   font-weight: 600;
   font-size: $font-default-size;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1rem 0.5rem;
   color: white;
   background-color: rgba(186, 35, 35, 0.9);
   box-shadow:
@@ -14,6 +14,10 @@
   cursor: pointer;
   transition: ease-in 0.3s;
   text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 
   &:hover {
     background-color: rgba(208, 37, 37, 0.9);

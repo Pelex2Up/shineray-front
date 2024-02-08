@@ -96,7 +96,7 @@
 }
 
 .newsWrapper {
-  @include display(flex, column, center);
+  @include display(flex, column, center, center);
   background: rgb(237, 237, 237);
   padding: 4rem 2rem;
 }

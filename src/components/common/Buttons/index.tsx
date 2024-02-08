@@ -7,9 +7,10 @@ type LinkButtonT = DetailedHTMLProps<
 > & {
   text: string;
 };
-export const LinkButton: FC<LinkButtonT> = ({ text, ...restProps }) => {
+export const LinkButton: FC<LinkButtonT> = ({ children, text, ...restProps }) => {
   return (
-    <a {...restProps} className={styles.button}>
+    <a {...restProps} className={`${styles.button} ${restProps.className}`}>
+      {children}
       {text}
     </a>
   );
