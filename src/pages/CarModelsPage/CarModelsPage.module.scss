@@ -31,7 +31,7 @@
         height: 4rem;
         line-height: 4rem;
         padding: 0 0 0 2rem;
-        background: #c22231;
+        background: #cf2626;
         position: relative;
       }
 
@@ -44,7 +44,7 @@
         transition: ease-in 0.3s;
 
         &:hover {
-          color: #c22231;
+          color: #cf2626;
           background: #ffffff;
         }
       }
@@ -77,6 +77,6 @@
 }
 
 .active {
-  color: #c22231;
+  color: #cf2626;
   background: #ffffff;
 }

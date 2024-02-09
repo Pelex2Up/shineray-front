@@ -1,4 +1,4 @@
-import { FC, useRef } from "react";
+import { FC, useEffect, useRef } from "react";
 import styles from "./AboutCompanyPage.module.scss";
 import { HeaderSlider } from "components/HeaderCarousel";
 import parse from "html-react-parser";
@@ -15,23 +15,29 @@ import "react-vertical-timeline-component/style.min.css";
 import { WorkHistory, Star } from "@mui/icons-material";
 
 export const AboutCompanyPage: FC = () => {
-  const { data: PageData, isFetching } = useFetchAboutCompanyPageDataQuery();
+  const {
+    data: PageData,
+    isFetching,
+    isSuccess,
+  } = useFetchAboutCompanyPageDataQuery();
   const sliderRef = useRef<SwiperRef | null>(null);
   const groupedSlides: Array<Array<ISliderImage>> = [];
 
-  if (PageData && PageData.body.about_company) {
-    for (
-      let i = 0;
-      i < PageData.body.about_company.slider_1.images.length;
-      i += 5
-    ) {
-      groupedSlides.push(
-        PageData.body.about_company.slider_1.images.slice(i, i + 5),
-      );
+  useEffect(() => {
+    if (PageData && PageData.body.about_company) {
+      for (
+        let i = 0;
+        i < PageData.body.about_company.slider_1.images.length;
+        i += 5
+      ) {
+        groupedSlides.push(
+          PageData.body.about_company.slider_1.images.slice(i, i + 5),
+        );
+      }
     }
-  }
+  }, [PageData, isSuccess]);
 
-  if (!PageData || isFetching) {
+  if (!PageData || isFetching || !groupedSlides.length) {
     return <Preloader />;
   }
 

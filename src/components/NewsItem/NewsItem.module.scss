@@ -25,6 +25,7 @@
     &_title {
       @include font(bold, $font-subtitle-size);
       padding-bottom: 0.5rem;
+      color: #cf2626;
     }
 
     &_text {
