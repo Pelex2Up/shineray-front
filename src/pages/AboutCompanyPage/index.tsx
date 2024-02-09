@@ -25,16 +25,18 @@ export const AboutCompanyPage: FC = () => {
 
   useEffect(() => {
     if (isSuccess && PageData && PageData.body) {
-      const sorted = [];
-      for (
-        let i = 0;
-        i < PageData.body.about_company.slider_1.images.length;
-        i += 5
-      ) {
-        sorted.push(
-          PageData.body.about_company.slider_1.images.slice(i, i + 5),
+      const sorted: ISliderImage[][] =
+        PageData?.body.about_company.slider_1.images.reduce(
+          (result: ISliderImage[][], image: ISliderImage, index: number) => {
+            const groupIndex = Math.floor(index / 5);
+            if (!result[groupIndex]) {
+              result[groupIndex] = [];
+            }
+            result[groupIndex].push(image);
+            return result;
+          },
+          [],
         );
-      }
 
       if (sorted.length) {
         setGroupedSlides(sorted);
