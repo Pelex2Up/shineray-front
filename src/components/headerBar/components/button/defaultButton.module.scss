@@ -2,7 +2,6 @@
 @import '../../../../scss/variable.scss';
 
 .buttonWrapper {
-  padding: 1.5em 0.2em 0.6em 0.2em;
   height: 100%;
   border: 0;
   background: transparent;
@@ -13,6 +12,7 @@
   transition: ease-in 0.4s;
   border-bottom: 4px solid transparent;
   z-index: 30;
+  text-decoration: none;
 
   &:hover {
     border-bottom: 4px solid red;

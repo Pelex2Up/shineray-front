@@ -1,7 +1,7 @@
 import { DetailedHTMLProps, FC } from "react";
 import styles from "./LinkButton.module.scss";
 
-type LinkButtonT = DetailedHTMLProps<
+export type LinkButtonT = DetailedHTMLProps<
   React.AnchorHTMLAttributes<HTMLAnchorElement>,
   HTMLAnchorElement
 > & {

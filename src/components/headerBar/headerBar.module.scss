@@ -212,3 +212,46 @@
   animation-name: slideRight;
   display: block;
 }
+
+.dropdownWrapper {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+
+  a {
+    position: relative;
+    top: 30%;
+    padding-bottom: 1.5rem;
+  }
+
+  &:hover .dropdown_content {
+    animation-name: slideDown;
+    display: block;
+  }
+}
+
+.dropdown_content {
+  transform: translateY(-10px);
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+  display: none;
+  position: absolute;
+  top: 100%;
+  background-color: red;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+
+  a {
+    color: rgb(255, 255, 255);
+    padding: 12px 16px;
+    @include font(bold, $font-small-size);
+    text-decoration: none;
+    display: block;
+
+    &:hover {
+      background-color: #ffffff;
+      color: rgb(103, 103, 103);
+    }
+  }
+}

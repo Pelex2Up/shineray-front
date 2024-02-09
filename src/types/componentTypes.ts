@@ -74,7 +74,7 @@ export interface ICar {
   category: number;
 }
 
-export type AboutCompanyT = {
+export interface IAbout {
   id: number;
   slider_1: ISlider;
   slider_2: ISlider;
@@ -86,4 +86,21 @@ export type AboutCompanyT = {
   content_1: string;
   image_top_content: string;
   content_2: string;
+}
+
+export interface IHistory {
+  active: boolean;
+  create_date: string;
+  event_date: string;
+  id: number;
+  image: string;
+  text: string;
+  title: string;
+}
+
+export type AboutCompanyT = {
+  body: {
+    about_company: IAbout;
+    histories: IHistory[];
+  };
 };

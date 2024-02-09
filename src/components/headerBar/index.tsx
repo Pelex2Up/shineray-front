@@ -1,7 +1,14 @@
-import { FC, RefAttributes, forwardRef, useEffect, useRef } from "react";
+import {
+  FC,
+  RefAttributes,
+  forwardRef,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import styles from "./headerBar.module.scss";
 import { Path } from "enum/PathE";
-import { Button } from "./components/button";
+import { Button, ButtonModels } from "./components/button";
 import { useMediaQuery } from "react-responsive";
 import {
   Accordion,
@@ -32,6 +39,7 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
     const menuRef: HTMLButtonElement | null = null;
     const timerRef = useRef<NodeJS.Timeout | null>(null);
     const { data: headerData } = useFetchHeaderDataQuery();
+    const [isOpen, setIsOpen] = useState<boolean>(true);
 
     useEffect(() => {
       if (mobileMenu) {
@@ -102,13 +110,11 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
           </div>
           {isDesktopOrMobile ? (
             <nav className={styles.headerWrapper_header_buttonsBlock}>
-              <Button
-                text="Главная"
-                onClick={() => {
-                  navigate(Path.Home);
-                }}
-              />
-              <Button
+              <div className={styles.dropdownWrapper}>
+                <Button text="Главная" href={Path.Home} />
+              </div>
+
+              <ButtonModels
                 text="Модельный ряд"
                 ref={ref}
                 data-popup="menu-cars"
@@ -117,14 +123,29 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
                   navigate(Path.Cars);
                 }}
               />
-              <Button onClick={() => navigate(Path.Dealer)} text="Дилеры" />
-              <Button text="Владельцам" />
-              <Button text="Контакты" />
-              <Button
-                text="Мир Shineray"
-                onClick={() => navigate(Path.MirShineray)}
-              />
-              <Button text="Новости" />
+              <div className={styles.dropdownWrapper}>
+                <Button href={Path.Dealer} text="Дилеры" />
+              </div>
+
+              <div className={styles.dropdownWrapper}>
+                <Button href={Path.Home} text="Владельцам" />
+              </div>
+              <div className={styles.dropdownWrapper}>
+                <Button href={Path.Home} text="Контакты" />
+              </div>
+
+              <div className={styles.dropdownWrapper}>
+                <Button text="Мир Shineray" href={Path.MirShineray} />
+                <div className={styles.dropdown_content}>
+                  <a href={Path.AboutCompany}>О компании Shineray Group</a>
+                  <a href={Path.AboutBelarus}>О нас и бренде Shineray</a>
+                  <a href={Path.LegalInformation}>Юридическая информация</a>
+                </div>
+              </div>
+              <div className={styles.dropdownWrapper}>
+                <Button href={Path.Home} text="Новости" />
+              </div>
+
               <div
                 className={`${styles.dropdownMenu}  ${dropDownCars ? styles.open : styles.closed}`}
                 data-dropdown="menu-cars"

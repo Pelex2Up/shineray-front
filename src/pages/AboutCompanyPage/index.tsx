@@ -4,7 +4,7 @@ import { HeaderSlider } from "components/HeaderCarousel";
 import parse from "html-react-parser";
 import { useFetchAboutCompanyPageDataQuery } from "api/mirShinerayService";
 import { Preloader } from "components/Preloader";
-import { Swiper, SwiperClass, SwiperRef, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { ISliderImage } from "types/componentTypes";
 import {
@@ -17,12 +17,19 @@ import { WorkHistory, Star } from "@mui/icons-material";
 export const AboutCompanyPage: FC = () => {
   const { data: PageData, isFetching } = useFetchAboutCompanyPageDataQuery();
   const sliderRef = useRef<SwiperRef | null>(null);
-
   const groupedSlides: Array<Array<ISliderImage>> = [];
 
+  console.log(PageData);
+
   if (PageData) {
-    for (let i = 0; i < PageData?.slider_1.images.length; i += 5) {
-      groupedSlides.push(PageData?.slider_1.images.slice(i, i + 5));
+    for (
+      let i = 0;
+      i < PageData.body.about_company.slider_1.images.length;
+      i += 5
+    ) {
+      groupedSlides.push(
+        PageData.body.about_company.slider_1.images.slice(i, i + 5),
+      );
     }
   }
 
@@ -32,15 +39,15 @@ export const AboutCompanyPage: FC = () => {
 
   return (
     <div className={styles.wrapper}>
-      <HeaderSlider image={PageData.image_header} />
+      <HeaderSlider image={PageData.body.about_company.image_header} />
       <div className={styles.wrapper_container}>
-        <h3>{PageData.title}</h3>
+        <h3>{PageData.body.about_company.title}</h3>
         <div className={styles.wrapper_container_contentBox}>
           <div className={styles.wrapper_container_contentBox_description}>
             <div
               className={styles.wrapper_container_contentBox_description_text}
             >
-              {parse(PageData.content_1.split("Миссия Shineray Group")[0])}
+              {parse(PageData.body.about_company.content_1)}
             </div>
           </div>
           <div className={styles.wrapper_container_contentBox_pictureBox}>
@@ -52,12 +59,16 @@ export const AboutCompanyPage: FC = () => {
                   styles.wrapper_container_contentBox_pictureBox_skewed_picture
                 }
                 style={{
-                  backgroundImage: `url(http://93.177.124.158/media/${PageData.image_top_content})`,
+                  backgroundImage: `url(http://93.177.124.158/media/${PageData.body.about_company.image_top_content})`,
                 }}
               />
             </div>
           </div>
         </div>
+        <div className={styles.wrapper_container_content2}>
+          {parse(PageData.body.about_company.content_2)}
+        </div>
+        <h1>Производство автомобилей</h1>
         <div className={styles.wrapper_container_factory}>
           <Swiper
             spaceBetween={10}
@@ -113,163 +124,49 @@ export const AboutCompanyPage: FC = () => {
             ))}
           </Swiper>
         </div>
-        <div className={styles.wrapper_container_factory2}>
-          <VerticalTimeline>
-            <VerticalTimelineElement
-              className="vertical-timeline-element--work"
-              contentStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
-              contentArrowStyle={{
-                borderRight: "7px solid  rgb(33, 150, 243)",
-              }}
-              date="2023.2"
-              iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
-              icon={<WorkHistory />}
-            >
-              <img
-                style={{ width: "100%" }}
-                src="https://www.shineray.com/upload/ad/1678211770659886.jpg"
+        <div className={styles.wrapper_container_history}>
+          <div className={styles.wrapper_container_history_title}>
+            <h2>История компании Shineray Group</h2>
+          </div>
+          <div className={styles.wrapper_container_history_content}>
+            <VerticalTimeline lineColor="#b8b8b8">
+              {PageData.body.histories.map((history, index) => (
+                <VerticalTimelineElement
+                  className="vertical-timeline-element--work"
+                  date={history.event_date}
+                  contentArrowStyle={
+                    index % 2 === 0
+                      ? {
+                          borderRight: "7px solid  rgb(33, 150, 243)",
+                        }
+                      : {
+                          borderLeft: "7px solid  rgb(233, 30, 99)",
+                          transform: "rotate(180deg)",
+                        }
+                  }
+                  iconStyle={{
+                    background:
+                      index % 2 === 0
+                        ? "rgb(33, 150, 243)"
+                        : "rgb(233, 30, 99)",
+                    color: "#fff",
+                  }}
+                  icon={<WorkHistory />}
+                  key={index}
+                >
+                  <img
+                    style={{ width: "100%", borderRadius: "1rem" }}
+                    src={`http://93.177.124.158/media/${history.image}`}
+                  />
+                  {parse(history.text)}
+                </VerticalTimelineElement>
+              ))}
+              <VerticalTimelineElement
+                iconStyle={{ background: "rgb(16, 204, 82)", color: "#fff" }}
+                icon={<Star />}
               />
-              <p>
-                The SWM G03F EDi Is Officially Launched, Postioned As An
-                Extended-Range-7-Seat SUV ,Will Soon Be Available In Multiple
-                Countries In South America.
-              </p>
-            </VerticalTimelineElement>
-            <VerticalTimelineElement
-              className="vertical-timeline-element--work"
-              date="2022.11"
-              iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
-              icon={<WorkHistory />}
-            >
-              <img
-                style={{ width: "100%" }}
-                src="https://www.shineray.com/upload/ad/1678211605494386.jpg"
-              />
-              <p>
-                The G01F-DCT Model Was Officially Launched For Sale In Germany.
-              </p>
-            </VerticalTimelineElement>
-            <VerticalTimelineElement
-              className="vertical-timeline-element--work"
-              date="2022.7"
-              iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
-              icon={<WorkHistory />}
-            >
-              <img
-                style={{ width: "100%" }}
-                src="https://www.shineray.com/upload/ad/1678211555992581.jpg"
-              />
-              <p>
-                Shineray Group Initiated Strategic Cooperation With CATL To
-                Jointly Build The First Brand Of New Energy Intra-City
-                Distribution Logistics.
-              </p>
-            </VerticalTimelineElement>
-            <VerticalTimelineElement
-              className="vertical-timeline-element--education"
-              date="2022.7"
-              iconStyle={{ background: "rgb(233, 30, 99)", color: "#fff" }}
-              icon={<WorkHistory />}
-            >
-              <img
-                style={{ width: "100%" }}
-                src="https://www.shineray.com/upload/ad/1678211998868139.jpg"
-              />
-              <p>
-                X30L EV Was Officially Launched In Korea Andsoldin Many
-                Countries : Korea, Spain, Italy, Ecuador, Poland, Singapore And
-                Malaysia.
-              </p>
-            </VerticalTimelineElement>
-            <VerticalTimelineElement
-              className="vertical-timeline-element--education"
-              date="2021.10"
-              iconStyle={{ background: "rgb(233, 30, 99)", color: "#fff" }}
-              icon={<WorkHistory />}
-            >
-              <img
-                src="https://www.shineray.com/upload/ad/1678211445209349.jpg"
-                style={{ width: "100%" }}
-              />
-              <p>
-                Vehicles Of SHINERAY Brand Began To Be Sold In Nigeria And The
-                Nigerian Subsidiary Was Established On June 1 Of The Same Year.
-              </p>
-            </VerticalTimelineElement>
-            <VerticalTimelineElement
-              className="vertical-timeline-element--education"
-              date="2021.9"
-              iconStyle={{ background: "rgb(233, 30, 99)", color: "#fff" }}
-              icon={<WorkHistory />}
-            >
-              <img
-                src="https://www.shineray.com/upload/ad/1678211391939550.jpg"
-                style={{ width: "100%" }}
-              />
-              <p>
-                The First Multi-Purpose MPV Of Shineray Group, M5, Was
-                Officially Launched On The Market.
-              </p>
-            </VerticalTimelineElement>
-            <VerticalTimelineElement
-              className="vertical-timeline-element--education"
-              date="2021.6"
-              iconStyle={{ background: "rgb(233, 30, 99)", color: "#fff" }}
-              icon={<WorkHistory />}
-            >
-              <img
-                src="https://www.shineray.com/upload/ad/1678211275795454.jpg"
-                style={{ width: "100%" }}
-              />
-              <p>The Brand SHINERAY Successfully Accessed The Kenyan Market.</p>
-            </VerticalTimelineElement>
-            <VerticalTimelineElement
-              className="vertical-timeline-element--education"
-              date="2021.4"
-              iconStyle={{ background: "rgb(233, 30, 99)", color: "#fff" }}
-              icon={<WorkHistory />}
-            >
-              <img
-                src="https://www.shineray.com/upload/ad/1678210975109094.jpg"
-                style={{ width: "100%" }}
-              />
-              <p>The SWM G01F DCT Was Officially Launched.</p>
-            </VerticalTimelineElement>
-            <VerticalTimelineElement
-              className="vertical-timeline-element--education"
-              date="2020.10"
-              iconStyle={{ background: "rgb(233, 30, 99)", color: "#fff" }}
-              icon={<WorkHistory />}
-            >
-              <img
-                src="https://www.shineray.com/upload/ad/1650962373316657.jpg"
-                style={{ width: "100%" }}
-              />
-              <p>
-                Shineray Group Co., Ltd. And Qingling Motors Co., Ltd. Started
-                Joint Venture Cooperation.
-              </p>
-            </VerticalTimelineElement>
-            <VerticalTimelineElement
-              className="vertical-timeline-element--education"
-              date="2019.7"
-              iconStyle={{ background: "rgb(233, 30, 99)", color: "#fff" }}
-              icon={<WorkHistory />}
-            >
-              <img
-                src="https://www.shineray.com/upload/ad/1650962350795703.jpg"
-                style={{ width: "100%" }}
-              />
-              <p>
-                Shineray Established Growth Sports Culture (Chongqing) Co., Ltd.
-                Through Acquisition.
-              </p>
-            </VerticalTimelineElement>
-            <VerticalTimelineElement
-              iconStyle={{ background: "rgb(16, 204, 82)", color: "#fff" }}
-              icon={<Star />}
-            />
-          </VerticalTimeline>
+            </VerticalTimeline>
+          </div>
         </div>
       </div>
     </div>
