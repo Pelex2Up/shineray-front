@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import styles from "./AboutCompanyPage.module.scss";
 import { HeaderSlider } from "components/HeaderCarousel";
 import parse from "html-react-parser";
@@ -21,18 +21,23 @@ export const AboutCompanyPage: FC = () => {
     isSuccess,
   } = useFetchAboutCompanyPageDataQuery();
   const sliderRef = useRef<SwiperRef | null>(null);
-  const groupedSlides: Array<Array<ISliderImage>> = [];
+  const [groupedSlides, setGroupedSlides] = useState<ISliderImage[][]>([]);
 
   useEffect(() => {
     if (isSuccess && PageData && PageData.body) {
+      const sorted = [];
       for (
         let i = 0;
         i < PageData.body.about_company.slider_1.images.length;
         i += 5
       ) {
-        groupedSlides.push(
+        sorted.push(
           PageData.body.about_company.slider_1.images.slice(i, i + 5),
         );
+      }
+
+      if (sorted.length) {
+        setGroupedSlides(sorted);
       }
     }
   }, [PageData, isSuccess]);
