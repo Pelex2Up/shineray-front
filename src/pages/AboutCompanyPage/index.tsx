@@ -24,7 +24,7 @@ export const AboutCompanyPage: FC = () => {
   const groupedSlides: Array<Array<ISliderImage>> = [];
 
   useEffect(() => {
-    if (PageData && PageData.body.about_company) {
+    if (isSuccess && PageData && PageData.body) {
       for (
         let i = 0;
         i < PageData.body.about_company.slider_1.images.length;
