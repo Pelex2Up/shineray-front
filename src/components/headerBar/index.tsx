@@ -1,11 +1,4 @@
-import {
-  FC,
-  RefAttributes,
-  forwardRef,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { FC, RefAttributes, forwardRef, useEffect, useRef } from "react";
 import styles from "./headerBar.module.scss";
 import { Path } from "enum/PathE";
 import { Button, ButtonModels } from "./components/button";
@@ -39,7 +32,6 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
     const menuRef: HTMLButtonElement | null = null;
     const timerRef = useRef<NodeJS.Timeout | null>(null);
     const { data: headerData } = useFetchHeaderDataQuery();
-    const [isOpen, setIsOpen] = useState<boolean>(true);
 
     useEffect(() => {
       if (mobileMenu) {
@@ -176,6 +168,7 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
                 expandIcon={<ExpandMore sx={{ color: "white" }} />}
                 aria-controls="panel1-content"
                 id="panel1-header"
+                key={'models'}
               >
                 Модельный ряд
               </AccordionSummary>
@@ -189,6 +182,7 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
                             ? "none"
                             : "",
                       }}
+                      key={cat.name}
                       href={Path.Cars}
                       rel="nofollow"
                       className={styles.mobileMenuWrapper_accordionButton_link}
@@ -201,13 +195,14 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
             </Accordion>
             <a
               href={Path.Dealer}
+              key={'dealers'}
               rel="nofollow"
               className={styles.mobileMenuWrapper_button}
             >
               Дилеры
               <span />
             </a>
-            <a href={Path.Home} className={styles.mobileMenuWrapper_button}>
+            <a key={'forOwners'} href={Path.Home} className={styles.mobileMenuWrapper_button}>
               Владельцам
               <span />
             </a>
@@ -216,11 +211,13 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
                 expandIcon={<ExpandMore sx={{ color: "white" }} />}
                 aria-controls="panel1-content"
                 id="panel1-header"
+                key={'shineray-world'}
               >
                 Мир Shineray
               </AccordionSummary>
               <AccordionDetails sx={{ paddingBottom: "2rem" }}>
                 <a
+                  key={"aboutCompany"}
                   href={Path.AboutCompany}
                   className={styles.mobileMenuWrapper_accordionButton_link}
                 >
@@ -228,6 +225,7 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
                   <span />
                 </a>
                 <a
+                  key={"aboutBrand"}
                   href={Path.AboutBelarus}
                   className={styles.mobileMenuWrapper_accordionButton_link}
                 >
@@ -235,6 +233,7 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
                   <span />
                 </a>
                 <a
+                  key={'legalInfo'}
                   href={Path.LegalInformation}
                   style={{ border: "none" }}
                   className={styles.mobileMenuWrapper_accordionButton_link}
@@ -245,7 +244,7 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
               </AccordionDetails>
             </Accordion>
 
-            <a href={Path.Home} className={styles.mobileMenuWrapper_button}>
+            <a href={Path.Home} className={styles.mobileMenuWrapper_button} key={'news'}>
               Новости
               <span />
             </a>

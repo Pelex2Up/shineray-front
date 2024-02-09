@@ -1,4 +1,4 @@
-import { FC, LegacyRef, createRef, useEffect } from "react";
+import { FC, createRef } from "react";
 import "./Preloader.css";
 
 export const Preloader: FC = () => {

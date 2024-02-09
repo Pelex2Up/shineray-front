@@ -42,7 +42,7 @@ export const AboutCompanyPage: FC = () => {
     }
   }, [PageData, isSuccess]);
 
-  if (!PageData || isFetching || !groupedSlides.length) {
+  if (!PageData || isFetching) {
     return <Preloader />;
   }
 
