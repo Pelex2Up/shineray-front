@@ -19,9 +19,7 @@ export const AboutCompanyPage: FC = () => {
   const sliderRef = useRef<SwiperRef | null>(null);
   const groupedSlides: Array<Array<ISliderImage>> = [];
 
-  console.log(PageData);
-
-  if (PageData) {
+  if (PageData && PageData.body.about_company) {
     for (
       let i = 0;
       i < PageData.body.about_company.slider_1.images.length;
