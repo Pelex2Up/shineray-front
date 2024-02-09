@@ -24,7 +24,7 @@ export const AboutCompanyPage: FC = () => {
   const [groupedSlides, setGroupedSlides] = useState<ISliderImage[][]>([]);
 
   useEffect(() => {
-    if (isSuccess && PageData && PageData.body) {
+    if (isSuccess && PageData?.body?.about_company) {
       const sorted: ISliderImage[][] =
         PageData?.body.about_company.slider_1.images.reduce(
           (result: ISliderImage[][], image: ISliderImage, index: number) => {
