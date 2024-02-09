@@ -148,7 +148,7 @@ export const CarDetailsPage: FC = () => {
             <h1 className={styles.wrapper_main_preview_shortDescription_title}>
               {AutoModel.title}
             </h1>
-            <h4 style={{ fontWeight: "400" }}>{AutoModel?.description}</h4>
+            <h4 style={{ fontWeight: "400" }}>{parse(AutoModel?.description)}</h4>
             <hr></hr>
             <div
               style={{

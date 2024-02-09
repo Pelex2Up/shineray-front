@@ -21,7 +21,7 @@ export const AboutCompanyPage: FC = () => {
     isSuccess,
   } = useFetchAboutCompanyPageDataQuery();
   const sliderRef = useRef<SwiperRef | null>(null);
-  const [groupedSlides, setGroupedSlides] = useState<ISliderImage[][]>([]);
+  const [groupedSlides, setGroupedSlides] = useState<ISliderImage[][]>();
 
   useEffect(() => {
     if (isSuccess && PageData?.body?.about_company) {
@@ -94,7 +94,7 @@ export const AboutCompanyPage: FC = () => {
             modules={[Navigation]}
             className={styles.wrapper_container_factory_swiper}
           >
-            {groupedSlides.map((el, index) => (
+            {groupedSlides?.map((el, index) => (
               <SwiperSlide key={index}>
                 <div
                   className={styles.wrapper_container_factory_swiper_imageBox}
