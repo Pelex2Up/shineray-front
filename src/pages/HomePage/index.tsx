@@ -127,7 +127,7 @@ export const HomePage: FC = () => {
           <LinkButton
             text={"Подробнее о модели"}
             href={generatePath(Path.ModelAuto, {
-              carModel: `${HomePageData?.body.car_models[currentIndex].id}-shineray-automobile-${HomePageData?.body.car_models[currentIndex].name}`,
+              carModel: `${HomePageData?.body.car_models[currentIndex ? currentIndex : 0].id}-shineray-automobile-${HomePageData?.body.car_models[currentIndex ? currentIndex : 0].name}`,
             })}
             className={styles.modelCarDetail}
             key={currentIndex}
