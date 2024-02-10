@@ -1,25 +1,41 @@
-import { CarsCategoryT, ICar, ISlider } from "types/componentTypes"
+import { CarsCategoryT, ICar, ISlider } from "types/componentTypes";
 
 export type HeaderRespT = {
-    menu: {
-        automobile: CarsCategoryT[]
-    }
-}
+  menu: {
+    automobile: CarsCategoryT[];
+  };
+};
 
 export type HomePageRespT = {
-    body: {
-        main_slider: ISlider,
-        latest_news: [],
-        car_models: ICar[]
-    }
-}
+  body: {
+    main_slider: ISlider;
+    latest_news: [];
+    car_models: ICar[];
+  };
+};
 
 export type CategoryT = {
-    id: number
-    active: boolean
-    order: number
-    name: string
-    description: string
-    image: string
-    car_models: ICar[]
-}
+  id: number;
+  active: boolean;
+  order: number;
+  name: string;
+  description: string;
+  image: string;
+  car_models: ICar[];
+};
+
+export type ModelsPageT = {
+  body: {
+    categories: CategoryT[];
+    page_header: {
+      image: string;
+    };
+    car_models_page: {
+      id: string;
+      title: string;
+      description: string;
+      content: string;
+      image: string;
+    };
+  };
+};

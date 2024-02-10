@@ -38,4 +38,9 @@
     width: 30px !important;
     height: 30px !important;
   }
+
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    font-size: small !important;
+  }
 }

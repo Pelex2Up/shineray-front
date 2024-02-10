@@ -1,6 +1,6 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { baseQuery } from "./baseApi";
-import { CategoryT } from "./apiTypes";
+import { CategoryT, ModelsPageT } from "./apiTypes";
 
 export const CarModelsPageService = createApi({
   reducerPath: "CarModelsPageService",
@@ -13,7 +13,7 @@ export const CarModelsPageService = createApi({
       }),
       providesTags: ["CarModels"],
     }),
-    useFetchModelsPageData: build.query<{ body: { categories: CategoryT[]; content: string } }, void>({
+    useFetchModelsPageData: build.query<ModelsPageT, void>({
       query: () => ({
         url: `/models_page`,
       }),
@@ -22,5 +22,5 @@ export const CarModelsPageService = createApi({
   }),
 });
 
-export const { useFetchCategoryDataQuery, useUseFetchModelsPageDataQuery } =
+export const { useFetchCategoryDataQuery, useUseFetchModelsPageDataQuery, useLazyUseFetchModelsPageDataQuery } =
   CarModelsPageService;

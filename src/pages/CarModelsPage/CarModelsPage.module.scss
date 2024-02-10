@@ -6,80 +6,96 @@
   width: 100vw;
   overflow-x: hidden;
   transition: ease-in 0.3s;
-  display: flex;
-  flex-direction: column;
 
-  &_titleBar {
-    @include display(flex, column, center, center);
+  &_content {
+    @include display(flex, column, flex-start);
     max-width: 1600px;
-    margin: 0 auto;
     padding: 2rem 1rem;
-  }
 
-  &_container {
-    @include display(flex, row, flex-start);
-    max-width: 1600px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
-    gap: 50px;
-
-    &_leftNavMenu {
-      background: #f7f7f7;
-      width: 310px;
-      min-width: 310px;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-      height: fit-content;
-
-      &_title {
-        border-radius: 10px 10px 0 0;
-        font-size: $font-subtitle-size;
-        display: flex;
-        font-weight: bold;
-        color: #fff;
-        height: 4rem;
-        line-height: 4rem;
-        padding: 0 0 0 2rem;
-        background: #cf2626;
-        position: relative;
+    &_title {
+      @include display(flex, column, center, center);
+      gap: 20px;
+      h1 {
+        @include font(bold, $font-title-size);
+        border-bottom: 3px solid #cf2626;
       }
-
-      &_category {
-        @include font(400, $font-default-size);
-        border-top: 1px solid #ededed;
-        padding: 0.8rem 0.8rem 0.8rem 2rem;
-        list-style: none;
-        cursor: pointer;
-        transition: ease-in 0.3s;
-
-        &:hover {
-          color: #cf2626;
-          background: #ffffff;
-        }
+      span {
+        padding: 0 2rem;
       }
     }
 
-    &_rightModelsBlock {
+    &_container {
       @include display(flex, row, flex-start);
-      gap: 2rem;
-      flex-wrap: wrap;
+      padding: 2rem 1rem;
+      gap: 50px;
+
+      &_leftNavMenu {
+        background: #f7f7f7;
+        width: 310px;
+        min-width: 310px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        height: fit-content;
+
+        &_title {
+          border-radius: 10px 10px 0 0;
+          font-size: $font-subtitle-size;
+          display: flex;
+          font-weight: bold;
+          color: #fff;
+          height: 4rem;
+          line-height: 4rem;
+          padding: 0 0 0 2rem;
+          background: #cf2626;
+          position: relative;
+        }
+
+        &_category {
+          @include font(400, $font-default-size);
+          border-top: 1px solid #ededed;
+          padding: 0.8rem 0.8rem 0.8rem 2rem;
+          list-style: none;
+          cursor: pointer;
+          transition: ease-in 0.3s;
+
+          &:hover {
+            color: #cf2626;
+            background: #ffffff;
+          }
+        }
+      }
+
+      &_rightModelsBlock {
+        @include display(flex, row, flex-start);
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
     }
   }
 }
 
 @media (max-width: 1224px) {
   .carsPageWrapper {
-    &_container {
-      @include display(flex, column, center, center);
-      gap: 2rem;
-      padding: 2rem 1rem;
+    &_content {
 
-      &_leftNavMenu {
-        width: 100%;
+      &_title {
+        span {
+          padding: 0 1rem;
+        }
       }
 
-      &_rightModelsBlock {
-        @include display(flex, row, center, center);
+      &_container {
+        @include display(flex, column, center, center);
+        gap: 2rem;
+        padding: 2rem 1rem;
+  
+        &_leftNavMenu {
+          width: 100%;
+        }
+  
+        &_rightModelsBlock {
+          @include display(flex, row, center, center);
+        }
       }
     }
   }
