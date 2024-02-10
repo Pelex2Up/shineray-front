@@ -2,6 +2,7 @@ import { FC } from "react";
 import styles from "./footerBar.module.scss";
 import { SvgIcon } from "@mui/material";
 import { useFetchHeaderDataQuery } from "api/headerService";
+import { Path } from "enum/PathE";
 
 const Customers = [
   { name: "Гарантия" },
@@ -16,7 +17,7 @@ const Shineray = [
   { name: "О компании Shineray Group" },
   { name: "О нас и бренде Shineray" },
   { name: "Стать дилером" },
-  { name: "Видео обзоры" },
+  // { name: "Видео обзоры" },
   { name: "Юридическая информация" },
 ];
 
@@ -30,9 +31,9 @@ export const Footer: FC = () => {
             Модельный ряд
           </span>
           {FooterData?.menu.automobile.map(({ name }, index) => (
-            <span className={styles.footerWrapper_linkBar_link} key={index}>
+            <a href={Path.Cars} className={styles.footerWrapper_linkBar_link} key={index}>
               {name}
-            </span>
+            </a>
           ))}
         </div>
         <div className={styles.footerWrapper_linkBar}>
@@ -48,9 +49,21 @@ export const Footer: FC = () => {
             Мир Shineray
           </span>
           {Shineray.map(({ name }, index) => (
-            <span className={styles.footerWrapper_linkBar_link} key={index}>
+            <a
+              href={
+                index === 0
+                  ? Path.AboutCompany
+                  : index === 1
+                    ? Path.AboutBelarus
+                    : index === 2
+                      ? Path.Home
+                      : Path.LegalInformation
+              }
+              className={styles.footerWrapper_linkBar_link}
+              key={index}
+            >
               {name}
-            </span>
+            </a>
           ))}
         </div>
         <div className={styles.footerWrapper_infoBar}>

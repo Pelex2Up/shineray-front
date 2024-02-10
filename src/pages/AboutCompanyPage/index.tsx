@@ -12,7 +12,7 @@ import {
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
-import { WorkHistory, Star } from "@mui/icons-material";
+import { WorkHistory, Star, DriveEta } from "@mui/icons-material";
 
 export const AboutCompanyPage: FC = () => {
   const {
@@ -163,21 +163,21 @@ export const AboutCompanyPage: FC = () => {
                   contentArrowStyle={
                     index % 2 === 0
                       ? {
-                          borderRight: "7px solid  rgb(33, 150, 243)",
+                          borderRight: "7px solid  #cf2626",
                         }
                       : {
-                          borderLeft: "7px solid  rgb(233, 30, 99)",
+                          borderLeft: "7px solid  #cf2626",
                           transform: "rotate(180deg)",
                         }
                   }
                   iconStyle={{
                     background:
                       index % 2 === 0
-                        ? "rgb(33, 150, 243)"
-                        : "rgb(233, 30, 99)",
+                        ? "#cf2626"
+                        : "#cf2626",
                     color: "#fff",
                   }}
-                  icon={<WorkHistory />}
+                  icon={<DriveEta />}
                   key={index}
                 >
                   <img

@@ -47,6 +47,7 @@
       padding: 0 0 0.2rem 0;
       @include font(400, $font-default-size);
       width: max-content;
+      text-decoration: none;
       cursor: pointer;
       border-bottom: 2px solid rgb(45, 45, 45);
       transition: ease-in 0.3s;

@@ -131,6 +131,7 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
                 <div className={styles.dropdown_content}>
                   <a href={Path.AboutCompany}>О компании Shineray Group</a>
                   <a href={Path.AboutBelarus}>О нас и бренде Shineray</a>
+                  <a href={Path.Home}>Стать дилером</a>
                   <a href={Path.LegalInformation}>Юридическая информация</a>
                 </div>
               </div>
@@ -230,6 +231,14 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
                   className={styles.mobileMenuWrapper_accordionButton_link}
                 >
                   О нас и бренде Shineray
+                  <span />
+                </a>
+                <a
+                  key={"becomeDelaer"}
+                  href={Path.Home}
+                  className={styles.mobileMenuWrapper_accordionButton_link}
+                >
+                  Стать дилером
                   <span />
                 </a>
                 <a
