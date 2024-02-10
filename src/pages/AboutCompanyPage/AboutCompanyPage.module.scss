@@ -6,21 +6,27 @@
     max-width: 1600px;
     margin: 0 auto;
     padding: 2rem 0;
-    text-align: center;
     @include display(flex, column);
     gap: 2rem;
 
-    h1 {
-      padding-top: 1rem;
-      margin-bottom: -2rem;
-    }
+    &_title {
+      display: flex;
+      justify-content: center;
 
-    h3 {
-      margin-bottom: -2rem;
-      color: #000;
-      font-weight: bold;
-      text-align: center;
-      font-size: $font-title-size;
+      h1 {
+        font-size: $font-title-size;
+        padding-top: 1rem;
+        margin-bottom: -2rem;
+        border-bottom: 3px solid #cf2626;
+      }
+
+      h3 {
+        margin-bottom: -2rem;
+        color: #000;
+        font-weight: bold;
+        font-size: $font-title-size;
+        border-bottom: 3px solid #cf2626;
+      }
     }
 
     &_content2 {
@@ -237,11 +243,15 @@
     &_history {
       @include display(flex, column);
       &_title {
+        display: flex;
+        justify-content: center;
         text-align: center;
         margin-bottom: 2rem;
+        align-items: center;
 
         h2 {
           @include font(bold, $font-title-size);
+          border-bottom: 3px solid #cf2626;
         }
       }
 

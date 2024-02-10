@@ -52,7 +52,9 @@ export const AboutCompanyPage: FC = () => {
     <div className={styles.wrapper}>
       <HeaderSlider image={PageData.body.about_company.image_header} />
       <div className={styles.wrapper_container}>
-        <h3>{PageData.body.about_company.title}</h3>
+        <div className={styles.wrapper_container_title}>
+          <h3>{PageData.body.about_company.title}</h3>
+        </div>
         <div className={styles.wrapper_container_contentBox}>
           <div className={styles.wrapper_container_contentBox_description}>
             <div
@@ -79,7 +81,10 @@ export const AboutCompanyPage: FC = () => {
         <div className={styles.wrapper_container_content2}>
           {parse(PageData.body.about_company.content_2)}
         </div>
-        <h1>Производство автомобилей</h1>
+        <div className={styles.wrapper_container_title}>
+          <h1>Производство автомобилей</h1>
+        </div>
+
         <div className={styles.wrapper_container_factory}>
           <Swiper
             spaceBetween={10}

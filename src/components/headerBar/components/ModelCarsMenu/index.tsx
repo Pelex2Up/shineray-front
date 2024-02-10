@@ -1,13 +1,12 @@
 import { FC, useState } from "react";
 import styles from "./ModelCarsMenu.module.scss";
 import { HeaderT } from "types/componentTypes";
-import { generatePath, useNavigate } from "react-router-dom";
+import { generatePath } from "react-router-dom";
 import { Path } from "enum/PathE";
 import { motion } from "framer-motion";
 
 export const ModelCarsMenu: FC<HeaderT> = ({ data }) => {
   const [currentType, setCurrentType] = useState<number>(0);
-  const navigate = useNavigate();
 
   return (
     <motion.div
