@@ -1,17 +1,25 @@
-import { FC, memo } from "react";
+import { FC, memo, useEffect } from "react";
 import styles from "./MirShineray.module.scss";
 import { HeaderSlider } from "components/HeaderCarousel";
 import { Path } from "enum/PathE";
-import { useFetchMirShinerayPageDataQuery } from "api/mirShinerayService";
+import {
+  useFetchMirShinerayPageDataQuery,
+  useLazyFetchMirShinerayPageDataQuery,
+} from "api/mirShinerayService";
 import { Preloader } from "components/Preloader";
 
 export const MirShinerayPage: FC = () => {
-  const { data: MirShineray, isFetching } = useFetchMirShinerayPageDataQuery();
+  const [fetchData, { data: MirShineray, isFetching }] =
+    useLazyFetchMirShinerayPageDataQuery();
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   if (!MirShineray || isFetching) {
     return <Preloader />;
   }
-  
+
   return (
     <div className={styles.pageWrapper}>
       <HeaderSlider image={MirShineray.body.page_header.image} />

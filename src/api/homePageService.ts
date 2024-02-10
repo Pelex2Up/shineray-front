@@ -16,4 +16,4 @@ export const HomePageService = createApi({
   }),
 })
 
-export const { useFetchHomePageDataQuery } = HomePageService
+export const { useFetchHomePageDataQuery, useLazyFetchHomePageDataQuery } = HomePageService
