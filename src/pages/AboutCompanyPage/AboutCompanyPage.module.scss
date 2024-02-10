@@ -121,7 +121,7 @@
             -webkit-transform: skewX(0);
             -ms-transform: skewX(0);
             transform: skewX(0);
-            border-radius: 2rem;
+            border-radius: 10px;
           }
 
           &_picture {
@@ -163,7 +163,7 @@
       &_swiper {
         position: relative;
         cursor: grab;
-        border-radius: 2rem;
+        border-radius: 10px;
 
         &_imageBox {
           display: -webkit-flex;

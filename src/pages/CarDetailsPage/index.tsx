@@ -15,7 +15,7 @@ import parse from "html-react-parser";
 import styles from "./CarDetailsPage.module.scss";
 import "swiper/css";
 import "swiper/css/zoom";
-// import "swiper/css/navigation";
+import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
 export const CarDetailsPage: FC = () => {
@@ -105,7 +105,7 @@ export const CarDetailsPage: FC = () => {
                           height: "100%",
                           width: "100%",
                           border: "1px solid rgba(193, 193, 193, 0.6)",
-                          borderRadius: "0.3rem",
+                          borderRadius: "10px",
                         }}
                         src={`http://93.177.124.158/media/${el.image}`}
                         alt={`Slide ${el.name} ${index + 1}`}
