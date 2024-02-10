@@ -2,12 +2,16 @@ import { FC, useState } from "react";
 import styles from "./CarModelsPage.module.scss";
 import { HeaderSlider } from "components/HeaderCarousel";
 import { CarItemCard } from "components/CarItemCard";
-import { useFetchCategoryDataQuery } from "api/carModelsPageService";
+import {
+  useFetchCategoryDataQuery,
+  useUseFetchModelsPageDataQuery,
+} from "api/carModelsPageService";
 import { motion } from "framer-motion";
 import { Preloader } from "components/Preloader";
 
 export const CarModelsPage: FC = () => {
   const { data: CarModels, isFetching } = useFetchCategoryDataQuery();
+  const { data, isFetching: isLoadingPage } = useUseFetchModelsPageDataQuery();
   const [currentCategory, setCurrentCategory] = useState<number>(0);
 
   if (!CarModels || isFetching) {
@@ -24,6 +28,9 @@ export const CarModelsPage: FC = () => {
     >
       {CarModels && <HeaderSlider image={CarModels[currentCategory].image} />}
       <div className={styles.carsPageWrapper_container}>
+        <div className={styles.carsPageWrapper_container_title}>
+          <h1>{data?.body.content}</h1>
+        </div>
         <div className={styles.carsPageWrapper_container_leftNavMenu}>
           <h3 className={styles.carsPageWrapper_container_leftNavMenu_title}>
             Модельный ряд
@@ -39,6 +46,7 @@ export const CarModelsPage: FC = () => {
               </li>
             ))}
           </ul>
+          d
         </div>
         {CarModels ? (
           <motion.div

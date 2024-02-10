@@ -12,26 +12,30 @@ import {
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
-import { WorkHistory, Star, DriveEta } from "@mui/icons-material";
+import { Star, DriveEta } from "@mui/icons-material";
 
 export const AboutCompanyPage: FC = () => {
   const {
-    data: loadData,
+    data: pageData,
     isFetching,
     isSuccess,
   } = useFetchAboutCompanyPageDataQuery();
   const sliderRef = useRef<SwiperRef | null>(null);
   const [groupedSlides, setGroupedSlides] = useState<ISliderImage[][]>();
-  const [pageData, setpageData] = useState<AboutCompanyT>();
+
+  // useEffect(() => {
+  //   fetch("http://93.177.124.158/api/about/about_company/", {
+  //     method: "GET",
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       // Обработка ответа от сервера
+  //       setpageData(data);
+  //     });
+  // }, []);
 
   useEffect(() => {
-    if (loadData) {
-      setpageData(loadData);
-    }
-  }, [loadData]);
-
-  useEffect(() => {
-    if (isSuccess && pageData) {
+    if (pageData) {
       const sorted: ISliderImage[][] =
         pageData.body.about_company.slider_1.images.reduce(
           (result: ISliderImage[][], image: ISliderImage, index: number) => {
@@ -171,10 +175,7 @@ export const AboutCompanyPage: FC = () => {
                         }
                   }
                   iconStyle={{
-                    background:
-                      index % 2 === 0
-                        ? "#cf2626"
-                        : "#cf2626",
+                    background: index % 2 === 0 ? "#cf2626" : "#cf2626",
                     color: "#fff",
                   }}
                   icon={<DriveEta />}

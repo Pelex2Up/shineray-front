@@ -5,13 +5,13 @@ import { Path } from "enum/PathE";
 import { useFetchMirShinerayPageDataQuery } from "api/mirShinerayService";
 import { Preloader } from "components/Preloader";
 
-export const MirShinerayPage: FC = memo(() => {
+export const MirShinerayPage: FC = () => {
   const { data: MirShineray, isFetching } = useFetchMirShinerayPageDataQuery();
 
   if (!MirShineray || isFetching) {
     return <Preloader />;
   }
-  console.log(MirShineray);
+  
   return (
     <div className={styles.pageWrapper}>
       <HeaderSlider image={MirShineray.body.page_header.image} />
@@ -89,4 +89,4 @@ export const MirShinerayPage: FC = memo(() => {
       </div>
     </div>
   );
-});
+};
