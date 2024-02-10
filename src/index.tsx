@@ -4,10 +4,10 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { App } from "./App";
 import { store } from "./redux/store";
-import React from "react";
 import { persistStore } from "redux-persist";
 
 import "./index.css";
+import { Preloader } from "components/Preloader";
 
 const persistor = persistStore(store);
 
@@ -19,7 +19,7 @@ root.render(
   // <React.StrictMode>
   <BrowserRouter>
     <Provider store={store}>
-      <PersistGate loading={<p>Loading...</p>} persistor={persistor}>
+      <PersistGate loading={<Preloader />} persistor={persistor}>
         <App />
       </PersistGate>
     </Provider>

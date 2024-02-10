@@ -14,7 +14,6 @@ type CardItemT = {
 
 export const CarItemCard: FC<CardItemT> = ({ car }) => {
   const isDesktopOrMobile = useMediaQuery({ minDeviceWidth: 1224 });
-  console.log(isDesktopOrMobile);
 
   return (
     <motion.div
