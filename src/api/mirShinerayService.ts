@@ -9,13 +9,13 @@ export const MirShinerayService = createApi({
   endpoints: (build) => ({
     fetchAboutCompanyPageData: build.query<AboutCompanyT, void>({
       query: () => ({
-        url: `/about/about_company/`,
+        url: `/about/about_company`,
       }),
       providesTags: ["aboutCompany"],
     }),
     fetchMirShinerayPageData: build.query<any, void>({
       query: () => ({
-        url: `/about/about/`,
+        url: `/about/about`,
       }),
       providesTags: ["mirShineray"],
     }),
@@ -24,5 +24,7 @@ export const MirShinerayService = createApi({
 
 export const {
   useFetchAboutCompanyPageDataQuery,
+  useLazyFetchAboutCompanyPageDataQuery,
+  useLazyFetchMirShinerayPageDataQuery,
   useFetchMirShinerayPageDataQuery,
 } = MirShinerayService;

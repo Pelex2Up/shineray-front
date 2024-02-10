@@ -9,7 +9,7 @@ export const HeaderService = createApi({
   endpoints: build => ({
     fetchHeaderData: build.query<HeaderRespT, void>({
       query: () => ({
-        url: `/header/`,
+        url: `/header`,
       }),
       providesTags: ['header'],
     }),

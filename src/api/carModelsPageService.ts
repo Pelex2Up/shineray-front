@@ -9,13 +9,13 @@ export const CarModelsPageService = createApi({
   endpoints: (build) => ({
     fetchCategoryData: build.query<CategoryT[], void>({
       query: () => ({
-        url: `/category/`,
+        url: `/category`,
       }),
       providesTags: ["CarModels"],
     }),
     useFetchModelsPageData: build.query<{ body: { categories: CategoryT[]; content: string } }, void>({
       query: () => ({
-        url: `/models_page/`,
+        url: `/models_page`,
       }),
       providesTags: ["ModelsPageData"],
     }),

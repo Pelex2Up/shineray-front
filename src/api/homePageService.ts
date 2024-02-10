@@ -9,7 +9,7 @@ export const HomePageService = createApi({
   endpoints: build => ({
     fetchHomePageData: build.query<HomePageRespT, void>({
       query: () => ({
-        url: `/home/`,
+        url: `/home`,
       }),
       providesTags: ['home'],
     }),

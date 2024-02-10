@@ -2,7 +2,10 @@ import { FC, useEffect, useRef, useState } from "react";
 import styles from "./AboutCompanyPage.module.scss";
 import { HeaderSlider } from "components/HeaderCarousel";
 import parse from "html-react-parser";
-import { useFetchAboutCompanyPageDataQuery } from "api/mirShinerayService";
+import {
+  useFetchAboutCompanyPageDataQuery,
+  useLazyFetchAboutCompanyPageDataQuery,
+} from "api/mirShinerayService";
 import { Preloader } from "components/Preloader";
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
@@ -15,13 +18,11 @@ import "react-vertical-timeline-component/style.min.css";
 import { Star, DriveEta } from "@mui/icons-material";
 
 export const AboutCompanyPage: FC = () => {
-  const {
-    data: pageData,
-    isFetching,
-    isSuccess,
-  } = useFetchAboutCompanyPageDataQuery();
+  const [fetchData, { data: pageData, isFetching, isSuccess }] =
+    useLazyFetchAboutCompanyPageDataQuery();
   const sliderRef = useRef<SwiperRef | null>(null);
   const [groupedSlides, setGroupedSlides] = useState<ISliderImage[][]>();
+  // const [pageData, setPageData] = useState<AboutCompanyT>()
 
   // useEffect(() => {
   //   fetch("http://93.177.124.158/api/about/about_company/", {
@@ -33,6 +34,10 @@ export const AboutCompanyPage: FC = () => {
   //       setpageData(data);
   //     });
   // }, []);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   useEffect(() => {
     if (pageData) {
@@ -175,7 +180,7 @@ export const AboutCompanyPage: FC = () => {
                         }
                   }
                   iconStyle={{
-                    background: index % 2 === 0 ? "#cf2626" : "#cf2626",
+                    background: "#cf2626",
                     color: "#fff",
                   }}
                   icon={<DriveEta />}
@@ -189,7 +194,7 @@ export const AboutCompanyPage: FC = () => {
                 </VerticalTimelineElement>
               ))}
               <VerticalTimelineElement
-                iconStyle={{ background: "rgb(16, 204, 82)", color: "#fff" }}
+                iconStyle={{ background: "#cf2626", color: "#fff" }}
                 icon={<Star />}
               />
             </VerticalTimeline>
