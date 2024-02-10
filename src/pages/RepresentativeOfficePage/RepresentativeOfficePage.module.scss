@@ -1,0 +1,279 @@
+@import "../../scss/mixin.scss";
+@import "../../scss/variable.scss";
+
+.wrapper {
+  &_container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 2rem 0;
+    @include display(flex, column);
+    gap: 2rem;
+
+    &_title {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      padding: 0 1rem;
+
+      h1 {
+        font-size: $font-title-size;
+        padding-top: 1rem;
+        margin-bottom: -2rem;
+        border-bottom: 3px solid #cf2626;
+      }
+
+      h3 {
+        margin-bottom: -2rem;
+        color: #000;
+        font-weight: bold;
+        font-size: $font-title-size;
+        border-bottom: 3px solid #cf2626;
+      }
+    }
+
+    &_content2 {
+      padding: 2rem 4rem;
+      background: rgb(243, 243, 243);
+
+      @media (max-width: 1224px) {
+        padding: 2rem 1rem;
+      }
+    }
+
+    &_contentBox {
+      overflow: hidden;
+      margin: 50px 0 0;
+      position: relative;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-justify-content: flex-end;
+      justify-content: flex-end;
+      @media (max-width: 1224px) {
+        flex-direction: column;
+        margin: 0;
+        gap: 10px;
+        padding: 0 15px;
+      }
+
+      &_description {
+        position: absolute;
+        padding-left: calc((100% - 95vw) / 2);
+        top: 0;
+        left: 0;
+        width: 58%;
+        background: url(http://93.177.124.158/media/uploads/world_of_shineray/about_company/background.jpeg)
+          no-repeat right top;
+
+        @media (min-width: 1500px) {
+          padding-left: calc((100% - 1400px) / 2);
+        }
+
+        @media (max-width: 1224px) {
+          position: static;
+          width: 100%;
+          background: none;
+          padding: 0;
+        }
+
+        &_text {
+          font-size: $font-small-size;
+          color: #000;
+          line-height: 32px;
+          max-width: 660px;
+          padding: 35px 0;
+
+          @media (max-width: 1224px) {
+            font-size: $font-small-size;
+            line-height: 24px;
+            max-width: none;
+            padding: 15px 0 0;
+          }
+        }
+      }
+
+      &_pictureBox {
+        width: 50%;
+        height: 750px;
+        margin-top: 53px;
+        position: relative;
+
+        @media (max-width: 1224px) {
+          width: 100%;
+          height: 394px;
+          margin: 10px 0 0;
+        }
+
+        &_skewed {
+          overflow: hidden;
+          position: absolute;
+          top: 0;
+          right: -40%;
+          width: 140%;
+          height: 100%;
+          -webkit-transform: skewX(-10deg);
+          -ms-transform: skewX(-10deg);
+          transform: skewX(-10deg);
+          background: #000;
+
+          @media (max-width: 1224px) {
+            position: static;
+            width: 100%;
+            -webkit-transform: skewX(0);
+            -ms-transform: skewX(0);
+            transform: skewX(0);
+            border-radius: 10px;
+          }
+
+          &_picture {
+            height: 100%;
+            -webkit-transform-origin: 0 100%;
+            -ms-transform-origin: 0 100%;
+            transform-origin: 0 100%;
+            -webkit-transform: skewX(10deg);
+            -ms-transform: skewX(10deg);
+            transform: skewX(10deg);
+            -webkit-transition:
+              -webkit-transform 1s,
+              opacity 1s;
+            transition:
+              transform 1s,
+              opacity 1s;
+            background-size: cover;
+
+            @media (max-width: 1224px) {
+              height: 100%;
+              -webkit-transform: skewX(0);
+              -ms-transform: skewX(0);
+              transform: skewX(0);
+            }
+          }
+        }
+      }
+    }
+
+    &_factory {
+      @include display(flex);
+      max-height: 600px;
+      padding: 4rem 4rem 2rem;
+
+      @media (max-width: 1224px) {
+        padding: 4rem 1rem 2rem;
+      }
+
+      &_swiper {
+        position: relative;
+        cursor: grab;
+        border-radius: 10px;
+
+        &_imageBox {
+          display: -webkit-flex;
+          display: flex;
+          flex-direction: row;
+          height: 100%;
+
+          &_bigImage {
+            width: 48.6%;
+            margin-left: 1px;
+
+            div {
+              height: 100%;
+              width: 100%;
+              display: block;
+              box-sizing: border-box;
+              overflow: hidden;
+              position: relative;
+
+              &:hover {
+                img {
+                  transform: scale(1.03);
+                }
+              }
+
+              img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                transition: transform 0.5s;
+                -webkit-transition: transform 0.5s;
+              }
+            }
+          }
+
+          ul {
+            -webkit-flex: 1;
+            flex: 1;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-justify-content: space-between;
+            justify-content: space-between;
+            -webkit-flex-wrap: wrap;
+            flex-wrap: wrap;
+
+            li {
+              width: calc(50% - 0.5px);
+              height: calc(50% - 0.5px);
+              box-sizing: border-box;
+
+              div {
+                height: 100%;
+                width: 100%;
+                display: block;
+                box-sizing: border-box;
+                overflow: hidden;
+                position: relative;
+
+                &:hover {
+                  img {
+                    transform: scale(1.03);
+                  }
+                }
+
+                img {
+                  height: 100%;
+                  width: 100%;
+                  object-fit: cover;
+                  transition: transform 0.5s;
+                  -webkit-transition: transform 0.5s;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &_history {
+      @include display(flex, column);
+      gap: 2rem;
+
+      &_title {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        margin-bottom: 2rem;
+        align-items: center;
+        padding: 0 1rem;
+
+        h2 {
+          @include font(bold, $font-title-size);
+          border-bottom: 3px solid #cf2626;
+        }
+      }
+
+      &_content {
+      }
+    }
+  }
+}
+
+.dateTimeLeft {
+  font-weight: bold !important;
+  font-size: $font-subtitle-size !important;
+  text-align: left;
+}
+
+.dateTimeRight {
+  font-weight: bold !important;
+  font-size: $font-subtitle-size !important;
+  text-align: right;
+}

@@ -2,14 +2,11 @@ import { FC, useEffect, useRef, useState } from "react";
 import styles from "./AboutCompanyPage.module.scss";
 import { HeaderSlider } from "components/HeaderCarousel";
 import parse from "html-react-parser";
-import {
-  useFetchAboutCompanyPageDataQuery,
-  useLazyFetchAboutCompanyPageDataQuery,
-} from "api/mirShinerayService";
+import { useLazyFetchAboutCompanyPageDataQuery } from "api/mirShinerayService";
 import { Preloader } from "components/Preloader";
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
-import { AboutCompanyT, ISliderImage } from "types/componentTypes";
+import { ISliderImage } from "types/componentTypes";
 import {
   VerticalTimeline,
   VerticalTimelineElement,
@@ -22,18 +19,6 @@ export const AboutCompanyPage: FC = () => {
     useLazyFetchAboutCompanyPageDataQuery();
   const sliderRef = useRef<SwiperRef | null>(null);
   const [groupedSlides, setGroupedSlides] = useState<ISliderImage[][]>();
-  // const [pageData, setPageData] = useState<AboutCompanyT>()
-
-  // useEffect(() => {
-  //   fetch("http://93.177.124.158/api/about/about_company/", {
-  //     method: "GET",
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       // Обработка ответа от сервера
-  //       setpageData(data);
-  //     });
-  // }, []);
 
   useEffect(() => {
     fetchData();

@@ -1,11 +1,11 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { baseQuery } from "./baseApi";
-import { AboutCompanyT } from "types/componentTypes";
+import { AboutCompanyT, IAbout } from "types/componentTypes";
 
 export const MirShinerayService = createApi({
   reducerPath: "MirShinerayService",
   baseQuery: baseQuery(),
-  tagTypes: ["aboutCompany", "mirShineray"],
+  tagTypes: ["aboutCompany", "mirShineray", "representativeOffice"],
   endpoints: (build) => ({
     fetchAboutCompanyPageData: build.query<AboutCompanyT, void>({
       query: () => ({
@@ -19,6 +19,12 @@ export const MirShinerayService = createApi({
       }),
       providesTags: ["mirShineray"],
     }),
+    fetchRepresentativeOfficePageData: build.query<IAbout, void>({
+      query: () => ({
+        url: `/about/about_us`,
+      }),
+      providesTags: ["representativeOffice"],
+    }),
   }),
 });
 
@@ -27,4 +33,5 @@ export const {
   useLazyFetchAboutCompanyPageDataQuery,
   useLazyFetchMirShinerayPageDataQuery,
   useFetchMirShinerayPageDataQuery,
+  useLazyFetchRepresentativeOfficePageDataQuery
 } = MirShinerayService;

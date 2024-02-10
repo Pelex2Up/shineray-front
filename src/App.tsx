@@ -10,6 +10,7 @@ import { DealersPage } from "pages/DealersPage";
 import { MirShinerayPage } from "pages/MirShinerayPage";
 import { Preloader } from "components/Preloader";
 import { AboutCompanyPage } from "pages/AboutCompanyPage";
+import { RepresentativeOfficePage } from "pages/RepresentativeOfficePage";
 
 export const App = () => {
   return (
@@ -23,6 +24,7 @@ export const App = () => {
             <Route path={Path.Dealer} element={<DealersPage />} />
             <Route path={Path.MirShineray} element={<MirShinerayPage />} />
             <Route path={Path.AboutCompany} element={<AboutCompanyPage />} />
+            <Route path={Path.AboutBelarus} element={<RepresentativeOfficePage />} />
           </Route>
         </Routes>
       </AnimatePresence>
