@@ -1,11 +1,8 @@
-import { FC, memo, useEffect, useRef, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import styles from "./homePage.module.scss";
 import { HeaderSlider } from "components/HeaderCarousel";
 import { NewsItem } from "components/NewsItem";
-import {
-  useFetchHomePageDataQuery,
-  useLazyFetchHomePageDataQuery,
-} from "api/homePageService";
+import { useLazyFetchHomePageDataQuery } from "api/homePageService";
 import { generatePath } from "react-router-dom";
 import { Path } from "enum/PathE";
 import { LinkButton } from "components/common/Buttons";
@@ -55,8 +52,8 @@ export const HomePage: FC = () => {
   const [instance, setInstance] = useState<SwiperClass | null>(null);
 
   useEffect(() => {
-    fetchData()
-  }, [])
+    fetchData();
+  }, [fetchData]);
 
   const handleClickModel = (index: number) => {
     if (HomePageData) {

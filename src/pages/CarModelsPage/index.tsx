@@ -14,7 +14,7 @@ export const CarModelsPage: FC = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [fetchData]);
 
   if (!carModels || isLoadingPage) {
     return <Preloader />;

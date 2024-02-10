@@ -37,6 +37,7 @@ export const HeaderSlider: FC<HeaderSliderT> = ({ images, image }) => {
             <img
               src={`http://93.177.124.158/media/${image}`}
               key={index}
+              
               loading="lazy"
             />
           ))}

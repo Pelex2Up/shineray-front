@@ -1,11 +1,8 @@
-import { FC, memo, useEffect } from "react";
+import { FC, useEffect } from "react";
 import styles from "./MirShineray.module.scss";
 import { HeaderSlider } from "components/HeaderCarousel";
 import { Path } from "enum/PathE";
-import {
-  useFetchMirShinerayPageDataQuery,
-  useLazyFetchMirShinerayPageDataQuery,
-} from "api/mirShinerayService";
+import { useLazyFetchMirShinerayPageDataQuery } from "api/mirShinerayService";
 import { Preloader } from "components/Preloader";
 
 export const MirShinerayPage: FC = () => {
@@ -14,7 +11,7 @@ export const MirShinerayPage: FC = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [fetchData]);
 
   if (!MirShineray || isFetching) {
     return <Preloader />;

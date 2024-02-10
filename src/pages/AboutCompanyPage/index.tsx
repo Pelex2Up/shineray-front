@@ -21,7 +21,9 @@ export const AboutCompanyPage: FC = () => {
   const [groupedSlides, setGroupedSlides] = useState<ISliderImage[][]>();
 
   useEffect(() => {
-    fetchData();
+    fetchData()
+      .unwrap()
+      .then((data) => (document.title = data.body.about_company.title));
   }, []);
 
   useEffect(() => {

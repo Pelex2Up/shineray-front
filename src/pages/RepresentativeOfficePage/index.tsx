@@ -12,10 +12,10 @@ export const RepresentativeOfficePage: FC = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [fetchData]);
 
   if (!pageData || isFetching) {
-    return <Preloader />
+    return <Preloader />;
   }
 
   return (

@@ -39,7 +39,7 @@ export const CarDetailsPage: FC = () => {
         fetchData(id);
       }
     }
-  }, [carModel, fetchData]);
+  }, [carModel, AutoModel]);
 
   useEffect(() => {
     if (imagePreview) {
@@ -92,8 +92,8 @@ export const CarDetailsPage: FC = () => {
                   modules={[Navigation, Thumbs]}
                   className={styles.swiper}
                   onSlideChange={(swiper) => {
-                    swiper && setCurrentIndex(swiper.realIndex);
-                    swiper && instance2?.slideTo(swiper.realIndex);
+                    setCurrentIndex(swiper.realIndex);
+                    instance2?.slideTo(swiper.realIndex);
                   }}
                 >
                   {AutoModel.slider_1.images.map((el, index) => (
