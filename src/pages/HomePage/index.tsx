@@ -44,7 +44,7 @@ const News = [
   },
 ];
 
-export const HomePage: FC = memo(() => {
+export const HomePage: FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const { data: HomePageData, isFetching } = useFetchHomePageDataQuery();
   const swiperRef = useRef<SwiperRef | null>(null);
@@ -79,7 +79,7 @@ export const HomePage: FC = memo(() => {
                   : ""
               }`}
               id={String(index)}
-              key={index}
+              key={`${index}_${name}`}
               onClick={() => handleClickModel(index - 1)}
             >
               {name}
@@ -145,4 +145,4 @@ export const HomePage: FC = memo(() => {
       </div>
     </div>
   );
-});
+};

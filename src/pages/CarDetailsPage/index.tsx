@@ -15,7 +15,7 @@ import parse from "html-react-parser";
 import styles from "./CarDetailsPage.module.scss";
 import "swiper/css";
 import "swiper/css/zoom";
-import "swiper/css/navigation";
+// import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
 export const CarDetailsPage: FC = () => {

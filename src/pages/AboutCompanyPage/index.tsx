@@ -144,7 +144,10 @@ export const AboutCompanyPage: FC = () => {
               {PageData.body.histories.map((history, index) => (
                 <VerticalTimelineElement
                   className="vertical-timeline-element--work"
-                  date={history.event_date}
+                  date={history.event_date.split("-")[0]}
+                  dateClassName={
+                    index % 2 === 0 ? styles.dateTimeLeft : styles.dateTimeRight
+                  }
                   contentArrowStyle={
                     index % 2 === 0
                       ? {

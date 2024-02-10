@@ -9,7 +9,7 @@ import {
   GeoObject,
 } from "react-yandex-maps";
 
-export const DealersPage: FC = memo(() => {
+export const DealersPage: FC = () => {
   const [zoom, setZoom] = useState(6);
   const mapState = useMemo(
     () => ({
@@ -45,4 +45,4 @@ export const DealersPage: FC = memo(() => {
       </div>
     </div>
   );
-});
+};
