@@ -77,7 +77,6 @@
 @media (max-width: 1224px) {
   .carsPageWrapper {
     &_content {
-
       &_title {
         span {
           padding: 0 1rem;
@@ -88,11 +87,18 @@
         @include display(flex, column, center, center);
         gap: 2rem;
         padding: 2rem 1rem;
-  
+
         &_leftNavMenu {
           width: 100%;
+
+          &_category {
+            &:hover {
+              color: black;
+              background: #f7f7f7;
+            }
+          }
         }
-  
+
         &_rightModelsBlock {
           @include display(flex, row, center, center);
         }

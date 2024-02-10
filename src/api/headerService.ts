@@ -16,4 +16,4 @@ export const HeaderService = createApi({
   }),
 })
 
-export const { useFetchHeaderDataQuery } = HeaderService
+export const { useFetchHeaderDataQuery, useLazyFetchHeaderDataQuery } = HeaderService

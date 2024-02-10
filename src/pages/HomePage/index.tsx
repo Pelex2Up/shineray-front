@@ -99,6 +99,7 @@ export const HomePage: FC = () => {
             navigation={true}
             ref={swiperRef}
             normalizeSlideIndex
+            speed={500}
             spaceBetween={100}
             modules={[Navigation]}
             className={styles.swiper}

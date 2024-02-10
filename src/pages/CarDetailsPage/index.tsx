@@ -85,6 +85,7 @@ export const CarDetailsPage: FC = () => {
                   navigation={true}
                   centeredSlides={true}
                   ref={swiperRef}
+                  speed={500}
                   lazyPreloadPrevNext={1}
                   normalizeSlideIndex
                   onSwiper={setInstance}
@@ -117,6 +118,7 @@ export const CarDetailsPage: FC = () => {
                   onSwiper={setInstance2}
                   ref={thumbsRef}
                   normalizeSlideIndex
+                  speed={500}
                   slidesPerView={5}
                   centeredSlides={true}
                   centeredSlidesBounds={true}
@@ -251,6 +253,7 @@ export const CarDetailsPage: FC = () => {
               ref={swiper2Ref}
               normalizeSlideIndex
               slidesPerView={2}
+              speed={500}
               modules={[Navigation]}
               className={styles.swiper}
             >

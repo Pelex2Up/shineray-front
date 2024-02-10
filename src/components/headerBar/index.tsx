@@ -14,7 +14,7 @@ import { useBoolean } from "customHooks/useBoolean";
 import { ModelCarsMenu } from "./components/ModelCarsMenu";
 import { Close, ExpandMore } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
-import { useFetchHeaderDataQuery } from "api/headerService";
+import { useLazyFetchHeaderDataQuery } from "api/headerService";
 
 interface IHeader {
   color: boolean;
@@ -31,7 +31,11 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
     const [mobileMenu, { onToggle: toggleMobileMenu }] = useBoolean();
     const menuRef: HTMLButtonElement | null = null;
     const timerRef = useRef<NodeJS.Timeout | null>(null);
-    const { data: headerData } = useFetchHeaderDataQuery();
+    const [fetchData, { data: headerData }] = useLazyFetchHeaderDataQuery();
+
+    useEffect(() => {
+      fetchData()
+    }, [])
 
     useEffect(() => {
       if (mobileMenu) {
