@@ -6,7 +6,7 @@ import { useFetchAboutCompanyPageDataQuery } from "api/mirShinerayService";
 import { Preloader } from "components/Preloader";
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
-import { ISliderImage } from "types/componentTypes";
+import { AboutCompanyT, ISliderImage } from "types/componentTypes";
 import {
   VerticalTimeline,
   VerticalTimelineElement,
@@ -16,17 +16,24 @@ import { WorkHistory, Star } from "@mui/icons-material";
 
 export const AboutCompanyPage: FC = () => {
   const {
-    data: PageData,
+    data: loadData,
     isFetching,
     isSuccess,
   } = useFetchAboutCompanyPageDataQuery();
   const sliderRef = useRef<SwiperRef | null>(null);
   const [groupedSlides, setGroupedSlides] = useState<ISliderImage[][]>();
+  const [pageData, setpageData] = useState<AboutCompanyT>();
 
   useEffect(() => {
-    if (isSuccess && PageData?.body?.about_company) {
+    if (loadData) {
+      setpageData(loadData);
+    }
+  }, [loadData]);
+
+  useEffect(() => {
+    if (isSuccess && pageData) {
       const sorted: ISliderImage[][] =
-        PageData?.body.about_company.slider_1.images.reduce(
+        pageData.body.about_company.slider_1.images.reduce(
           (result: ISliderImage[][], image: ISliderImage, index: number) => {
             const groupIndex = Math.floor(index / 5);
             if (!result[groupIndex]) {
@@ -42,25 +49,25 @@ export const AboutCompanyPage: FC = () => {
         setGroupedSlides(sorted);
       }
     }
-  }, [PageData, isSuccess]);
+  }, [pageData]);
 
-  if (!PageData || isFetching) {
+  if (!pageData || !groupedSlides) {
     return <Preloader />;
   }
 
   return (
     <div className={styles.wrapper}>
-      <HeaderSlider image={PageData.body.about_company.image_header} />
+      <HeaderSlider image={pageData.body.about_company.image_header} />
       <div className={styles.wrapper_container}>
         <div className={styles.wrapper_container_title}>
-          <h3>{PageData.body.about_company.title}</h3>
+          <h3>{pageData.body.about_company.title}</h3>
         </div>
         <div className={styles.wrapper_container_contentBox}>
           <div className={styles.wrapper_container_contentBox_description}>
             <div
               className={styles.wrapper_container_contentBox_description_text}
             >
-              {parse(PageData.body.about_company.content_1)}
+              {parse(pageData.body.about_company.content_1)}
             </div>
           </div>
           <div className={styles.wrapper_container_contentBox_pictureBox}>
@@ -72,14 +79,14 @@ export const AboutCompanyPage: FC = () => {
                   styles.wrapper_container_contentBox_pictureBox_skewed_picture
                 }
                 style={{
-                  backgroundImage: `url(http://93.177.124.158/media/${PageData.body.about_company.image_top_content})`,
+                  backgroundImage: `url(http://93.177.124.158/media/${pageData.body.about_company.image_top_content})`,
                 }}
               />
             </div>
           </div>
         </div>
         <div className={styles.wrapper_container_content2}>
-          {parse(PageData.body.about_company.content_2)}
+          {parse(pageData.body.about_company.content_2)}
         </div>
         <div className={styles.wrapper_container_title}>
           <h1>Производство автомобилей</h1>
@@ -146,7 +153,7 @@ export const AboutCompanyPage: FC = () => {
           </div>
           <div className={styles.wrapper_container_history_content}>
             <VerticalTimeline lineColor="#b8b8b8">
-              {PageData.body.histories.map((history, index) => (
+              {pageData.body.histories.map((history, index) => (
                 <VerticalTimelineElement
                   className="vertical-timeline-element--work"
                   date={history.event_date.split("-")[0]}

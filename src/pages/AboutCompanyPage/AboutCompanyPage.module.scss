@@ -12,6 +12,8 @@
     &_title {
       display: flex;
       justify-content: center;
+      text-align: center;
+      padding: 0 1rem;
 
       h1 {
         font-size: $font-title-size;
@@ -242,12 +244,15 @@
 
     &_history {
       @include display(flex, column);
+      gap: 2rem;
+
       &_title {
         display: flex;
         justify-content: center;
         text-align: center;
         margin-bottom: 2rem;
         align-items: center;
+        padding: 0 1rem;
 
         h2 {
           @include font(bold, $font-title-size);
