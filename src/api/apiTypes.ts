@@ -39,3 +39,25 @@ export type ModelsPageT = {
     };
   };
 };
+
+export type ContactsT = {
+  body: {
+    page_header: {
+      id: number;
+      created_date: string;
+      image: string;
+      page_name: string;
+      title: string;
+      description: string;
+    };
+    content: {
+      id: number;
+      title: string;
+      description: string;
+      content: string;
+      image: string;
+      form_image_background: string;
+      form_image: string;
+    };
+  };
+};

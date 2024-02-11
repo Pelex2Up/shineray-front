@@ -1,0 +1,108 @@
+@import "../../scss/mixin.scss";
+@import "../../scss/variable.scss";
+
+.pageWrapper {
+  &_container {
+    @include display(flex, column);
+    max-width: 1600px;
+    gap: 1rem;
+
+    &_form {
+      width: 100%;
+      padding: 100px 0 125px;
+      position: relative;
+
+      @media (max-width: 1224px) {
+        padding: 100px 0 40px;
+      }
+
+      &_content {
+        width: 80%;
+        margin-left: 10%;
+        background: #efefef;
+        border: 3px solid #fff;
+        border-radius: 30px;
+        display: flex;
+        display: -webkit-flex;
+        justify-content: space-between;
+        -webkit-justify-content: space-between;
+        padding: 30px 280px 180px 60px;
+        align-items: center;
+        gap: 5rem;
+
+        @media (max-width: 1224px) {
+            flex-direction: column;
+            padding: 0 0 50px 0;
+            gap: 0;
+        }
+
+        &_logo {
+          width: 30%;
+
+          @media (max-width: 1224px) {
+            width: 50%;
+          }
+
+          img {
+            width: 100%;
+          }
+
+        }
+
+        &_formWrapper {
+            @include display(flex, column, center, center);
+            gap: 30px;
+            width: 80%;
+            text-align: center;
+
+            @media (max-width: 1224px) {
+                margin-top: -2rem;
+            }
+            &_title {
+                @include font(bold, $font-title-size);
+                p {
+                    border-bottom: 3px solid #cf2626;
+                }
+            }
+
+            &_body {
+                width: 100%;
+            }
+        }
+      }
+
+      &_carsBackground {
+        position: absolute;
+        bottom: 5px;
+        left: 3%;
+        max-width: 95%;
+      }
+    }
+
+    &_content {
+      @include display(flex, row);
+      width: 100%;
+      padding: 2rem 1rem;
+      gap: 50px;
+
+      @media (max-width: 1224px) {
+        @include display(flex, column);
+      }
+
+      &_contactsInfo {
+        width: 42%;
+
+        @media (max-width: 1224px) {
+          width: 100%;
+        }
+      }
+
+      &_map {
+        width: 58%;
+        @media (max-width: 1224px) {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

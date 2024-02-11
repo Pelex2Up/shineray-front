@@ -1,4 +1,4 @@
-import { FC, memo, useMemo, useState } from "react";
+import { FC, useMemo, useState } from "react";
 import styles from "./DealersPage.module.scss";
 import { HeaderSlider } from "components/HeaderCarousel";
 import {

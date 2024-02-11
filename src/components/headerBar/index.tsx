@@ -127,7 +127,7 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
                 <Button href={Path.Home} text="Владельцам" />
               </div>
               <div className={styles.dropdownWrapper}>
-                <Button href={Path.Home} text="Контакты" />
+                <Button href={Path.Contacts} text="Контакты" />
               </div>
 
               <div className={styles.dropdownWrapper}>
@@ -209,6 +209,15 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
             </a>
             <a key={'forOwners'} href={Path.Home} className={styles.mobileMenuWrapper_button}>
               Владельцам
+              <span />
+            </a>
+            <a
+              href={Path.Contacts}
+              key={'contacts'}
+              rel="nofollow"
+              className={styles.mobileMenuWrapper_button}
+            >
+              Контакты
               <span />
             </a>
             <Accordion className={styles.mobileMenuWrapper_accordionButton}>
