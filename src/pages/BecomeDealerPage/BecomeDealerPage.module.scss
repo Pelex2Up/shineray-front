@@ -31,9 +31,9 @@
         gap: 5rem;
 
         @media (max-width: 1224px) {
-            flex-direction: column;
-            padding: 0 0 50px 0;
-            gap: 0;
+          flex-direction: column;
+          padding: 0 0 50px 0;
+          gap: 0;
         }
 
         &_logo {
@@ -46,29 +46,28 @@
           img {
             width: 100%;
           }
-
         }
 
         &_formWrapper {
-            @include display(flex, column, center, center);
-            gap: 30px;
-            width: 80%;
-            text-align: center;
+          @include display(flex, column, center, center);
+          gap: 30px;
+          width: 80%;
+          text-align: center;
 
-            @media (max-width: 1224px) {
-                margin-top: -2rem;
-                margin-bottom: 2rem;
+          @media (max-width: 1224px) {
+            margin-top: -2rem;
+            margin-bottom: 2rem;
+          }
+          &_title {
+            @include font(bold, $font-title-size);
+            p {
+              border-bottom: 3px solid #cf2626;
             }
-            &_title {
-                @include font(bold, $font-title-size);
-                p {
-                    border-bottom: 3px solid #cf2626;
-                }
-            }
+          }
 
-            &_body {
-                width: 100%;
-            }
+          &_body {
+            width: 100%;
+          }
         }
       }
 
@@ -81,7 +80,7 @@
     }
 
     &_content {
-      @include display(flex, row);
+      @include display(flex, column, center, flex-start);
       width: 100%;
       padding: 2rem 1rem;
       gap: 50px;
@@ -90,8 +89,21 @@
         @include display(flex, column);
       }
 
-      &_contactsInfo {
-        width: 42%;
+      &_title {
+        @include display(flex);
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+
+        h1 {
+          @include font(bold, $font-title-size);
+          border-bottom: 3px solid #cf2626;
+        }
+      }
+
+      &_dealersInfo {
+        width: 100%;
 
         @media (max-width: 1224px) {
           width: 100%;

@@ -6,7 +6,7 @@ import { ContactsT } from "./apiTypes";
 export const MirShinerayService = createApi({
   reducerPath: "MirShinerayService",
   baseQuery: baseQuery(),
-  tagTypes: ["aboutCompany", "mirShineray", "representativeOffice", "Contacts"],
+  tagTypes: ["aboutCompany", "mirShineray", "representativeOffice", "Contacts", "BecomeDealer"],
   endpoints: (build) => ({
     fetchAboutCompanyPageData: build.query<AboutCompanyT, void>({
       query: () => ({
@@ -32,6 +32,12 @@ export const MirShinerayService = createApi({
       }),
       providesTags: ["Contacts"],
     }),
+    fetchBecomeDealerPageData: build.query<ContactsT, void>({
+      query: () => ({
+        url: `/dealers/become_dealer_page/`,
+      }),
+      providesTags: ["BecomeDealer"],
+    }),
   }),
 });
 
@@ -41,5 +47,6 @@ export const {
   useLazyFetchMirShinerayPageDataQuery,
   useFetchMirShinerayPageDataQuery,
   useLazyFetchRepresentativeOfficePageDataQuery,
-  useLazyFetchContactsPageDataQuery
+  useLazyFetchContactsPageDataQuery,
+  useLazyFetchBecomeDealerPageDataQuery
 } = MirShinerayService;

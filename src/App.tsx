@@ -12,6 +12,7 @@ import { Preloader } from "components/Preloader";
 import { AboutCompanyPage } from "pages/AboutCompanyPage";
 import { RepresentativeOfficePage } from "pages/RepresentativeOfficePage";
 import { ContactsPage } from "pages/ContactsPage";
+import { BecomeDealerPage } from "pages/BecomeDealerPage";
 
 export const App = () => {
   return (
@@ -30,6 +31,7 @@ export const App = () => {
               element={<RepresentativeOfficePage />}
             />
             <Route path={Path.Contacts} element={<ContactsPage />} />
+            <Route path={Path.BecomeDealer} element={<BecomeDealerPage />} />
           </Route>
         </Routes>
       </AnimatePresence>
