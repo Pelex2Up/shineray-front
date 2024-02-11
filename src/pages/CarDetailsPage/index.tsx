@@ -1,9 +1,15 @@
 import { useLazyFetchCarModelDataQuery } from "api/carDetailsPageService";
 import { motion } from "framer-motion";
-import { FC, useEffect, useRef, useState } from "react";
+import { FC, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { HeaderSlider } from "components/HeaderCarousel";
-import { Swiper, SwiperSlide, SwiperRef, SwiperClass } from "swiper/react";
+import {
+  Swiper,
+  SwiperSlide,
+  SwiperRef,
+  SwiperClass,
+  useSwiper,
+} from "swiper/react";
 import { Navigation, Thumbs } from "swiper/modules";
 import { useBoolean } from "customHooks/useBoolean";
 import { PreviewModal } from "components/modal/PreviewModal";
@@ -92,8 +98,10 @@ export const CarDetailsPage: FC = () => {
                   modules={[Navigation, Thumbs]}
                   className={styles.swiper}
                   onSlideChange={(swiper) => {
-                    setCurrentIndex(swiper.realIndex);
-                    instance2?.slideTo(swiper.realIndex);
+                    if (!instance2?.destroyed) {
+                      setCurrentIndex(swiper.realIndex);
+                      instance2?.slideTo(swiper.realIndex);
+                    }
                   }}
                 >
                   {AutoModel.slider_1.images.map((el, index) => (
@@ -150,7 +158,9 @@ export const CarDetailsPage: FC = () => {
             <h1 className={styles.wrapper_main_preview_shortDescription_title}>
               {AutoModel.title}
             </h1>
-            <h4 style={{ fontWeight: "400" }}>{parse(AutoModel?.description)}</h4>
+            <h4 style={{ fontWeight: "400" }}>
+              {parse(AutoModel?.description)}
+            </h4>
             <hr></hr>
             <div
               style={{
