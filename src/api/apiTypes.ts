@@ -61,3 +61,79 @@ export type ContactsT = {
     };
   };
 };
+
+export interface IContactPhoneDealer {
+  id: number;
+  order: number;
+  active: boolean;
+  name: string;
+  description: string;
+  phone_number: string;
+  mobile_operator: string;
+}
+
+export interface IEmail {
+  id: number;
+  order: number;
+  active: boolean;
+  name: string;
+  description: string;
+  email: string;
+}
+
+export interface IWorkingHour {
+  id: number;
+  order: number;
+  active: boolean;
+  day_of_week: number;
+  opening_time: string;
+  closing_time: string;
+}
+
+export interface IDealerDepartment {
+  id: number;
+  order: number;
+  active: boolean;
+  dealer: number;
+  name: string;
+  description: string;
+  address: string;
+  contact_phone: IContactPhoneDealer[];
+  contact_email: IEmail[];
+  working_hours: IWorkingHour[];
+}
+
+export interface IDealer {
+  id: number;
+  departments: IDealerDepartment[];
+  active: boolean;
+  order: number;
+  name: string;
+  company_name: string;
+  description: string;
+  big_text_description: string;
+  image_logo: string;
+  image_main: string;
+  image_xl: string;
+  header_image: string;
+  address_full: string;
+  city: string;
+  latitude: number;
+  longitude: number;
+}
+
+export interface IHeader {
+  id: number;
+  created_date: string;
+  image: string;
+  page_name: string;
+  title: string;
+  description: string;
+}
+
+export type DealersPageT = {
+  body: {
+    page_header: IHeader;
+    content: IDealer[];
+  };
+};

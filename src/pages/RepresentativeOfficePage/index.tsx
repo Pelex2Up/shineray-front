@@ -85,6 +85,7 @@ export const RepresentativeOfficePage: FC = () => {
                   <img
                     style={{ width: "100%", borderRadius: "1rem" }}
                     src={`http://93.177.124.158/media/${history.image}`}
+                    alt={`${history.id}_${history.text}`}
                   />
                   {parse(history.text)}
                 </VerticalTimelineElement>

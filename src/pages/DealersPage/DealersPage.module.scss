@@ -2,22 +2,47 @@
 @import "../../scss/variable.scss";
 
 .dealersWrapper {
-  width: 100vw;
-  max-width: 100dvw;
+  width: 100%;
+  max-width: 1600px;
   height: 100%;
+  margin: 0 auto;
   @include display(flex, column, center);
+  gap: 1rem;
+
+  &_title {
+    display: flex;
+    display: -moz-flex;
+    justify-content: center;
+    justify-content: -moz-center;
+    align-items: center;
+    align-items: -moz-center;
+
+    h1 {
+      font-size: $font-title-size;
+      font-weight: bold;
+      border-bottom: 3px solid #cf2626;
+    }
+  }
 
   &_content {
     @include display(flex, row, space-between, flex-start);
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     max-width: 1600px;
     padding: 1rem;
     gap: 50px;
 
     &_leftSide {
       max-width: 650px;
+      @include display(flex, column, flex-start, center);
 
       &_dealerData {
+        @include display(flex, column, center, flex-start);
+        gap: 1rem;
+
+        &_buttons {
+          @include display(flex);
+          gap: 1rem;
+        }
       }
     }
 

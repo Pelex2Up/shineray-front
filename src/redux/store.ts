@@ -1,9 +1,6 @@
-import {
-  combineReducers,
-  configureStore,
-  PreloadedState,
-} from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { persistReducer } from "redux-persist";
+
 import storage from "redux-persist/lib/storage";
 import * as services from "../api/index";
 
@@ -16,6 +13,8 @@ export const rootReducer = combineReducers({
     services.CarDetailsPageService.reducer,
   [services.MirShinerayService.reducerPath]:
     services.MirShinerayService.reducer,
+  [services.DealersPageService.reducerPath]:
+    services.DealersPageService.reducer,
 });
 
 const persistConfig = {
@@ -25,25 +24,22 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
-  return configureStore({
-    reducer: persistedReducer,
-    preloadedState,
-    middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware({
-        serializableCheck: false,
-        immutableCheck: false,
-      }).concat(
-        services.HeaderService.middleware,
-        services.HomePageService.middleware,
-        services.CarModelsPageService.middleware,
-        services.CarDetailsPageService.middleware,
-        services.MirShinerayService.middleware,
-      ),
-  });
-};
+export const store = configureStore({
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+      immutableCheck: false,
+    }).concat(
+      services.HeaderService.middleware,
+      services.HomePageService.middleware,
+      services.CarModelsPageService.middleware,
+      services.CarDetailsPageService.middleware,
+      services.MirShinerayService.middleware,
+      services.DealersPageService.middleware,
+    ),
+});
 
-export const store = setupStore();
-export type RootState = ReturnType<typeof rootReducer>;
-export type AppStore = ReturnType<typeof setupStore>;
-export type AppDispatch = AppStore["dispatch"];
+export type RootState = ReturnType<typeof store.getState>;
+export type AppStore = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;

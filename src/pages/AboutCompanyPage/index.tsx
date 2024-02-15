@@ -15,7 +15,7 @@ import "react-vertical-timeline-component/style.min.css";
 import { Star, DriveEta } from "@mui/icons-material";
 
 export const AboutCompanyPage: FC = () => {
-  const [fetchData, { data: pageData, isFetching, isSuccess }] =
+  const [fetchData, { data: pageData }] =
     useLazyFetchAboutCompanyPageDataQuery();
   const sliderRef = useRef<SwiperRef | null>(null);
   const [groupedSlides, setGroupedSlides] = useState<ISliderImage[][]>();
@@ -24,7 +24,7 @@ export const AboutCompanyPage: FC = () => {
     fetchData()
       .unwrap()
       .then((data) => (document.title = data.body.about_company.title));
-  }, []);
+  }, [fetchData]);
 
   useEffect(() => {
     if (pageData) {
@@ -176,6 +176,7 @@ export const AboutCompanyPage: FC = () => {
                   <img
                     style={{ width: "100%", borderRadius: "1rem" }}
                     src={`http://93.177.124.158/media/${history.image}`}
+                    alt={`${history.id + history.title}`}
                   />
                   {parse(history.text)}
                 </VerticalTimelineElement>

@@ -45,6 +45,9 @@ export const ContactsPage: FC = () => {
     <div className={styles.pageWrapper}>
       <HeaderSlider image={pageData.body.page_header.image} />
       <div className={styles.pageWrapper_container}>
+        <div className={styles.pageWrapper_container_title}>
+          <h1>Контакты</h1>
+        </div>
         <div className={styles.pageWrapper_container_content}>
           <div className={styles.pageWrapper_container_content_contactsInfo}>
             {parse(pageData.body.content.content)}
@@ -56,7 +59,7 @@ export const ContactsPage: FC = () => {
                 load: "Map,Placemark,control.ZoomControl,control.FullscreenControl,geoObject.addon.balloon",
               }}
             >
-              <Map defaultState={mapState} width={"100%"} height={"640px"}>
+              <Map defaultState={mapState} width={"100%"} height={"440px"}>
                 <Placemark
                   defaultGeometry={[53.899546, 27.543074]}
                   properties={{
@@ -71,7 +74,7 @@ export const ContactsPage: FC = () => {
           className={styles.pageWrapper_container_form}
           style={{
             background: `url(http://93.177.124.158/media/${pageData.body.content.form_image_background}) no-repeat`,
-            backgroundSize: 'cover'
+            backgroundSize: "cover",
           }}
         >
           <div className={styles.pageWrapper_container_form_content}>
@@ -101,7 +104,7 @@ export const ContactsPage: FC = () => {
                     display: "flex",
                     flexDirection: "column",
                     flexWrap: "wrap",
-                    gap: '10px'
+                    gap: "10px",
                   }}
                 >
                   <div>
@@ -113,8 +116,10 @@ export const ContactsPage: FC = () => {
                         Номер телефона
                       </InputLabel>
                       <Input
-                        sx={{ borderBottomColor: "gray !important" }}
-                        error
+                        sx={{
+                          color: "black !important",
+                          borderBottomColor: "gray !important",
+                        }}
                         id="phone-number"
                         startAdornment={
                           <InputAdornment position="start">+375</InputAdornment>
@@ -131,8 +136,10 @@ export const ContactsPage: FC = () => {
                         ФИО
                       </InputLabel>
                       <Input
-                        sx={{ borderBottomColor: "gray !important" }}
-                        error
+                        sx={{
+                          color: "black !important",
+                          borderBottomColor: "gray !important",
+                        }}
                         id="user-fullname"
                       />
                     </FormControl>
@@ -146,8 +153,10 @@ export const ContactsPage: FC = () => {
                         Email
                       </InputLabel>
                       <Input
-                        sx={{ borderBottomColor: "gray !important" }}
-                        error
+                        sx={{
+                          color: "black !important",
+                          borderBottomColor: "gray !important",
+                        }}
                         id="email"
                       />
                     </FormControl>
@@ -161,15 +170,20 @@ export const ContactsPage: FC = () => {
                         Текст сообщения
                       </InputLabel>
                       <Input
-                        sx={{ borderBottomColor: "gray !important" }}
-                        error
+                        sx={{
+                          color: "black !important",
+                          borderBottomColor: "gray !important",
+                        }}
                         id="text"
                         multiline
                         rows={4}
                       />
                     </FormControl>
                   </div>
-                  <LinkButton style={{marginTop: '2rem'}} text="Отправить запрос"/>
+                  <LinkButton
+                    style={{ marginTop: "2rem" }}
+                    text="Отправить запрос"
+                  />
                 </Box>
               </div>
             </div>
@@ -180,6 +194,7 @@ export const ContactsPage: FC = () => {
             alt="Form image"
           />
         </div>
+        d
       </div>
     </div>
   );

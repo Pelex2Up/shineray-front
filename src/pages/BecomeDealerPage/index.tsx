@@ -85,8 +85,10 @@ export const BecomeDealerPage: FC = () => {
                         Номер телефона
                       </InputLabel>
                       <Input
-                        sx={{ borderBottomColor: "gray !important" }}
-                        error
+                        sx={{
+                          color: "black !important",
+                          borderBottomColor: "gray !important",
+                        }}
                         id="phone-number"
                         startAdornment={
                           <InputAdornment position="start">+375</InputAdornment>
@@ -103,8 +105,10 @@ export const BecomeDealerPage: FC = () => {
                         ФИО
                       </InputLabel>
                       <Input
-                        sx={{ borderBottomColor: "gray !important" }}
-                        error
+                        sx={{
+                          color: "black !important",
+                          borderBottomColor: "gray !important",
+                        }}
                         id="user-fullname"
                       />
                     </FormControl>
@@ -118,8 +122,10 @@ export const BecomeDealerPage: FC = () => {
                         Организация которую вы представляете
                       </InputLabel>
                       <Input
-                        sx={{ borderBottomColor: "gray !important" }}
-                        error
+                        sx={{
+                          color: "black !important",
+                          borderBottomColor: "gray !important",
+                        }}
                         id="company"
                       />
                     </FormControl>
@@ -133,8 +139,10 @@ export const BecomeDealerPage: FC = () => {
                         Email
                       </InputLabel>
                       <Input
-                        sx={{ borderBottomColor: "gray !important" }}
-                        error
+                        sx={{
+                          color: "black !important",
+                          borderBottomColor: "gray !important",
+                        }}
                         id="email"
                       />
                     </FormControl>
@@ -148,8 +156,10 @@ export const BecomeDealerPage: FC = () => {
                         Текст сообщения
                       </InputLabel>
                       <Input
-                        sx={{ borderBottomColor: "gray !important" }}
-                        error
+                        sx={{
+                          color: "black !important",
+                          borderBottomColor: "gray !important",
+                        }}
                         id="text"
                         multiline
                         rows={4}

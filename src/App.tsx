@@ -8,13 +8,13 @@ import { AnimatePresence } from "framer-motion";
 import { CarDetailsPage } from "pages/CarDetailsPage";
 import { DealersPage } from "pages/DealersPage";
 import { MirShinerayPage } from "pages/MirShinerayPage";
-import { Preloader } from "components/Preloader";
 import { AboutCompanyPage } from "pages/AboutCompanyPage";
 import { RepresentativeOfficePage } from "pages/RepresentativeOfficePage";
 import { ContactsPage } from "pages/ContactsPage";
 import { BecomeDealerPage } from "pages/BecomeDealerPage";
 
 export const App = () => {
+  console.log(window)
   return (
     <div className={styles.container}>
       <AnimatePresence>

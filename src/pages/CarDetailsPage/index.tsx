@@ -1,14 +1,13 @@
 import { useLazyFetchCarModelDataQuery } from "api/carDetailsPageService";
 import { motion } from "framer-motion";
-import { FC, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { HeaderSlider } from "components/HeaderCarousel";
 import {
   Swiper,
   SwiperSlide,
   SwiperRef,
-  SwiperClass,
-  useSwiper,
+  SwiperClass
 } from "swiper/react";
 import { Navigation, Thumbs } from "swiper/modules";
 import { useBoolean } from "customHooks/useBoolean";
@@ -31,11 +30,11 @@ export const CarDetailsPage: FC = () => {
     useLazyFetchCarModelDataQuery();
   const [imagePreview, { onToggle: toggleImage }] = useBoolean(false);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const [instance, setInstance] = useState<SwiperClass | null>(null);
-  const [instance2, setInstance2] = useState<SwiperClass | null>(null);
-  const swiperRef = useRef<SwiperRef | null>(null);
-  const thumbsRef = useRef<SwiperRef | null>(null);
-  const swiper2Ref = useRef<SwiperRef | null>(null);
+  const [instanceModel, setInstanceModel] = useState<SwiperClass | null>(null);
+  const [instanceThumb, setInstanceThumb] = useState<SwiperClass | null>(null);
+  const swiperRefModel = useRef<SwiperRef | null>(null);
+  const thumbsRefModel = useRef<SwiperRef | null>(null);
+  const swiper2RefGallery = useRef<SwiperRef | null>(null);
 
   useEffect(() => {
     if (carModel) {
@@ -45,7 +44,7 @@ export const CarDetailsPage: FC = () => {
         fetchData(id);
       }
     }
-  }, [carModel, AutoModel]);
+  }, [carModel, AutoModel, fetchData]);
 
   useEffect(() => {
     if (imagePreview) {
@@ -90,17 +89,17 @@ export const CarDetailsPage: FC = () => {
                   spaceBetween={10}
                   navigation={true}
                   centeredSlides={true}
-                  ref={swiperRef}
+                  ref={swiperRefModel}
                   speed={500}
                   lazyPreloadPrevNext={1}
                   normalizeSlideIndex
-                  onSwiper={setInstance}
+                  onSwiper={setInstanceModel}
                   modules={[Navigation, Thumbs]}
-                  className={styles.swiper}
+                  className={styles.swiperStyle}
                   onSlideChange={(swiper) => {
-                    if (!instance2?.destroyed) {
+                    if (!instanceThumb?.destroyed) {
                       setCurrentIndex(swiper.realIndex);
-                      instance2?.slideTo(swiper.realIndex);
+                      instanceThumb?.slideTo(swiper.realIndex);
                     }
                   }}
                 >
@@ -123,8 +122,8 @@ export const CarDetailsPage: FC = () => {
                   ))}
                 </Swiper>
                 <Swiper
-                  onSwiper={setInstance2}
-                  ref={thumbsRef}
+                  onSwiper={setInstanceThumb}
+                  ref={thumbsRefModel}
                   normalizeSlideIndex
                   speed={500}
                   slidesPerView={5}
@@ -139,12 +138,12 @@ export const CarDetailsPage: FC = () => {
                         src={`http://93.177.124.158/media/${el.image}`}
                         alt={`Thumb ${el.name} ${index + 1}`}
                         onClick={() => {
-                          instance?.slideTo(
+                          instanceModel?.slideTo(
                             index + 1 === AutoModel?.slider_1.images.length
                               ? 0
                               : index + 1,
                           );
-                          instance2?.slideTo(index);
+                          instanceThumb?.slideTo(index);
                           setCurrentIndex(index);
                         }}
                       />
@@ -260,7 +259,7 @@ export const CarDetailsPage: FC = () => {
             <Swiper
               spaceBetween={10}
               navigation={true}
-              ref={swiper2Ref}
+              ref={swiper2RefGallery}
               normalizeSlideIndex
               slidesPerView={2}
               speed={500}
