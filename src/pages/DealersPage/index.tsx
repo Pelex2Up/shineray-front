@@ -77,7 +77,7 @@ export const DealersPage: FC = () => {
                 {dealer.image_logo && (
                   <img
                     src={`http://93.177.124.158/media/${dealer.image_logo}`}
-                    style={{ width: "100%", objectFit: "cover" }}
+                    style={{ width: "60%", objectFit: "contain" }}
                     alt={"dealer logo"}
                   />
                 )}

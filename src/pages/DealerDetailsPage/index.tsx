@@ -28,14 +28,14 @@ export const DealerDetailsPage: FC = () => {
       <HeaderSlider image={dealerData.header_image} />
       <div className={styles.wrapper_content}>
         <div className={styles.wrapper_content_title}>
-          <h1>{`Shineray «${dealerData.name}», официальный дилер`}</h1>
+          <h1>{`«${dealerData.name}» официальный дилер Shineray`}</h1>
         </div>
         <div className={styles.wrapper_content_body}>
           <div className={styles.wrapper_content_body_dealerDescription}>
             {parse(dealerData.big_text_description)}
           </div>
           <div className={styles.wrapper_content_body_dealerData}>
-            <h2>Филиалы {dealerData.company_name}:</h2>
+            <h2>{dealerData.company_name}:</h2>
             <div
               className={styles.wrapper_content_body_dealerData_dealerBranch}
             >

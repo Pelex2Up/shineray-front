@@ -3,11 +3,10 @@
 
 .wrapper {
   &_content {
-    width: 100%;
-    max-width: 1600px;
-    height: 100%;
-    margin: 0 auto;
     @include display(flex, column);
+    max-width: 1600px;
+    margin: 0 auto;
+    padding-bottom: 2rem;
     gap: 1rem;
 
     p {
