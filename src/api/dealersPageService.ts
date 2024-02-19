@@ -1,6 +1,6 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { baseQuery } from "./baseApi";
-import { DealersPageT } from "./apiTypes";
+import { DealersPageT, IDealer } from "./apiTypes";
 import { REHYDRATE } from "redux-persist";
 import { Action } from "@reduxjs/toolkit";
 
@@ -17,15 +17,7 @@ function isHydrateAction(action: Action): action is Action<typeof REHYDRATE> & {
 export const DealersPageService = createApi({
   reducerPath: "DealersPageService",
   baseQuery: baseQuery(),
-  // extractRehydrationInfo(action, { reducerPath }): any {
-  //   if (isHydrateAction(action)) {
-  //     if (action.key === "root") {
-  //       return action.payload;
-  //     }
-  //     return action.payload[DealersPageService.reducerPath];
-  //   }
-  // },
-  tagTypes: ["Dealers", "DealerDetail"],
+  tagTypes: ["Dealers", "DealerDetail", "DealerDetailPage"],
   endpoints: (build) => ({
     fetchDealersPageData: build.query<DealersPageT, void>({
       query: () => ({
@@ -39,8 +31,14 @@ export const DealersPageService = createApi({
       }),
       providesTags: ["DealerDetail"],
     }),
+    fetchDealerDetails: build.query<IDealer, number>({
+      query: (id) => ({
+        url: `/dealers/dealers/${id}/`,
+      }),
+      providesTags: ["DealerDetailPage"],
+    }),
   }),
 });
 
-export const { useLazyFetchDealersPageDataQuery, useFetchDealerDataQuery } =
+export const { useLazyFetchDealersPageDataQuery, useFetchDealerDataQuery, useLazyFetchDealerDetailsQuery } =
   DealersPageService;

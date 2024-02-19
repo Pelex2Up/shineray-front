@@ -194,7 +194,6 @@ export const ContactsPage: FC = () => {
             alt="Form image"
           />
         </div>
-        d
       </div>
     </div>
   );

@@ -56,7 +56,7 @@ export const Footer: FC = () => {
                   : index === 1
                     ? Path.AboutBelarus
                     : index === 2
-                      ? Path.Home
+                      ? Path.BecomeDealer
                       : Path.LegalInformation
               }
               className={styles.footerWrapper_linkBar_link}
@@ -233,12 +233,12 @@ export const Footer: FC = () => {
               </svg>
             </SvgIcon>
           </span>
-          <span className={styles.footerWrapper_infoBar_contacts}>
+          <a href={Path.Contacts} className={styles.footerWrapper_infoBar_contacts}>
             {"Контакты"}
-          </span>
-          <span className={styles.footerWrapper_infoBar_contacts}>
+          </a>
+          <a href="#" className={styles.footerWrapper_infoBar_contacts}>
             {"Найти дилера"}
-          </span>
+          </a>
         </div>
       </div>
       <div className={styles.legalInformation}>

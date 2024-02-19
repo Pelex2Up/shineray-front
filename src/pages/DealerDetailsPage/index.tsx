@@ -1,0 +1,191 @@
+import { FC, useEffect } from "react";
+import styles from "./DealerDetailsPage.module.scss";
+import { useParams } from "react-router-dom";
+import { useLazyFetchDealerDetailsQuery } from "api/dealersPageService";
+import { HeaderSlider } from "components/HeaderCarousel";
+import { Preloader } from "components/Preloader";
+import { Construction, DirectionsCar, NoCrash } from "@mui/icons-material";
+import parse from "html-react-parser";
+
+export const DealerDetailsPage: FC = () => {
+  const params = useParams();
+
+  const [fetchData, { data: dealerData, isFetching }] =
+    useLazyFetchDealerDetailsQuery();
+
+  useEffect(() => {
+    if (params.dealerId) {
+      fetchData(Number(params.dealerId));
+    }
+  }, [params]);
+
+  if (!dealerData || isFetching) {
+    return <Preloader />;
+  }
+
+  return (
+    <div className={styles.wrapper}>
+      <HeaderSlider image={dealerData.header_image} />
+      <div className={styles.wrapper_content}>
+        <div className={styles.wrapper_content_title}>
+          <h1>{`Shineray «${dealerData.name}», официальный дилер`}</h1>
+        </div>
+        <div className={styles.wrapper_content_body}>
+          <div className={styles.wrapper_content_body_dealerDescription}>
+            {parse(dealerData.big_text_description)}
+          </div>
+          <div className={styles.wrapper_content_body_dealerData}>
+            <h2>Филиалы {dealerData.company_name}:</h2>
+            <div
+              className={styles.wrapper_content_body_dealerData_dealerBranch}
+            >
+              {dealerData.branches.map((branch, index) => (
+                <div
+                  key={branch.dealer + index + "_branch"}
+                  className={
+                    index % 2
+                      ? styles.wrapper_content_body_dealerData_dealerBranch_second
+                      : styles.wrapper_content_body_dealerData_dealerBranch_first
+                  }
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                      flexWrap: "wrap",
+                    }}
+                  >
+                    <>
+                      <span>
+                        <strong>{`${branch.name}: ${branch.address}`}</strong>
+                        <img
+                          src={`http://93.177.124.158/media/${dealerData.image_logo}`}
+                        />
+                      </span>
+                      <div
+                        className={
+                          index % 2
+                            ? styles.wrapper_content_body_dealerData_dealerBranch_second_details
+                            : styles.wrapper_content_body_dealerData_dealerBranch_first_details
+                        }
+                      >
+                        <div
+                          className={
+                            index % 2
+                              ? styles.wrapper_content_body_dealerData_dealerBranch_second_details_workingHours
+                              : styles.wrapper_content_body_dealerData_dealerBranch_first_details_workingHours
+                          }
+                        >
+                          <h4>Режим работы:</h4>
+                          {branch.working_hours.map((time, indextime) => (
+                            <p key={time.id + indextime}>
+                              {time.opening_time} - {time.closing_time}
+                            </p>
+                          ))}
+                        </div>
+                        <div
+                          className={
+                            index % 2
+                              ? styles.wrapper_content_body_dealerData_dealerBranch_second_details_services
+                              : styles.wrapper_content_body_dealerData_dealerBranch_first_details_services
+                          }
+                        >
+                          <h4>Услуги:</h4>
+                          {branch.new_cars && (
+                            <span
+                              style={{
+                                display: "flex",
+                                flexDirection: "row",
+                                alignItems: "center",
+                                gap: "0.1rem",
+                                fontSize: "10px",
+                                color: "gray",
+                                opacity: "0.9",
+                                padding: 0,
+                              }}
+                            >
+                              <DirectionsCar />
+                              Продажа новых авто
+                            </span>
+                          )}
+                          {branch.used_cars && (
+                            <span
+                              style={{
+                                display: "flex",
+                                flexDirection: "row",
+                                alignItems: "center",
+                                gap: "0.1rem",
+                                fontSize: "10px",
+                                color: "gray",
+                                opacity: "0.9",
+                                padding: 0,
+                              }}
+                            >
+                              <NoCrash />
+                              Продажа авто с пробегом
+                            </span>
+                          )}
+                          {branch.service_and_spare_parts && (
+                            <span
+                              style={{
+                                display: "flex",
+                                flexDirection: "row",
+                                alignItems: "center",
+                                gap: "0.1rem",
+                                fontSize: "10px",
+                                color: "gray",
+                                opacity: "0.9",
+                                padding: 0,
+                              }}
+                            >
+                              <Construction />
+                              Сервис и продажа запчастей
+                            </span>
+                          )}
+                        </div>
+                        <div
+                          className={
+                            index % 2
+                              ? styles.wrapper_content_body_dealerData_dealerBranch_second_details_contacts
+                              : styles.wrapper_content_body_dealerData_dealerBranch_first_details_contacts
+                          }
+                        >
+                          <h4>Контакты:</h4>
+                          {branch.departments.map((department, indexDep) => (
+                            <div style={{ paddingBottom: "1rem" }}>
+                              <span
+                                key={indexDep}
+                                style={{
+                                  paddingBottom: '0.2rem',
+                                  fontWeight: 400,
+                                  fontSize: "16px",
+                                }}
+                              >
+                                {department.name}:
+                              </span>
+                              {department.contact_phone.map(
+                                (phone, indexPhone) => (
+                                  <p key={phone.id + index + "_phone"}>
+                                    {`${phone.mobile_operator}: `}
+                                    <a href={`tel:${phone.phone_number}`}>
+                                      {phone.phone_number}
+                                    </a>
+                                  </p>
+                                ),
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};

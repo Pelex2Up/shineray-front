@@ -21,8 +21,6 @@ export const BecomeDealerPage: FC = () => {
     fetchData();
   }, [fetchData]);
 
-  console.log(pageData);
-
   if (!pageData || isFetching) {
     return <Preloader />;
   }

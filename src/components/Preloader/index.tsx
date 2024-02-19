@@ -1,11 +1,9 @@
-import { FC, createRef } from "react";
+import { FC } from "react";
 import "./Preloader.css";
 
 export const Preloader: FC = () => {
-  const viewRef = createRef<HTMLDivElement>();
-
   return (
-    <div ref={viewRef} className="preloaderWrapper">
+    <div className="preloaderWrapper">
       <div className="loader rspin">
         <span className="c"></span>
         <span className="d spin">

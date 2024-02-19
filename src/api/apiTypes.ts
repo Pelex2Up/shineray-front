@@ -103,9 +103,32 @@ export interface IDealerDepartment {
   working_hours: IWorkingHour[];
 }
 
+export interface IBranch {
+  active: boolean;
+  address: string;
+  dealer: number;
+  departments: IDealerDepartment[];
+  description: string;
+  latitude: number;
+  longitude: number;
+  name: string;
+  new_cars: boolean;
+  order: number;
+  service_and_spare_parts: boolean;
+  used_cars: boolean;
+  working_hours: {
+    active: boolean;
+    closing_time: string;
+    day_of_week: number;
+    id: number;
+    opening_time: string;
+    order: string;
+  }[];
+}
+
 export interface IDealer {
   id: number;
-  departments: IDealerDepartment[];
+  branches: IBranch[];
   active: boolean;
   order: number;
   name: string;

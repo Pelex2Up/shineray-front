@@ -3,6 +3,7 @@ export enum Path {
   Cars = "/auto/",
   ModelAuto = "/auto/:carModel",
   Dealer = "/dealers/",
+  DealerDetail = "/dealers/:dealerId",
   MirShineray = "/shineray-world/",
   AboutCompany = "/shineray-world/about/",
   AboutBelarus = "/shineray-world/representative-office/",

@@ -12,9 +12,9 @@ import { AboutCompanyPage } from "pages/AboutCompanyPage";
 import { RepresentativeOfficePage } from "pages/RepresentativeOfficePage";
 import { ContactsPage } from "pages/ContactsPage";
 import { BecomeDealerPage } from "pages/BecomeDealerPage";
+import { DealerDetailsPage } from "pages/DealerDetailsPage";
 
 export const App = () => {
-  console.log(window)
   return (
     <div className={styles.container}>
       <AnimatePresence>
@@ -32,6 +32,7 @@ export const App = () => {
             />
             <Route path={Path.Contacts} element={<ContactsPage />} />
             <Route path={Path.BecomeDealer} element={<BecomeDealerPage />} />
+            <Route path={Path.DealerDetail} element={<DealerDetailsPage />} />
           </Route>
         </Routes>
       </AnimatePresence>

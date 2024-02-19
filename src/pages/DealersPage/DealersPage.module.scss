@@ -9,6 +9,10 @@
   @include display(flex, column, center);
   gap: 1rem;
 
+  p {
+    @include font(400, $font-default-size);
+  }
+
   &_title {
     display: flex;
     display: -moz-flex;
@@ -31,13 +35,22 @@
     padding: 1rem;
     gap: 50px;
 
+    @media (max-width: 1224px) {
+      flex-direction: column;
+    }
+    
     &_leftSide {
       max-width: 650px;
       @include display(flex, column, flex-start, center);
+      gap: 50px;
 
       &_dealerData {
         @include display(flex, column, center, flex-start);
         gap: 1rem;
+
+        img {
+          padding: 50px 0;
+        }
 
         &_buttons {
           @include display(flex);
@@ -47,19 +60,23 @@
     }
 
     &_rightSide {
+      position: sticky;
+      top: 11%;
+      align-self: flex-start;
+
+      &_mapWrapper {
+        &_map {
+          width: 50vw;
+          height: 87vh;
+          max-width: 800px;
+          max-height: 1200px;
+
+          @media (max-width: 1024px) {
+            width: 90dvw;
+            height: 50dvh;
+          }
+        }
+      }
     }
-  }
-}
-
-.map {
-  width: 50vw;
-  height: 60vh;
-  max-width: 800px;
-  max-height: 600px;
-}
-
-@media (max-width: 1024px) {
-  .map {
-    width: 90dvw;
   }
 }

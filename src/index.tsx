@@ -8,6 +8,7 @@ import { persistStore } from "redux-persist";
 
 import "./index.css";
 import { Preloader } from "components/Preloader";
+import React from "react";
 
 const persistor = persistStore(store);
 
@@ -16,7 +17,6 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-  // <React.StrictMode>
   <BrowserRouter>
     <Provider store={store}>
       <PersistGate loading={<Preloader />} persistor={persistor}>
@@ -24,5 +24,4 @@ root.render(
       </PersistGate>
     </Provider>
   </BrowserRouter>,
-  // </React.StrictMode>,
 );
