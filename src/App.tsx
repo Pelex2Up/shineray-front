@@ -13,8 +13,11 @@ import { RepresentativeOfficePage } from "pages/RepresentativeOfficePage";
 import { ContactsPage } from "pages/ContactsPage";
 import { BecomeDealerPage } from "pages/BecomeDealerPage";
 import { DealerDetailsPage } from "pages/DealerDetailsPage";
+import { useScrollToTop } from "utils/scrollToTop";
 
 export const App = () => {
+  useScrollToTop();
+
   return (
     <div className={styles.container}>
       <AnimatePresence>

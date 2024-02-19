@@ -78,11 +78,7 @@ export const DealerDetailsPage: FC = () => {
                           }
                         >
                           <h4>Режим работы:</h4>
-                          {branch.working_hours.map((time, indextime) => (
-                            <p key={time.id + indextime}>
-                              {time.opening_time} - {time.closing_time}
-                            </p>
-                          ))}
+                          {parse(branch.working_hours)}
                         </div>
                         <div
                           className={
@@ -157,7 +153,7 @@ export const DealerDetailsPage: FC = () => {
                               <span
                                 key={indexDep}
                                 style={{
-                                  paddingBottom: '0.2rem',
+                                  paddingBottom: "0.2rem",
                                   fontWeight: 400,
                                   fontSize: "16px",
                                 }}
@@ -176,6 +172,23 @@ export const DealerDetailsPage: FC = () => {
                               )}
                             </div>
                           ))}
+                          {dealerData.web_site && (
+                            <>
+                              <span
+                                style={{
+                                  paddingBottom: "0.2rem",
+                                  fontWeight: 400,
+                                  fontSize: "16px",
+                                }}
+                              >
+                                Веб-сайт:
+                              </span>
+
+                              <a href={dealerData.web_site} target="_blank" rel="norefferer">
+                                {dealerData.web_site}
+                              </a>
+                            </>
+                          )}
                         </div>
                       </div>
                     </>

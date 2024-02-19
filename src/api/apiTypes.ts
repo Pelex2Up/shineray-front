@@ -116,14 +116,7 @@ export interface IBranch {
   order: number;
   service_and_spare_parts: boolean;
   used_cars: boolean;
-  working_hours: {
-    active: boolean;
-    closing_time: string;
-    day_of_week: number;
-    id: number;
-    opening_time: string;
-    order: string;
-  }[];
+  working_hours: string;
 }
 
 export interface IDealer {
@@ -143,6 +136,7 @@ export interface IDealer {
   city: string;
   latitude: number;
   longitude: number;
+  web_site: string;
 }
 
 export interface IHeader {

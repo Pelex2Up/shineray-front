@@ -3,10 +3,8 @@
   "version": "0.1.0",
   "license": "Shineray",
   "private": true,
-  "packageManager": "yarn@1.22.19",
   "devDependencies": {
     "@types/eslint": "^8",
-    "@types/react-slick": "^0",
     "prettier": "3.2.5",
     "typescript": "^5.3.3",
     "@babel/core": "^7.23.9",
@@ -27,6 +25,7 @@
     "eslint-plugin-react-hooks": "^4.6.0"
   },
   "dependencies": {
+    "@types/react-slick": "^0",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
     "@handy-ones/handy-svg": "^1.0.2",
@@ -56,8 +55,7 @@
     "redux-persist": "^6.0.0",
     "sass": "^1.70.0",
     "swiper": "^11.0.6",
-    "web-vitals": "^3.5.0",
-    "yarn": "^1.22.21"
+    "web-vitals": "^3.5.0"
   },
   "scripts": {
     "start": "react-scripts start",
