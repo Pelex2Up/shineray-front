@@ -154,8 +154,9 @@ export const DealerDetailsPage: FC = () => {
                                 key={indexDep}
                                 style={{
                                   paddingBottom: "0.2rem",
-                                  fontWeight: 400,
-                                  fontSize: "16px",
+                                  
+                                  fontSize: "17px",
+                                  fontWeight: 'bold',
                                 }}
                               >
                                 {department.name}:
@@ -177,8 +178,8 @@ export const DealerDetailsPage: FC = () => {
                               <span
                                 style={{
                                   paddingBottom: "0.2rem",
-                                  fontWeight: 400,
-                                  fontSize: "16px",
+                                  fontWeight: 'bold',
+                                  fontSize: "17px",
                                 }}
                               >
                                 Веб-сайт:
