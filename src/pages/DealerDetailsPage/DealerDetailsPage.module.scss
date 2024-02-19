@@ -29,11 +29,7 @@
           &_first,
           &_second {
             @include display(flex, column);
-            padding: 1rem 2rem;
-
-            @media (max-width: 1224px) {
-              padding: 1rem;
-            }
+            padding: 1rem;
 
             &_details {
               @include display(flex, row);

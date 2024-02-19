@@ -4,7 +4,12 @@ import { useParams } from "react-router-dom";
 import { useLazyFetchDealerDetailsQuery } from "api/dealersPageService";
 import { HeaderSlider } from "components/HeaderCarousel";
 import { Preloader } from "components/Preloader";
-import { Construction, DirectionsCar, NoCrash } from "@mui/icons-material";
+import {
+  Construction,
+  DirectionsCar,
+  FmdGood,
+  NoCrash,
+} from "@mui/icons-material";
 import parse from "html-react-parser";
 
 export const DealerDetailsPage: FC = () => {
@@ -58,7 +63,24 @@ export const DealerDetailsPage: FC = () => {
                   >
                     <>
                       <span>
-                        <strong>{`${branch.name}: ${branch.address}`}</strong>
+                        <strong
+                          style={{
+                            border: "2px solid #cf2626",
+                            borderRadius: "10px",
+                            padding: "5px",
+                            alignItems: "center",
+                            display: "flex",
+                          }}
+                        >
+                          <FmdGood
+                            sx={{
+                              color: "#cf2626",
+                              fontSize: "20px",
+                              marginRight: "0.3rem",
+                            }}
+                          />{" "}
+                          {`${branch.name}: ${branch.address}`}
+                        </strong>
                         <img
                           src={`http://93.177.124.158/media/${dealerData.image_logo}`}
                         />
@@ -154,9 +176,9 @@ export const DealerDetailsPage: FC = () => {
                                 key={indexDep}
                                 style={{
                                   paddingBottom: "0.2rem",
-                                  
+
                                   fontSize: "17px",
-                                  fontWeight: 'bold',
+                                  fontWeight: "bold",
                                 }}
                               >
                                 {department.name}:
@@ -178,14 +200,18 @@ export const DealerDetailsPage: FC = () => {
                               <span
                                 style={{
                                   paddingBottom: "0.2rem",
-                                  fontWeight: 'bold',
+                                  fontWeight: "bold",
                                   fontSize: "17px",
                                 }}
                               >
                                 Веб-сайт:
                               </span>
 
-                              <a href={dealerData.web_site} target="_blank" rel="norefferer">
+                              <a
+                                href={dealerData.web_site}
+                                target="_blank"
+                                rel="norefferer"
+                              >
                                 {dealerData.web_site}
                               </a>
                             </>
