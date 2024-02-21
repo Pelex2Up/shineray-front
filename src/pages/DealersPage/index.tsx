@@ -224,7 +224,7 @@ export const DealersPage: FC = () => {
           >
             <FormLabel
               id="controlled-radio-buttons-group"
-              sx={{ color: "black", ":focus": "none", fontWeight: "bold" }}
+              sx={{ color: "black", ":focus": "none", fontWeight: "bold", fontSize: '1rem' }}
             >
               Дилеры по городам:
             </FormLabel>
