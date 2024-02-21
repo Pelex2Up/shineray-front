@@ -13,6 +13,7 @@
     justify-content: -moz-center;
     align-items: center;
     align-items: -moz-center;
+    flex-direction: column;
     padding: 1rem 0;
 
     @media (max-width: 1224px) {
@@ -45,6 +46,7 @@
 
       &_dealerData {
         @include display(flex, column, center, flex-start);
+        width: 100%;
         gap: 1rem;
 
         img {

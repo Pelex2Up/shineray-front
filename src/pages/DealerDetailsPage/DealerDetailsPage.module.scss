@@ -6,7 +6,6 @@
     @include display(flex, column);
     max-width: 1600px;
     margin: 0 auto;
-    padding-bottom: 2rem;
     gap: 1rem;
 
     p {
@@ -29,7 +28,7 @@
           &_first,
           &_second {
             @include display(flex, column);
-            padding: 1rem;
+            padding: 2rem 1rem;
 
             &_details {
               @include display(flex, row);
