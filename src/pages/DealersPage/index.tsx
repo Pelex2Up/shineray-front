@@ -25,7 +25,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           "&.Mui-checked": {
-            color: "#cf2626", // Измените цвет на свой выбранный
+            color: "#cf2626",
           },
         },
       },
@@ -163,7 +163,7 @@ export const DealersPage: FC = () => {
         scrollToElement("yandex-map");
       } else if (filterCity === "Могилёв") {
         const newState = mapEndpoints.filter(
-          (map) => map.city === "Могилев",
+          (map) => map.city === "Могилёв",
         )[0];
         setMapRefresh(newState);
         scrollToElement("yandex-map");
