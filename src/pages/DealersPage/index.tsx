@@ -65,7 +65,7 @@ const mapEndpoints: {
   {
     city: "Витебск",
     center: [55.184217, 30.202878],
-    zoom: 13,
+    zoom: 12,
     controls: ["zoomControl", "fullscreenControl"],
   },
   {
@@ -77,11 +77,11 @@ const mapEndpoints: {
   {
     city: "Гродно",
     center: [53.674757, 23.840581],
-    zoom: 13,
+    zoom: 12,
     controls: ["zoomControl", "fullscreenControl"],
   },
   {
-    city: "Могилев",
+    city: "Могилёв",
     center: [53.894548, 30.330654],
     zoom: 12,
     controls: ["zoomControl", "fullscreenControl"],
@@ -161,7 +161,7 @@ export const DealersPage: FC = () => {
         )[0];
         setMapRefresh(newState);
         scrollToElement("yandex-map");
-      } else if (filterCity === "Могилев") {
+      } else if (filterCity === "Могилёв") {
         const newState = mapEndpoints.filter(
           (map) => map.city === "Могилев",
         )[0];
@@ -271,9 +271,9 @@ export const DealersPage: FC = () => {
                 label="Гродно"
               />
               <FormControlLabel
-                value="Могилев"
+                value="Могилёв"
                 control={<Radio />}
-                label="Могилев"
+                label="Могилёв"
               />
             </RadioGroup>
           </FormControl>
