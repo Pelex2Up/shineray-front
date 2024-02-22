@@ -7,17 +7,52 @@ import parse from "html-react-parser";
 import { HeaderSlider } from "components/HeaderCarousel";
 import {
   Box,
-  FilledInput,
   FormControl,
-  FormHelperText,
-  IconButton,
   Input,
   InputAdornment,
   InputLabel,
-  OutlinedInput,
-  TextField,
+  ThemeProvider,
+  createTheme,
 } from "@mui/material";
 import { LinkButton } from "components/common/Buttons";
+
+const theme = createTheme({
+  components: {
+    MuiFormLabel: {
+      styleOverrides: {
+        root: {
+          color: "rgba(0, 0, 0, 0.4)",
+          "&.Mui-focused": {
+            color: "rgba(0, 0, 0, 0.6)",
+          },
+          fontSize: "16px",
+        },
+      },
+    },
+    MuiInputBase: {
+      styleOverrides: {
+        root: {
+          ":before": {
+            color: "rgba(0, 0, 0, 0.4)",
+          },
+          "&.Mui-focused": {
+            color: "rgba(0, 0, 0, 0.4)",
+            borderColor: "rgba(0, 0, 0, 0.4)",
+          },
+        },
+      },
+    },
+    MuiInput: {
+      styleOverrides: {
+        root: {
+          ":after": {
+            borderColor: "rgba(0, 0, 0, 0.6)",
+          },
+        },
+      },
+    },
+  },
+});
 
 export const ContactsPage: FC = () => {
   const [fetchData, { data: pageData, isFetching }] =
@@ -99,92 +134,96 @@ export const ContactsPage: FC = () => {
                   styles.pageWrapper_container_form_content_formWrapper_body
                 }
               >
-                <Box
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    flexWrap: "wrap",
-                    gap: "10px",
-                  }}
-                >
-                  <div>
-                    <FormControl fullWidth variant="standard">
-                      <InputLabel
-                        sx={{ color: "black !important" }}
-                        htmlFor="phone-number"
-                      >
-                        Номер телефона
-                      </InputLabel>
-                      <Input
-                        sx={{
-                          color: "black !important",
-                          borderBottomColor: "gray !important",
-                        }}
-                        id="phone-number"
-                        startAdornment={
-                          <InputAdornment position="start">+375</InputAdornment>
-                        }
-                      />
-                    </FormControl>
-                  </div>
-                  <div>
-                    <FormControl fullWidth variant="standard">
-                      <InputLabel
-                        sx={{ color: "black !important" }}
-                        htmlFor="user-fullname"
-                      >
-                        ФИО
-                      </InputLabel>
-                      <Input
-                        sx={{
-                          color: "black !important",
-                          borderBottomColor: "gray !important",
-                        }}
-                        id="user-fullname"
-                      />
-                    </FormControl>
-                  </div>
-                  <div>
-                    <FormControl fullWidth variant="standard">
-                      <InputLabel
-                        sx={{ color: "black !important" }}
-                        htmlFor="email"
-                      >
-                        Email
-                      </InputLabel>
-                      <Input
-                        sx={{
-                          color: "black !important",
-                          borderBottomColor: "gray !important",
-                        }}
-                        id="email"
-                      />
-                    </FormControl>
-                  </div>
-                  <div>
-                    <FormControl fullWidth variant="standard">
-                      <InputLabel
-                        sx={{ color: "black !important" }}
-                        htmlFor="text"
-                      >
-                        Текст сообщения
-                      </InputLabel>
-                      <Input
-                        sx={{
-                          color: "black !important",
-                          borderBottomColor: "gray !important",
-                        }}
-                        id="text"
-                        multiline
-                        rows={4}
-                      />
-                    </FormControl>
-                  </div>
-                  <LinkButton
-                    style={{ marginTop: "2rem" }}
-                    text="Отправить запрос"
-                  />
-                </Box>
+                <ThemeProvider theme={theme}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      flexWrap: "wrap",
+                      gap: "10px",
+                    }}
+                  >
+                    <div>
+                      <FormControl fullWidth variant="standard">
+                        <InputLabel
+                          sx={{ color: "black !important" }}
+                          htmlFor="phone-number"
+                        >
+                          Номер телефона
+                        </InputLabel>
+                        <Input
+                          sx={{
+                            color: "black !important",
+                            borderBottomColor: "gray !important",
+                          }}
+                          id="phone-number"
+                          startAdornment={
+                            <InputAdornment position="start">
+                              +375
+                            </InputAdornment>
+                          }
+                        />
+                      </FormControl>
+                    </div>
+                    <div>
+                      <FormControl fullWidth variant="standard">
+                        <InputLabel
+                          sx={{ color: "black !important" }}
+                          htmlFor="user-fullname"
+                        >
+                          ФИО
+                        </InputLabel>
+                        <Input
+                          sx={{
+                            color: "black !important",
+                            borderBottomColor: "gray !important",
+                          }}
+                          id="user-fullname"
+                        />
+                      </FormControl>
+                    </div>
+                    <div>
+                      <FormControl fullWidth variant="standard">
+                        <InputLabel
+                          sx={{ color: "black !important" }}
+                          htmlFor="email"
+                        >
+                          Email
+                        </InputLabel>
+                        <Input
+                          sx={{
+                            color: "black !important",
+                            borderBottomColor: "gray !important",
+                          }}
+                          id="email"
+                        />
+                      </FormControl>
+                    </div>
+                    <div>
+                      <FormControl fullWidth variant="standard">
+                        <InputLabel
+                          sx={{ color: "black !important" }}
+                          htmlFor="text"
+                        >
+                          Текст сообщения
+                        </InputLabel>
+                        <Input
+                          sx={{
+                            color: "black !important",
+                            borderBottomColor: "gray !important",
+                          }}
+                          id="text"
+                          multiline
+                          rows={4}
+                        />
+                      </FormControl>
+                    </div>
+                    <LinkButton
+                      style={{ marginTop: "2rem" }}
+                      text="Отправить запрос"
+                    />
+                  </Box>
+                </ThemeProvider>
               </div>
             </div>
           </div>
