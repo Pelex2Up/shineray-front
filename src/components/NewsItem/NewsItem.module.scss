@@ -1,15 +1,18 @@
-@import '../../scss/mixin.scss';
-@import '../../scss/variable.scss';
+@import "../../scss/mixin.scss";
+@import "../../scss/variable.scss";
 
 .container {
   max-width: clamp(25vw, 25vw, 40rem);
-  height: 100%;
+  height: 550px;
   border-radius: 10px;
   overflow: hidden;
   background-color: white;
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  box-shadow:
+    0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
   cursor: pointer;
   transition: ease-in 0.2s;
+  text-decoration: none;
 
   &:hover {
     transform: scale(1.05);
@@ -17,10 +20,15 @@
 
   img {
     width: 100%;
+    object-fit: cover;
+    height: 45%;
   }
 
   &_description {
-    padding: 1rem 1.5rem 2rem;
+    height: 100%;
+    padding: 1rem 1.5rem 3rem;
+    position: relative;
+    height: 55%;
 
     &_title {
       @include font(bold, $font-subtitle-size);
@@ -31,7 +39,17 @@
     &_text {
       color: rgb(110, 110, 110);
       @include font(400, $font-default-size);
-      padding-bottom: 2rem;
+      padding-bottom: 3rem;
+    }
+
+    &_date {
+      @include display(flex, row, left, center);
+      position: absolute;
+      bottom: 2rem;
+      left: 1.5rem;
+      text-decoration: none;
+      gap: 5px;
+      color: rgba(0, 0, 0, 0.4);
     }
   }
 }

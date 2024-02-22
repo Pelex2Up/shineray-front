@@ -1,0 +1,35 @@
+@import "../../scss/mixin.scss";
+@import "../../scss/variable.scss";
+
+.wrapper {
+  &_content {
+    @include display(flex, column, center, center);
+    max-width: 1600px;
+    padding: 2rem 1rem;
+    margin: 0 auto;
+    gap: 1rem;
+
+    @media (max-width: 1224px) {
+      padding: 1rem;
+    }
+
+    &_title {
+      h1 {
+        @include font(bold, $font-title-size);
+        border-bottom: 3px solid #cf2626;
+      }
+    }
+
+    &_body {
+      @include display(flex, column);
+      width: 100%;
+
+      img {
+        max-width: 91vw;
+        @media (max-width: 1224px) {
+          object-fit: cover;
+        }
+      }
+    }
+  }
+}

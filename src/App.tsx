@@ -14,6 +14,8 @@ import { ContactsPage } from "pages/ContactsPage";
 import { BecomeDealerPage } from "pages/BecomeDealerPage";
 import { DealerDetailsPage } from "pages/DealerDetailsPage";
 import { useScrollToTop } from "utils/scrollToTop";
+import { NewsPage } from "pages/NewsPage";
+import { NewsDetailsPage } from "pages/NewsDetailsPage";
 
 export const App = () => {
   useScrollToTop();
@@ -36,6 +38,8 @@ export const App = () => {
             <Route path={Path.Contacts} element={<ContactsPage />} />
             <Route path={Path.BecomeDealer} element={<BecomeDealerPage />} />
             <Route path={Path.DealerDetail} element={<DealerDetailsPage />} />
+            <Route path={Path.News} element={<NewsPage />} />
+            <Route path={Path.NewsDetails} element={<NewsDetailsPage />} />
           </Route>
         </Routes>
       </AnimatePresence>

@@ -9,7 +9,7 @@ export type HeaderRespT = {
 export type HomePageRespT = {
   body: {
     main_slider: ISlider;
-    latest_news: [];
+    latest_news: INews[];
     car_models: ICar[];
   };
 };
@@ -148,9 +148,26 @@ export interface IHeader {
   description: string;
 }
 
+export interface INews {
+  id: number;
+  created_date: string;
+  image: string;
+  title: string;
+  description: string;
+  content: string;
+  active: boolean;
+}
+
 export type DealersPageT = {
   body: {
     page_header: IHeader;
     content: IDealer[];
+  };
+};
+
+export type NewsPageT = {
+  body: {
+    page_header: IHeader;
+    news: INews[];
   };
 };

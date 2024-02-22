@@ -140,7 +140,7 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
                 </div>
               </div>
               <div className={styles.dropdownWrapper}>
-                <Button href={Path.Home} text="Новости" />
+                <Button href={Path.News} text="Новости" />
               </div>
 
               <div
@@ -266,7 +266,7 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
               </AccordionDetails>
             </Accordion>
 
-            <a href={Path.Home} className={styles.mobileMenuWrapper_button} key={'news'}>
+            <a href={Path.News} className={styles.mobileMenuWrapper_button} key={'news'}>
               Новости
               <span />
             </a>

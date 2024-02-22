@@ -70,13 +70,11 @@ export const HomePage: FC = () => {
 
   return (
     <div className={styles.container}>
-      {HomePageData && (
-        <HeaderSlider images={HomePageData.body.main_slider.images} />
-      )}
+      <HeaderSlider images={HomePageData.body.main_slider.images} />
       <div className={styles.container_carSelector}>
         <p className={styles.container_carSelector_title}>Модельный ряд</p>
         <div className={styles.container_carSelector_models}>
-          {HomePageData?.body.car_models.map(({ name }, index) => (
+          {HomePageData.body.car_models.map(({ name }, index) => (
             <span
               className={`${styles.container_carSelector_models_carModel} ${
                 currentIndex === index
@@ -106,34 +104,28 @@ export const HomePage: FC = () => {
               setCurrentIndex(swiper.realIndex);
             }}
           >
-            {HomePageData &&
-              // <Carousel
-              //   currentIndex={currentIndex}
-              //   setCurrentIndex={setCurrentIndex}
-              //   data={HomePageData.body.car_models}
-              // />
-              HomePageData.body.car_models.map((el, index) => (
-                <SwiperSlide
-                  key={el.id + el.order}
-                  className={styles.container_carSelector_modelPreview_slider}
-                >
-                  <img
-                    style={{
-                      objectFit: "contain",
-                      height: "100%",
-                      width: "100%",
-                    }}
-                    src={`http://93.177.124.158/media/${el.image_xl}`}
-                    alt={`Slide ${index + 1}`}
-                  />
-                </SwiperSlide>
-              ))}
+            {HomePageData.body.car_models.map((el, index) => (
+              <SwiperSlide
+                key={el.id + el.order}
+                className={styles.container_carSelector_modelPreview_slider}
+              >
+                <img
+                  style={{
+                    objectFit: "contain",
+                    height: "100%",
+                    width: "100%",
+                  }}
+                  src={`http://93.177.124.158/media/${el.image_xl}`}
+                  alt={`Slide ${index + 1}`}
+                />
+              </SwiperSlide>
+            ))}
           </Swiper>
 
           <LinkButton
             text={"Подробнее о модели"}
             href={generatePath(Path.ModelAuto, {
-              carModel: `${HomePageData?.body.car_models[currentIndex ? currentIndex : 0].id}-shineray-automobile-${HomePageData?.body.car_models[currentIndex ? currentIndex : 0].name}`,
+              carModel: `${HomePageData.body.car_models[currentIndex ? currentIndex : 0].id}-shineray-automobile-${HomePageData?.body.car_models[currentIndex ? currentIndex : 0].name}`,
             })}
             className={styles.modelCarDetail}
             key={currentIndex}
@@ -142,11 +134,19 @@ export const HomePage: FC = () => {
         <div className={styles.newsWrapper}>
           <p className={styles.container_news_title}>Новости</p>
           <div className={styles.container_news}>
-            {News.slice(0, 3).map((data, index) => (
-              <NewsItem data={data} key={index} />
+            {HomePageData.body.latest_news.map((data, index) => (
+              <NewsItem
+                data={data}
+                key={index}
+                href={generatePath(Path.NewsDetails, { newsId: String(data.id) })}
+              />
             ))}
           </div>
-          <LinkButton style={{ maxWidth: "fit-content" }} text="Все новости" />
+          <LinkButton
+            href={Path.News}
+            style={{ maxWidth: "fit-content" }}
+            text="Все новости"
+          />
         </div>
       </div>
     </div>

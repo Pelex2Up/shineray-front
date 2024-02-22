@@ -1,0 +1,90 @@
+@import "../../scss/mixin.scss";
+@import "../../scss/variable.scss";
+
+.wrapper {
+  &_content {
+    @include display(flex, column, center, center);
+    max-width: 1600px;
+    padding: 2rem 1rem;
+    margin: 0 auto;
+    gap: 1rem;
+
+    &_title {
+      h1 {
+        @include font(bold, $font-title-size);
+        border-bottom: 3px solid #cf2626;
+      }
+    }
+
+    &_body {
+      @include display(flex, row, flex-start, flex-start);
+      width: 100%;
+      gap: 50px;
+
+      @media (max-width: 1224px) {
+        @include display(flex, column, flex-start, flex-start);
+      }
+
+      &_news {
+        @include display(flex, column);
+        gap: 50px;
+        max-width: 70%;
+
+        @media (max-width: 1224px) {
+          max-width: none;
+          gap: 2rem;
+        }
+      }
+
+      &_navigations {
+        @include display(flex, column, flex-start, flex-start);
+        gap: 1rem;
+        width: 30%;
+
+        @media (max-width: 1224px) {
+          width: 100%;
+        }
+
+        &_title {
+          @include display(flex, row, center, center);
+          margin-top: 0.75rem;
+          width: 100%;
+          position: relative;
+
+          &::before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: #e0e0e0;
+            position: absolute;
+            top: calc(50% - 1px);
+            z-index: 1;
+          }
+
+          h2 {
+            @include font(bold, 20px);
+
+            span {
+              background: #fff;
+              padding: 0 26px;
+              position: relative;
+              display: inline-block;
+              z-index: 1;
+            }
+          }
+        }
+
+        &_hotNews {
+          @include display(flex, column, center, flex-start);
+          width: 100%;
+          height: auto;
+          gap: 20px;
+        }
+      }
+    }
+
+    &_pagination {
+    }
+  }
+}

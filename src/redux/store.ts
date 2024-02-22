@@ -15,6 +15,7 @@ export const rootReducer = combineReducers({
     services.MirShinerayService.reducer,
   [services.DealersPageService.reducerPath]:
     services.DealersPageService.reducer,
+  [services.NewsPageService.reducerPath]: services.NewsPageService.reducer,
 });
 
 const persistConfig = {
@@ -37,6 +38,7 @@ export const store = configureStore({
       services.CarDetailsPageService.middleware,
       services.MirShinerayService.middleware,
       services.DealersPageService.middleware,
+      services.NewsPageService.middleware,
     ),
 });
 
