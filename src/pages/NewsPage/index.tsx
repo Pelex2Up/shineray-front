@@ -4,8 +4,10 @@ import { useLazyFetchNewsPageDataQuery } from "api/newsPageService";
 import { HeaderSlider } from "components/HeaderCarousel";
 import { Preloader } from "components/Preloader";
 import { NewsPreview } from "components/NewsPreview";
-import { Pagination } from "@mui/material";
+import { Link, Pagination } from "@mui/material";
 import { HotNews } from "components/HotNews";
+import { Path } from "enum/PathE";
+import { BreadcrumbsComponent } from "components/breadcrumbs";
 
 export const NewsPage: FC = () => {
   const [fetchData, { data: pageData, isFetching, isSuccess }] =
@@ -30,6 +32,15 @@ export const NewsPage: FC = () => {
     }
   };
 
+  const breadcrumbs = [
+    <Link underline="hover" key="1" color="inherit" href={Path.Home}>
+      Главная
+    </Link>,
+    <Link underline="hover" key="2" color="inherit" href={Path.News}>
+      Новости
+    </Link>,
+  ];
+
   useEffect(() => {
     fetchData(currentPage);
   }, []);
@@ -41,6 +52,7 @@ export const NewsPage: FC = () => {
   return (
     <div className={styles.wrapper}>
       <HeaderSlider image={pageData.results.body.page_header.image} />
+      <BreadcrumbsComponent data={breadcrumbs} />
       <div className={styles.wrapper_content} id={"header-title"}>
         <div className={styles.wrapper_content_title}>
           <h1>{pageData.results.body.page_header.title}</h1>
@@ -71,6 +83,7 @@ export const NewsPage: FC = () => {
           count={Math.ceil(pageData.count / 6)}
           shape="rounded"
         />
+        B
       </div>
     </div>
   );

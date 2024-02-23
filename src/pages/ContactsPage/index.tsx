@@ -11,10 +11,12 @@ import {
   Input,
   InputAdornment,
   InputLabel,
+  Link,
   ThemeProvider,
   createTheme,
 } from "@mui/material";
 import { LinkButton } from "components/common/Buttons";
+import { Path } from "enum/PathE";
 
 const theme = createTheme({
   components: {
@@ -71,6 +73,15 @@ export const ContactsPage: FC = () => {
     }),
     [zoom],
   );
+
+  const breadcrumbs = [
+    <Link underline="hover" key="1" color="inherit" href={Path.Home}>
+      Главная
+    </Link>,
+    <Link underline="hover" key="2" color="inherit" href={Path.Contacts}>
+      Контакты
+    </Link>,
+  ];
 
   if (!pageData || isFetching) {
     return <Preloader />;

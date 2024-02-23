@@ -3,8 +3,9 @@ import styles from "./NewsPreview.module.scss";
 import { INews } from "api/apiTypes";
 import { Path } from "enum/PathE";
 import { generatePath } from "react-router-dom";
-import { CalendarMonth } from "@mui/icons-material";
+import { CalendarMonth, Visibility } from "@mui/icons-material";
 import { LinkButton } from "components/common/Buttons";
+import { Badge } from "@mui/material";
 
 type NewsPreviewT = {
   data: INews;
@@ -19,8 +20,8 @@ export const NewsPreview: FC<NewsPreviewT> = ({ data }) => {
   };
 
   useEffect(() => {
-    const formatedDate = data.created_date.split("T");
-    setDate(`${reverseDate(formatedDate[0])} ${formatedDate[1].split(".")[0]}`);
+    const formatedDate = data.publication_date.split("T");
+    setDate(`${reverseDate(formatedDate[0])}`);
   }, [data]);
 
   return (
@@ -49,11 +50,21 @@ export const NewsPreview: FC<NewsPreviewT> = ({ data }) => {
             <div className={styles.cardWrapper_newsContent_upper_date}>
               <CalendarMonth />
               {date}
+              <Badge
+                sx={{ marginLeft: "1rem" }}
+                color="error"
+                badgeContent={data.views}
+              >
+                <Visibility />
+              </Badge>
             </div>
           </div>
         </div>
         <div className={styles.cardWrapper_newsContent_lower}>
-          <LinkButton href={generatePath(Path.NewsDetails, {newsId: String(data.id)})} text={"Читать далее"} />
+          <LinkButton
+            href={generatePath(Path.NewsDetails, { newsId: String(data.id) })}
+            text={"Читать далее"}
+          />
         </div>
       </div>
     </div>

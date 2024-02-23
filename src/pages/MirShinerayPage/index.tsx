@@ -4,6 +4,8 @@ import { HeaderSlider } from "components/HeaderCarousel";
 import { Path } from "enum/PathE";
 import { useLazyFetchMirShinerayPageDataQuery } from "api/mirShinerayService";
 import { Preloader } from "components/Preloader";
+import { BreadcrumbsComponent } from "components/breadcrumbs";
+import { Link } from "@mui/material";
 
 export const MirShinerayPage: FC = () => {
   const [fetchData, { data: MirShineray, isFetching }] =
@@ -13,6 +15,15 @@ export const MirShinerayPage: FC = () => {
     fetchData();
   }, [fetchData]);
 
+  const breadcrumbs = [
+    <Link underline="hover" key="1" color="inherit" href={Path.Home}>
+      Главная
+    </Link>,
+    <Link underline="hover" key="2" color="inherit" href={Path.MirShineray}>
+      Мир Shineray
+    </Link>,
+  ];
+
   if (!MirShineray || isFetching) {
     return <Preloader />;
   }
@@ -20,6 +31,7 @@ export const MirShinerayPage: FC = () => {
   return (
     <div className={styles.pageWrapper}>
       <HeaderSlider image={MirShineray.body.page_header.image} />
+      <BreadcrumbsComponent data={breadcrumbs} />
       <div className={styles.pageWrapper_index}>
         <div className={styles.pageWrapper_index_content}>
           <ul className={styles.pageWrapper_index_content_buttonsBlock}>

@@ -15,13 +15,13 @@ export const NewsItem: FC<NewsItemT> = ({ data, ...restProps }) => {
   const [date, setDate] = useState<string>("");
 
   const reverseDate = (date: string) => {
-    const dateArr = date.split('-')
-    return `${dateArr[2]}.${dateArr[1]}.${dateArr[0]}`
+    const dateArr = date.split("-");
+    return `${dateArr[2]}.${dateArr[1]}.${dateArr[0]}`;
   };
 
   useEffect(() => {
     const formatedDate = created_date.split("T");
-    setDate(`${reverseDate(formatedDate[0])} ${formatedDate[1].split(".")[0]}`);
+    setDate(`${reverseDate(formatedDate[0])}`);
   }, [data]);
 
   return (

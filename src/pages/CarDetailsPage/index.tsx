@@ -3,12 +3,7 @@ import { motion } from "framer-motion";
 import { FC, useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { HeaderSlider } from "components/HeaderCarousel";
-import {
-  Swiper,
-  SwiperSlide,
-  SwiperRef,
-  SwiperClass
-} from "swiper/react";
+import { Swiper, SwiperSlide, SwiperRef, SwiperClass } from "swiper/react";
 import { Navigation, Thumbs } from "swiper/modules";
 import { useBoolean } from "customHooks/useBoolean";
 import { PreviewModal } from "components/modal/PreviewModal";
@@ -22,6 +17,9 @@ import "swiper/css";
 import "swiper/css/zoom";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
+import { Path } from "enum/PathE";
+import { Link, Typography } from "@mui/material";
+import { BreadcrumbsComponent } from "components/breadcrumbs";
 
 export const CarDetailsPage: FC = () => {
   const params = useParams();
@@ -55,21 +53,31 @@ export const CarDetailsPage: FC = () => {
     }
   }, [imagePreview]);
 
+  const breadcrumbs = [
+    <Link underline="hover" key="1" color="inherit" href={Path.Home}>
+      Главная
+    </Link>,
+    <Link underline="hover" key="2" color="inherit" href={Path.Cars}>
+      Модельный ряд
+    </Link>,
+    <Typography key="3" color="text.primary">
+      {AutoModel?.title}
+    </Typography>,
+  ];
+
   if (!AutoModel || isFetching) {
     return <Preloader />;
   }
 
   return (
     <motion.div className={styles.wrapper}>
-      {AutoModel && (
-        <PreviewModal
-          slides={AutoModel.slider_1.images}
-          toggleModal={toggleImage}
-          changeIndex={setCurrentIndex}
-          currentIndex={currentIndex}
-          imagePreview={imagePreview}
-        />
-      )}
+      <PreviewModal
+        slides={AutoModel.slider_1.images}
+        toggleModal={toggleImage}
+        changeIndex={setCurrentIndex}
+        currentIndex={currentIndex}
+        imagePreview={imagePreview}
+      />
       {/* {imagePreview && AutoModel && (
         <PreviewModal
           slides={AutoModel.slider_2.images}
@@ -78,7 +86,8 @@ export const CarDetailsPage: FC = () => {
           currentIndex={currentIndex}
         />
       )} */}
-      {AutoModel && <HeaderSlider image={AutoModel.header_image} />}
+      <HeaderSlider image={AutoModel.header_image} />
+      <BreadcrumbsComponent data={breadcrumbs} />
       <div className={styles.wrapper_main}>
         <div className={styles.wrapper_main_preview}>
           <div className={styles.wrapper_main_preview_swiper}>

@@ -13,6 +13,9 @@ import {
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
 import { Star, DriveEta } from "@mui/icons-material";
+import { Path } from "enum/PathE";
+import { Link } from "@mui/material";
+import { BreadcrumbsComponent } from "components/breadcrumbs";
 
 export const AboutCompanyPage: FC = () => {
   const [fetchData, { data: pageData }] =
@@ -47,6 +50,18 @@ export const AboutCompanyPage: FC = () => {
     }
   }, [pageData]);
 
+  const breadcrumbs = [
+    <Link underline="hover" key="1" color="inherit" href={Path.Home}>
+      Главная
+    </Link>,
+    <Link underline="hover" key="2" color="inherit" href={Path.MirShineray}>
+      Мир Shineray
+    </Link>,
+    <Link underline="hover" key="2" color="inherit" href={Path.AboutCompany}>
+      О компании Shineray Group
+    </Link>,
+  ];
+
   if (!pageData || !groupedSlides) {
     return <Preloader />;
   }
@@ -54,6 +69,7 @@ export const AboutCompanyPage: FC = () => {
   return (
     <div className={styles.wrapper}>
       <HeaderSlider image={pageData.body.about_company.image_header} />
+      <BreadcrumbsComponent data={breadcrumbs} />
       <div className={styles.wrapper_container}>
         <div className={styles.wrapper_container_title}>
           <h3>{pageData.body.about_company.title}</h3>
@@ -87,7 +103,6 @@ export const AboutCompanyPage: FC = () => {
         <div className={styles.wrapper_container_title}>
           <h1>Производство автомобилей</h1>
         </div>
-
         <div className={styles.wrapper_container_factory}>
           <Swiper
             spaceBetween={10}
@@ -188,6 +203,7 @@ export const AboutCompanyPage: FC = () => {
             </VerticalTimeline>
           </div>
         </div>
+        B
       </div>
     </div>
   );

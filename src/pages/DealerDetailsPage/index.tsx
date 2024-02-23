@@ -11,6 +11,9 @@ import {
   NoCrash,
 } from "@mui/icons-material";
 import parse from "html-react-parser";
+import { Link, Typography } from "@mui/material";
+import { Path } from "enum/PathE";
+import { BreadcrumbsComponent } from "components/breadcrumbs";
 
 export const DealerDetailsPage: FC = () => {
   const params = useParams();
@@ -24,6 +27,18 @@ export const DealerDetailsPage: FC = () => {
     }
   }, [params]);
 
+  const breadcrumbs = [
+    <Link underline="hover" key="1" color="inherit" href={Path.Home}>
+      Главная
+    </Link>,
+    <Link underline="hover" key="2" color="inherit" href={Path.Dealer}>
+      Дилеры
+    </Link>,
+    <Typography key="3" color="text.primary">
+      {dealerData?.company_name}
+    </Typography>,
+  ];
+
   if (!dealerData || isFetching) {
     return <Preloader />;
   }
@@ -31,6 +46,7 @@ export const DealerDetailsPage: FC = () => {
   return (
     <div className={styles.wrapper}>
       <HeaderSlider image={dealerData.header_image} />
+      <BreadcrumbsComponent data={breadcrumbs} />
       <div className={styles.wrapper_content}>
         <div className={styles.wrapper_content_title}>
           <h1>{`«${dealerData.name}» официальный дилер Shineray`}</h1>
@@ -225,6 +241,7 @@ export const DealerDetailsPage: FC = () => {
             </div>
           </div>
         </div>
+        b
       </div>
     </div>
   );

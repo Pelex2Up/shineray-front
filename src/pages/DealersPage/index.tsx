@@ -13,11 +13,13 @@ import {
   FormControl,
   FormControlLabel,
   FormLabel,
+  Link,
   Radio,
   RadioGroup,
   ThemeProvider,
   createTheme,
 } from "@mui/material";
+import { BreadcrumbsComponent } from "components/breadcrumbs";
 
 const theme = createTheme({
   components: {
@@ -114,6 +116,15 @@ export const DealersPage: FC = () => {
     fetchPage();
   }, []);
 
+  const breadcrumbs = [
+    <Link underline="hover" key="1" color="inherit" href={Path.Home}>
+      Главная
+    </Link>,
+    <Link underline="hover" key="2" color="inherit" href={Path.Dealer}>
+      Дилеры
+    </Link>,
+  ];
+
   useEffect(() => {
     if (responseData && isSuccess) {
       setPageData(responseData);
@@ -207,6 +218,7 @@ export const DealersPage: FC = () => {
   return (
     <div className={styles.dealersWrapper}>
       <HeaderSlider image={pageData.body.page_header.image} />
+      <BreadcrumbsComponent data={breadcrumbs} />
       <div className={styles.dealersWrapper_title} id="page-title">
         <h1>{pageData.body.page_header.title}</h1>
         <ThemeProvider theme={theme}>
@@ -224,7 +236,12 @@ export const DealersPage: FC = () => {
           >
             <FormLabel
               id="controlled-radio-buttons-group"
-              sx={{ color: "black", ":focus": "none", fontWeight: "bold", fontSize: '1rem' }}
+              sx={{
+                color: "black",
+                ":focus": "none",
+                fontWeight: "bold",
+                fontSize: "1rem",
+              }}
             >
               Дилеры по городам:
             </FormLabel>

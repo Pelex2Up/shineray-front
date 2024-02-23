@@ -1,24 +1,50 @@
-import { FC, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
 import styles from "./NewsDetailsPage.module.scss";
 import { useLazyFetchNewsDetailsDataQuery } from "api/newsPageService";
 import { useParams } from "react-router-dom";
 import { Preloader } from "components/Preloader";
 import { HeaderSlider } from "components/HeaderCarousel";
 import parse from "html-react-parser";
+import { CalendarMonth, Visibility } from "@mui/icons-material";
+import { Badge, Breadcrumbs, Link, Typography } from "@mui/material";
+import { Path } from "enum/PathE";
+import { BreadcrumbsComponent } from "components/breadcrumbs";
 
 export const NewsDetailsPage: FC = () => {
   const params = useParams();
-
+  const [date, setDate] = useState<string>("");
   const [fetchNews, { data: pageData, isFetching, isSuccess }] =
     useLazyFetchNewsDetailsDataQuery();
+
+  const reverseDate = (date: string) => {
+    const dateArr = date.split("-");
+    return `${dateArr[2]}.${dateArr[1]}.${dateArr[0]}`;
+  };
+
+  const breadcrumbs = [
+    <Link underline="hover" key="1" color="inherit" href={Path.Home}>
+      Главная
+    </Link>,
+    <Link underline="hover" key="2" color="inherit" href={Path.News}>
+      Новости
+    </Link>,
+    <Typography key="3" color="text.primary">
+      {pageData?.title}
+    </Typography>,
+  ];
+
+  useEffect(() => {
+    if (pageData) {
+      const formatedDate = pageData.publication_date.split("T");
+      setDate(`${reverseDate(formatedDate[0])}`);
+    }
+  }, [pageData]);
 
   useEffect(() => {
     if (params) {
       fetchNews(Number(params.newsId));
     }
   }, [params]);
-
-  console.log(pageData);
 
   if (!pageData || isFetching) {
     return <Preloader />;
@@ -27,13 +53,36 @@ export const NewsDetailsPage: FC = () => {
   return (
     <div className={styles.wrapper}>
       <HeaderSlider image={pageData.image} />
+      <BreadcrumbsComponent data={breadcrumbs} />
       <div className={styles.wrapper_content}>
         <div className={styles.wrapper_content_title}>
           <h1>{pageData.title}</h1>
+          <div
+            style={{
+              padding: "1rem",
+              display: "flex",
+              width: "100%",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: "0.3rem",
+              color: "rgb(107, 107, 107)",
+            }}
+          >
+            <CalendarMonth />
+            {date}
+            <Badge
+              sx={{ marginLeft: "1rem" }}
+              color="error"
+              badgeContent={pageData.views}
+            >
+              <Visibility />
+            </Badge>
+          </div>
         </div>
         <div className={styles.wrapper_content_body}>
           {parse(pageData.content)}
         </div>
+        B
       </div>
     </div>
   );

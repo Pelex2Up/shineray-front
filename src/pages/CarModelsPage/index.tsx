@@ -6,6 +6,9 @@ import { useLazyUseFetchModelsPageDataQuery } from "api/carModelsPageService";
 import { motion } from "framer-motion";
 import { Preloader } from "components/Preloader";
 import parse from "html-react-parser";
+import { Path } from "enum/PathE";
+import { Link } from "@mui/material";
+import { BreadcrumbsComponent } from "components/breadcrumbs";
 
 export const CarModelsPage: FC = () => {
   const [fetchData, { data: carModels, isFetching: isLoadingPage }] =
@@ -15,6 +18,15 @@ export const CarModelsPage: FC = () => {
   useEffect(() => {
     fetchData();
   }, [fetchData]);
+
+  const breadcrumbs = [
+    <Link underline="hover" key="1" color="inherit" href={Path.Home}>
+      Главная
+    </Link>,
+    <Link underline="hover" key="2" color="inherit" href={Path.Cars}>
+      Модельный ряд
+    </Link>,
+  ];
 
   if (!carModels || isLoadingPage) {
     return <Preloader />;
@@ -33,6 +45,7 @@ export const CarModelsPage: FC = () => {
           image={carModels.body.categories[currentCategory].image}
         />
       )}
+      <BreadcrumbsComponent data={breadcrumbs} />
       <div className={styles.carsPageWrapper_content}>
         <div className={styles.carsPageWrapper_content_title}>
           <h1>Модельный ряд Shineray в Республике Беларусь</h1>

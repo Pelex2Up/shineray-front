@@ -10,10 +10,13 @@ import {
   Input,
   InputAdornment,
   InputLabel,
+  Link,
   ThemeProvider,
   createTheme,
 } from "@mui/material";
 import { LinkButton } from "components/common/Buttons";
+import { Path } from "enum/PathE";
+import { BreadcrumbsComponent } from "components/breadcrumbs";
 
 const theme = createTheme({
   components: {
@@ -36,20 +39,20 @@ const theme = createTheme({
           },
           "&.Mui-focused": {
             color: "rgba(0, 0, 0, 0.4)",
-            borderColor: 'rgba(0, 0, 0, 0.4)',
+            borderColor: "rgba(0, 0, 0, 0.4)",
           },
-        }
-      }
+        },
+      },
     },
     MuiInput: {
       styleOverrides: {
         root: {
           ":after": {
-            borderColor: 'rgba(0, 0, 0, 0.6)',
-          }
-        }
-      }
-    }
+            borderColor: "rgba(0, 0, 0, 0.6)",
+          },
+        },
+      },
+    },
   },
 });
 
@@ -61,6 +64,18 @@ export const BecomeDealerPage: FC = () => {
     fetchData();
   }, [fetchData]);
 
+  const breadcrumbs = [
+    <Link underline="hover" key="1" color="inherit" href={Path.Home}>
+      Главная
+    </Link>,
+    <Link underline="hover" key="2" color="inherit" href={Path.MirShineray}>
+      Мир Shineray
+    </Link>,
+    <Link underline="hover" key="3" color="inherit" href={Path.BecomeDealer}>
+      Стать дилером
+    </Link>,
+  ];
+
   if (!pageData || isFetching) {
     return <Preloader />;
   }
@@ -68,6 +83,7 @@ export const BecomeDealerPage: FC = () => {
   return (
     <div className={styles.pageWrapper}>
       <HeaderSlider image={pageData.body.page_header.image} />
+      <BreadcrumbsComponent data={breadcrumbs} />
       <div className={styles.pageWrapper_container}>
         <div className={styles.pageWrapper_container_content}>
           <div className={styles.pageWrapper_container_content_title}>
@@ -222,6 +238,7 @@ export const BecomeDealerPage: FC = () => {
             alt="Form image"
           />
         </div>
+        B
       </div>
     </div>
   );

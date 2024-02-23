@@ -4,8 +4,14 @@ import { useLazyFetchRepresentativeOfficePageDataQuery } from "api/mirShineraySe
 import { Preloader } from "components/Preloader";
 import { HeaderSlider } from "components/HeaderCarousel";
 import parse from "html-react-parser";
-import { VerticalTimeline, VerticalTimelineElement } from "react-vertical-timeline-component";
+import {
+  VerticalTimeline,
+  VerticalTimelineElement,
+} from "react-vertical-timeline-component";
 import { DriveEta, Star } from "@mui/icons-material";
+import { Path } from "enum/PathE";
+import { Link } from "@mui/material";
+import { BreadcrumbsComponent } from "components/breadcrumbs";
 
 export const RepresentativeOfficePage: FC = () => {
   const [fetchData, { data: pageData, isFetching }] =
@@ -15,6 +21,18 @@ export const RepresentativeOfficePage: FC = () => {
     fetchData();
   }, [fetchData]);
 
+  const breadcrumbs = [
+    <Link underline="hover" key="1" color="inherit" href={Path.Home}>
+      Главная
+    </Link>,
+    <Link underline="hover" key="2" color="inherit" href={Path.MirShineray}>
+      Мир Shineray
+    </Link>,
+    <Link underline="hover" key="2" color="inherit" href={Path.AboutBelarus}>
+      О нас и бренде Shineray
+    </Link>,
+  ];
+
   if (!pageData || isFetching) {
     return <Preloader />;
   }
@@ -22,6 +40,7 @@ export const RepresentativeOfficePage: FC = () => {
   return (
     <div className={styles.wrapper}>
       <HeaderSlider image={pageData.body.about_company.image_header} />
+      <BreadcrumbsComponent data={breadcrumbs} />
       <div className={styles.wrapper_container}>
         <div className={styles.wrapper_container_title}>
           <h3>{pageData.body.about_company.title}</h3>
@@ -97,7 +116,7 @@ export const RepresentativeOfficePage: FC = () => {
             </VerticalTimeline>
           </div>
         </div>
-      </div>
+      B</div>
     </div>
   );
 };

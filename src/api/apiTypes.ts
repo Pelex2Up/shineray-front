@@ -156,6 +156,8 @@ export interface INews {
   description: string;
   content: string;
   active: boolean;
+  views: number;
+  publication_date: string;
 }
 
 export type DealersPageT = {
