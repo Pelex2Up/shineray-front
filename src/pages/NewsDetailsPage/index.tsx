@@ -6,14 +6,14 @@ import { Preloader } from "components/Preloader";
 import { HeaderSlider } from "components/HeaderCarousel";
 import parse from "html-react-parser";
 import { CalendarMonth, Visibility } from "@mui/icons-material";
-import { Badge, Breadcrumbs, Link, Typography } from "@mui/material";
+import { Badge, Link, Typography } from "@mui/material";
 import { Path } from "enum/PathE";
 import { BreadcrumbsComponent } from "components/breadcrumbs";
 
 export const NewsDetailsPage: FC = () => {
   const params = useParams();
   const [date, setDate] = useState<string>("");
-  const [fetchNews, { data: pageData, isFetching, isSuccess }] =
+  const [fetchNews, { data: pageData, isFetching }] =
     useLazyFetchNewsDetailsDataQuery();
 
   const reverseDate = (date: string) => {
@@ -44,7 +44,7 @@ export const NewsDetailsPage: FC = () => {
     if (params) {
       fetchNews(Number(params.newsId));
     }
-  }, [params]);
+  }, [params, fetchNews]);
 
   if (!pageData || isFetching) {
     return <Preloader />;

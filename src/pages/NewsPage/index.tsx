@@ -10,7 +10,7 @@ import { Path } from "enum/PathE";
 import { BreadcrumbsComponent } from "components/breadcrumbs";
 
 export const NewsPage: FC = () => {
-  const [fetchData, { data: pageData, isFetching, isSuccess }] =
+  const [fetchData, { data: pageData, isFetching }] =
     useLazyFetchNewsPageDataQuery();
   const [currentPage, setCurrentPage] = useState<number>(1);
 
@@ -42,8 +42,10 @@ export const NewsPage: FC = () => {
   ];
 
   useEffect(() => {
-    fetchData(currentPage);
-  }, []);
+    if (currentPage) {
+      fetchData(currentPage);
+    }
+  }, [fetchData, currentPage]);
 
   if (!pageData || isFetching) {
     return <Preloader />;

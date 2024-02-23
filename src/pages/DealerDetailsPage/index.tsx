@@ -25,7 +25,7 @@ export const DealerDetailsPage: FC = () => {
     if (params.dealerId) {
       fetchData(Number(params.dealerId));
     }
-  }, [params]);
+  }, [params, fetchData]);
 
   const breadcrumbs = [
     <Link underline="hover" key="1" color="inherit" href={Path.Home}>
@@ -99,6 +99,7 @@ export const DealerDetailsPage: FC = () => {
                         </strong>
                         <img
                           src={`http://93.177.124.158/media/${dealerData.image_logo}`}
+                          alt={"logo"}
                         />
                       </span>
                       <div
@@ -226,7 +227,7 @@ export const DealerDetailsPage: FC = () => {
                               <a
                                 href={dealerData.web_site}
                                 target="_blank"
-                                rel="norefferer"
+                                rel="noreferrer"
                               >
                                 {dealerData.web_site}
                               </a>

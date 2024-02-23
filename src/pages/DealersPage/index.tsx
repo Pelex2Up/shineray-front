@@ -114,7 +114,7 @@ export const DealersPage: FC = () => {
   useEffect(() => {
     setFilterCity("Без фильтра");
     fetchPage();
-  }, []);
+  }, [setFilterCity, fetchPage]);
 
   const breadcrumbs = [
     <Link underline="hover" key="1" color="inherit" href={Path.Home}>
@@ -129,7 +129,7 @@ export const DealersPage: FC = () => {
     if (responseData && isSuccess) {
       setPageData(responseData);
     }
-  }, [responseData]);
+  }, [responseData, setPageData, isSuccess]);
 
   const handleFilter = (event: ChangeEvent<HTMLInputElement>, city: string) => {
     if (pageData && responseData) {
