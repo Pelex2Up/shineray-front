@@ -11,6 +11,7 @@
     @include display(flex, column, flex-start);
     max-width: 1600px;
     padding: 2rem 1rem;
+    margin: 0 auto;
 
     &_title {
       @include display(flex, column, center, center);

@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
 import styles from "./NewsPage.module.scss";
 import { useLazyFetchNewsPageDataQuery } from "api/newsPageService";
 import { HeaderSlider } from "components/HeaderCarousel";
@@ -10,6 +10,7 @@ import { HotNews } from "components/HotNews";
 export const NewsPage: FC = () => {
   const [fetchData, { data: pageData, isFetching, isSuccess }] =
     useLazyFetchNewsPageDataQuery();
+  const [currentPage, setCurrentPage] = useState<number>(1);
 
   function scrollToElement(elementId: string) {
     var element = document.getElementById(elementId);
@@ -18,8 +19,19 @@ export const NewsPage: FC = () => {
     }
   }
 
+  const handlePaginate = (event: React.ChangeEvent<unknown>, page: number) => {
+    if (page) {
+      fetchData(page)
+        .unwrap()
+        .then((data) => {
+          setCurrentPage(page);
+          scrollToElement("header-title");
+        });
+    }
+  };
+
   useEffect(() => {
-    fetchData();
+    fetchData(currentPage);
   }, []);
 
   if (!pageData || isFetching) {
@@ -28,14 +40,14 @@ export const NewsPage: FC = () => {
 
   return (
     <div className={styles.wrapper}>
-      <HeaderSlider image={pageData.body.page_header.image} />
-      <div className={styles.wrapper_content}>
+      <HeaderSlider image={pageData.results.body.page_header.image} />
+      <div className={styles.wrapper_content} id={"header-title"}>
         <div className={styles.wrapper_content_title}>
-          <h1 id={"header-title"}>{pageData.body.page_header.title}</h1>
+          <h1>{pageData.results.body.page_header.title}</h1>
         </div>
         <div className={styles.wrapper_content_body}>
           <div className={styles.wrapper_content_body_news}>
-            {pageData.body.news.map((news, index) => (
+            {pageData.results.body.news.map((news, index) => (
               <NewsPreview key={`${index}_news`} data={news} />
             ))}
           </div>
@@ -46,16 +58,17 @@ export const NewsPage: FC = () => {
               </h2>
             </div>
             <div className={styles.wrapper_content_body_navigations_hotNews}>
-              {pageData.body.news.map((news, index) => (
+              {pageData.results.body.top_3.map((news, index) => (
                 <HotNews key={`${news.id}_${index}_hotNews`} data={news} />
               ))}
             </div>
           </div>
         </div>
         <Pagination
-          onChange={() => scrollToElement("header-title")}
+          onChange={handlePaginate}
+          page={currentPage}
           sx={{ marginTop: "30px" }}
-          count={3}
+          count={Math.ceil(pageData.count / 6)}
           shape="rounded"
         />
       </div>

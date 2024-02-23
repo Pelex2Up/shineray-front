@@ -146,31 +146,31 @@ export const DealersPage: FC = () => {
       if (filterCity === "Гродно") {
         const newState = mapEndpoints.filter((map) => map.city === "Гродно")[0];
         setMapRefresh(newState);
-        scrollToElement("yandex-map");
+        scrollToElement("page-title");
       } else if (filterCity === "Минск") {
         const newState = mapEndpoints.filter((map) => map.city === "Минск")[0];
         setMapRefresh(newState);
-        scrollToElement("yandex-map");
+        scrollToElement("page-title");
       } else if (filterCity === "Брест") {
         const newState = mapEndpoints.filter((map) => map.city === "Брест")[0];
         setMapRefresh(newState);
-        scrollToElement("yandex-map");
+        scrollToElement("page-title");
       } else if (filterCity === "Витебск") {
         const newState = mapEndpoints.filter(
           (map) => map.city === "Витебск",
         )[0];
         setMapRefresh(newState);
-        scrollToElement("yandex-map");
+        scrollToElement("page-title");
       } else if (filterCity === "Могилёв") {
         const newState = mapEndpoints.filter(
           (map) => map.city === "Могилёв",
         )[0];
         setMapRefresh(newState);
-        scrollToElement("yandex-map");
+        scrollToElement("page-title");
       } else if (filterCity === "Гомель") {
         const newState = mapEndpoints.filter((map) => map.city === "Гомель")[0];
         setMapRefresh(newState);
-        scrollToElement("yandex-map");
+        scrollToElement("page-title");
       } else if (filterCity === "Без фильтра") {
         const newState = {
           center: [53.67, 28.04],
@@ -178,7 +178,7 @@ export const DealersPage: FC = () => {
           controls: ["zoomControl", "fullscreenControl"],
         };
         setMapRefresh(newState);
-        scrollToElement("yandex-map");
+        scrollToElement("page-title");
       }
     }
   }, [filterCity]);
@@ -197,7 +197,7 @@ export const DealersPage: FC = () => {
       controls: ["zoomControl", "fullscreenControl"],
     };
     setMapRefresh(newState);
-    scrollToElement("yandex-map");
+    scrollToElement("page-title");
   };
 
   if (!pageData || isLoading) {
@@ -207,7 +207,7 @@ export const DealersPage: FC = () => {
   return (
     <div className={styles.dealersWrapper}>
       <HeaderSlider image={pageData.body.page_header.image} />
-      <div className={styles.dealersWrapper_title}>
+      <div className={styles.dealersWrapper_title} id="page-title">
         <h1>{pageData.body.page_header.title}</h1>
         <ThemeProvider theme={theme}>
           <FormControl
@@ -396,7 +396,6 @@ export const DealersPage: FC = () => {
             className={styles.dealersWrapper_content_rightSide_mapWrapper}
           >
             <Map
-              id="yandex-map"
               defaultState={mapState}
               state={mapRefresh}
               className={styles.dealersWrapper_content_rightSide_mapWrapper_map}

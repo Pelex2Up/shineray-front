@@ -166,8 +166,14 @@ export type DealersPageT = {
 };
 
 export type NewsPageT = {
-  body: {
-    page_header: IHeader;
-    news: INews[];
+  count: number;
+  next: string;
+  previous: string;
+  results: {
+    body: {
+      page_header: IHeader;
+      news: INews[];
+      top_3: INews[];
+    };
   };
 };
