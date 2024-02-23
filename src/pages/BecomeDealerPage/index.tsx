@@ -235,7 +235,7 @@ export const BecomeDealerPage: FC = () => {
           <img
             className={styles.pageWrapper_container_form_carsBackground}
             src={`http://93.177.124.158/media/${pageData.body.content.form_image}`}
-            alt="Form image"
+            alt="Form-background"
           />
         </div>
         B

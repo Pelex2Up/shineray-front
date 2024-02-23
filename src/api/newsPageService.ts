@@ -20,6 +20,7 @@ export const NewsPageService = createApi({
       providesTags: ["newsDetails"],
     }),
   }),
+  refetchOnMountOrArgChange: true,
 });
 
 export const {

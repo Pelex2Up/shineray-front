@@ -38,6 +38,7 @@ export const DealersPageService = createApi({
       providesTags: ["DealerDetailPage"],
     }),
   }),
+  refetchOnMountOrArgChange: true,
 });
 
 export const { useLazyFetchDealersPageDataQuery, useFetchDealerDataQuery, useLazyFetchDealerDetailsQuery } =

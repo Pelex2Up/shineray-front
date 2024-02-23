@@ -11,7 +11,7 @@ type NewsItemT = {
 >;
 
 export const NewsItem: FC<NewsItemT> = ({ data, ...restProps }) => {
-  const { image, title, description, created_date } = data;
+  const { image, title, description, publication_date } = data;
   const [date, setDate] = useState<string>("");
 
   const reverseDate = (date: string) => {
@@ -20,7 +20,7 @@ export const NewsItem: FC<NewsItemT> = ({ data, ...restProps }) => {
   };
 
   useEffect(() => {
-    const formatedDate = created_date.split("T");
+    const formatedDate = publication_date.split("T");
     setDate(`${reverseDate(formatedDate[0])}`);
   }, [data]);
 

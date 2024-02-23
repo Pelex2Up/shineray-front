@@ -14,6 +14,7 @@ export const HomePageService = createApi({
       providesTags: ['home'],
     }),
   }),
+  refetchOnMountOrArgChange: true,
 })
 
 export const { useFetchHomePageDataQuery, useLazyFetchHomePageDataQuery } = HomePageService

@@ -39,6 +39,7 @@ export const MirShinerayService = createApi({
       providesTags: ["BecomeDealer"],
     }),
   }),
+  refetchOnMountOrArgChange: true,
 });
 
 export const {

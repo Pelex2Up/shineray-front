@@ -20,6 +20,7 @@ export const CarModelsPageService = createApi({
       providesTags: ["ModelsPageData"],
     }),
   }),
+  refetchOnMountOrArgChange: true,
 });
 
 export const { useFetchCategoryDataQuery, useUseFetchModelsPageDataQuery, useLazyUseFetchModelsPageDataQuery } =
