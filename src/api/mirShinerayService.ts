@@ -1,6 +1,6 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { baseQuery } from "./baseApi";
-import { AboutCompanyT, IAbout } from "types/componentTypes";
+import { AboutCompanyT } from "types/componentTypes";
 import { ContactsT } from "./apiTypes";
 
 export const MirShinerayService = createApi({
