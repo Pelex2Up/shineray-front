@@ -40,7 +40,7 @@ export const ModelCarsMenu: FC<HeaderT> = ({ data }) => {
               <img
                 className={styles.modelCars_car_carImg}
                 loading="lazy"
-                src={`http://93.177.124.158/media/${car.image}`}
+                src={`https://shineray.by/media/${car.image}`}
               />
               <span className={styles.modelCars_car_carName}>{car.name}</span>
             </div>

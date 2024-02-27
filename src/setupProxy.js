@@ -4,9 +4,9 @@ module.exports = function (app) {
   app.use(
     '/api',
     createProxyMiddleware({
-      target: 'http://93.177.124.158',
+      target: 'https://shineray.by',
       changeOrigin: true,
-      secure: false,
+      secure: true,
     }),
   )
 }

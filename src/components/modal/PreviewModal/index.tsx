@@ -53,7 +53,7 @@ export const PreviewModal: FC<PreviewModalT> = ({
           <img
             className={styles["modalWrapper_fullScreenImage_image"]}
             onClick={toggleModal}
-            src={`http://93.177.124.158/media/${slides[currentIndex].image}`}
+            src={`https://shineray.by/media/${slides[currentIndex].image}`}
             alt=""
           />
         </motion.div>

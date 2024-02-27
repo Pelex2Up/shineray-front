@@ -96,7 +96,7 @@ export const BecomeDealerPage: FC = () => {
         <div
           className={styles.pageWrapper_container_form}
           style={{
-            background: `url(http://93.177.124.158/media/${pageData.body.content.form_image_background}) no-repeat`,
+            background: `url(https://shineray.by/media/${pageData.body.content.form_image_background}) no-repeat`,
             backgroundSize: "cover",
           }}
         >
@@ -234,7 +234,7 @@ export const BecomeDealerPage: FC = () => {
           </div>
           <img
             className={styles.pageWrapper_container_form_carsBackground}
-            src={`http://93.177.124.158/media/${pageData.body.content.form_image}`}
+            src={`https://shineray.by/media/${pageData.body.content.form_image}`}
             alt="Form-background"
           />
         </div>

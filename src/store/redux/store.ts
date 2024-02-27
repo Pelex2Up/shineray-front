@@ -2,7 +2,7 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { persistReducer } from "redux-persist";
 
 import storage from "redux-persist/lib/storage";
-import * as services from "../api/index";
+import * as services from "../../api/index";
 
 export const rootReducer = combineReducers({
   [services.HeaderService.reducerPath]: services.HeaderService.reducer,

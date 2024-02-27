@@ -98,7 +98,7 @@ export const DealerDetailsPage: FC = () => {
                           {`${branch.name}: ${branch.address}`}
                         </strong>
                         <img
-                          src={`http://93.177.124.158/media/${dealerData.image_logo}`}
+                          src={`https://shineray.by/media/${dealerData.image_logo}`}
                           alt={"logo"}
                         />
                       </span>

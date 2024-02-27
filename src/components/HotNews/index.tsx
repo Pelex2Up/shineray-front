@@ -16,7 +16,7 @@ export const HotNews: FC<HotNewsT> = ({ data }) => {
         href={generatePath(Path.NewsDetails, { newsId: String(data.id) })}
       >
         <img
-          src={`http://93.177.124.158/media/${data.image}`}
+          src={`https://shineray.by/media/${data.image}`}
           alt={`${data.id}_hotNewsImage`}
         />
         <div className={styles.hotWrapper_text}>

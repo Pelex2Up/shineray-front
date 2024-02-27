@@ -30,7 +30,7 @@ export const CarItemCard: FC<CardItemT> = ({ car }) => {
         }}
         className={styles.autoCard}
       >
-        <img src={`http://93.177.124.158/media/${car.image_xl}`} alt={car.name} />
+        <img src={`https://shineray.by/media/${car.image_xl}`} alt={car.name} />
         <CardContent>
           <Typography
             gutterBottom

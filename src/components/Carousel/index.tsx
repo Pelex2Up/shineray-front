@@ -55,7 +55,7 @@ export const Carousel: FC<CarouselT> = ({ data, currentIndex, setCurrentIndex })
       <AnimatePresence>
         <motion.img
           key={currentIndex}
-          src={`http://93.177.124.158/media/${data[currentIndex].image_xl}`}
+          src={`https://shineray.by/media/${data[currentIndex].image_xl}`}
           variants={slideVariants}
           loading="lazy"
           initial={direction === 'right' ? 'hiddenRight' : 'hiddenLeft'}

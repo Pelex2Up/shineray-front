@@ -311,7 +311,7 @@ export const DealersPage: FC = () => {
               >
                 {dealer.image_logo && (
                   <img
-                    src={`http://93.177.124.158/media/${dealer.image_logo}`}
+                    src={`https://shineray.by/media/${dealer.image_logo}`}
                     style={
                       index + indexAll === 0
                         ? { width: "60%", objectFit: "contain", paddingTop: 0 }

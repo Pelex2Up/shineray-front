@@ -115,7 +115,7 @@ export const HomePage: FC = () => {
                     height: "100%",
                     width: "100%",
                   }}
-                  src={`http://93.177.124.158/media/${el.image_xl}`}
+                  src={`https://shineray.by/media/${el.image_xl}`}
                   alt={`Slide ${index + 1}`}
                 />
               </SwiperSlide>

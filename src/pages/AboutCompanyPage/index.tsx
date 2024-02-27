@@ -91,7 +91,7 @@ export const AboutCompanyPage: FC = () => {
                   styles.wrapper_container_contentBox_pictureBox_skewed_picture
                 }
                 style={{
-                  backgroundImage: `url(http://93.177.124.158/media/${pageData.body.about_company.image_top_content})`,
+                  backgroundImage: `url(https://shineray.by/media/${pageData.body.about_company.image_top_content})`,
                 }}
               />
             </div>
@@ -132,7 +132,7 @@ export const AboutCompanyPage: FC = () => {
                           <li key={el[index].id}>
                             <div>
                               <img
-                                src={`http://93.177.124.158/media/${element.image}`}
+                                src={`https://shineray.by/media/${element.image}`}
                                 alt="Factory small"
                               />
                             </div>
@@ -148,7 +148,7 @@ export const AboutCompanyPage: FC = () => {
                   >
                     <div>
                       <img
-                        src={`http://93.177.124.158/media/${el[el.length - 1].image}`}
+                        src={`https://shineray.by/media/${el[el.length - 1].image}`}
                         alt="Factory Big"
                       />
                     </div>
@@ -190,7 +190,7 @@ export const AboutCompanyPage: FC = () => {
                 >
                   <img
                     style={{ width: "100%", borderRadius: "1rem" }}
-                    src={`http://93.177.124.158/media/${history.image}`}
+                    src={`https://shineray.by/media/${history.image}`}
                     alt={`${history.id + history.title}`}
                   />
                   {parse(history.text)}

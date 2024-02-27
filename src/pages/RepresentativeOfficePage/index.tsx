@@ -62,7 +62,7 @@ export const RepresentativeOfficePage: FC = () => {
                   styles.wrapper_container_contentBox_pictureBox_skewed_picture
                 }
                 style={{
-                  backgroundImage: `url(http://93.177.124.158/media/${pageData.body.about_company.image_top_content || pageData.body.about_company.image_header})`,
+                  backgroundImage: `url(https://shineray.by/media/${pageData.body.about_company.image_top_content || pageData.body.about_company.image_header})`,
                 }}
               />
             </div>
@@ -103,7 +103,7 @@ export const RepresentativeOfficePage: FC = () => {
                 >
                   <img
                     style={{ width: "100%", borderRadius: "1rem" }}
-                    src={`http://93.177.124.158/media/${history.image}`}
+                    src={`https://shineray.by/media/${history.image}`}
                     alt={`${history.id}_${history.text}`}
                   />
                   {parse(history.text)}
