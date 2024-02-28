@@ -1,4 +1,4 @@
-@import '../src/pages/CarDetailsPage/customArrows.css';
+@import "../src/pages/CarDetailsPage/customArrows.css";
 
 * {
   padding: 0;
@@ -9,14 +9,25 @@
 }
 
 @font-face {
-  font-family: "Alibaba PuHuiTi 2.0 35 Thin Regular";
-  src: url("https://drive.google.com/file/d/12y2zAqEAPRoy34EOwmyd_gX1UHOTkrMJ/view") format("truetype");
+  font-family: "Alibaba PuHuiTi 2.0 55 Regular";
+  src: url("https://db.onlinewebfonts.com/t/70e85e06a6ea3fbd5e4030df68874fff.eot");
+  src:
+    url("https://db.onlinewebfonts.com/t/70e85e06a6ea3fbd5e4030df68874fff.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/70e85e06a6ea3fbd5e4030df68874fff.woff2")
+      format("woff2"),
+    url("https://db.onlinewebfonts.com/t/70e85e06a6ea3fbd5e4030df68874fff.woff")
+      format("woff"),
+    url("https://db.onlinewebfonts.com/t/70e85e06a6ea3fbd5e4030df68874fff.ttf")
+      format("truetype"),
+    url("https://db.onlinewebfonts.com/t/70e85e06a6ea3fbd5e4030df68874fff.svg#Alibaba PuHuiTi 2.0 55 Regular")
+      format("svg");
   font-display: swap;
 }
 
 body {
   overflow-x: hidden;
-  font-family: "Alibaba PuHuiTi 2.0 35 Thin Regular";
+  font-family: "Alibaba PuHuiTi 2.0 55 Regular";
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
