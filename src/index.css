@@ -1,4 +1,4 @@
-@import "../src/pages/CarDetailsPage/customArrows.css";
+@import '../src/pages/CarDetailsPage/customArrows.css';
 
 * {
   padding: 0;
@@ -7,27 +7,16 @@
   --font-title-size: 28px;
   --font-default-size: 22px;
 }
-
+/* 
 @font-face {
-  font-family: "Alibaba PuHuiTi 2.0 55 Regular";
-  src: url("https://db.onlinewebfonts.com/t/70e85e06a6ea3fbd5e4030df68874fff.eot");
-  src:
-    url("https://db.onlinewebfonts.com/t/70e85e06a6ea3fbd5e4030df68874fff.eot?#iefix")
-      format("embedded-opentype"),
-    url("https://db.onlinewebfonts.com/t/70e85e06a6ea3fbd5e4030df68874fff.woff2")
-      format("woff2"),
-    url("https://db.onlinewebfonts.com/t/70e85e06a6ea3fbd5e4030df68874fff.woff")
-      format("woff"),
-    url("https://db.onlinewebfonts.com/t/70e85e06a6ea3fbd5e4030df68874fff.ttf")
-      format("truetype"),
-    url("https://db.onlinewebfonts.com/t/70e85e06a6ea3fbd5e4030df68874fff.svg#Alibaba PuHuiTi 2.0 55 Regular")
-      format("svg");
+  font-family: "Roboto Flex", sans-serif;
+  src: url("https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap") format("truetype");
   font-display: swap;
-}
+} */
 
 body {
   overflow-x: hidden;
-  font-family: "Alibaba PuHuiTi 2.0 55 Regular";
+  font-family: "Roboto Flex", sans-serif;
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
