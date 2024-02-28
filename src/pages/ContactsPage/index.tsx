@@ -119,7 +119,7 @@ export const ContactsPage: FC = () => {
         <div
           className={styles.pageWrapper_container_form}
           style={{
-            background: `url(https://shineray.by/media/${pageData.body.content.form_image_background}) no-repeat`,
+            background: `url(https://dev.shineray.by/media/${pageData.body.content.form_image_background}) no-repeat`,
             backgroundSize: "cover",
           }}
         >
@@ -240,7 +240,7 @@ export const ContactsPage: FC = () => {
           </div>
           <img
             className={styles.pageWrapper_container_form_carsBackground}
-            src={`https://shineray.by/media/${pageData.body.content.form_image}`}
+            src={`https://dev.shineray.by/media/${pageData.body.content.form_image}`}
             alt="Form image"
           />
         </div>

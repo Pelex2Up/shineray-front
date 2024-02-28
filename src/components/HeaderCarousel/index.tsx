@@ -35,7 +35,7 @@ export const HeaderSlider: FC<HeaderSliderT> = ({ images, image }) => {
         <Slider {...settings}>
           {images.map(({ image }, index) => (
             <img
-              src={`https://shineray.by/media/${image}`}
+              src={`https://dev.shineray.by/media/${image}`}
               key={index}
               style={{ maxHeight: "600px" }}
               loading="lazy"
@@ -50,7 +50,7 @@ export const HeaderSlider: FC<HeaderSliderT> = ({ images, image }) => {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
           className={styles.soloImage}
-          src={`https://shineray.by/media/${image}`}
+          src={`https://dev.shineray.by/media/${image}`}
           loading="lazy"
         />
       )}
