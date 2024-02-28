@@ -116,7 +116,7 @@ export const RepresentativeOfficePage: FC = () => {
             </VerticalTimeline>
           </div>
         </div>
-      B</div>
+      </div>
     </div>
   );
 };

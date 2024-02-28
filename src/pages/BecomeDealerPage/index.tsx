@@ -237,8 +237,7 @@ export const BecomeDealerPage: FC = () => {
             src={`https://dev.shineray.by/media/${pageData.body.content.form_image}`}
             alt="Form-background"
           />
-        </div>
-        B
+        </div>        
       </div>
     </div>
   );

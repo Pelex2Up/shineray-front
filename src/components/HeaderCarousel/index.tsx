@@ -38,7 +38,7 @@ export const HeaderSlider: FC<HeaderSliderT> = ({ images, image }) => {
               src={`https://dev.shineray.by/media/${image}`}
               key={index}
               style={{ maxHeight: "600px" }}
-              loading="lazy"
+              rel="preload"
               alt='header-page-preview'
             />
           ))}
@@ -51,7 +51,7 @@ export const HeaderSlider: FC<HeaderSliderT> = ({ images, image }) => {
           transition={{ duration: 0.5 }}
           className={styles.soloImage}
           src={`https://dev.shineray.by/media/${image}`}
-          loading="lazy"
+          rel="preload"
         />
       )}
     </motion.div>

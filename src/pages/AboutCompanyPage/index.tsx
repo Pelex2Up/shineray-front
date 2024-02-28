@@ -203,7 +203,6 @@ export const AboutCompanyPage: FC = () => {
             </VerticalTimeline>
           </div>
         </div>
-        B
       </div>
     </div>
   );

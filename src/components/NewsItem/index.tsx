@@ -26,7 +26,7 @@ export const NewsItem: FC<NewsItemT> = ({ data, ...restProps }) => {
 
   return (
     <a {...restProps} className={styles.container}>
-      <img src={`https://dev.shineray.by/media/${image}`} alt={`${title}`} />
+      <img src={`https://dev.shineray.by/media/${image}`} loading="lazy" alt={`${title}`} />
       <div className={styles.container_description}>
         <h1 className={styles.container_description_title}>{title}</h1>
         <p className={styles.container_description_text}>
