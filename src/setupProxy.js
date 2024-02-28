@@ -4,7 +4,7 @@ module.exports = function (app) {
   app.use(
     '/api',
     createProxyMiddleware({
-      target: 'https://shineray.by',
+      target: 'https://dev.shineray.by',
       changeOrigin: true,
       secure: true,
     }),
