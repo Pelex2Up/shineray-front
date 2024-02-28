@@ -4,7 +4,7 @@ services:
   shineray-front:
     build: .
     image: front
-    command: yarn start
+    command: serve -s build
     container_name: front
     ports:
       - "3000:3000"
