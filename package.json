@@ -4,9 +4,6 @@
   "license": "Shineray",
   "private": true,
   "devDependencies": {
-    "@types/eslint": "^8",
-    "prettier": "3.2.5",
-    "typescript": "^5.2.0",
     "@babel/core": "^7.23.9",
     "@babel/helper-replace-supers": "^7.22.20",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
@@ -15,6 +12,7 @@
     "@babel/preset-env": "^7.23.9",
     "@babel/preset-react": "^7.23.3",
     "@babel/preset-typescript": "^7.23.3",
+    "@types/eslint": "^8",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
     "babel-eslint": "^10.1.0",
@@ -22,10 +20,11 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
     "eslint-plugin-react": "^7.33.2",
-    "eslint-plugin-react-hooks": "^4.6.0"
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "3.2.5",
+    "typescript": "^5.2.0"
   },
   "dependencies": {
-    "@types/react-slick": "^0",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
     "@handy-ones/handy-svg": "^1.0.2",
@@ -37,6 +36,7 @@
     "@types/react-dom": "^18.2.19",
     "@types/react-redux": "^7.1.33",
     "@types/react-router-dom": "^5.3.3",
+    "@types/react-slick": "^0",
     "@types/react-vertical-timeline-component": "^3.3.6",
     "@types/swiper": "^6.0.0",
     "framer-motion": "^11.0.3",
@@ -54,6 +54,7 @@
     "react-yandex-maps": "^4.6.0",
     "redux-persist": "^6.0.0",
     "sass": "^1.70.0",
+    "serve": "^14.2.1",
     "swiper": "^11.0.6",
     "web-vitals": "^3.5.0"
   },
