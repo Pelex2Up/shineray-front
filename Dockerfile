@@ -1,4 +1,4 @@
-FROM node:17-alpine3.12
+FROM node:18-alpine3.12
 WORKDIR /code
 COPY package.json yarn.lock /code/
 RUN yarn install --production
