@@ -1,7 +1,8 @@
 FROM node:17-alpine3.12
 WORKDIR /code
-COPY yarn.lock /code/
-RUN yarn add --global serve
-RUN yarn install
+COPY package.json yarn.lock /code/
+RUN yarn install --production
 COPY node_modules/serve /code/node_modules/serve
 COPY . /code/
+RUN yarn build
+CMD ["serve", "-s", "build"]
