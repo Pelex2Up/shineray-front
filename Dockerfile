@@ -5,4 +5,5 @@ RUN yarn install --production
 COPY node_modules/serve /code/node_modules/serve
 COPY . /code/
 RUN yarn build
+RUN yarn global add serve
 CMD ["serve", "-s", "build"]
