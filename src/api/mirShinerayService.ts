@@ -1,12 +1,20 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { baseQuery } from "./baseApi";
 import { AboutCompanyT } from "types/componentTypes";
-import { ContactsT } from "./apiTypes";
+import { ContactsT, ILegalContent, LegalInfoT } from "./apiTypes";
 
 export const MirShinerayService = createApi({
   reducerPath: "MirShinerayService",
   baseQuery: baseQuery(),
-  tagTypes: ["aboutCompany", "mirShineray", "representativeOffice", "Contacts", "BecomeDealer"],
+  tagTypes: [
+    "aboutCompany",
+    "mirShineray",
+    "representativeOffice",
+    "Contacts",
+    "BecomeDealer",
+    "LegalInfo",
+    "LegalInfoDetails",
+  ],
   endpoints: (build) => ({
     fetchAboutCompanyPageData: build.query<AboutCompanyT, void>({
       query: () => ({
@@ -38,6 +46,18 @@ export const MirShinerayService = createApi({
       }),
       providesTags: ["BecomeDealer"],
     }),
+    fetchLegalInfoPageData: build.query<LegalInfoT, void>({
+      query: () => ({
+        url: `/about/legal_informations/`,
+      }),
+      providesTags: ["LegalInfo"],
+    }),
+    fetchLegalInfoData: build.query<ILegalContent, number>({
+      query: (id) => ({
+        url: `/about/legal_informations/${id}`,
+      }),
+      providesTags: ["LegalInfoDetails"],
+    }),
   }),
   refetchOnMountOrArgChange: true,
 });
@@ -49,5 +69,7 @@ export const {
   useFetchMirShinerayPageDataQuery,
   useLazyFetchRepresentativeOfficePageDataQuery,
   useLazyFetchContactsPageDataQuery,
-  useLazyFetchBecomeDealerPageDataQuery
+  useLazyFetchBecomeDealerPageDataQuery,
+  useLazyFetchLegalInfoPageDataQuery,
+  useLazyFetchLegalInfoDataQuery,
 } = MirShinerayService;

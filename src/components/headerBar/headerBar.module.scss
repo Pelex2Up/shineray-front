@@ -217,13 +217,7 @@
   position: relative;
   display: inline-block;
   height: 100%;
-
-  a {
-    position: relative;
-    top: 30%;
-    padding-bottom: 1.5rem;
-  }
-
+  @include display(flex, column, center, center);
   &:hover .dropdown_content {
     animation-name: slideDown;
     display: block;
@@ -242,6 +236,7 @@
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
+  right: 0.35%;
 
   a {
     color: rgb(255, 255, 255);

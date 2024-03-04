@@ -1,0 +1,89 @@
+@import "../../scss/mixin.scss";
+@import "../../scss/variable.scss";
+
+.wrapper {
+  height: max-content;
+
+  &_pageContent {
+    @include display(flex, column, flex-start);
+    max-width: 1600px;
+    margin: 0 auto;
+    height: auto;
+
+    &_title {
+      @include display(flex, column, flex-start, flex-start);
+      gap: 20px;
+      padding-bottom: 1rem;
+      h1 {
+        @include font(bold, $font-title-size);
+        border-bottom: 3px solid #cf2626;
+      }
+      span {
+        padding: 0 2rem;
+      }
+
+      @media (max-width: 1224px) {
+        @include display(flex, column, center, center);
+        text-align: center;
+      }
+    }
+
+    &_container {
+      @include display(flex, row, flex-start);
+      height: -webkit-fill-available;
+      gap: 2rem;
+      position: relative;
+      height: auto;
+
+      @media (max-width: 1224px) {
+        @include display(flex, column, center, center);
+        gap: 0;
+        padding: 0;
+      }
+
+      &_navMenu {
+        @include display(flex, column, flex-start, flex-start);
+        width: 400px;
+        height: auto;
+        overflow: hidden;
+
+        @media (min-width: 1224px) {
+          background-color: rgba(169, 169, 169, 0.2);
+          padding: 2rem 2rem 0 3rem;
+        }
+
+        &_body {
+          margin: 0;
+          position: relative;
+          z-index: 3;
+          overflow: hidden;
+
+          &_content {
+            @include display(flex, column, flex-start, flex-start);
+            gap: 1rem;
+
+            a {
+              text-decoration: none;
+              color: rgb(45, 45, 45);
+              border-bottom: 2px solid transparent;
+              transition: all ease-in 0.3s;
+              padding: 0 0 0.3rem;
+
+              &:hover {
+                border-bottom: 2px solid rgb(106, 106, 106);
+              }
+            }
+          }
+        }
+      }
+
+      &_legalContent {
+        @media (min-width: 1224px) {
+          max-width: calc(100vw - 400px - 4rem);
+        }
+        width: 100%;
+        padding: 1rem 1rem 2rem;
+      }
+    }
+  }
+}

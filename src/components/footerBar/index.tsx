@@ -31,7 +31,11 @@ export const Footer: FC = () => {
             Модельный ряд
           </span>
           {FooterData?.menu.automobile.map(({ name }, index) => (
-            <a href={Path.Cars} className={styles.footerWrapper_linkBar_link} key={index}>
+            <a
+              href={Path.Cars}
+              className={styles.footerWrapper_linkBar_link}
+              key={index}
+            >
               {name}
             </a>
           ))}
@@ -70,6 +74,7 @@ export const Footer: FC = () => {
           <img
             className={styles.footerWrapper_infoBar_logo}
             src={"https://www.shineray.com/upload/logo/1703907286103471.png"}
+            alt={"Logo"}
           />
           <span className={styles.footerWrapper_infoBar_contactInfo}>
             {"Мы в соцсетях:"}
@@ -233,10 +238,16 @@ export const Footer: FC = () => {
               </svg>
             </SvgIcon>
           </span>
-          <a href={Path.Contacts} className={styles.footerWrapper_infoBar_contacts}>
+          <a
+            href={Path.Contacts}
+            className={styles.footerWrapper_infoBar_contacts}
+          >
             {"Контакты"}
           </a>
-          <a href="#" className={styles.footerWrapper_infoBar_contacts}>
+          <a
+            href={Path.Dealer}
+            className={styles.footerWrapper_infoBar_contacts}
+          >
             {"Найти дилера"}
           </a>
         </div>
@@ -253,9 +264,24 @@ export const Footer: FC = () => {
           на сайте представлены для ознакомления и могут отличаться от
           реализуемых автомобилей. Информация о соответствующих моделях и
           комплектациях, их наличии, ценах, возможных выгодах и условиях
-          приобретения доступна у дилеров Shineray. Пользовательское соглашение
-          Политика конфиденциальности
+          приобретения доступна у дилеров Shineray.
         </p>
+        <div style={{ display: "flex", gap: "0.5rem", flexWrap: 'wrap' }}>
+          <a
+            href={Path.LegalInformation}
+            className={styles.footerWrapper_linkBar_link}
+            style={{ fontSize: "12px", paddingBottom: '0.1rem' }}
+          >
+            Пользовательское соглашение
+          </a>
+          <a
+            href={Path.LegalInformation}
+            className={styles.footerWrapper_linkBar_link}
+            style={{ fontSize: "12px", paddingBottom: '0.1rem' }}
+          >
+            Политика конфиденциальности
+          </a>
+        </div>
         <p>@ Все права защищены ООО «Лакшери моторс групп», УНП 193695595</p>
         <p>Разработка и поддержка сайта ООО "ВЕБ Девелопмент Бел"</p>
       </div>

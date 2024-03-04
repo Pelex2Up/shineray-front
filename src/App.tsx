@@ -16,6 +16,8 @@ import { DealerDetailsPage } from "pages/DealerDetailsPage";
 import { useScrollToTop } from "utils/scrollToTop";
 import { NewsPage } from "pages/NewsPage";
 import { NewsDetailsPage } from "pages/NewsDetailsPage";
+import { LegalInformationPage } from "pages/LegalInformationPage";
+import { InfoElement } from "pages/LegalInformationPage/InfoElement";
 
 export const App = () => {
   useScrollToTop();
@@ -35,6 +37,13 @@ export const App = () => {
               path={Path.AboutBelarus}
               element={<RepresentativeOfficePage />}
             />
+            <Route
+              path={Path.LegalInformation}
+              element={<LegalInformationPage />}
+            >
+              <Route index element={<></>} />
+              <Route path={Path.InfoElement} element={<InfoElement />} />
+            </Route>
             <Route path={Path.Contacts} element={<ContactsPage />} />
             <Route path={Path.BecomeDealer} element={<BecomeDealerPage />} />
             <Route path={Path.DealerDetail} element={<DealerDetailsPage />} />

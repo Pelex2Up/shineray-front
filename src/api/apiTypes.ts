@@ -179,3 +179,19 @@ export type NewsPageT = {
     };
   };
 };
+
+export interface ILegalContent {
+  active: boolean;
+  content: string;
+  created_date: string;
+  id: number;
+  order: number;
+  title: string;
+}
+
+export type LegalInfoT = {
+  body: {
+    content: ILegalContent[];
+    page_header: IHeader;
+  };
+};
