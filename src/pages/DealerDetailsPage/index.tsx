@@ -242,7 +242,6 @@ export const DealerDetailsPage: FC = () => {
             </div>
           </div>
         </div>
-        b
       </div>
     </div>
   );

@@ -104,6 +104,7 @@ export const ContactsPage: FC = () => {
                 ns: "use-load-option",
                 load: "Map,Placemark,control.ZoomControl,control.FullscreenControl,geoObject.addon.balloon",
               }}
+              style={{width: '100% !important'}}
             >
               <Map defaultState={mapState} width={"100%"} height={"440px"}>
                 <Placemark
