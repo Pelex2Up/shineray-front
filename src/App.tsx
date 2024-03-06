@@ -18,6 +18,10 @@ import { NewsPage } from "pages/NewsPage";
 import { NewsDetailsPage } from "pages/NewsDetailsPage";
 import { LegalInformationPage } from "pages/LegalInformationPage";
 import { InfoElement } from "pages/LegalInformationPage/InfoElement";
+import { ForOwnersPage } from "pages/ForOwners";
+import { TechDocsPage } from "pages/TechDocsPage";
+import { TechSupportPage } from "pages/TechSupportPage";
+import { WarrantyPage } from "pages/WarrantyPage";
 
 export const App = () => {
   useScrollToTop();
@@ -49,6 +53,10 @@ export const App = () => {
             <Route path={Path.DealerDetail} element={<DealerDetailsPage />} />
             <Route path={Path.News} element={<NewsPage />} />
             <Route path={Path.NewsDetails} element={<NewsDetailsPage />} />
+            <Route path={Path.Owners} element={<ForOwnersPage />} />
+            <Route path={Path.TechDocs} element={<TechDocsPage />} />
+            <Route path={Path.TechSupport} element={<TechSupportPage />} />
+            <Route path={Path.Warranty} element={<WarrantyPage />} />
           </Route>
         </Routes>
       </AnimatePresence>

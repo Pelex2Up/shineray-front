@@ -1,6 +1,33 @@
 @import "../../scss/mixin.scss";
+@import "../../scss/variable.scss";
 
 .wrapper {
   @include display(flex, column, center);
   width: 100vw;
+}
+
+.cookieButtonWrapper {
+  transition: all ease-in 0.3s !important;
+
+  &:hover {
+    &_cookieButton {
+      color: white !important;
+      background: black !important;
+    }
+  }
+
+  &_cookieButton {
+    color: black !important;
+    background: white !important;
+    border: 1px solid black !important;
+    border-radius: 7px !important;
+    font-size: $font-small-size !important;
+    height: 3rem !important;
+    transition: all ease-in 0.3s !important;
+
+    &:hover {
+      color: white !important;
+      background: black !important;
+    }
+  }
 }

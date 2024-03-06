@@ -45,6 +45,7 @@
     "http-proxy-middleware": "^2.0.6",
     "react": "^18.2.0",
     "react-cookie": "^7.0.2",
+    "react-cookie-consent": "^9.0.0",
     "react-dom": "^18.2.0",
     "react-redux": "^9.1.0",
     "react-responsive": "^9.0.2",

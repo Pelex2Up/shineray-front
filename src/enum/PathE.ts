@@ -8,9 +8,13 @@ export enum Path {
   AboutCompany = "/shineray-world/about/",
   AboutBelarus = "/shineray-world/representative-office/",
   LegalInformation = "/shineray-world/legal-information/",
-  InfoElement = ':infoId/:infoLabel/',
+  InfoElement = ":infoId/:infoLabel/",
   Contacts = "/contacts-info/",
   BecomeDealer = "/become-dealer/",
   News = "/news/",
-  NewsDetails = "/news/:newsId"
+  NewsDetails = "/news/:newsId",
+  Owners = "/for-owners/",
+  Warranty = "/for-owners/warranty/",
+  TechSupport = "/for-owners/tech-support/",
+  TechDocs = "/for-owners/tech-documentation/",
 }

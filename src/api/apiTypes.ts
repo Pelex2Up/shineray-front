@@ -195,3 +195,23 @@ export type LegalInfoT = {
     page_header: IHeader;
   };
 };
+
+export type OwnersPageT = {
+  body: {
+    page_header: IHeader;
+    content: {
+      warranty: {
+        image_header: string;
+        title: string;
+      };
+      maintenance: {
+        image_header: string;
+        title: string;
+      };
+      documentation: {
+        image_header: string;
+        title: string;
+      };
+    };
+  };
+};

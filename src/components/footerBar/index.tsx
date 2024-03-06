@@ -5,12 +5,9 @@ import { useFetchHeaderDataQuery } from "api/headerService";
 import { Path } from "enum/PathE";
 
 const Customers = [
-  { name: "Гарантия" },
-  { name: "Сервисное обслуживание" },
-  { name: "Техническое обслуживание" },
-  { name: "Запчасти и аксессуары" },
-  { name: "Техническая документация" },
-  { name: "Публичная оферта" },
+  { name: "Гарантия", path: Path.Warranty },
+  { name: "Техническое обслуживание", path: Path.TechSupport },
+  { name: "Техническая документация", path: Path.TechDocs },
 ];
 
 const Shineray = [
@@ -42,10 +39,14 @@ export const Footer: FC = () => {
         </div>
         <div className={styles.footerWrapper_linkBar}>
           <span className={styles.footerWrapper_linkBar_title}>Владельцам</span>
-          {Customers.map(({ name }, index) => (
-            <span className={styles.footerWrapper_linkBar_link} key={index}>
+          {Customers.map(({ name, path }, index) => (
+            <a
+              href={path}
+              className={styles.footerWrapper_linkBar_link}
+              key={index}
+            >
               {name}
-            </span>
+            </a>
           ))}
         </div>
         <div className={styles.footerWrapper_linkBar}>
@@ -253,37 +254,65 @@ export const Footer: FC = () => {
         </div>
       </div>
       <div className={styles.legalInformation}>
-        <p>
-          ООО «Лакшери моторс групп» официальный дистрибьютор Shineray в
-          Республике Беларусь, ведет деятельность на территории Республики
-          Беларусь в соответствии с законодательством Республики Беларусь. Вся
-          представленная на сайте информация носит информационный характер и не
-          является публичной офертой, определяемой положениями ст. 407 (2) ГК
-          РБ. Опубликованная на данном сайте информация может быть изменена в
-          любое время без предварительного уведомления. Изображения автомобилей
-          на сайте представлены для ознакомления и могут отличаться от
-          реализуемых автомобилей. Информация о соответствующих моделях и
-          комплектациях, их наличии, ценах, возможных выгодах и условиях
-          приобретения доступна у дилеров Shineray.
-        </p>
-        <div style={{ display: "flex", gap: "0.5rem", flexWrap: 'wrap' }}>
-          <a
-            href={Path.LegalInformation}
-            className={styles.footerWrapper_linkBar_link}
-            style={{ fontSize: "12px", paddingBottom: '0.1rem' }}
+        <div>
+          <p>
+            ООО “Лакшери Моторс групп” эксклюзивный представитель и официальный
+            дистрибьютор Shineray в Республике Беларусь, ведет деятельность на
+            территории Республики Беларусь в соответствии с законодательством
+            Республики Беларусь. Вся представленная на интернет-сайте информация
+            носит исключительно информационно-ознакомительный характер и ни при
+            каких условиях не является публичной офертой, определяемой
+            положениями ст. 407 (2) ГК РБ.
+          </p>
+          <div
+            style={{
+              display: "flex",
+              gap: "0.5rem",
+              flexWrap: "wrap",
+              padding: "1rem 0 0",
+            }}
           >
-            Пользовательское соглашение
-          </a>
-          <a
-            href={Path.LegalInformation}
-            className={styles.footerWrapper_linkBar_link}
-            style={{ fontSize: "12px", paddingBottom: '0.1rem' }}
-          >
-            Политика конфиденциальности
-          </a>
+            <a
+              href={Path.LegalInformation}
+              className={styles.footerWrapper_linkBar_link}
+              style={{
+                fontSize: "12px",
+                paddingBottom: "0.1rem",
+                color: "white",
+              }}
+            >
+              Юридическая информация
+            </a>
+            <a
+              href={Path.LegalInformation + "4/politika-konfidencialnosti"}
+              className={styles.footerWrapper_linkBar_link}
+              style={{
+                fontSize: "12px",
+                paddingBottom: "0.1rem",
+                color: "white",
+              }}
+            >
+              Политика конфиденциальности
+            </a>
+          </div>
         </div>
-        <p>@ Все права защищены ООО «Лакшери моторс групп», УНП 193695595</p>
-        <p>Разработка и поддержка сайта ООО "ВЕБ Девелопмент Бел"</p>
+        <div>
+          <p>@ Все права защищены ООО «Лакшери моторс групп», УНП 193695595</p>
+          <p>
+            Разработка и поддержка сайта{" "}
+            <a
+              href={Path.Home}
+              className={styles.footerWrapper_linkBar_link}
+              style={{
+                fontSize: "12px",
+                paddingBottom: "0.1rem",
+                color: "white",
+              }}
+            >
+              ООО "ВЕБ Девелопмент Бел"
+            </a>
+          </p>
+        </div>
       </div>
     </div>
   );

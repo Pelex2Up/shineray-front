@@ -122,7 +122,7 @@
   .container {
     &_news {
       @include display(flex, column, center, center);
-      padding: 1rem;
+      padding: 1rem 0;
     }
     &_carSelector {
       &_modelPreview {

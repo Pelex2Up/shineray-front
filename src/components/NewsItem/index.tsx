@@ -22,7 +22,7 @@ export const NewsItem: FC<NewsItemT> = ({ data, ...restProps }) => {
   useEffect(() => {
     const formatedDate = publication_date.split("T");
     setDate(`${reverseDate(formatedDate[0])}`);
-  }, [data]);
+  }, [data, publication_date]);
 
   return (
     <a {...restProps} className={styles.container}>

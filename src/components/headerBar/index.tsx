@@ -34,8 +34,8 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
     const [fetchData, { data: headerData }] = useLazyFetchHeaderDataQuery();
 
     useEffect(() => {
-      fetchData()
-    }, [])
+      fetchData();
+    }, []);
 
     useEffect(() => {
       if (mobileMenu) {
@@ -124,7 +124,12 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
               </div>
 
               <div className={styles.dropdownWrapper}>
-                <Button href={Path.Home} text="Владельцам" />
+                <Button href={Path.Owners} text="Владельцам" />
+                <div className={styles.dropdown_content}>
+                  <a href={Path.Warranty}>Гарантия</a>
+                  <a href={Path.TechSupport}>Техническое обслуживание</a>
+                  <a href={Path.TechDocs}>Техническая документация</a>
+                </div>
               </div>
               <div className={styles.dropdownWrapper}>
                 <Button href={Path.Contacts} text="Контакты" />
@@ -173,7 +178,7 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
                 expandIcon={<ExpandMore sx={{ color: "white" }} />}
                 aria-controls="panel1-content"
                 id="panel1-header"
-                key={'models'}
+                key={"models"}
               >
                 Модельный ряд
               </AccordionSummary>
@@ -200,20 +205,24 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
             </Accordion>
             <a
               href={Path.Dealer}
-              key={'dealers'}
+              key={"dealers"}
               rel="nofollow"
               className={styles.mobileMenuWrapper_button}
             >
               Дилеры
               <span />
             </a>
-            <a key={'forOwners'} href={Path.Home} className={styles.mobileMenuWrapper_button}>
+            <a
+              key={"forOwners"}
+              href={Path.Owners}
+              className={styles.mobileMenuWrapper_button}
+            >
               Владельцам
               <span />
             </a>
             <a
               href={Path.Contacts}
-              key={'contacts'}
+              key={"contacts"}
               rel="nofollow"
               className={styles.mobileMenuWrapper_button}
             >
@@ -225,7 +234,7 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
                 expandIcon={<ExpandMore sx={{ color: "white" }} />}
                 aria-controls="panel1-content"
                 id="panel1-header"
-                key={'shineray-world'}
+                key={"shineray-world"}
               >
                 Мир Shineray
               </AccordionSummary>
@@ -255,7 +264,7 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
                   <span />
                 </a>
                 <a
-                  key={'legalInfo'}
+                  key={"legalInfo"}
                   href={Path.LegalInformation}
                   style={{ border: "none" }}
                   className={styles.mobileMenuWrapper_accordionButton_link}
@@ -266,7 +275,11 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
               </AccordionDetails>
             </Accordion>
 
-            <a href={Path.News} className={styles.mobileMenuWrapper_button} key={'news'}>
+            <a
+              href={Path.News}
+              className={styles.mobileMenuWrapper_button}
+              key={"news"}
+            >
               Новости
               <span />
             </a>
