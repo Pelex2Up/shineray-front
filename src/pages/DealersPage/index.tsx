@@ -20,6 +20,7 @@ import {
   createTheme,
 } from "@mui/material";
 import { BreadcrumbsComponent } from "components/breadcrumbs";
+import { useMediaQuery } from "react-responsive";
 
 const theme = createTheme({
   components: {
@@ -93,6 +94,7 @@ const mapEndpoints: {
 export const DealersPage: FC = () => {
   const [fetchPage, { data: responseData, isLoading, isSuccess }] =
     useLazyFetchDealersPageDataQuery();
+  const isDesktopOrMobile = useMediaQuery({ minDeviceWidth: 1224 });
   const [filterCity, setFilterCity] = useState<string>("Без фильтра");
   const [pageData, setPageData] = useState<DealersPageT>();
   const [zoom, setZoom] = useState(6);
@@ -208,7 +210,7 @@ export const DealersPage: FC = () => {
       controls: ["zoomControl", "fullscreenControl"],
     };
     setMapRefresh(newState);
-    scrollToElement("page-title");
+    scrollToElement(isDesktopOrMobile ? "page-title" : "yandex-map");
   };
 
   if (!pageData || isLoading) {
@@ -413,6 +415,7 @@ export const DealersPage: FC = () => {
             className={styles.dealersWrapper_content_rightSide_mapWrapper}
           >
             <Map
+              id="yandex-map"
               defaultState={mapState}
               state={mapRefresh}
               className={styles.dealersWrapper_content_rightSide_mapWrapper_map}

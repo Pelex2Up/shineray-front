@@ -88,6 +88,7 @@
 
       @media (max-width: 1224px) {
         @include display(flex, column);
+        padding: 2rem 1rem;
       }
 
       &_title {

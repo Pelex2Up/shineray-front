@@ -10,10 +10,18 @@
   &_index {
     padding: 60px 0;
 
+    @media (max-width: 1224px) {
+      padding: 0;
+    }
+
     &_content {
       max-width: 1600px;
       margin: 0 auto;
       padding: 0 40px;
+
+      @media (max-width: 1224px) {
+        padding: 2rem 2.5rem;
+      }
 
       &_buttonsBlock {
         margin: 0 -20px;
@@ -101,10 +109,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 1rem;
 
     &_button {
       width: 100%;
-      padding: 20px;
+      padding: 0;
       box-sizing: border-box;
     }
   }
