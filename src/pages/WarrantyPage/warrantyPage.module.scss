@@ -1,0 +1,20 @@
+@import "../../scss/mixin.scss";
+@import "../../scss/variable.scss";
+
+.wrapper {
+  &_content {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 2rem 5rem;
+    @include display(flex, column, center, center);
+    gap: 2rem;
+
+    &_title {
+      @include display(flex, column, center, center);
+      h1 {
+        @include font(bold, $font-title-size);
+        border-bottom: 3px solid #cf2626;
+      }
+    }
+  }
+}

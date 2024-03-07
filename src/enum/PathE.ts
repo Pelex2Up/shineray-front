@@ -17,4 +17,5 @@ export enum Path {
   Warranty = "/for-owners/warranty/",
   TechSupport = "/for-owners/tech-support/",
   TechDocs = "/for-owners/tech-documentation/",
+  PDF = "/pdf/uploads/:directory/:category/:model/:docType/:docName",
 }

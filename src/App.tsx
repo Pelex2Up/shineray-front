@@ -22,6 +22,7 @@ import { ForOwnersPage } from "pages/ForOwners";
 import { TechDocsPage } from "pages/TechDocsPage";
 import { TechSupportPage } from "pages/TechSupportPage";
 import { WarrantyPage } from "pages/WarrantyPage";
+import { PDFViewer } from "components/pdfViewer";
 
 export const App = () => {
   useScrollToTop();
@@ -30,6 +31,7 @@ export const App = () => {
     <div className={styles.container}>
       <AnimatePresence>
         <Routes>
+          <Route path={Path.PDF} element={<PDFViewer />} />
           <Route path={Path.Home} element={<MainLayout />}>
             <Route index element={<HomePage />} />
             <Route path={Path.Cars} element={<CarModelsPage />} />

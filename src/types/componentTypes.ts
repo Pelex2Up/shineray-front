@@ -72,6 +72,7 @@ export interface ICar {
   seats: string;
   certification_standard: string;
   category: number;
+  tech_pdf: string;
 }
 
 export type IAbout = {
@@ -86,7 +87,7 @@ export type IAbout = {
   content_1: string;
   image_top_content: string;
   content_2: string;
-}
+};
 
 export type IHistory = {
   active: boolean;
@@ -96,7 +97,7 @@ export type IHistory = {
   image: string;
   text: string;
   title: string;
-}
+};
 
 export type AboutCompanyT = {
   body: {

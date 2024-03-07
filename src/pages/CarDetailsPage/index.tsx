@@ -248,12 +248,17 @@ export const CarDetailsPage: FC = () => {
                 </li>
               )}
             </ul>
-            <LinkButton
-              className={styles.techButton}
-              text={`Технические характеристики`}
-            >
-              <PictureAsPdf style={{ marginRight: "0.2rem" }} />
-            </LinkButton>
+            {AutoModel.tech_pdf.length > 0 && (
+              <LinkButton
+                className={styles.techButton}
+                text={`Технические характеристики`}
+                href={`https://dev.shineray.by/pdf/${AutoModel.tech_pdf}`}
+                target="_blank"
+                rel="norefferrer"
+              >
+                <PictureAsPdf style={{ marginRight: "0.2rem" }} />
+              </LinkButton>
+            )}
           </div>
         </div>
         <div className={styles.wrapper_main_proText}>
