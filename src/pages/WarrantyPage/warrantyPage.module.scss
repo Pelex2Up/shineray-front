@@ -9,6 +9,10 @@
     @include display(flex, column, center, center);
     gap: 2rem;
 
+    @media (max-width: 1224px) {
+      padding: 2rem 1rem;
+    }
+
     &_title {
       @include display(flex, column, center, center);
       h1 {

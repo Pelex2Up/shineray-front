@@ -248,7 +248,7 @@ export const CarDetailsPage: FC = () => {
                 </li>
               )}
             </ul>
-            {AutoModel.tech_pdf.length > 0 && (
+            {AutoModel.tech_pdf && (
               <LinkButton
                 className={styles.techButton}
                 text={`Технические характеристики`}
