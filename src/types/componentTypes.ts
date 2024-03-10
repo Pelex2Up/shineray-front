@@ -73,6 +73,10 @@ export interface ICar {
   certification_standard: string;
   category: number;
   tech_pdf: string;
+  pdf_files: {
+    title: string;
+    file: string;
+  }[];
 }
 
 export type IAbout = {

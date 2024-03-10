@@ -215,3 +215,18 @@ export type OwnersPageT = {
     };
   };
 };
+
+export type CarsCategoryDocsT = {
+  id: number;
+  description: string;
+  image: string;
+  name: string;
+  car_models: ICar[];
+};
+
+export type TechDocsResponseT = {
+  body: {
+    page_header: IHeader;
+    content: CarsCategoryDocsT[];
+  };
+};

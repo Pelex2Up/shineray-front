@@ -1,6 +1,6 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { baseQuery } from "./baseApi";
-import { OwnersPageT } from "./apiTypes";
+import { OwnersPageT, TechDocsResponseT } from "./apiTypes";
 
 export const OwnersService = createApi({
   reducerPath: "OwnersService",
@@ -19,7 +19,7 @@ export const OwnersService = createApi({
       }),
       providesTags: ["warranty"],
     }),
-    fetchTechDocsData: build.query<any, void>({
+    fetchTechDocsData: build.query<TechDocsResponseT, void>({
       query: () => ({
         url: `/owners/documents/`,
       }),

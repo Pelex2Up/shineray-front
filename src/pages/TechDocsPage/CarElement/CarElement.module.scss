@@ -1,0 +1,10 @@
+.carCard {
+  transition: all ease-in 0.3s;
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+.selected {
+  border: 2px solid black !important;
+}
