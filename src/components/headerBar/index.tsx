@@ -212,14 +212,51 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
               Дилеры
               <span />
             </a>
-            <a
-              key={"forOwners"}
-              href={Path.Owners}
-              className={styles.mobileMenuWrapper_button}
-            >
-              Владельцам
-              <span />
-            </a>
+            <Accordion className={styles.mobileMenuWrapper_accordionButton}>
+              <AccordionSummary
+                expandIcon={<ExpandMore sx={{ color: "white" }} />}
+                aria-controls="panel1-content"
+                id="panel1-header"
+                key={"models"}
+              >
+                Владельцам
+              </AccordionSummary>
+              <AccordionDetails sx={{ paddingBottom: "2rem" }}>
+                <a
+                  style={{
+                    border: "",
+                  }}
+                  href={Path.Warranty}
+                  rel="nofollow"
+                  className={styles.mobileMenuWrapper_accordionButton_link}
+                >
+                  Гарантия
+                  <span />
+                </a>
+                <a
+                  style={{
+                    border: "",
+                  }}
+                  href={Path.TechSupport}
+                  rel="nofollow"
+                  className={styles.mobileMenuWrapper_accordionButton_link}
+                >
+                  Техническое обслуживание
+                  <span />
+                </a>
+                <a
+                  style={{
+                    border: "none",
+                  }}
+                  href={Path.TechDocs}
+                  rel="nofollow"
+                  className={styles.mobileMenuWrapper_accordionButton_link}
+                >
+                  Техническая документация
+                  <span />
+                </a>
+              </AccordionDetails>
+            </Accordion>
             <a
               href={Path.Contacts}
               key={"contacts"}
