@@ -15,9 +15,22 @@
 
     &_title {
       @include display(flex, column, center, center);
+      text-align: center;
       h1 {
         @include font(bold, $font-title-size);
         border-bottom: 3px solid #cf2626;
+      }
+    }
+
+    &_subtitle {
+      @include display(flex, column, center, center);
+      h1 {
+        @include font(bold, $font-title-size);
+        border-bottom: 3px solid #cf2626;
+
+        @media (max-width: 1224px) {
+          border: none;
+        }
       }
     }
 
@@ -41,5 +54,10 @@
   &:hover {
     color: white;
     background: black;
+  }
+
+  @media (max-width: 1224px) {
+    width: 100%;
+    max-width: none;
   }
 }

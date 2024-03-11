@@ -9,6 +9,7 @@ import {
   createTheme,
 } from "@mui/material";
 import styles from "./CarElement.module.scss";
+import { useMediaQuery } from "react-responsive";
 
 type ICarElement = {
   car: ICar;
@@ -35,24 +36,36 @@ const theme = createTheme({
 });
 
 export const CarElement: FC<ICarElement> = ({ car, selected, ...props }) => {
+  const isDesktopOrMobile = useMediaQuery({ minDeviceWidth: 1224 });
   return (
-    <div {...props} style={{ width: "max-content" }}>
+    <div
+      {...props}
+      style={
+        isDesktopOrMobile
+          ? { width: "min-content", minWidth: "24%" }
+          : { width: "47%" }
+      }
+    >
       <ThemeProvider theme={theme}>
         <Card
-          sx={{ maxWidth: 345 }}
+          sx={isDesktopOrMobile ? { maxWidth: 345 } : { width: "100%" }}
           className={`${styles.carCard} ${selected ? styles.selected : ""}`}
         >
           <CardMedia
-            sx={{ height: 180, backgroundSize: "cover" }}
+            sx={
+              isDesktopOrMobile
+                ? { height: 180, backgroundSize: "cover" }
+                : { height: 100, backgroundSize: "contain" }
+            }
             image={`https://dev.shineray.by/media/${car.image_xl}`}
             title={car.title}
           />
           <CardContent>
             <Typography
               gutterBottom
-              variant="h5"
+              variant={isDesktopOrMobile ? "h5" : "inherit"}
               component="div"
-              sx={{ textAlign: "center" }}
+              sx={{ textAlign: "center", height: "4rem" }}
             >
               {car.title}
             </Typography>

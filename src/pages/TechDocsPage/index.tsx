@@ -17,48 +17,60 @@ import styles from "./techDocsPage.module.scss";
 import { CarElement } from "./CarElement";
 import { LinkButton } from "components/common/Buttons";
 import { PictureAsPdf } from "@mui/icons-material";
-
-interface TabPanelProps {
-  children?: React.ReactNode;
-  dir?: string;
-  index: number;
-  value: number;
-}
-
-const themeUI = createTheme({
-  components: {
-    MuiAppBar: {
-      styleOverrides: {
-        root: {
-          boxShadow: "none",
-        },
-      },
-    },
-    MuiTab: {
-      styleOverrides: {
-        root: {
-          color: "black",
-          width: "100%",
-          flexBasis: "content",
-          whiteSpace: "nowrap",
-          "&.Mui-selected": {
-            color: "black",
-            fontWeight: "bold",
-          },
-        },
-      },
-    },
-  },
-});
+import { useMediaQuery } from "react-responsive";
 
 export const TechDocsPage: FC = () => {
   const [fetchData, { data: pageData, isFetching, isLoading }] =
     useLazyFetchTechDocsDataQuery();
+  const isDesktopOrMobile = useMediaQuery({ minDeviceWidth: 1224 });
   const theme = useTheme();
   const [value, setValue] = useState(0);
   const [selectedCar, setSelectedCar] = useState<number>();
   const [currentDocs, setCurrentDocs] =
     useState<{ title: string; file: string }[]>();
+
+  interface TabPanelProps {
+    children?: React.ReactNode;
+    dir?: string;
+    index: number;
+    value: number;
+  }
+
+  const themeUI = createTheme({
+    components: {
+      MuiAppBar: {
+        styleOverrides: {
+          root: {
+            boxShadow: "none",
+          },
+        },
+      },
+      MuiTypography: {
+        styleOverrides: {
+          body1: {
+            display: "flex",
+            flexDirection: "row",
+            gap: "1rem",
+            flexWrap: "wrap",
+          },
+        },
+      },
+      MuiTab: {
+        styleOverrides: {
+          root: {
+            color: "black",
+            width: "100%",
+            flexBasis: "content",
+            whiteSpace: "nowrap",
+            "&.Mui-selected": {
+              color: "black",
+              fontWeight: "bold",
+            },
+          },
+        },
+      },
+    },
+  });
 
   function TabPanel(props: TabPanelProps) {
     const { children, value, index, ...other } = props;
@@ -142,7 +154,13 @@ export const TechDocsPage: FC = () => {
             <h1>{pageData.body.page_header.title}</h1>
           </div>
 
-          <Box sx={{ alignSelf: "flex-start" }}>
+          <Box
+            sx={
+              isDesktopOrMobile
+                ? { alignSelf: "flex-start" }
+                : { alignSelf: "flex-start", width: "100%" }
+            }
+          >
             <AppBar
               position="static"
               sx={{
@@ -155,7 +173,10 @@ export const TechDocsPage: FC = () => {
                 value={value}
                 onChange={handleChange}
                 textColor="primary"
-                variant="fullWidth"
+                variant={isDesktopOrMobile ? "fullWidth" : "scrollable"}
+                scrollButtons
+                allowScrollButtonsMobile
+                TabScrollButtonProps={{ style: { color: "black" } }}
                 TabIndicatorProps={{
                   style: {
                     borderBottom: "2px solid #cf2626",
@@ -205,6 +226,7 @@ export const TechDocsPage: FC = () => {
               >
                 {tabContent.car_models.map((element, indexEl) => (
                   <CarElement
+                    onClick={() => setSelectedCar(element.id)}
                     selected={element.id === selectedCar}
                     key={indexEl + "-" + element.id + "tab"}
                     car={element}
@@ -216,7 +238,7 @@ export const TechDocsPage: FC = () => {
           {currentDocs && (
             <div className={styles.wrapper_content_docs}>
               <div
-                className={styles.wrapper_content_title}
+                className={styles.wrapper_content_subtitle}
                 style={{
                   justifyContent: "flex-start",
                   alignItems: "flex-start",
