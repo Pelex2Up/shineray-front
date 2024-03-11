@@ -13,8 +13,10 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { useBoolean } from "customHooks/useBoolean";
 import { ModelCarsMenu } from "./components/ModelCarsMenu";
 import { Close, ExpandMore } from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
+import { generatePath, useNavigate } from "react-router-dom";
 import { useLazyFetchHeaderDataQuery } from "api/headerService";
+import logo from "../../assets/logo/shineray-logo.png";
+import { transliterate } from "transliteration";
 
 interface IHeader {
   color: boolean;
@@ -96,12 +98,7 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
         >
           <div className={styles.headerWrapper_header_logo}>
             <a href={Path.Home} rel="nofollow">
-              <img
-                alt="Logo"
-                src={
-                  "https://www.shineray.com/upload/logo/1703907286103471.png"
-                }
-              />
+              <img alt="Logo" src={logo} />
             </a>
           </div>
           {isDesktopOrMobile ? (
@@ -147,7 +144,6 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
               <div className={styles.dropdownWrapper}>
                 <Button href={Path.News} text="Новости" />
               </div>
-
               <div
                 className={`${styles.dropdownMenu}  ${dropDownCars ? styles.open : styles.closed}`}
                 data-dropdown="menu-cars"
@@ -193,7 +189,9 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
                             : "",
                       }}
                       key={cat.name}
-                      href={Path.Cars}
+                      href={generatePath(Path.CarsCategory, {
+                        category: `${index + 1}-${transliterate(cat.name)}`,
+                      })}
                       rel="nofollow"
                       className={styles.mobileMenuWrapper_accordionButton_link}
                     >

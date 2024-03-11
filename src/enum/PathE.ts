@@ -1,7 +1,8 @@
 export enum Path {
   Home = "/",
   Cars = "/auto/",
-  ModelAuto = "/auto/:carModel",
+  CarsCategory = "/auto/:category",
+  ModelAuto = "/auto/:category/:carModel",
   Dealer = "/dealers/",
   DealerDetail = "/dealers/:dealerId",
   MirShineray = "/shineray-world/",

@@ -3,6 +3,9 @@ import styles from "./footerBar.module.scss";
 import { SvgIcon } from "@mui/material";
 import { useFetchHeaderDataQuery } from "api/headerService";
 import { Path } from "enum/PathE";
+import { generatePath } from "react-router-dom";
+import { transliterate } from "transliteration";
+import logo from "../../assets/logo/shineray-logo.png";
 
 const Customers = [
   { name: "Гарантия", path: Path.Warranty },
@@ -29,7 +32,9 @@ export const Footer: FC = () => {
           </span>
           {FooterData?.menu.automobile.map(({ name }, index) => (
             <a
-              href={Path.Cars}
+              href={generatePath(Path.CarsCategory, {
+                category: `${index + 1}-${transliterate(name)}`,
+              })}
               className={styles.footerWrapper_linkBar_link}
               key={index}
             >
@@ -74,7 +79,7 @@ export const Footer: FC = () => {
         <div className={styles.footerWrapper_infoBar}>
           <img
             className={styles.footerWrapper_infoBar_logo}
-            src={"https://www.shineray.com/upload/logo/1703907286103471.png"}
+            src={logo}
             alt={"Logo"}
           />
           <span className={styles.footerWrapper_infoBar_contactInfo}>
@@ -254,7 +259,7 @@ export const Footer: FC = () => {
         </div>
       </div>
       <div className={styles.legalInformation}>
-        <div>
+        <div style={{ maxWidth: "60vw" }}>
           <p>
             ООО “Лакшери Моторс групп” эксклюзивный представитель и официальный
             дистрибьютор Shineray в Республике Беларусь, ведет деятельность на
@@ -278,7 +283,6 @@ export const Footer: FC = () => {
               style={{
                 fontSize: "12px",
                 paddingBottom: "0.1rem",
-                color: "white",
               }}
             >
               Юридическая информация
@@ -289,29 +293,40 @@ export const Footer: FC = () => {
               style={{
                 fontSize: "12px",
                 paddingBottom: "0.1rem",
-                color: "white",
               }}
             >
               Политика конфиденциальности
             </a>
           </div>
         </div>
-        <div>
-          <p>@ Все права защищены ООО «Лакшери моторс групп», УНП 193695595</p>
-          <p>
-            Разработка и поддержка сайта{" "}
-            <a
-              href={Path.Home}
-              className={styles.footerWrapper_linkBar_link}
-              style={{
-                fontSize: "12px",
-                paddingBottom: "0.1rem",
-                color: "white",
-              }}
-            >
-              ООО "ВЕБ Девелопмент Бел"
-            </a>
-          </p>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-start",
+            alignItems: "flex-start",
+            gap: "1rem",
+          }}
+        >
+          <div>
+            <p>
+              @ Все права защищены ООО «Лакшери моторс групп», УНП 193695595
+            </p>
+            <p>
+              Разработка и поддержка сайта{" "}
+              <a
+                href={Path.Home}
+                className={styles.footerWrapper_linkBar_link}
+                style={{
+                  fontSize: "12px",
+                  paddingBottom: "0.1rem",
+                  color: "white",
+                }}
+              >
+                ООО "ВЕБ Девелопмент Бел"
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </div>

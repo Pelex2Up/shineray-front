@@ -9,6 +9,7 @@ import { LinkButton } from "components/common/Buttons";
 import { Swiper, SwiperClass, SwiperRef, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { Preloader } from "components/Preloader";
+import { transliterate } from "transliteration";
 
 const News = [
   {
@@ -125,6 +126,7 @@ export const HomePage: FC = () => {
           <LinkButton
             text={"Подробнее о модели"}
             href={generatePath(Path.ModelAuto, {
+              category: `${HomePageData.body.car_models[currentIndex ? currentIndex : 0].category}-car-preview`,
               carModel: `${HomePageData.body.car_models[currentIndex ? currentIndex : 0].id}-shineray-automobile-${HomePageData?.body.car_models[currentIndex ? currentIndex : 0].name}`,
             })}
             className={styles.modelCarDetail}
@@ -138,7 +140,9 @@ export const HomePage: FC = () => {
               <NewsItem
                 data={data}
                 key={index}
-                href={generatePath(Path.NewsDetails, { newsId: String(data.id) })}
+                href={generatePath(Path.NewsDetails, {
+                  newsId: String(data.id),
+                })}
               />
             ))}
           </div>

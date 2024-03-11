@@ -59,10 +59,10 @@
   background-color: #eeeeee;
   border-radius: 100%;
   position: absolute;
-  left: 50%;
-  top: 50%;
-  height: 55px;
-  width: 55px;
+  left: 40%;
+  top: 46%;
+  height: 80px;
+  width: 80px;
   overflow: hidden;
   z-index: 99999;
 }

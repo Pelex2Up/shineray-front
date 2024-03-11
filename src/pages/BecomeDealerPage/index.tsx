@@ -17,6 +17,7 @@ import {
 import { LinkButton } from "components/common/Buttons";
 import { Path } from "enum/PathE";
 import { BreadcrumbsComponent } from "components/breadcrumbs";
+import formLogo from "../../assets/logo/formLogo.png";
 
 const theme = createTheme({
   components: {
@@ -103,7 +104,7 @@ export const BecomeDealerPage: FC = () => {
           <div className={styles.pageWrapper_container_form_content}>
             <div className={styles.pageWrapper_container_form_content_logo}>
               <img
-                src="https://www.shineray.com/template/pc/default/images/businesslogo.png"
+                src={formLogo}
                 alt="Logo"
               />
             </div>
@@ -237,7 +238,7 @@ export const BecomeDealerPage: FC = () => {
             src={`https://dev.shineray.by/media/${pageData.body.content.form_image}`}
             alt="Form-background"
           />
-        </div>        
+        </div>
       </div>
     </div>
   );

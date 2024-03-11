@@ -17,6 +17,8 @@ export const HeaderSlider: FC<HeaderSliderT> = ({ images, image }) => {
     autoplay: true,
     autoplaySpeed: 6000,
     pauseOnHover: true,
+    height: '600px',
+    maxHeight: '600px',
   };
 
   return (
@@ -37,9 +39,9 @@ export const HeaderSlider: FC<HeaderSliderT> = ({ images, image }) => {
             <img
               src={`https://dev.shineray.by/media/${image}`}
               key={index}
-              style={{ maxHeight: "600px" }}
+              style={{ height: "600px", objectFit: "cover" }}
               rel="preload"
-              alt='header-page-preview'
+              alt="header-page-preview"
             />
           ))}
         </Slider>

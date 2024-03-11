@@ -1,5 +1,5 @@
 import styles from "./App.module.scss";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { Path } from "enum/PathE";
 import { MainLayout } from "components/MainLayout";
 import { HomePage } from "pages/HomePage";
@@ -25,7 +25,10 @@ import { WarrantyPage } from "pages/WarrantyPage";
 import { PDFViewer } from "components/pdfViewer";
 
 export const App = () => {
-  useScrollToTop();
+  const { pathname } = useLocation();
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  pathname.split("/")[1] !== "auto" && useScrollToTop();
 
   return (
     <div className={styles.container}>
@@ -34,7 +37,11 @@ export const App = () => {
           <Route path={Path.PDF} element={<PDFViewer />} />
           <Route path={Path.Home} element={<MainLayout />}>
             <Route index element={<HomePage />} />
-            <Route path={Path.Cars} element={<CarModelsPage />} />
+            <Route path={Path.Cars} element={<CarModelsPage />}>
+              <Route index element={<CarModelsPage />} />
+              <Route path={Path.CarsCategory} element={<CarModelsPage />} />
+            </Route>
+
             <Route path={Path.ModelAuto} element={<CarDetailsPage />} />
             <Route path={Path.Dealer} element={<DealersPage />} />
             <Route path={Path.MirShineray} element={<MirShinerayPage />} />

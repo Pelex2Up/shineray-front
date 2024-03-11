@@ -17,6 +17,7 @@ import {
 } from "@mui/material";
 import { LinkButton } from "components/common/Buttons";
 import { Path } from "enum/PathE";
+import formLogo from "../../assets/logo/formLogo.png";
 
 const theme = createTheme({
   components: {
@@ -104,7 +105,7 @@ export const ContactsPage: FC = () => {
                 ns: "use-load-option",
                 load: "Map,Placemark,control.ZoomControl,control.FullscreenControl,geoObject.addon.balloon",
               }}
-              style={{width: '100% !important'}}
+              style={{ width: "100% !important" }}
             >
               <Map defaultState={mapState} width={"100%"} height={"440px"}>
                 <Placemark
@@ -126,10 +127,7 @@ export const ContactsPage: FC = () => {
         >
           <div className={styles.pageWrapper_container_form_content}>
             <div className={styles.pageWrapper_container_form_content_logo}>
-              <img
-                src="https://www.shineray.com/template/pc/default/images/businesslogo.png"
-                alt="Logo"
-              />
+              <img src={formLogo} alt="Logo" />
             </div>
             <div
               className={styles.pageWrapper_container_form_content_formWrapper}

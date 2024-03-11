@@ -17,6 +17,7 @@
       @include display(flex, column, center, center);
       gap: 20px;
       h1 {
+        margin: 0 1rem;
         @include font(bold, $font-title-size);
         border-bottom: 3px solid #cf2626;
       }
@@ -56,9 +57,11 @@
           cursor: pointer;
           transition: ease-in 0.3s;
 
-          &:hover {
-            color: #cf2626;
-            background: #ffffff;
+          @media (min-width: 1224px) {
+            &:hover {
+              color: #cf2626;
+              background: #ffffff;
+            }
           }
         }
       }
@@ -90,17 +93,11 @@
 
         &_leftNavMenu {
           width: 100%;
-
-          &_category {
-            &:hover {
-              color: black;
-              background: #f7f7f7;
-            }
-          }
         }
 
         &_rightModelsBlock {
           @include display(flex, row, center, center);
+          width: 100%;
         }
       }
     }

@@ -1,15 +1,29 @@
 .wrapper {
   max-width: 100vw;
   width: 100vw;
+  height: 600px;
+  position: relative;
+
+  @media (max-width: 1224px) {
+    height: 25vh;
+  }
+
+  img {
+    height: 600px;
+    object-fit: cover;
+
+    @media (max-width: 1224px) {
+      height: 25vh;
+    }
+  }
 }
 
 .soloImage {
   width: 100%;
-  min-height: 300px;
-  max-height: 600px;
+  height: 600px;
   object-fit: cover;
 
   @media (max-width: 1224px) {
-    min-height: 150px;
+    height: 25vh;
   }
 }
