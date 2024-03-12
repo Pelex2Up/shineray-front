@@ -7,7 +7,7 @@ export const CarDetailsPageService = createApi({
   baseQuery: baseQuery(),
   tagTypes: ["CarDetails"],
   endpoints: (build) => ({
-    fetchCarModelData: build.query<ICar, number | string>({
+    fetchCarModelData: build.mutation<ICar, number | string>({
       query: (id) => ({
         url: `/car_model/${id}`,
       }),
@@ -16,4 +16,4 @@ export const CarDetailsPageService = createApi({
   refetchOnMountOrArgChange: true,
 });
 
-export const { useLazyFetchCarModelDataQuery } = CarDetailsPageService;
+export const { useFetchCarModelDataMutation } = CarDetailsPageService;

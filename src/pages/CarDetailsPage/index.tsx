@@ -1,4 +1,4 @@
-import { useLazyFetchCarModelDataQuery } from "api/carDetailsPageService";
+import { useFetchCarModelDataMutation } from "api/carDetailsPageService";
 import { motion } from "framer-motion";
 import { FC, useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -24,8 +24,8 @@ import { BreadcrumbsComponent } from "components/breadcrumbs";
 export const CarDetailsPage: FC = () => {
   const params = useParams();
   const { carModel } = params;
-  const [fetchData, { data: AutoModel, isFetching }] =
-    useLazyFetchCarModelDataQuery();
+  const [fetchData, { data: AutoModel, isLoading }] =
+    useFetchCarModelDataMutation();
   const [imagePreview, { onToggle: toggleImage }] = useBoolean(false);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [instanceModel, setInstanceModel] = useState<SwiperClass | null>(null);
@@ -65,7 +65,7 @@ export const CarDetailsPage: FC = () => {
     </Typography>,
   ];
 
-  if (!AutoModel || isFetching) {
+  if (!AutoModel || isLoading) {
     return <Preloader />;
   }
 
