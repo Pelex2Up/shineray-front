@@ -67,7 +67,7 @@
     height: 80px;
     width: 80px;
     overflow: hidden;
-    z-index: 99999;
+    z-index: 999;
     left: 40%;
   }
 }
@@ -81,7 +81,7 @@
   height: 80px;
   width: 80px;
   overflow: hidden;
-  z-index: 99999;
+  z-index: 999;
 }
 
 .loader .c {
