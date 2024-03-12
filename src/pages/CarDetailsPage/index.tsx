@@ -42,7 +42,7 @@ export const CarDetailsPage: FC = () => {
         fetchData(id);
       }
     }
-  }, [carModel, AutoModel, fetchData]);
+  }, [carModel, fetchData]);
 
   useEffect(() => {
     if (imagePreview) {

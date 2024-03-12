@@ -14,23 +14,22 @@ type CardItemT = {
 
 export const CarItemCard: FC<CardItemT> = ({ car }) => {
   const isDesktopOrMobile = useMediaQuery({ minDeviceWidth: 1224 });
-  const navigate = useNavigate();
 
   return (
-    <motion.div
+    <motion.a
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      style={isDesktopOrMobile ? {} : { width: "100%" }}
-      onClick={() =>
-        navigate(
-          generatePath(Path.ModelAuto, {
-            carModel: `${car.id}-shineray-automobile-${car.name}`,
-            category: `${car.category}-car-preview`,
-          }),
-        )
+      style={
+        isDesktopOrMobile
+          ? { textDecoration: "none" }
+          : { width: "100%", textDecoration: "none" }
       }
+      href={generatePath(Path.ModelAuto, {
+        carModel: `${car.id}-shineray-automobile-${car.name}`,
+        category: `${car.category}-car-preview`,
+      })}
     >
       <Card
         sx={{
@@ -63,14 +62,14 @@ export const CarItemCard: FC<CardItemT> = ({ car }) => {
             <LinkButton
               text={"Подробнее"}
               className={styles.autoCard_buttonsBlock_detailsButton}
-              href={generatePath(Path.ModelAuto, {
-                category: `${car.category}-${car.category}`,
-                carModel: `${car.id}-shineray-automobile-${car.name}`,
-              })}
+              // href={generatePath(Path.ModelAuto, {
+              //   category: `${car.category}-car-preview`,
+              //   carModel: `${car.id}-shineray-automobile-${car.name}`,
+              // })}
             />
           </div>
         </CardContent>
       </Card>
-    </motion.div>
+    </motion.a>
   );
 };
