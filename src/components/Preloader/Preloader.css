@@ -60,6 +60,14 @@
 
 @media (max-width: 1224px) {
   .loader {
+    background-color: #eeeeee;
+    border-radius: 100%;
+    position: absolute;
+    top: 46%;
+    height: 80px;
+    width: 80px;
+    overflow: hidden;
+    z-index: 99999;
     left: 40%;
   }
 }
