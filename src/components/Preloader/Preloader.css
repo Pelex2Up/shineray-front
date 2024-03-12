@@ -1,3 +1,6 @@
+@import "../../scss/mixin.scss";
+@import "../../scss/variable.scss";
+
 .preloaderWrapper {
   position: fixed;
   top: 0;
@@ -55,11 +58,17 @@
   }
 }
 
+@media (max-width: 1224px) {
+  .loader {
+    left: 40%;
+  }
+}
+
 .loader {
   background-color: #eeeeee;
   border-radius: 100%;
   position: absolute;
-  left: 40%;
+  left: 48%;
   top: 46%;
   height: 80px;
   width: 80px;
