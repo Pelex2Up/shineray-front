@@ -20,7 +20,7 @@
       gap: 50px;
 
       &_swiper {
-        max-width: clamp(40px, 40dvw, 650px);
+        max-width: calc(50% - 3rem);
       }
 
       &_shortDescription {
