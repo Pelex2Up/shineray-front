@@ -23,6 +23,14 @@
     line-height: 18px;
   }
 
+  &_descr {
+    max-width: 60vw;
+
+    @media (max-width: 1224px) {
+      max-width: 100%;
+    }
+  }
+
   @media (max-width: 1224px) {
     @include display(flex, column, center, flex-start);
     padding: 2rem 2rem 0;
@@ -70,6 +78,10 @@
     &_logo {
       max-height: 4rem;
       max-width: 20rem;
+
+      @media (max-width: 1224px) {
+        max-width: 100%;
+      }
     }
 
     &_contacts {

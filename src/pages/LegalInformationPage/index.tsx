@@ -186,24 +186,64 @@ export const LegalInformationPage: FC = () => {
                   использования информации, размещенной на интернет-сайте нашей
                   организации.
                 </p>
+                <p style={{ fontWeight: "bold" }}>ООО "Лакшери Моторс групп"</p>
                 <p>
-                  ООО "Лакшери Моторс групп" Эксклюзивный представитель и
-                  официальный дистрибьютор Shineray в Республике Беларусь. УНП
-                  193695595, зарегистрирован в Минском городском исполнительном
-                  комитете.
+                  Официальный представитель и эксклюзивный дистрибьютор Shineray
+                  в Республике Беларусь.
                 </p>{" "}
-                <p>
-                  <strong>Юридический адрес:</strong> 220004, г. Минск, ул.
-                  Немига, д. 40, пом. 33, каб. 27
-                </p>{" "}
-                <p>
-                  <strong>Почтовый адрес:</strong> 220004, г. Минск, ул. Немига,
-                  д. 40, оф. 405 e-mail: info@shineray.by
-                </p>{" "}
-                <p>
-                  <strong>Режим работы:</strong> Пн-Пт 9:00 - 17:30 Сб-Вс
-                  выходной
-                </p>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "flex-start",
+                    alignItems: "flex-start",
+                  }}
+                >
+                  <p>УНП 193695595</p>
+                  <p>
+                    Зарегистрировано в Минском городском исполнительном
+                    комитете.
+                  </p>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "flex-start",
+                    alignItems: "flex-start",
+                  }}
+                >
+                  <p>
+                    Юридический адрес: 220004, г. Минск, ул. Немига, д. 40, пом.
+                    33, каб. 27
+                  </p>{" "}
+                  <p>
+                    Почтовый адрес: 220004, г. Минск, ул. Немига, д. 40, оф. 405
+                  </p>{" "}
+                  <p>
+                    E-mail:{" "}
+                    <a
+                      href="https://info@shineray.by"
+                      target="_blank"
+                      type="email"
+                      rel="noreferrer"
+                    >
+                      info@shineray.by
+                    </a>
+                  </p>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "flex-start",
+                    alignItems: "flex-start",
+                  }}
+                >
+                  <p>Режим работы: </p>
+                  <p>Пн-Пт: 9:00 - 17:30</p>
+                  <p>Сб-Вс: выходной</p>
+                </div>
               </div>
             )}
           </div>

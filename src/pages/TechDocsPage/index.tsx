@@ -153,6 +153,23 @@ export const TechDocsPage: FC = () => {
           <div className={styles.wrapper_content_title}>
             <h1>{pageData.body.page_header.title}</h1>
           </div>
+          <ul style={{ alignSelf: "flex-start", fontSize: "17px" }}>
+            <li style={{ fontSize: "24px", paddingBottom: "2rem" }}>
+              <strong>Документация на автомобили Shineray:</strong>
+            </li>
+            <li>Технические характеристики</li>
+            <li>Руководство по эксплуатации</li> <li>Сервисная книжка</li>
+            <li>Карта технического обслуживания</li>
+          </ul>
+          <p
+            style={{
+              alignSelf: "flex-start",
+              fontWeight: "bold",
+              fontSize: "24px",
+            }}
+          >
+            Выберите модель для поиска необходимой документации.
+          </p>
 
           <Box
             sx={
@@ -184,7 +201,7 @@ export const TechDocsPage: FC = () => {
                 }}
               >
                 <Tab
-                  sx={{ width: "max-content !important" }}
+                  sx={{ width: "max-content !important", fontSize: "17px" }}
                   label="Все автомобили"
                   {...a11yProps(0)}
                 />
@@ -193,6 +210,7 @@ export const TechDocsPage: FC = () => {
                     key={element.id + "_" + index}
                     label={element.name}
                     {...a11yProps(index + 1)}
+                    sx={{ fontSize: "17px" }}
                   />
                 ))}
               </Tabs>
@@ -244,7 +262,7 @@ export const TechDocsPage: FC = () => {
                   alignItems: "flex-start",
                 }}
               >
-                <h1>Доступная документация по выбранному авто:</h1>
+                <h1>Документация по выбранной модели:</h1>
               </div>
               {currentDocs.map((doc, index) => (
                 <LinkButton

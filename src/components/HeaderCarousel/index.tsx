@@ -17,11 +17,11 @@ export const HeaderSlider: FC<HeaderSliderT> = ({ images, image }) => {
     autoplay: true,
     autoplaySpeed: 6000,
     pauseOnHover: true,
-    height: '600px',
-    maxHeight: '600px',
+    height: "600px",
+    maxHeight: "600px",
   };
 
-  return (
+  return images ? (
     <motion.div
       initial={{ x: "-100%", opacity: 0 }}
       animate={{
@@ -33,29 +33,28 @@ export const HeaderSlider: FC<HeaderSliderT> = ({ images, image }) => {
       className={styles.wrapper}
       id={"header-slider"}
     >
-      {images ? (
-        <Slider {...settings}>
-          {images.map(({ image }, index) => (
-            <img
-              src={`https://dev.shineray.by/media/${image}`}
-              key={index}
-              style={{ height: "600px", objectFit: "cover" }}
-              rel="preload"
-              alt="header-page-preview"
-            />
-          ))}
-        </Slider>
-      ) : (
-        <motion.img
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
-          className={styles.soloImage}
-          src={`https://dev.shineray.by/media/${image}`}
-          rel="preload"
-        />
-      )}
+      <Slider {...settings}>
+        {images.map(({ image }, index) => (
+          <img
+            src={`https://dev.shineray.by/media/${image}`}
+            key={index}
+            style={{ height: "600px", objectFit: "cover" }}
+            rel="preload"
+            alt="header-page-preview"
+          />
+        ))}
+      </Slider>
     </motion.div>
+  ) : (
+    <motion.img
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+      className={styles.soloImage}
+      id={"header-slider"}
+      src={`https://dev.shineray.by/media/${image}`}
+      rel="preload"
+    />
   );
 };

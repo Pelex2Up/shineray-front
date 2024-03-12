@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import styles from "./CarElement.module.scss";
 import { useMediaQuery } from "react-responsive";
+import { LinkButton } from "components/common/Buttons";
 
 type ICarElement = {
   car: ICar;
@@ -60,15 +61,26 @@ export const CarElement: FC<ICarElement> = ({ car, selected, ...props }) => {
             image={`https://dev.shineray.by/media/${car.image_xl}`}
             title={car.title}
           />
-          <CardContent>
+          <CardContent
+            sx={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "center",
+              flexDirection: "column",
+            }}
+          >
             <Typography
               gutterBottom
               variant={isDesktopOrMobile ? "h5" : "inherit"}
               component="div"
               sx={{ textAlign: "center", height: "4rem" }}
             >
-              {car.title}
+              {car.title.replace(car.title.split(" ")[0], "")}
             </Typography>
+            <LinkButton
+              style={{ width: "80%", alignSelf: "center" }}
+              text={"Выбрать"}
+            />
           </CardContent>
         </Card>
       </ThemeProvider>

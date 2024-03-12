@@ -41,7 +41,7 @@ export const MainLayout: FC = () => {
     >
       <CookieConsent
         location="bottom"
-        buttonText="Я согласен(а)"
+        buttonText="Понятно"
         cookieName="shinerayCookieConsent"
         overlayClasses={styles.cookieOverlay}
         style={{
@@ -65,17 +65,19 @@ export const MainLayout: FC = () => {
         hideOnAccept
         expires={150}
       >
-        <p>
-          Мы используем файлы cookies для улучшения работы сайта. Оставаясь на
-          нашем сайте, вы соглашаетесь с условиями использования файлов cookies.
-          Чтобы ознакомиться с нашими Положениями о конфиденциальности и об
-          использовании файлов cookie,{" "}
+        <p style={{ fontWeight: "800", paddingBottom: "12px" }}>
+          Использование файлов cookie (куки) и анализ посещения сайта
+        </p>
+        <p style={{ textAlign: "justify" }}>
+          Мы используем файлы cookie (куки) для улучшения работы сайта,
+          оставаясь на нашем сайте, вы соглашаетесь с условиями использования
+          файлов cookie (куки) на условиях,{" "}
           <a
-            href={Path.LegalInformation + "4/politika-konfidencialnosti"}
+            href={Path.LegalInformation + "3/fayly-cookie-(kuki)"}
             target="_blank"
             rel="noreferrer"
           >
-            нажмите здесь
+            указанных здесь
           </a>
           .
         </p>
