@@ -1,6 +1,6 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { baseQuery } from "./baseApi";
-import { OwnersPageT, TechDocsResponseT } from "./apiTypes";
+import { OwnersPageT, TechDocsResponseT, WarrantyDataT } from "./apiTypes";
 
 export const OwnersService = createApi({
   reducerPath: "OwnersService",
@@ -13,7 +13,7 @@ export const OwnersService = createApi({
       }),
       providesTags: ["ownersData"],
     }),
-    fetchWarrantyData: build.query<any, void>({
+    fetchWarrantyData: build.query<WarrantyDataT, void>({
       query: () => ({
         url: `/owners/warranty/`,
       }),

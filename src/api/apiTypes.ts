@@ -230,3 +230,24 @@ export type TechDocsResponseT = {
     content: CarsCategoryDocsT[];
   };
 };
+
+export type WarrantyDataT = {
+  body: {
+    page_header: IHeader;
+    content: any;
+    urls: {
+      documentation: {
+        image_header: string;
+        title: string;
+      };
+      find_a_dealer: {
+        image_header: string;
+        title: string;
+      };
+      maintenance: {
+        image_header: string;
+        title: string;
+      };
+    };
+  };
+};
