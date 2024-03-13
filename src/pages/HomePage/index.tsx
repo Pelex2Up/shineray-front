@@ -9,7 +9,6 @@ import { LinkButton } from "components/common/Buttons";
 import { Swiper, SwiperClass, SwiperRef, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { Preloader } from "components/Preloader";
-import { transliterate } from "transliteration";
 
 const News = [
   {
@@ -52,6 +51,24 @@ export const HomePage: FC = () => {
   const swiperRef = useRef<SwiperRef | null>(null);
   const [instance, setInstance] = useState<SwiperClass | null>(null);
 
+  var isScrolling = false;
+
+  function scrollToElement(elementId: string, scrollPosition: number) {
+    if (isScrolling) return;
+    isScrolling = true;
+    var element = document.getElementById(elementId);
+    if (element) {
+      var coordinates = element.getBoundingClientRect();
+      window.scrollTo({
+        top: window.scrollY + coordinates.top + scrollPosition,
+        behavior: "smooth",
+      });
+    }
+    setTimeout(function () {
+      isScrolling = false;
+    }, 1000);
+  }
+
   useEffect(() => {
     fetchData();
   }, [fetchData]);
@@ -62,6 +79,7 @@ export const HomePage: FC = () => {
       instance?.slideTo(
         index !== HomePageData.body.car_models.length - 1 ? index + 1 : 0,
       );
+      scrollToElement("scroll-point", -120);
     }
   };
 
@@ -73,7 +91,9 @@ export const HomePage: FC = () => {
     <div className={styles.container}>
       <HeaderSlider images={HomePageData.body.main_slider.images} />
       <div className={styles.container_carSelector}>
-        <p className={styles.container_carSelector_title}>Модельный ряд</p>
+        <p className={styles.container_carSelector_title} id="scroll-point">
+          Модельный ряд
+        </p>
         <div className={styles.container_carSelector_models}>
           {HomePageData.body.car_models.map(({ name }, index) => (
             <span
