@@ -260,6 +260,7 @@ export const ContactsPage: FC = () => {
                             ? {
                                 marginTop: "2rem",
                                 backgroundColor: "#6fd242",
+                                cursor: "default",
                               }
                             : { marginTop: "2rem" }
                         }
