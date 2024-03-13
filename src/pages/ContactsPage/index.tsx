@@ -1,7 +1,10 @@
-import { FC, useEffect, useMemo, useState } from "react";
+import { FC, FormEvent, useEffect, useMemo, useState } from "react";
 import styles from "./ContactsPage.module.scss";
 import { YMaps, Map, Placemark } from "react-yandex-maps";
-import { useLazyFetchContactsPageDataQuery } from "api/mirShinerayService";
+import {
+  useLazyFetchContactsPageDataQuery,
+  useSendContactsMutation,
+} from "api/mirShinerayService";
 import { Preloader } from "components/Preloader";
 import parse from "html-react-parser";
 import { HeaderSlider } from "components/HeaderCarousel";
@@ -15,9 +18,11 @@ import {
   ThemeProvider,
   createTheme,
 } from "@mui/material";
-import { LinkButton } from "components/common/Buttons";
+import { CommonButton } from "components/common/Buttons";
 import { Path } from "enum/PathE";
 import formLogo from "../../assets/logo/formLogo.png";
+import { BreadcrumbsComponent } from "components/breadcrumbs";
+import InputMask from "react-input-mask";
 
 const theme = createTheme({
   components: {
@@ -60,6 +65,7 @@ const theme = createTheme({
 export const ContactsPage: FC = () => {
   const [fetchData, { data: pageData, isFetching }] =
     useLazyFetchContactsPageDataQuery();
+  const [sendForm, { isSuccess }] = useSendContactsMutation();
   const [zoom, setZoom] = useState(17);
 
   useEffect(() => {
@@ -84,6 +90,12 @@ export const ContactsPage: FC = () => {
     </Link>,
   ];
 
+  const handleForm = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    sendForm(formData);
+  };
+
   if (!pageData || isFetching) {
     return <Preloader />;
   }
@@ -91,6 +103,7 @@ export const ContactsPage: FC = () => {
   return (
     <div className={styles.pageWrapper}>
       <HeaderSlider image={pageData.body.page_header.image} />
+      <BreadcrumbsComponent data={breadcrumbs} />
       <div className={styles.pageWrapper_container}>
         <div className={styles.pageWrapper_container_title}>
           <h1>Контакты</h1>
@@ -145,94 +158,119 @@ export const ContactsPage: FC = () => {
                 }
               >
                 <ThemeProvider theme={theme}>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                      flexWrap: "wrap",
-                      gap: "10px",
-                    }}
-                  >
-                    <div>
-                      <FormControl fullWidth variant="standard">
-                        <InputLabel
-                          sx={{ color: "black !important" }}
-                          htmlFor="phone-number"
-                        >
-                          Номер телефона
-                        </InputLabel>
-                        <Input
-                          sx={{
-                            color: "black !important",
-                            borderBottomColor: "gray !important",
-                          }}
-                          id="phone-number"
-                          startAdornment={
-                            <InputAdornment position="start">
-                              +375
-                            </InputAdornment>
-                          }
-                        />
-                      </FormControl>
-                    </div>
-                    <div>
-                      <FormControl fullWidth variant="standard">
-                        <InputLabel
-                          sx={{ color: "black !important" }}
-                          htmlFor="user-fullname"
-                        >
-                          ФИО
-                        </InputLabel>
-                        <Input
-                          sx={{
-                            color: "black !important",
-                            borderBottomColor: "gray !important",
-                          }}
-                          id="user-fullname"
-                        />
-                      </FormControl>
-                    </div>
-                    <div>
-                      <FormControl fullWidth variant="standard">
-                        <InputLabel
-                          sx={{ color: "black !important" }}
-                          htmlFor="email"
-                        >
-                          Email
-                        </InputLabel>
-                        <Input
-                          sx={{
-                            color: "black !important",
-                            borderBottomColor: "gray !important",
-                          }}
-                          id="email"
-                        />
-                      </FormControl>
-                    </div>
-                    <div>
-                      <FormControl fullWidth variant="standard">
-                        <InputLabel
-                          sx={{ color: "black !important" }}
-                          htmlFor="text"
-                        >
-                          Текст сообщения
-                        </InputLabel>
-                        <Input
-                          sx={{
-                            color: "black !important",
-                            borderBottomColor: "gray !important",
-                          }}
-                          id="text"
-                          multiline
-                          rows={4}
-                        />
-                      </FormControl>
-                    </div>
-                    <LinkButton
-                      style={{ marginTop: "2rem" }}
-                      text="Отправить запрос"
-                    />
-                  </Box>
+                  <form onSubmit={handleForm}>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        flexWrap: "wrap",
+                        gap: "10px",
+                      }}
+                    >
+                      <div>
+                        <FormControl fullWidth variant="standard">
+                          <InputLabel
+                            sx={{ color: "black !important" }}
+                            htmlFor="phone-number"
+                          >
+                            Номер телефона
+                          </InputLabel>
+                          <InputMask
+                            mask="+375 (99) 999-99-99"
+                            id="phone-number"
+                            name="phone_number"
+                          >
+                            <Input
+                              sx={{
+                                color: "black !important",
+                                borderBottomColor: "gray !important",
+                              }}
+                              type="tel"
+                              required
+                            />
+                          </InputMask>
+                        </FormControl>
+                      </div>
+                      <div>
+                        <FormControl fullWidth variant="standard">
+                          <InputLabel
+                            sx={{ color: "black !important" }}
+                            htmlFor="user-fullname"
+                          >
+                            ФИО
+                          </InputLabel>
+
+                          <Input
+                            sx={{
+                              color: "black !important",
+                              borderBottomColor: "gray !important",
+                            }}
+                            type="text"
+                            name="name"
+                            id="user-fullname"
+                            required
+                          />
+                        </FormControl>
+                      </div>
+                      <div>
+                        <FormControl fullWidth variant="standard">
+                          <InputLabel
+                            sx={{ color: "black !important" }}
+                            htmlFor="email"
+                          >
+                            Email
+                          </InputLabel>
+                          <Input
+                            sx={{
+                              color: "black !important",
+                              borderBottomColor: "gray !important",
+                            }}
+                            type="email"
+                            name="email"
+                            id="email"
+                            required
+                          />
+                        </FormControl>
+                      </div>
+                      <div>
+                        <FormControl fullWidth variant="standard">
+                          <InputLabel
+                            sx={{ color: "black !important" }}
+                            htmlFor="text"
+                          >
+                            Текст сообщения
+                          </InputLabel>
+                          <Input
+                            sx={{
+                              color: "black !important",
+                              borderBottomColor: "gray !important",
+                            }}
+                            id="text"
+                            name="message_text"
+                            multiline
+                            rows={4}
+                          />
+                        </FormControl>
+                      </div>
+                      <CommonButton
+                        disabled={isSuccess}
+                        type="submit"
+                        style={
+                          isSuccess
+                            ? {
+                                marginTop: "2rem",
+                                backgroundColor: "#6fd242",
+                              }
+                            : { marginTop: "2rem" }
+                        }
+                        text={
+                          isSuccess
+                            ? "Заявка успешно отправлена!"
+                            : "Отправить запрос"
+                        }
+                      />
+                    </Box>
+                  </form>
                 </ThemeProvider>
               </div>
             </div>
@@ -240,7 +278,7 @@ export const ContactsPage: FC = () => {
           <img
             className={styles.pageWrapper_container_form_carsBackground}
             src={`https://dev.shineray.by/media/${pageData.body.content.form_image}`}
-            alt="Form image"
+            alt="Form bg"
           />
         </div>
       </div>

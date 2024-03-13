@@ -1,23 +1,27 @@
-import { FC, useEffect } from "react";
+import { FC, FormEvent, useEffect } from "react";
 import styles from "./BecomeDealerPage.module.scss";
 import { HeaderSlider } from "components/HeaderCarousel";
 import parse from "html-react-parser";
-import { useLazyFetchBecomeDealerPageDataQuery } from "api/mirShinerayService";
+import {
+  useLazyFetchBecomeDealerPageDataQuery,
+  useSendBecomeDealerFormMutation,
+} from "api/mirShinerayService";
 import { Preloader } from "components/Preloader";
 import {
   Box,
+  CircularProgress,
   FormControl,
   Input,
-  InputAdornment,
   InputLabel,
   Link,
   ThemeProvider,
   createTheme,
 } from "@mui/material";
-import { LinkButton } from "components/common/Buttons";
+import { CommonButton } from "components/common/Buttons";
 import { Path } from "enum/PathE";
 import { BreadcrumbsComponent } from "components/breadcrumbs";
 import formLogo from "../../assets/logo/formLogo.png";
+import InputMask from "react-input-mask";
 
 const theme = createTheme({
   components: {
@@ -60,10 +64,17 @@ const theme = createTheme({
 export const BecomeDealerPage: FC = () => {
   const [fetchData, { data: pageData, isFetching }] =
     useLazyFetchBecomeDealerPageDataQuery();
+  const [sendForm, { isSuccess }] = useSendBecomeDealerFormMutation();
 
   useEffect(() => {
     fetchData();
   }, [fetchData]);
+
+  const handleForm = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    sendForm(formData);
+  };
 
   const breadcrumbs = [
     <Link underline="hover" key="1" color="inherit" href={Path.Home}>
@@ -103,10 +114,7 @@ export const BecomeDealerPage: FC = () => {
         >
           <div className={styles.pageWrapper_container_form_content}>
             <div className={styles.pageWrapper_container_form_content_logo}>
-              <img
-                src={formLogo}
-                alt="Logo"
-              />
+              <img src={formLogo} alt="Logo" />
             </div>
             <div
               className={styles.pageWrapper_container_form_content_formWrapper}
@@ -124,111 +132,136 @@ export const BecomeDealerPage: FC = () => {
                 }
               >
                 <ThemeProvider theme={theme}>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                      flexWrap: "wrap",
-                      gap: "10px",
-                    }}
-                  >
-                    <div>
-                      <FormControl fullWidth variant="standard">
-                        <InputLabel
-                          sx={{ color: "black !important" }}
-                          htmlFor="phone-number"
-                        >
-                          Номер телефона
-                        </InputLabel>
-                        <Input
-                          sx={{
-                            color: "black !important",
-                            borderBottomColor: "gray !important",
-                          }}
-                          id="phone-number"
-                          startAdornment={
-                            <InputAdornment position="start">
-                              +375
-                            </InputAdornment>
-                          }
-                        />
-                      </FormControl>
-                    </div>
-                    <div>
-                      <FormControl fullWidth variant="standard">
-                        <InputLabel
-                          sx={{ color: "black !important" }}
-                          htmlFor="user-fullname"
-                        >
-                          ФИО
-                        </InputLabel>
-                        <Input
-                          sx={{
-                            color: "black !important",
-                            borderBottomColor: "gray !important",
-                          }}
-                          id="user-fullname"
-                        />
-                      </FormControl>
-                    </div>
-                    <div>
-                      <FormControl fullWidth variant="standard">
-                        <InputLabel
-                          sx={{ color: "black !important" }}
-                          htmlFor="company"
-                        >
-                          Организация которую вы представляете
-                        </InputLabel>
-                        <Input
-                          sx={{
-                            color: "black !important",
-                            borderBottomColor: "gray !important",
-                          }}
-                          id="company"
-                        />
-                      </FormControl>
-                    </div>
-                    <div>
-                      <FormControl fullWidth variant="standard">
-                        <InputLabel
-                          sx={{ color: "black !important" }}
-                          htmlFor="email"
-                        >
-                          Email
-                        </InputLabel>
-                        <Input
-                          sx={{
-                            color: "black !important",
-                            borderBottomColor: "gray !important",
-                          }}
-                          id="email"
-                        />
-                      </FormControl>
-                    </div>
-                    <div>
-                      <FormControl fullWidth variant="standard">
-                        <InputLabel
-                          sx={{ color: "black !important" }}
-                          htmlFor="text"
-                        >
-                          Текст сообщения
-                        </InputLabel>
-                        <Input
-                          sx={{
-                            color: "black !important",
-                            borderBottomColor: "gray !important",
-                          }}
-                          id="text"
-                          multiline
-                          rows={4}
-                        />
-                      </FormControl>
-                    </div>
-                    <LinkButton
-                      style={{ marginTop: "2rem" }}
-                      text="Отправить запрос"
-                    />
-                  </Box>
+                  <form onSubmit={handleForm}>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        flexWrap: "wrap",
+                        gap: "10px",
+                      }}
+                    >
+                      <div>
+                        <FormControl fullWidth variant="standard">
+                          <InputLabel
+                            sx={{ color: "black !important" }}
+                            htmlFor="phone-number"
+                          >
+                            Номер телефона
+                          </InputLabel>
+                          <InputMask
+                            mask="+375 (99) 999-99-99"
+                            id="phone-number"
+                            name="phone_number"
+                            required
+                          >
+                            <Input
+                              sx={{
+                                color: "black !important",
+                                borderBottomColor: "gray !important",
+                              }}
+                              type="tel"
+                              required
+                            />
+                          </InputMask>
+                        </FormControl>
+                      </div>
+                      <div>
+                        <FormControl fullWidth variant="standard">
+                          <InputLabel
+                            sx={{ color: "black !important" }}
+                            htmlFor="user-fullname"
+                          >
+                            ФИО
+                          </InputLabel>
+                          <Input
+                            sx={{
+                              color: "black !important",
+                              borderBottomColor: "gray !important",
+                            }}
+                            required
+                            name="name"
+                            id="user-fullname"
+                          />
+                        </FormControl>
+                      </div>
+                      <div>
+                        <FormControl fullWidth variant="standard">
+                          <InputLabel
+                            sx={{ color: "black !important" }}
+                            htmlFor="organization"
+                          >
+                            Организация которую вы представляете
+                          </InputLabel>
+                          <Input
+                            name="organization"
+                            sx={{
+                              color: "black !important",
+                              borderBottomColor: "gray !important",
+                            }}
+                            required
+                            id="organization"
+                          />
+                        </FormControl>
+                      </div>
+                      <div>
+                        <FormControl fullWidth variant="standard">
+                          <InputLabel
+                            sx={{ color: "black !important" }}
+                            htmlFor="email"
+                          >
+                            Email
+                          </InputLabel>
+                          <Input
+                            sx={{
+                              color: "black !important",
+                              borderBottomColor: "gray !important",
+                            }}
+                            required
+                            type="email"
+                            name="email"
+                            id="email"
+                          />
+                        </FormControl>
+                      </div>
+                      <div>
+                        <FormControl fullWidth variant="standard">
+                          <InputLabel
+                            sx={{ color: "black !important" }}
+                            htmlFor="text"
+                          >
+                            Текст сообщения
+                          </InputLabel>
+                          <Input
+                            sx={{
+                              color: "black !important",
+                              borderBottomColor: "gray !important",
+                            }}
+                            id="text"
+                            multiline
+                            rows={4}
+                          />
+                        </FormControl>
+                      </div>
+                      <CommonButton
+                        disabled={isSuccess}
+                        type="submit"
+                        style={
+                          isSuccess
+                            ? {
+                                marginTop: "2rem",
+                                backgroundColor: "#6fd242",
+                              }
+                            : { marginTop: "2rem" }
+                        }
+                        text={
+                          isSuccess
+                            ? "Заявка успешно отправлена!"
+                            : "Отправить запрос"
+                        }
+                      />
+                    </Box>
+                  </form>
                 </ThemeProvider>
               </div>
             </div>

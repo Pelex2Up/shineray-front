@@ -40,11 +40,25 @@ export const MirShinerayService = createApi({
       }),
       providesTags: ["Contacts"],
     }),
+    sendContacts: build.mutation<any, FormData>({
+      query: (data) => ({
+        url: "/add_contact/",
+        method: "POST",
+        body: data,
+      }),
+    }),
     fetchBecomeDealerPageData: build.query<ContactsT, void>({
       query: () => ({
         url: `/dealers/become_dealer_page/`,
       }),
       providesTags: ["BecomeDealer"],
+    }),
+    sendBecomeDealerForm: build.mutation<any, FormData>({
+      query: (data) => ({
+        url: "/dealers/become_dealer/",
+        method: "POST",
+        body: data,
+      }),
     }),
     fetchLegalInfoPageData: build.query<LegalInfoT, void>({
       query: () => ({
@@ -72,4 +86,6 @@ export const {
   useLazyFetchBecomeDealerPageDataQuery,
   useLazyFetchLegalInfoPageDataQuery,
   useLazyFetchLegalInfoDataQuery,
+  useSendContactsMutation,
+  useSendBecomeDealerFormMutation,
 } = MirShinerayService;
