@@ -80,6 +80,10 @@
       width: 100%;
       align-items: center;
 
+      @media (max-width: 1224px) {
+        max-height: 600px;
+      }
+
       &_slider {
         display: flex;
         flex-direction: row;
