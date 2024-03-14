@@ -191,7 +191,7 @@ export const BecomeDealerPage: FC = () => {
                             sx={{ color: "black !important" }}
                             htmlFor="organization"
                           >
-                            Организация которую Вы представляете
+                            Организация, которую Вы представляете
                           </InputLabel>
                           <Input
                             name="organization"

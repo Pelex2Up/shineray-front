@@ -55,7 +55,7 @@ export const CarElement: FC<ICarElement> = ({ car, selected, ...props }) => {
           <CardMedia
             sx={
               isDesktopOrMobile
-                ? { height: 180, backgroundSize: "cover" }
+                ? { height: 180, backgroundSize: "contain" }
                 : { height: 100, backgroundSize: "contain" }
             }
             image={`https://dev.shineray.by/media/${car.image_xl}`}
