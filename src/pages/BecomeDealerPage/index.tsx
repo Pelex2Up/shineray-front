@@ -258,6 +258,7 @@ export const BecomeDealerPage: FC = () => {
                               borderBottomColor: "gray !important",
                             }}
                             id="text"
+                            name="message_text"
                             multiline
                             rows={4}
                           />
