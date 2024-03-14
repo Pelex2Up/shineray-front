@@ -41,6 +41,21 @@
       gap: 2.5em;
       height: 100%;
       text-align: center;
+
+      @media (max-width: 1224px) {
+        display: none;
+      }
+    }
+
+    &_buttonsBlock_mobile {
+      @include display(flex, row, flex-start, center);
+      gap: 2.5em;
+      height: 100%;
+      text-align: center;
+
+      @media (min-width: 1224px) {
+        display: none;
+      }
     }
   }
 }

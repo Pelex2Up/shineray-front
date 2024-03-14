@@ -101,69 +101,66 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
               <img alt="Logo" src={logo} />
             </a>
           </div>
-          {isDesktopOrMobile ? (
-            <nav className={styles.headerWrapper_header_buttonsBlock}>
-              <div className={styles.dropdownWrapper}>
-                <Button text="Главная" href={Path.Home} />
-              </div>
+          <nav className={styles.headerWrapper_header_buttonsBlock}>
+            <div className={styles.dropdownWrapper}>
+              <Button text="Главная" href={Path.Home} />
+            </div>
 
-              <ButtonModels
-                text="Модельный ряд"
-                ref={ref}
-                data-popup="menu-cars"
-                onClick={() => {
-                  closeDropDown();
-                  navigate(Path.Cars);
-                }}
-              />
-              <div className={styles.dropdownWrapper}>
-                <Button href={Path.Dealer} text="Дилеры" />
-              </div>
+            <ButtonModels
+              text="Модельный ряд"
+              ref={ref}
+              data-popup="menu-cars"
+              onClick={() => {
+                closeDropDown();
+                navigate(Path.Cars);
+              }}
+            />
+            <div className={styles.dropdownWrapper}>
+              <Button href={Path.Dealer} text="Дилеры" />
+            </div>
 
-              <div className={styles.dropdownWrapper}>
-                <Button href={Path.Owners} text="Владельцам" />
-                <div className={styles.dropdown_content}>
-                  <a href={Path.Warranty}>Гарантия</a>
-                  <a href={Path.TechSupport}>Техническое обслуживание</a>
-                  <a href={Path.TechDocs}>Техническая документация</a>
-                </div>
+            <div className={styles.dropdownWrapper}>
+              <Button href={Path.Owners} text="Владельцам" />
+              <div className={styles.dropdown_content}>
+                <a href={Path.Warranty}>Гарантия</a>
+                <a href={Path.TechSupport}>Техническое обслуживание</a>
+                <a href={Path.TechDocs}>Техническая документация</a>
               </div>
-              <div className={styles.dropdownWrapper}>
-                <Button href={Path.Contacts} text="Контакты" />
-              </div>
+            </div>
+            <div className={styles.dropdownWrapper}>
+              <Button href={Path.Contacts} text="Контакты" />
+            </div>
 
-              <div className={styles.dropdownWrapper}>
-                <Button text="Мир Shineray" href={Path.MirShineray} />
-                <div className={styles.dropdown_content}>
-                  <a href={Path.AboutCompany}>О компании Shineray Group</a>
-                  <a href={Path.AboutBelarus}>О нас и бренде Shineray</a>
-                  <a href={Path.BecomeDealer}>Стать дилером</a>
-                  <a href={Path.LegalInformation}>Юридическая информация</a>
-                </div>
+            <div className={styles.dropdownWrapper}>
+              <Button text="Мир Shineray" href={Path.MirShineray} />
+              <div className={styles.dropdown_content}>
+                <a href={Path.AboutCompany}>О компании Shineray Group</a>
+                <a href={Path.AboutBelarus}>О нас и бренде Shineray</a>
+                <a href={Path.BecomeDealer}>Стать дилером</a>
+                <a href={Path.LegalInformation}>Юридическая информация</a>
               </div>
-              <div className={styles.dropdownWrapper}>
-                <Button href={Path.News} text="Новости" />
-              </div>
-              <div
-                className={`${styles.dropdownMenu}  ${dropDownCars ? styles.open : styles.closed}`}
-                data-dropdown="menu-cars"
-              >
-                {headerData && <ModelCarsMenu data={headerData} />}
-              </div>
-            </nav>
-          ) : (
-            <nav className={styles.headerWrapper_header_buttonsBlock}>
-              <IconButton
-                size="large"
-                edge="start"
-                aria-label="open-mobile-menu"
-                sx={{ mr: 2, color: "white" }}
-                onClick={toggleMobileMenu}
-              >
-                {mobileMenu ? <Close /> : <MenuIcon />}
-              </IconButton>
-            </nav>
-          )}
+            </div>
+            <div className={styles.dropdownWrapper}>
+              <Button href={Path.News} text="Новости" />
+            </div>
+            <div
+              className={`${styles.dropdownMenu}  ${dropDownCars ? styles.open : styles.closed}`}
+              data-dropdown="menu-cars"
+            >
+              {headerData && <ModelCarsMenu data={headerData} />}
+            </div>
+          </nav>
+          <nav className={styles.headerWrapper_header_buttonsBlock_mobile}>
+            <IconButton
+              size="large"
+              edge="start"
+              aria-label="open-mobile-menu"
+              sx={{ mr: 2, color: "white" }}
+              onClick={toggleMobileMenu}
+            >
+              {mobileMenu ? <Close /> : <MenuIcon />}
+            </IconButton>
+          </nav>
         </div>
         {mobileMenu && (
           <nav

@@ -5,7 +5,8 @@
   position: relative;
 
   @media (max-width: 1224px) {
-    height: 25vh;
+    height: 50vw;
+    max-height: 400px;
   }
 
   img {
@@ -13,7 +14,8 @@
     object-fit: cover;
 
     @media (max-width: 1224px) {
-      height: 25vh;
+      height: 50vw;
+      max-height: 400px;
     }
   }
 }
@@ -24,6 +26,7 @@
   object-fit: cover;
 
   @media (max-width: 1224px) {
-    height: 25vh;
+    height: 50vw;
+    max-height: 400px;
   }
 }
