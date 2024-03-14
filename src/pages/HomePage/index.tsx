@@ -10,40 +10,6 @@ import { Swiper, SwiperClass, SwiperRef, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { Preloader } from "components/Preloader";
 
-const News = [
-  {
-    source: "source",
-    imageUrl: "https://www.shineray.com/upload/news/1697181377223443.jpg",
-    title:
-      "Shineray Motors Its Presence in Uzbek Market with Debut of New Generation Product",
-    description: `On September 26, the Shineray Motors Brand Launch and T3 Debut Event was held at the NAVRO'Z Hotel in Tashkent, the capital of Uzbekistan. Media representatives and distinguished guests from various sectors of Uzbek society witnessed this historic moment for Shineray.`,
-    date: "date",
-  },
-  {
-    source: "source",
-    imageUrl: "https://www.shineray.com/upload/news/1700535542272496.jpg",
-    title: `China's SWM will hit the road in December`,
-    description: `China's Automotive Giant Shineray Group's Italian brand SWM will enter the Turkish market`,
-    date: "date",
-  },
-  {
-    source: "source",
-    imageUrl: "https://www.shineray.com/upload/news/1700535016462634.jpg",
-    title:
-      "Shineray Forges Official Partnership with Inter to Boost Its Globalization!",
-    description:
-      "On September 29, 2023, Shineray Motors (Shineray) andInter Milan Football Club(Inter) officially announced their official partnership in Milan, Italy. Shineray has become the official global car partner of Inter. Shineray Director Xie Yong, Inter CEO Alessandro Antonello, and Inter legend Fabio Galante attended the signing ceremony, to witness this historic moment. This marks the second time Shineray has partnered with Inter since their first official strategic cooperation in 2017. The collaboration is a win-win and mutually beneficial prospect. Shineray stated that the partnership would further enhance its global influence, boost its international business strategy, and accelerate its brand-building process.",
-    date: "date",
-  },
-  {
-    source: "source",
-    imageUrl: "https://www.shineray.com/upload/product/1677031677823980.jpg",
-    title: "title",
-    description: "description",
-    date: "date",
-  },
-];
-
 export const HomePage: FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [fetchData, { data: HomePageData, isFetching }] =
@@ -75,7 +41,11 @@ export const HomePage: FC = () => {
 
   const handleClickModel = (index: number) => {
     if (HomePageData) {
-      setCurrentIndex(index);
+      if (index > 0) {
+        setCurrentIndex(index);
+      } else {
+        setCurrentIndex(0);
+      }
       instance?.slideTo(
         index !== HomePageData.body.car_models.length - 1 ? index + 1 : 0,
       );
@@ -104,7 +74,11 @@ export const HomePage: FC = () => {
               }`}
               id={String(index)}
               key={`${index}_${name}`}
-              onClick={() => handleClickModel(index - 1)}
+              onClick={() =>
+                handleClickModel(
+                  currentIndex === index ? currentIndex - 1 : index - 1,
+                )
+              }
             >
               {name}
             </span>
@@ -146,11 +120,11 @@ export const HomePage: FC = () => {
           <LinkButton
             text={"Подробнее о модели"}
             href={generatePath(Path.ModelAuto, {
-              category: `${HomePageData.body.car_models[currentIndex ? currentIndex : 0].category}-car-preview`,
-              carModel: `${HomePageData.body.car_models[currentIndex ? currentIndex : 0].id}-shineray-automobile-${HomePageData?.body.car_models[currentIndex ? currentIndex : 0].name}`,
+              category: `${HomePageData.body.car_models[currentIndex && currentIndex > 0 ? currentIndex : 0].category}-car-preview`,
+              carModel: `${HomePageData.body.car_models[currentIndex && currentIndex > 0 ? currentIndex : 0].id}-shineray-automobile-${HomePageData?.body.car_models[currentIndex && currentIndex > 0 ? currentIndex : 0].name}`,
             })}
             className={styles.modelCarDetail}
-            key={currentIndex}
+            key={currentIndex + "_details"}
           />
         </div>
         <div className={styles.newsWrapper}>
