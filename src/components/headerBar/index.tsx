@@ -169,155 +169,159 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
           <nav
             className={`${styles.mobileMenuWrapper} ${mobileMenu ? styles.mobileMenuOpen : styles.mobileMenuClose}`}
           >
-            <Accordion className={styles.mobileMenuWrapper_accordionButton}>
-              <AccordionSummary
-                expandIcon={<ExpandMore sx={{ color: "white" }} />}
-                aria-controls="panel1-content"
-                id="panel1-header"
-                key={"models"}
+            <div style={{ height: "100%" }}>
+              <Accordion className={styles.mobileMenuWrapper_accordionButton}>
+                <AccordionSummary
+                  expandIcon={<ExpandMore sx={{ color: "white" }} />}
+                  aria-controls="panel1-content"
+                  id="panel1-header"
+                  key={"models"}
+                >
+                  Модельный ряд
+                </AccordionSummary>
+                <AccordionDetails sx={{ paddingBottom: "2rem" }}>
+                  {headerData &&
+                    headerData.menu.automobile.map((cat, index) => (
+                      <a
+                        style={{
+                          border:
+                            index === headerData.menu.automobile.length - 1
+                              ? "none"
+                              : "",
+                        }}
+                        key={cat.name}
+                        href={generatePath(Path.CarsCategory, {
+                          category: `${index + 1}-${transliterate(cat.name)}`,
+                        })}
+                        rel="nofollow"
+                        className={
+                          styles.mobileMenuWrapper_accordionButton_link
+                        }
+                      >
+                        {cat.name}
+                        <span />
+                      </a>
+                    ))}
+                </AccordionDetails>
+              </Accordion>
+              <a
+                href={Path.Dealer}
+                key={"dealers"}
+                rel="nofollow"
+                className={styles.mobileMenuWrapper_button}
               >
-                Модельный ряд
-              </AccordionSummary>
-              <AccordionDetails sx={{ paddingBottom: "2rem" }}>
-                {headerData &&
-                  headerData.menu.automobile.map((cat, index) => (
-                    <a
-                      style={{
-                        border:
-                          index === headerData.menu.automobile.length - 1
-                            ? "none"
-                            : "",
-                      }}
-                      key={cat.name}
-                      href={generatePath(Path.CarsCategory, {
-                        category: `${index + 1}-${transliterate(cat.name)}`,
-                      })}
-                      rel="nofollow"
-                      className={styles.mobileMenuWrapper_accordionButton_link}
-                    >
-                      {cat.name}
-                      <span />
-                    </a>
-                  ))}
-              </AccordionDetails>
-            </Accordion>
-            <a
-              href={Path.Dealer}
-              key={"dealers"}
-              rel="nofollow"
-              className={styles.mobileMenuWrapper_button}
-            >
-              Дилеры
-              <span />
-            </a>
-            <Accordion className={styles.mobileMenuWrapper_accordionButton}>
-              <AccordionSummary
-                expandIcon={<ExpandMore sx={{ color: "white" }} />}
-                aria-controls="panel1-content"
-                id="panel1-header"
-                key={"models"}
+                Дилеры
+                <span />
+              </a>
+              <Accordion className={styles.mobileMenuWrapper_accordionButton}>
+                <AccordionSummary
+                  expandIcon={<ExpandMore sx={{ color: "white" }} />}
+                  aria-controls="panel1-content"
+                  id="panel1-header"
+                  key={"models"}
+                >
+                  Владельцам
+                </AccordionSummary>
+                <AccordionDetails sx={{ paddingBottom: "2rem" }}>
+                  <a
+                    style={{
+                      border: "",
+                    }}
+                    href={Path.Warranty}
+                    rel="nofollow"
+                    className={styles.mobileMenuWrapper_accordionButton_link}
+                  >
+                    Гарантия
+                    <span />
+                  </a>
+                  <a
+                    style={{
+                      border: "",
+                    }}
+                    href={Path.TechSupport}
+                    rel="nofollow"
+                    className={styles.mobileMenuWrapper_accordionButton_link}
+                  >
+                    Техническое обслуживание
+                    <span />
+                  </a>
+                  <a
+                    style={{
+                      border: "none",
+                    }}
+                    href={Path.TechDocs}
+                    rel="nofollow"
+                    className={styles.mobileMenuWrapper_accordionButton_link}
+                  >
+                    Техническая документация
+                    <span />
+                  </a>
+                </AccordionDetails>
+              </Accordion>
+              <a
+                href={Path.Contacts}
+                key={"contacts"}
+                rel="nofollow"
+                className={styles.mobileMenuWrapper_button}
               >
-                Владельцам
-              </AccordionSummary>
-              <AccordionDetails sx={{ paddingBottom: "2rem" }}>
-                <a
-                  style={{
-                    border: "",
-                  }}
-                  href={Path.Warranty}
-                  rel="nofollow"
-                  className={styles.mobileMenuWrapper_accordionButton_link}
+                Контакты
+                <span />
+              </a>
+              <Accordion className={styles.mobileMenuWrapper_accordionButton}>
+                <AccordionSummary
+                  expandIcon={<ExpandMore sx={{ color: "white" }} />}
+                  aria-controls="panel1-content"
+                  id="panel1-header"
+                  key={"shineray-world"}
                 >
-                  Гарантия
-                  <span />
-                </a>
-                <a
-                  style={{
-                    border: "",
-                  }}
-                  href={Path.TechSupport}
-                  rel="nofollow"
-                  className={styles.mobileMenuWrapper_accordionButton_link}
-                >
-                  Техническое обслуживание
-                  <span />
-                </a>
-                <a
-                  style={{
-                    border: "none",
-                  }}
-                  href={Path.TechDocs}
-                  rel="nofollow"
-                  className={styles.mobileMenuWrapper_accordionButton_link}
-                >
-                  Техническая документация
-                  <span />
-                </a>
-              </AccordionDetails>
-            </Accordion>
-            <a
-              href={Path.Contacts}
-              key={"contacts"}
-              rel="nofollow"
-              className={styles.mobileMenuWrapper_button}
-            >
-              Контакты
-              <span />
-            </a>
-            <Accordion className={styles.mobileMenuWrapper_accordionButton}>
-              <AccordionSummary
-                expandIcon={<ExpandMore sx={{ color: "white" }} />}
-                aria-controls="panel1-content"
-                id="panel1-header"
-                key={"shineray-world"}
-              >
-                Мир Shineray
-              </AccordionSummary>
-              <AccordionDetails sx={{ paddingBottom: "2rem" }}>
-                <a
-                  key={"aboutCompany"}
-                  href={Path.AboutCompany}
-                  className={styles.mobileMenuWrapper_accordionButton_link}
-                >
-                  О компании Shineray Group
-                  <span />
-                </a>
-                <a
-                  key={"aboutBrand"}
-                  href={Path.AboutBelarus}
-                  className={styles.mobileMenuWrapper_accordionButton_link}
-                >
-                  О нас и бренде Shineray
-                  <span />
-                </a>
-                <a
-                  key={"becomeDelaer"}
-                  href={Path.BecomeDealer}
-                  className={styles.mobileMenuWrapper_accordionButton_link}
-                >
-                  Стать дилером
-                  <span />
-                </a>
-                <a
-                  key={"legalInfo"}
-                  href={Path.LegalInformation}
-                  style={{ border: "none" }}
-                  className={styles.mobileMenuWrapper_accordionButton_link}
-                >
-                  Юридическая информация
-                  <span />
-                </a>
-              </AccordionDetails>
-            </Accordion>
+                  Мир Shineray
+                </AccordionSummary>
+                <AccordionDetails sx={{ paddingBottom: "2rem" }}>
+                  <a
+                    key={"aboutCompany"}
+                    href={Path.AboutCompany}
+                    className={styles.mobileMenuWrapper_accordionButton_link}
+                  >
+                    О компании Shineray Group
+                    <span />
+                  </a>
+                  <a
+                    key={"aboutBrand"}
+                    href={Path.AboutBelarus}
+                    className={styles.mobileMenuWrapper_accordionButton_link}
+                  >
+                    О нас и бренде Shineray
+                    <span />
+                  </a>
+                  <a
+                    key={"becomeDelaer"}
+                    href={Path.BecomeDealer}
+                    className={styles.mobileMenuWrapper_accordionButton_link}
+                  >
+                    Стать дилером
+                    <span />
+                  </a>
+                  <a
+                    key={"legalInfo"}
+                    href={Path.LegalInformation}
+                    style={{ border: "none" }}
+                    className={styles.mobileMenuWrapper_accordionButton_link}
+                  >
+                    Юридическая информация
+                    <span />
+                  </a>
+                </AccordionDetails>
+              </Accordion>
 
-            <a
-              href={Path.News}
-              className={styles.mobileMenuWrapper_button}
-              key={"news"}
-            >
-              Новости
-              <span />
-            </a>
+              <a
+                href={Path.News}
+                className={styles.mobileMenuWrapper_button}
+                key={"news"}
+              >
+                Новости
+                <span />
+              </a>
+            </div>
           </nav>
         )}
       </header>
