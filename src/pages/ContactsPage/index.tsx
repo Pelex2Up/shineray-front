@@ -216,6 +216,25 @@ export const ContactsPage: FC = () => {
                         <FormControl fullWidth variant="standard">
                           <InputLabel
                             sx={{ color: "black !important" }}
+                            htmlFor="city"
+                          >
+                            Из какого Вы города?
+                          </InputLabel>
+                          <Input
+                            name="city"
+                            sx={{
+                              color: "black !important",
+                              borderBottomColor: "gray !important",
+                            }}
+                            required
+                            id="city"
+                          />
+                        </FormControl>
+                      </div>
+                      <div>
+                        <FormControl fullWidth variant="standard">
+                          <InputLabel
+                            sx={{ color: "black !important" }}
                             htmlFor="email"
                           >
                             Email
@@ -241,6 +260,7 @@ export const ContactsPage: FC = () => {
                             Текст сообщения
                           </InputLabel>
                           <Input
+                            required
                             sx={{
                               color: "black !important",
                               borderBottomColor: "gray !important",
