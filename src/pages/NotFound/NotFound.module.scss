@@ -1,0 +1,25 @@
+@import "../../scss/mixin.scss";
+@import "../../scss/variable.scss";
+
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  @include display(flex, column, center, center);
+  background-color: #cfcfcf;
+
+  &_content {
+    @include display(flex, column, center, center);
+    padding: 1rem;
+    gap: 1rem;
+    max-width: 700px;
+    p {
+      margin-bottom: 40px;
+    }
+    img {
+      margin-bottom: 80px;
+      width: 80%;
+      object-fit: contain;
+    }
+    text-align: center;
+  }
+}

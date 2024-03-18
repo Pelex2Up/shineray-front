@@ -23,6 +23,7 @@ import { TechDocsPage } from "pages/TechDocsPage";
 import { TechSupportPage } from "pages/TechSupportPage";
 import { WarrantyPage } from "pages/WarrantyPage";
 import { PDFViewer } from "components/pdfViewer";
+import { NotFound404 } from "pages/NotFound";
 
 export const App = () => {
   const { pathname } = useLocation();
@@ -67,6 +68,7 @@ export const App = () => {
             <Route path={Path.TechSupport} element={<TechSupportPage />} />
             <Route path={Path.Warranty} element={<WarrantyPage />} />
           </Route>
+          <Route path={"*"} element={<NotFound404 />} />
         </Routes>
       </AnimatePresence>
     </div>

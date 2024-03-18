@@ -12,6 +12,7 @@ export const baseQuery = (baseUrl = `/api/`) => {
       if (acceessToken) {
         headers.set("Cookie", acceessToken);
       }
+      headers.set("X-CSRF-Token", "");
       return headers;
     },
   });
