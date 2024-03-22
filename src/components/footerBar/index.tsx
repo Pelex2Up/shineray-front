@@ -82,7 +82,7 @@ export const Footer: FC = () => {
             src={logo}
             alt={"Logo"}
           />
-          <span className={styles.footerWrapper_infoBar_contactInfo}>
+          {/* <span className={styles.footerWrapper_infoBar_contactInfo}>
             {"Мы в соцсетях:"}
             <SvgIcon
               sx={{
@@ -243,7 +243,7 @@ export const Footer: FC = () => {
                 <path fill="#FFF" d="M20 31L20 17 32 24z"></path>
               </svg>
             </SvgIcon>
-          </span>
+          </span> */}
           <a
             href={Path.Contacts}
             className={styles.footerWrapper_infoBar_contacts}
