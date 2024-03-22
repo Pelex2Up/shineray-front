@@ -9,8 +9,8 @@
   bottom: 0;
   background-color: #ffffff;
   width: 100vw;
-  height: 100dvh;
-  z-index: 999;
+  height: 100vh;
+  z-index: 9998;
   transition: ease-in-out 0.3s;
 }
 
@@ -58,20 +58,6 @@
   }
 }
 
-@media (max-width: 1224px) {
-  .loader {
-    background-color: #eeeeee;
-    border-radius: 100%;
-    position: absolute;
-    top: 46%;
-    height: 80px;
-    width: 80px;
-    overflow: hidden;
-    z-index: 999;
-    left: 40%;
-  }
-}
-
 .loader {
   background-color: #eeeeee;
   border-radius: 100%;
@@ -80,8 +66,18 @@
   top: 46%;
   height: 80px;
   width: 80px;
-  overflow: hidden;
-  z-index: 999;
+  z-index: 9999;
+
+  @media (max-width: 1224px) {
+    background-color: #eeeeee;
+    border-radius: 100%;
+    position: absolute;
+    top: 46%;
+    height: 80px;
+    width: 80px;
+    z-index: 999;
+    left: 42%;
+  }
 }
 
 .loader .c {
