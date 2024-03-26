@@ -69,6 +69,10 @@
 
           &_body {
             width: 100%;
+
+            @media (max-width: 1224px) {
+              margin-bottom: 15%;
+            }
           }
         }
       }
