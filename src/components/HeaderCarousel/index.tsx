@@ -11,7 +11,6 @@ type HeaderSliderT = {
 
 export const HeaderSlider: FC<HeaderSliderT> = ({ images, image }) => {
   const settings = {
-    dots: true,
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
