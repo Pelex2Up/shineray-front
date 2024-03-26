@@ -72,12 +72,13 @@
 
   &_infoBar {
     @include display(flex, column, flex-start);
+    width: 20.5rem;
 
     gap: 1.5rem;
 
     &_logo {
-      max-height: 4rem;
-      max-width: 20rem;
+      max-width: 250px;
+      object-fit: contain;
 
       @media (max-width: 1224px) {
         max-width: 100%;
