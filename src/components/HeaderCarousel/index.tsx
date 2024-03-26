@@ -11,14 +11,14 @@ type HeaderSliderT = {
 
 export const HeaderSlider: FC<HeaderSliderT> = ({ images, image }) => {
   const settings = {
+    dots: true,
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 6000,
     pauseOnHover: true,
-    height: "600px",
-    maxHeight: "600px",
+    adaptiveHeight: true,
   };
 
   return images ? (
@@ -34,14 +34,21 @@ export const HeaderSlider: FC<HeaderSliderT> = ({ images, image }) => {
       id={"header-slider"}
     >
       <Slider {...settings}>
-        {images.map(({ image }, index) => (
-          <img
-            src={`https://dev.shineray.by/media/${image}`}
-            key={index}
-            style={{ height: "600px", objectFit: "cover" }}
-            rel="preload"
-            alt="header-page-preview"
-          />
+        {images.map(({ image, url }, index) => (
+          <a
+            href={url}
+            rel="noreferrer"
+            target="_blank"
+            style={{ width: "100%", cursor: "pointer" }}
+          >
+            <img
+              src={`https://dev.shineray.by/media/${image}`}
+              key={index}
+              width={"100%"}
+              rel="preload"
+              alt="header-page-preview"
+            />
+          </a>
         ))}
       </Slider>
     </motion.div>

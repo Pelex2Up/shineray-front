@@ -36,6 +36,7 @@ export type HeaderT = {
 
 export type ISliderImage = {
   id: number;
+  url: string;
   name: string;
   description: string;
   image: string;
