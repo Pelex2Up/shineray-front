@@ -4,6 +4,10 @@
 .wrapper {
   @include display(flex, column, center);
   width: 100vw;
+
+  @media (max-width: 1224px) {
+    min-height: 100vh;
+  }
 }
 
 .cookieButtonWrapper {
