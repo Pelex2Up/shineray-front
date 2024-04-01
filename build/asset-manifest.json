@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.88b3cec8.css",
-    "main.js": "/static/js/main.441c4720.js",
+    "main.css": "/static/css/main.ec775e65.css",
+    "main.js": "/static/js/main.5a0740d4.js",
     "static/media/formLogo.png": "/static/media/formLogo.fb2ce2bb23a22761dd71.png",
     "static/media/shineray-logo.png": "/static/media/shineray-logo.13b1a5341f0ae731323c.png",
     "index.html": "/index.html",
-    "main.88b3cec8.css.map": "/static/css/main.88b3cec8.css.map",
-    "main.441c4720.js.map": "/static/js/main.441c4720.js.map"
+    "main.ec775e65.css.map": "/static/css/main.ec775e65.css.map",
+    "main.5a0740d4.js.map": "/static/js/main.5a0740d4.js.map"
   },
   "entrypoints": [
-    "static/css/main.88b3cec8.css",
-    "static/js/main.441c4720.js"
+    "static/css/main.ec775e65.css",
+    "static/js/main.5a0740d4.js"
   ]
 }

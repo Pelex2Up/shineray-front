@@ -8,9 +8,7 @@
   right: 0;
   bottom: 0;
   background-color: #ffffff;
-  width: 100vw;
-  height: 100vh;
-  z-index: 9998;
+  z-index: 98;
   transition: ease-in-out 0.3s;
 }
 
