@@ -203,7 +203,7 @@ export const DealerDetailsPage: FC = () => {
                               {department.contact_phone.map(
                                 (phone, indexPhone) => (
                                   <p key={phone.id + index + "_phone"}>
-                                    {`${phone.mobile_operator}: `}
+                                    {`${phone.mobile_operator || 'Телефон'}: `}
                                     <a href={`tel:${phone.phone_number}`}>
                                       {phone.phone_number}
                                     </a>

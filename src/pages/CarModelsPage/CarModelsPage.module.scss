@@ -81,8 +81,12 @@
       padding: 2rem 1rem;
 
       &_title {
+        h1 {
+          text-align: center;
+        }
         span {
           padding: 0 1rem;
+          text-align: justify
         }
       }
 

@@ -19,6 +19,7 @@
       h1 {
         @include font(bold, $font-title-size);
         border-bottom: 3px solid #cf2626;
+        text-align: center
       }
     }
 

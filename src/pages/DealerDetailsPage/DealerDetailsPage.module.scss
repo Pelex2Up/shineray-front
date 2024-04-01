@@ -86,6 +86,10 @@
       }
       &_dealerDescription {
         padding: 0 1rem 2rem;
+        
+        @media (max-width: 1224px) {
+          text-align: justify;
+        }
       }
     }
 

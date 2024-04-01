@@ -16,6 +16,7 @@
     &_title {
       @include display(flex, column, center, center);
       h1 {
+        text-align: center;
         @include font(bold, $font-title-size);
         border-bottom: 3px solid #cf2626;
       }
