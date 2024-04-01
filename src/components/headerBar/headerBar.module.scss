@@ -4,6 +4,7 @@
 .headerWrapper {
   @include display(flex, row, space-around, center);
   z-index: 95;
+  position: relative;
 
   &_header {
     @include position_t_l(fixed, 0, 0, 20);
