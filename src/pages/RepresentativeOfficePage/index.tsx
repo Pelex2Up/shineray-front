@@ -63,7 +63,7 @@ export const RepresentativeOfficePage: FC = () => {
                 }
                 style={{
                   backgroundPosition: "center",
-                  backgroundImage: `url(https://dev.shineray.by/media/${pageData.body.about_company.image_top_content || pageData.body.about_company.image_header})`,
+                  backgroundImage: `url(https://shineray.by/media/${pageData.body.about_company.image_top_content || pageData.body.about_company.image_header})`,
                 }}
               />
             </div>
@@ -110,7 +110,7 @@ export const RepresentativeOfficePage: FC = () => {
                   >
                     <img
                       style={{ width: "100%", borderRadius: "1rem" }}
-                      src={`https://dev.shineray.by/media/${history.image}`}
+                      src={`https://shineray.by/media/${history.image}`}
                       alt={`${history.id}_${history.text}`}
                     />
                     {parse(history.text)}

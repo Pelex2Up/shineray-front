@@ -41,7 +41,7 @@ export const CarItemCard: FC<CardItemT> = ({ car }) => {
         className={styles.autoCard}
       >
         <img
-          src={`https://dev.shineray.by/media/${car.image_xl}`}
+          src={`https://shineray.by/media/${car.image_xl}`}
           style={
             isDesktopOrMobile
               ? { objectFit: "contain", height: "55%" }

@@ -48,7 +48,7 @@ export const ForOwnersPage: FC = () => {
                 href={Path.Warranty}
               >
                 <img
-                  src={`https://dev.shineray.by/media/${pageData.body.content.warranty.image_header}`}
+                  src={`https://shineray.by/media/${pageData.body.content.warranty.image_header}`}
                   alt="Warranty page"
                 />
                 <div
@@ -70,7 +70,7 @@ export const ForOwnersPage: FC = () => {
                 href={Path.TechSupport}
               >
                 <img
-                  src={`https://dev.shineray.by/media/${pageData.body.content.maintenance.image_header}`}
+                  src={`https://shineray.by/media/${pageData.body.content.maintenance.image_header}`}
                   alt="Maintenance page"
                 />
                 <div
@@ -92,7 +92,7 @@ export const ForOwnersPage: FC = () => {
                 href={Path.TechDocs}
               >
                 <img
-                  src={`https://dev.shineray.by/media/${pageData.body.content.documentation.image_header}`}
+                  src={`https://shineray.by/media/${pageData.body.content.documentation.image_header}`}
                   alt="Technical documentation page"
                 />
                 <div

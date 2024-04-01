@@ -1,7 +1,7 @@
 import { FC } from "react";
 
 export const PDFViewer: FC = () => {
-  const pdfURL = `https://dev.shineray.by/media/uploads/${window.location.href.split("uploads/")[1]}`;
+  const pdfURL = `https://shineray.by/media/uploads/${window.location.href.split("uploads/")[1]}`;
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
       <iframe

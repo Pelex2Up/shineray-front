@@ -1,6 +1,6 @@
 {
   "short_name": "Shineray",
-  "name": "Официальный представитель Shineray в Беларуси",
+  "name": "Официальный представитель Shineray в Республике Беларусь",
   "icons": [
     {
       "src": "favicon.ico",
@@ -18,8 +18,8 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "start_url": "https://shineray.by",
   "display": "standalone",
-  "theme_color": "#000000",
+  "theme_color": "#ffffff",
   "background_color": "#ffffff"
 }

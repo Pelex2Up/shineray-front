@@ -41,7 +41,7 @@ export const HeaderSlider: FC<HeaderSliderT> = ({ images, image }) => {
             style={{ width: "100%", cursor: "pointer" }}
           >
             <img
-              src={`https://dev.shineray.by/media/${image}`}
+              src={`https://shineray.by/media/${image}`}
               key={index}
               width={"100%"}
               rel="preload"
@@ -59,7 +59,7 @@ export const HeaderSlider: FC<HeaderSliderT> = ({ images, image }) => {
       transition={{ duration: 0.5 }}
       className={styles.soloImage}
       id={"header-slider"}
-      src={`https://dev.shineray.by/media/${image}`}
+      src={`https://shineray.by/media/${image}`}
       rel="preload"
     />
   );

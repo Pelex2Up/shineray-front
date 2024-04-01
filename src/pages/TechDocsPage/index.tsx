@@ -268,7 +268,7 @@ export const TechDocsPage: FC = () => {
                 <LinkButton
                   className={styles.techButton}
                   text={doc.title}
-                  href={`https://dev.shineray.by/pdf/${doc.file}`}
+                  href={`https://shineray.by/pdf/${doc.file}`}
                   target="_blank"
                   rel="norefferrer"
                 >

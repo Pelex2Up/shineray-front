@@ -31,7 +31,7 @@ export const NewsPreview: FC<NewsPreviewT> = ({ data }) => {
         className={styles.cardWrapper_cardImage}
       >
         <img
-          src={`https://dev.shineray.by/media/${data.image}`}
+          src={`https://shineray.by/media/${data.image}`}
           alt={data.title}
         />
       </a>

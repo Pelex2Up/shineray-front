@@ -45,7 +45,7 @@ export const MirShinerayPage: FC = () => {
                 href={Path.AboutCompany}
               >
                 <img
-                  src={`https://dev.shineray.by/media/${MirShineray.body.content.about_company.image_header}`}
+                  src={`https://shineray.by/media/${MirShineray.body.content.about_company.image_header}`}
                   alt="Shineray about"
                 />
                 <div
@@ -67,7 +67,7 @@ export const MirShinerayPage: FC = () => {
                 href={Path.AboutBelarus}
               >
                 <img
-                  src={`https://dev.shineray.by/media/${MirShineray.body.content.about_us.image_header}`}
+                  src={`https://shineray.by/media/${MirShineray.body.content.about_us.image_header}`}
                   alt="Shineray belarus"
                 />
                 <div
@@ -89,7 +89,7 @@ export const MirShinerayPage: FC = () => {
                 href={Path.LegalInformation}
               >
                 <img
-                  src={`https://dev.shineray.by/media/${MirShineray.body.content.legal_information.image_header}`}
+                  src={`https://shineray.by/media/${MirShineray.body.content.legal_information.image_header}`}
                   alt="Shineray legal information"
                 />
                 <div

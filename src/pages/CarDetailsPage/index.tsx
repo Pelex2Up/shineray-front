@@ -124,7 +124,7 @@ export const CarDetailsPage: FC = () => {
                           border: "1px solid rgba(193, 193, 193, 0.6)",
                           borderRadius: "10px",
                         }}
-                        src={`https://dev.shineray.by/media/${el.image}`}
+                        src={`https://shineray.by/media/${el.image}`}
                         alt={`Slide ${el.name} ${index + 1}`}
                       />
                     </SwiperSlide>
@@ -144,7 +144,7 @@ export const CarDetailsPage: FC = () => {
                     <SwiperSlide key={el.image}>
                       <img
                         className={`${styles.thumbsWrapper_thumbs} ${currentIndex === index ? styles.active : ""}`}
-                        src={`https://dev.shineray.by/media/${el.image}`}
+                        src={`https://shineray.by/media/${el.image}`}
                         alt={`Thumb ${el.name} ${index + 1}`}
                         onClick={() => {
                           instanceModel?.slideTo(
@@ -252,7 +252,7 @@ export const CarDetailsPage: FC = () => {
               <LinkButton
                 className={styles.techButton}
                 text={`Технические характеристики`}
-                href={`https://dev.shineray.by/pdf/${AutoModel.tech_pdf}`}
+                href={`https://shineray.by/pdf/${AutoModel.tech_pdf}`}
                 target="_blank"
                 rel="norefferrer"
               >
@@ -290,7 +290,7 @@ export const CarDetailsPage: FC = () => {
                       border: "1px solid rgba(193, 193, 193, 0.6)",
                       borderRadius: "0.5rem",
                     }}
-                    src={`https://dev.shineray.by/media/${el.image}`}
+                    src={`https://shineray.by/media/${el.image}`}
                     alt={`Slide ${index + 1}`}
                   />
                 </SwiperSlide>

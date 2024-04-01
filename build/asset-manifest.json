@@ -1,14 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.4cdfced3.css",
-    "main.js": "/static/js/main.fb8be202.js",
-    "static/media/AlibabaPuHuiTi-2-55-Regular.ttf": "/static/media/AlibabaPuHuiTi-2-55-Regular.ec42239dbbf0e9008b5b.ttf",
+    "main.css": "/static/css/main.88b3cec8.css",
+    "main.js": "/static/js/main.441c4720.js",
+    "static/media/formLogo.png": "/static/media/formLogo.fb2ce2bb23a22761dd71.png",
+    "static/media/shineray-logo.png": "/static/media/shineray-logo.13b1a5341f0ae731323c.png",
     "index.html": "/index.html",
-    "main.4cdfced3.css.map": "/static/css/main.4cdfced3.css.map",
-    "main.fb8be202.js.map": "/static/js/main.fb8be202.js.map"
+    "main.88b3cec8.css.map": "/static/css/main.88b3cec8.css.map",
+    "main.441c4720.js.map": "/static/js/main.441c4720.js.map"
   },
   "entrypoints": [
-    "static/css/main.4cdfced3.css",
-    "static/js/main.fb8be202.js"
+    "static/css/main.88b3cec8.css",
+    "static/js/main.441c4720.js"
   ]
 }

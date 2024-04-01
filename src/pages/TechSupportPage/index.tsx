@@ -50,7 +50,7 @@ export const TechSupportPage: FC = () => {
               href={Path.TechDocs}
             >
               <img
-                src={`https://dev.shineray.by/media/${pageData.body.urls.documentation.image_header}`}
+                src={`https://shineray.by/media/${pageData.body.urls.documentation.image_header}`}
                 alt="Техническая документация"
               />
               <div
@@ -68,7 +68,7 @@ export const TechSupportPage: FC = () => {
               href={Path.Dealer}
             >
               <img
-                src={`https://dev.shineray.by/media/${pageData.body.urls.find_a_dealer.image_header}`}
+                src={`https://shineray.by/media/${pageData.body.urls.find_a_dealer.image_header}`}
                 alt="Найти дилера"
               />
               <div
@@ -86,7 +86,7 @@ export const TechSupportPage: FC = () => {
               href={Path.Warranty}
             >
               <img
-                src={`https://dev.shineray.by/media/${pageData.body.urls.maintenance.image_header}`}
+                src={`https://shineray.by/media/${pageData.body.urls.maintenance.image_header}`}
                 alt="Гарантия"
               />
               <div

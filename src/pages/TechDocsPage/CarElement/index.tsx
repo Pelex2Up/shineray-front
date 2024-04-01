@@ -58,7 +58,7 @@ export const CarElement: FC<ICarElement> = ({ car, selected, ...props }) => {
                 ? { height: 180, backgroundSize: "contain" }
                 : { height: 100, backgroundSize: "contain" }
             }
-            image={`https://dev.shineray.by/media/${car.image_xl}`}
+            image={`https://shineray.by/media/${car.image_xl}`}
             title={car.title}
           />
           <CardContent
