@@ -1,0 +1,13 @@
+.pdf {
+  height: 100%;
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .pdf {
+    width: calc(100vw - 40px); // Adjust padding as needed
+    height: auto;
+    max-width: 100%; // Prevent horizontal overflow
+    overflow: hidden; // Hide any excess content
+  }
+}
