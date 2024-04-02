@@ -274,7 +274,7 @@ export const TechDocsPage: FC = () => {
               </TabPanel>
             ))}
           </SwipeableViews>
-          <div id='car-docs'></div>
+          <div id='car-docs' style={{margin: '-1rem 0'}}></div>
           {currentDocs && (
             <div className={styles.wrapper_content_docs}>
               <div
