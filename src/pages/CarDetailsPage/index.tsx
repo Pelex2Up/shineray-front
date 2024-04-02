@@ -20,6 +20,7 @@ import "swiper/css/thumbs";
 import { Path } from "enum/PathE";
 import { Link, Typography } from "@mui/material";
 import { BreadcrumbsComponent } from "components/breadcrumbs";
+import { Helmet } from "react-helmet-async";
 
 export const CarDetailsPage: FC = () => {
   const params = useParams();
@@ -71,6 +72,9 @@ export const CarDetailsPage: FC = () => {
 
   return (
     <motion.div className={styles.wrapper}>
+      <Helmet>
+        <title>{AutoModel.title}</title>
+      </Helmet>
       <PreviewModal
         slides={AutoModel.slider_1.images}
         toggleModal={toggleImage}

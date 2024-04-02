@@ -9,6 +9,7 @@ import { CalendarMonth, Visibility } from "@mui/icons-material";
 import { Badge, Link, Typography } from "@mui/material";
 import { Path } from "enum/PathE";
 import { BreadcrumbsComponent } from "components/breadcrumbs";
+import { Helmet } from "react-helmet-async";
 
 export const NewsDetailsPage: FC = () => {
   const params = useParams();
@@ -52,6 +53,9 @@ export const NewsDetailsPage: FC = () => {
 
   return (
     <div className={styles.wrapper}>
+      <Helmet>
+        <title>{pageData.title}</title>
+      </Helmet>
       <HeaderSlider image={pageData.image} />
       <BreadcrumbsComponent data={breadcrumbs} />
       <div className={styles.wrapper_content}>

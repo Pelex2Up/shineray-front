@@ -18,6 +18,7 @@ import { CarElement } from "./CarElement";
 import { LinkButton } from "components/common/Buttons";
 import { PictureAsPdf } from "@mui/icons-material";
 import { useMediaQuery } from "react-responsive";
+import { Helmet } from "react-helmet-async";
 
 export const TechDocsPage: FC = () => {
   const [fetchData, { data: pageData, isFetching, isLoading }] =
@@ -147,6 +148,9 @@ export const TechDocsPage: FC = () => {
   return (
     <ThemeProvider theme={themeUI}>
       <div className={styles.wrapper}>
+        <Helmet>
+          <title>{pageData.body.page_header.title}</title>
+        </Helmet>
         <HeaderSlider image={pageData.body.page_header.image} />
         <BreadcrumbsComponent data={breadcrumbs} />
         <div className={styles.wrapper_content}>

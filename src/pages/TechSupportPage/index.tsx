@@ -7,6 +7,7 @@ import { Path } from "enum/PathE";
 import { FC, useEffect } from "react";
 import styles from "../WarrantyPage/warrantyPage.module.scss";
 import parse from "html-react-parser";
+import { Helmet } from "react-helmet-async";
 
 export const TechSupportPage: FC = () => {
   const [fetchData, { data: pageData, isFetching, isLoading }] =
@@ -36,6 +37,9 @@ export const TechSupportPage: FC = () => {
 
   return (
     <div className={styles.wrapper}>
+      <Helmet>
+        <title>{pageData.body.page_header.title}</title>
+      </Helmet>
       <HeaderSlider image={pageData.body.page_header.image} />
       <BreadcrumbsComponent data={breadcrumbs} />
       <div className={styles.wrapper_content}>

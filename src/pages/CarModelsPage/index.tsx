@@ -11,6 +11,7 @@ import { Link } from "@mui/material";
 import { BreadcrumbsComponent } from "components/breadcrumbs";
 import { generatePath, useNavigate, useParams } from "react-router-dom";
 import { transliterate } from "transliteration";
+import { Helmet } from "react-helmet-async";
 
 export const CarModelsPage: FC = () => {
   const [fetchData, { data: carModels, isFetching: isLoadingPage }] =
@@ -50,6 +51,13 @@ export const CarModelsPage: FC = () => {
       transition={{ duration: 0.5 }}
       className={styles.carsPageWrapper}
     >
+      <Helmet>
+        <title>
+          {currentCategory === 0
+            ? `Модельный ряд Shineray в Республике Беларусь`
+            : `${carModels.body.categories[currentCategory - 1].name}`}
+        </title>
+      </Helmet>
       {carModels && (
         <HeaderSlider
           image={

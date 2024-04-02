@@ -4,10 +4,14 @@ import { LinkButton } from "components/common/Buttons";
 import { ArrowBack } from "@mui/icons-material";
 import logo from "../../assets/logo/shineray-logo.png";
 import { Path } from "enum/PathE";
+import { Helmet } from "react-helmet-async";
 
 export const NotFound404: FC = () => {
   return (
     <div className={styles.wrapper}>
+      <Helmet>
+        <title>404. Страница не найдена</title>
+      </Helmet>
       <div className={styles.wrapper_content}>
         <img src={logo} alt="logo" />
         <h1>404. Страница не найдена</h1>
@@ -15,7 +19,7 @@ export const NotFound404: FC = () => {
         <LinkButton href={Path.Home} text={"Вернуться на главную"}>
           <ArrowBack />
         </LinkButton>
-      </div>
+      H</div>
     </div>
   );
 };

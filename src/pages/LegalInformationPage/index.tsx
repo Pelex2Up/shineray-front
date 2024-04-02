@@ -16,6 +16,7 @@ import {
 import { transliterate } from "transliteration";
 import { useMediaQuery } from "react-responsive";
 import { ExpandMore } from "@mui/icons-material";
+import { Helmet } from "react-helmet-async";
 
 export const LegalInformationPage: FC = () => {
   const isDesktopOrMobile = useMediaQuery({ minDeviceWidth: 1224 });
@@ -69,6 +70,17 @@ export const LegalInformationPage: FC = () => {
 
   return (
     <div className={styles.wrapper}>
+      <Helmet>
+        <title>
+          {params.infoId
+            ? pageData.body.content.map((obj) => {
+                if (obj.id === Number(params.infoId)) {
+                  return obj.title;
+                }
+              })
+            : pageData.body.page_header.title}
+        </title>
+      </Helmet>
       <HeaderSlider image={pageData.body.page_header.image} />
       <BreadcrumbsComponent data={breadcrumbs} />
       <div className={styles.wrapper_pageContent}>

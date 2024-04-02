@@ -6,6 +6,7 @@ import { useLazyFetchMirShinerayPageDataQuery } from "api/mirShinerayService";
 import { Preloader } from "components/Preloader";
 import { BreadcrumbsComponent } from "components/breadcrumbs";
 import { Link } from "@mui/material";
+import { Helmet } from "react-helmet-async";
 
 export const MirShinerayPage: FC = () => {
   const [fetchData, { data: MirShineray, isFetching }] =
@@ -30,10 +31,16 @@ export const MirShinerayPage: FC = () => {
 
   return (
     <div className={styles.pageWrapper}>
+      <Helmet>
+        <title>Мир Shineray</title>
+      </Helmet>
       <HeaderSlider image={MirShineray.body.page_header.image} />
       <BreadcrumbsComponent data={breadcrumbs} />
       <div className={styles.pageWrapper_index}>
         <div className={styles.pageWrapper_index_content}>
+          <div className={styles.pageWrapper_index_title}>
+            <h1>{'Мир Shineray'}</h1>
+          </div>
           <ul className={styles.pageWrapper_index_content_buttonsBlock}>
             <li
               className={styles.pageWrapper_index_content_buttonsBlock_button}

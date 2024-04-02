@@ -22,6 +22,7 @@ import { Path } from "enum/PathE";
 import { BreadcrumbsComponent } from "components/breadcrumbs";
 import formLogo from "../../assets/logo/formLogo.png";
 import InputMask from "react-input-mask";
+import { Helmet } from "react-helmet-async";
 
 const theme = createTheme({
   components: {
@@ -94,6 +95,9 @@ export const BecomeDealerPage: FC = () => {
 
   return (
     <div className={styles.pageWrapper}>
+      <Helmet>
+        <title>{pageData.body.content.title}</title>
+      </Helmet>
       <HeaderSlider image={pageData.body.page_header.image} />
       <BreadcrumbsComponent data={breadcrumbs} />
       <div className={styles.pageWrapper_container}>

@@ -21,6 +21,7 @@ import {
 } from "@mui/material";
 import { BreadcrumbsComponent } from "components/breadcrumbs";
 import { useMediaQuery } from "react-responsive";
+import { Helmet } from "react-helmet-async";
 
 const theme = createTheme({
   components: {
@@ -219,6 +220,9 @@ export const DealersPage: FC = () => {
 
   return (
     <div className={styles.dealersWrapper}>
+      <Helmet>
+        <title>{pageData.body.page_header.title}</title>
+      </Helmet>
       <HeaderSlider image={pageData.body.page_header.image} />
       <BreadcrumbsComponent data={breadcrumbs} />
       <div className={styles.dealersWrapper_title} id="page-title">

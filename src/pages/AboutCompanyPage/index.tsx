@@ -16,6 +16,7 @@ import { Star, DriveEta } from "@mui/icons-material";
 import { Path } from "enum/PathE";
 import { Link } from "@mui/material";
 import { BreadcrumbsComponent } from "components/breadcrumbs";
+import { Helmet } from "react-helmet-async";
 
 export const AboutCompanyPage: FC = () => {
   const [fetchData, { data: pageData }] =
@@ -68,6 +69,9 @@ export const AboutCompanyPage: FC = () => {
 
   return (
     <div className={styles.wrapper}>
+      <Helmet>
+        <title>{pageData.body.about_company.title}</title>
+      </Helmet>
       <HeaderSlider image={pageData.body.about_company.image_header} />
       <BreadcrumbsComponent data={breadcrumbs} />
       <div className={styles.wrapper_container}>

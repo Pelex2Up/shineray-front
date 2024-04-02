@@ -7,6 +7,7 @@ import { HeaderSlider } from "components/HeaderCarousel";
 import { BreadcrumbsComponent } from "components/breadcrumbs";
 import parse from "html-react-parser";
 import { Preloader } from "components/Preloader";
+import { Helmet } from "react-helmet-async";
 
 export const WarrantyPage: FC = () => {
   const [fetchData, { data: pageData, isLoading, isFetching }] =
@@ -38,6 +39,9 @@ export const WarrantyPage: FC = () => {
 
   return (
     <div className={styles.wrapper}>
+      <Helmet>
+        <title>{pageData.body.page_header.title}</title>
+      </Helmet>
       <HeaderSlider image={pageData.body.page_header.image} />
       <BreadcrumbsComponent data={breadcrumbs} />
       <div className={styles.wrapper_content}>

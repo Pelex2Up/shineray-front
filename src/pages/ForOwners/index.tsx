@@ -6,6 +6,7 @@ import { HeaderSlider } from "components/HeaderCarousel";
 import { Path } from "enum/PathE";
 import { BreadcrumbsComponent } from "components/breadcrumbs";
 import { Link } from "@mui/material";
+import { Helmet } from "react-helmet-async";
 
 export const ForOwnersPage: FC = () => {
   const [fetchData, { data: pageData, isFetching, isLoading }] =
@@ -29,14 +30,19 @@ export const ForOwnersPage: FC = () => {
   if (isFetching || isLoading || !pageData) {
     return <Preloader />;
   }
-  console.log(pageData);
 
   return (
     <div className={styles.pageWrapper}>
+      <Helmet>
+        <title>Владельцам</title>
+      </Helmet>
       <HeaderSlider image={pageData.body.page_header.image} />
       <BreadcrumbsComponent data={breadcrumbs} />
       <div className={styles.pageWrapper_index}>
         <div className={styles.pageWrapper_index_content}>
+          <div className={styles.pageWrapper_index_title}>
+            <h1>{"Владельцам"}</h1>
+          </div>
           <ul className={styles.pageWrapper_index_content_buttonsBlock}>
             <li
               className={styles.pageWrapper_index_content_buttonsBlock_button}

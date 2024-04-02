@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import { App } from "./App";
 import { store } from "./store/redux/store";
 import { persistStore } from "redux-persist";
-
+import { HelmetProvider } from "react-helmet-async";
 import "./index.css";
 import { Preloader } from "components/Preloader";
 import React from "react";
@@ -20,7 +20,9 @@ root.render(
   <BrowserRouter>
     <Provider store={store}>
       <PersistGate loading={<Preloader />} persistor={persistor}>
-        <App />
+        <HelmetProvider>
+          <App />
+        </HelmetProvider>
       </PersistGate>
     </Provider>
   </BrowserRouter>,

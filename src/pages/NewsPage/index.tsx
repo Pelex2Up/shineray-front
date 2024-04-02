@@ -8,6 +8,7 @@ import { Link, Pagination } from "@mui/material";
 import { HotNews } from "components/HotNews";
 import { Path } from "enum/PathE";
 import { BreadcrumbsComponent } from "components/breadcrumbs";
+import { Helmet } from "react-helmet-async";
 
 export const NewsPage: FC = () => {
   const [fetchData, { data: pageData, isFetching }] =
@@ -53,6 +54,9 @@ export const NewsPage: FC = () => {
 
   return (
     <div className={styles.wrapper}>
+      <Helmet>
+        <title>{pageData.results.body.page_header.title}</title>
+      </Helmet>
       <HeaderSlider image={pageData.results.body.page_header.image} />
       <BreadcrumbsComponent data={breadcrumbs} />
       <div className={styles.wrapper_content} id={"header-title"}>

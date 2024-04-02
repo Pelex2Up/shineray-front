@@ -14,6 +14,7 @@ import parse from "html-react-parser";
 import { Link, Typography } from "@mui/material";
 import { Path } from "enum/PathE";
 import { BreadcrumbsComponent } from "components/breadcrumbs";
+import { Helmet } from "react-helmet-async";
 
 export const DealerDetailsPage: FC = () => {
   const params = useParams();
@@ -45,6 +46,9 @@ export const DealerDetailsPage: FC = () => {
 
   return (
     <div className={styles.wrapper}>
+      <Helmet>
+        <title>{`«${dealerData.name}» официальный дилер Shineray`}</title>
+      </Helmet>
       <HeaderSlider image={dealerData.header_image} />
       <BreadcrumbsComponent data={breadcrumbs} />
       <div className={styles.wrapper_content}>
@@ -203,7 +207,7 @@ export const DealerDetailsPage: FC = () => {
                               {department.contact_phone.map(
                                 (phone, indexPhone) => (
                                   <p key={phone.id + index + "_phone"}>
-                                    {`${phone.mobile_operator || 'Телефон'}: `}
+                                    {`${phone.mobile_operator || "Телефон"}: `}
                                     <a href={`tel:${phone.phone_number}`}>
                                       {phone.phone_number}
                                     </a>

@@ -79,13 +79,15 @@
           font-size: $font-small-size;
           color: #000;
           line-height: 32px;
-          max-width: 660px;
+          max-width: 43vw;
           padding: 35px 0;
+          max-height: 760px;
 
           @media (max-width: 1224px) {
             font-size: $font-small-size;
             line-height: 24px;
             max-width: none;
+            max-height: none;
             padding: 15px 0 0;
           }
         }
