@@ -22,7 +22,7 @@ export const LegalInformationPage: FC = () => {
   const isDesktopOrMobile = useMediaQuery({ minDeviceWidth: 1224 });
   const params = useParams();
   const [fetchPage, { data: pageData, isFetching }] =
-    useLazyFetchLegalInfoPageDataQuery();
+    useLazyFetchLegalInfoPageDataQuery(); 
 
   const breadcrumbs = useMemo(
     () => [
@@ -72,13 +72,7 @@ export const LegalInformationPage: FC = () => {
     <div className={styles.wrapper}>
       <Helmet>
         <title>
-          {params.infoId
-            ? pageData.body.content.map((obj) => {
-                if (obj.id === Number(params.infoId)) {
-                  return obj.title;
-                }
-              })
-            : pageData.body.page_header.title}
+          {pageData.body.page_header.title}
         </title>
       </Helmet>
       <HeaderSlider image={pageData.body.page_header.image} />
@@ -116,6 +110,7 @@ export const LegalInformationPage: FC = () => {
                             .toLowerCase(),
                         },
                       )}
+                      key={'link' + el.title + el.order}
                     >
                       {el.title}
                     </a>
@@ -145,7 +140,7 @@ export const LegalInformationPage: FC = () => {
               >
                 {pageData.body.content.map((el, index) => (
                   <a
-                    key={el.title + "_" + index}
+                    key={el.title + "_&index"}
                     href={generatePath(
                       Path.LegalInformation + Path.InfoElement,
                       {
@@ -174,7 +169,7 @@ export const LegalInformationPage: FC = () => {
             <div className={styles.wrapper_pageContent_title}>
               <h1>
                 {params.infoId
-                  ? pageData.body.content.map((obj) => {
+                  ? pageData.body.content.map((obj, index) => {
                       if (obj.id === Number(params.infoId)) {
                         return obj.title;
                       }

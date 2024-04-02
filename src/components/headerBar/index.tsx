@@ -188,7 +188,7 @@ export const HeaderBar: FC<HeaderT> = forwardRef<HTMLButtonElement>(
                         }}
                         key={cat.name}
                         href={generatePath(Path.CarsCategory, {
-                          category: `${index + 1}-${transliterate(cat.name)}`,
+                          category: `${index + 1}-${transliterate(cat.name).toLowerCase()}`,
                         })}
                         rel="nofollow"
                         className={
