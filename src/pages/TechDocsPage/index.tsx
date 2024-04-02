@@ -130,6 +130,17 @@ export const TechDocsPage: FC = () => {
     }
   }, [fetchData, pageData, isFetching, isLoading]);
 
+  function scrollToElement(elementId: string, scrollPosition: number) {
+    const element = document.getElementById(elementId);
+    if (element) {
+      const coordinates = element.getBoundingClientRect();
+      window.scrollTo({
+        top: window.scrollY + coordinates.top + scrollPosition,
+        behavior: "smooth",
+      });
+    }
+  }
+
   const breadcrumbs = [
     <Link underline="hover" key="1" color="inherit" href={Path.Home}>
       Главная
@@ -233,7 +244,10 @@ export const TechDocsPage: FC = () => {
                 cars.car_models.map((element, indexEl) => (
                   <CarElement
                     selected={element.id === selectedCar}
-                    onClick={() => setSelectedCar(element.id)}
+                    onClick={() => {
+                      setSelectedCar(element.id);
+                      scrollToElement("car-docs", -320);
+                    }}
                     key={indexEl + "-" + element.id}
                     car={element}
                   />
@@ -248,7 +262,10 @@ export const TechDocsPage: FC = () => {
               >
                 {tabContent.car_models.map((element, indexEl) => (
                   <CarElement
-                    onClick={() => setSelectedCar(element.id)}
+                    onClick={() => {
+                      setSelectedCar(element.id);
+                      scrollToElement("car-docs", -320);
+                    }}
                     selected={element.id === selectedCar}
                     key={indexEl + "-" + element.id + "tab"}
                     car={element}
@@ -257,6 +274,7 @@ export const TechDocsPage: FC = () => {
               </TabPanel>
             ))}
           </SwipeableViews>
+          <div id='car-docs'></div>
           {currentDocs && (
             <div className={styles.wrapper_content_docs}>
               <div
