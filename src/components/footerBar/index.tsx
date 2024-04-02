@@ -33,7 +33,7 @@ export const Footer: FC = () => {
           {FooterData?.menu.automobile.map(({ name }, index) => (
             <a
               href={generatePath(Path.CarsCategory, {
-                category: `${index + 1}-${transliterate(name)}`,
+                category: `${index + 1}-${transliterate(name).toLowerCase()}`,
               })}
               className={styles.footerWrapper_linkBar_link}
               key={index}

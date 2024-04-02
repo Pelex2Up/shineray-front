@@ -6,6 +6,7 @@ import { generatePath } from "react-router-dom";
 import { CalendarMonth, Visibility } from "@mui/icons-material";
 import { LinkButton } from "components/common/Buttons";
 import { Badge } from "@mui/material";
+import { transliterate } from "transliteration";
 
 type NewsPreviewT = {
   data: INews;
@@ -27,18 +28,15 @@ export const NewsPreview: FC<NewsPreviewT> = ({ data }) => {
   return (
     <div className={styles.cardWrapper}>
       <a
-        href={generatePath(Path.NewsDetails, { newsId: String(data.id) })}
+        href={generatePath(Path.NewsDetails, { newsId: `${String(data.id)}-${transliterate(data.title.replace(/\s/g, "-")).toLowerCase()}` })}
         className={styles.cardWrapper_cardImage}
       >
-        <img
-          src={`https://shineray.by/media/${data.image}`}
-          alt={data.title}
-        />
+        <img src={`https://shineray.by/media/${data.image}`} alt={data.title} />
       </a>
       <div className={styles.cardWrapper_newsContent}>
         <div className={styles.cardWrapper_newsContent_upper}>
           <a
-            href={generatePath(Path.NewsDetails, { newsId: String(data.id) })}
+            href={generatePath(Path.NewsDetails, { newsId: `${String(data.id)}-${transliterate(data.title.replace(/\s/g, "-")).toLowerCase()}` })}
             className={styles.cardWrapper_newsContent_upper_title}
           >
             {data.title}
@@ -62,7 +60,9 @@ export const NewsPreview: FC<NewsPreviewT> = ({ data }) => {
         </div>
         <div className={styles.cardWrapper_newsContent_lower}>
           <LinkButton
-            href={generatePath(Path.NewsDetails, { newsId: String(data.id) })}
+            href={generatePath(Path.NewsDetails, {
+              newsId: `${String(data.id)}-${transliterate(data.title.replace(/\s/g, "-")).toLowerCase()}`,
+            })}
             text={"Читать далее"}
           />
         </div>

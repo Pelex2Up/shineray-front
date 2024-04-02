@@ -43,7 +43,7 @@ export const NewsDetailsPage: FC = () => {
 
   useEffect(() => {
     if (params) {
-      fetchNews(Number(params.newsId));
+      fetchNews(Number(params.newsId?.split('-')[0]));
     }
   }, [params, fetchNews]);
 

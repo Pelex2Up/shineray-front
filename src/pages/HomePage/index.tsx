@@ -9,6 +9,7 @@ import { LinkButton } from "components/common/Buttons";
 import { Swiper, SwiperClass, SwiperRef, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { Preloader } from "components/Preloader";
+import { transliterate } from "transliteration";
 
 export const HomePage: FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -135,7 +136,7 @@ export const HomePage: FC = () => {
                 data={data}
                 key={index}
                 href={generatePath(Path.NewsDetails, {
-                  newsId: String(data.id),
+                  newsId: `${String(data.id)}-${transliterate(data.title.replace(/\s/g, "-")).toLowerCase()}`,
                 })}
               />
             ))}

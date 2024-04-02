@@ -104,7 +104,7 @@ export const CarModelsPage: FC = () => {
                   onClick={() => {
                     navigate(
                       generatePath(Path.CarsCategory, {
-                        category: `${index + 1}-${transliterate(item.name)}`,
+                        category: `${index + 1}-${transliterate(item.name).toLowerCase()}`,
                       }),
                     );
                     setCurrentCategory(index + 1);
