@@ -40,7 +40,17 @@ export const WarrantyPage: FC = () => {
   return (
     <div className={styles.wrapper}>
       <Helmet>
-        <title>{pageData.body.page_header.title}</title>
+        <title>Гарантия на автомобили Shineray | Запасные части |  Условия</title>
+        <meta
+          name="description"
+          property="og:description"
+          content={`Гарантийная политика. Гарантия на автомобили Shineray и оригинальные запасные части. Условия действия гарантийных обязательств. Как воспользоваться гарантией? Узнайте подробности.`}
+        />
+        <meta
+          name="keywords"
+          property="og:keywords"
+          content={`Shineray, SRM, брэнд, бренд, марка, гарантия, гарантийная, политика, обязательства, условия, техническое обслуживание, ТО, документация`}
+        />
       </Helmet>
       <HeaderSlider image={pageData.body.page_header.image} />
       <BreadcrumbsComponent data={breadcrumbs} />

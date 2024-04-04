@@ -55,6 +55,16 @@ export const NewsDetailsPage: FC = () => {
     <div className={styles.wrapper}>
       <Helmet>
         <title>{pageData.title}</title>
+        <meta
+          name="description"
+          property="og:description"
+          content={`${pageData.description.replace(/(<([^>]+)>)/gi, '')}`}
+        />
+        <meta
+          name="keywords"
+          property="og:keywords"
+          content={`Shineray, SRM, SWM, марка, брэнд, Республика Беларусь, Беларусь, автомобили, модели, новости, информация, коммерческий, транспорт, новинки, статьи`}
+        />
       </Helmet>
       <HeaderSlider image={pageData.image} />
       <BreadcrumbsComponent data={breadcrumbs} />

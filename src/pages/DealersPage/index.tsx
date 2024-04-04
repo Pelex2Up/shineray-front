@@ -221,7 +221,17 @@ export const DealersPage: FC = () => {
   return (
     <div className={styles.dealersWrapper}>
       <Helmet>
-        <title>{pageData.body.page_header.title}</title>
+        <title>Официальные дилеры Shineray в Республике Беларусь</title>
+        <meta
+          name="description"
+          property="og:description"
+          content={`Дилерская сеть бренда Shineray в Республике Беларусь на данный момент уже охватывает всю территорию нашей страны. Найдите дилера Shineray в Вашем городе.`}
+        />
+        <meta
+          name="keywords"
+          property="og:keywords"
+          content={`Shineray, SRM, брэнд, бренд, марка, дилер, официальный, Республика Беларусь, Беларусь, дилеры, дилерская, сеть`}
+        />
       </Helmet>
       <HeaderSlider image={pageData.body.page_header.image} />
       <BreadcrumbsComponent data={breadcrumbs} />

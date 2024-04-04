@@ -55,7 +55,17 @@ export const NewsPage: FC = () => {
   return (
     <div className={styles.wrapper}>
       <Helmet>
-        <title>{pageData.results.body.page_header.title}</title>
+        <title>Информация про автомобили Shineray | Новости компании | Пресс-релизы</title>
+        <meta
+          name="description"
+          property="og:description"
+          content={`Актуальная информация про автомобили марки Shineray. Актуальные новости, статьи, пресс-релизы. `}
+        />
+        <meta
+          name="keywords"
+          property="og:keywords"
+          content={`Shineray, SRM, SWM, марка, брэнд, Республика Беларусь, Беларусь, автомобили, модели, новости, информация, коммерческий, транспорт, новинки, статьи`}
+        />
       </Helmet>
       <HeaderSlider image={pageData.results.body.page_header.image} />
       <BreadcrumbsComponent data={breadcrumbs} />

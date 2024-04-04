@@ -32,7 +32,17 @@ export const MirShinerayPage: FC = () => {
   return (
     <div className={styles.pageWrapper}>
       <Helmet>
-        <title>Мир Shineray</title>
+        <title>Мир Shineray | Информация о компании | История | Юридическая информация</title>
+        <meta
+          name="description"
+          property="og:description"
+          content={`Информация о компании и бренде Shineray в Республике Беларусь. Юридическая и правовая информация. Узнайте подробнее.`}
+        />
+        <meta
+          name="keywords"
+          property="og:keywords"
+          content={`Shineray, SRM, SWM, официальный, представитель, дистрибьютор, марка, брэнд, бренд, Республика Беларусь, Беларусь, контакты, информация, контактная`}
+        />
       </Helmet>
       <HeaderSlider image={MirShineray.body.page_header.image} />
       <BreadcrumbsComponent data={breadcrumbs} />

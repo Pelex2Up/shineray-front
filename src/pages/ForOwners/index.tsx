@@ -34,7 +34,17 @@ export const ForOwnersPage: FC = () => {
   return (
     <div className={styles.pageWrapper}>
       <Helmet>
-        <title>Владельцам</title>
+        <title>Информация для владельцев автомобилей Shineray</title>
+        <meta
+          name="description"
+          property="og:description"
+          content={`Информация для владельцев автомобилей бренда Shineray: гарантийная политика, техническое обслуживание, техническая документация на автомобили Shineray. Узнайте больше!`}
+        />
+        <meta
+          name="keywords"
+          property="og:keywords"
+          content={`Shineray, SRM, брэнд, бренд, марка, гарантия, гарантийная, политика, обязательства, условия, техническое обслуживание, ТО, документация`}
+        />
       </Helmet>
       <HeaderSlider image={pageData.body.page_header.image} />
       <BreadcrumbsComponent data={breadcrumbs} />

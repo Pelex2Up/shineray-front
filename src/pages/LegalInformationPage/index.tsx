@@ -22,7 +22,7 @@ export const LegalInformationPage: FC = () => {
   const isDesktopOrMobile = useMediaQuery({ minDeviceWidth: 1224 });
   const params = useParams();
   const [fetchPage, { data: pageData, isFetching }] =
-    useLazyFetchLegalInfoPageDataQuery(); 
+    useLazyFetchLegalInfoPageDataQuery();
 
   const breadcrumbs = useMemo(
     () => [
@@ -72,8 +72,18 @@ export const LegalInformationPage: FC = () => {
     <div className={styles.wrapper}>
       <Helmet>
         <title>
-          {pageData.body.page_header.title}
+          Юридическая и правовая информация | Политика конфиденциальности
         </title>
+        <meta
+          name="description"
+          property="og:description"
+          content={`В разделе Юридическая информация можно ознакомиться с основной правовой и юридической информацией, а также правилами посещения и использования информации, размещенной на интернет-сайте нашей организации.`}
+        />
+        <meta
+          name="keywords"
+          property="og:keywords"
+          content={`юридическая, правовая, информация, сайт, правила, посещение, файлы, куки, политика, конфиденциальности, пользователи`}
+        />
       </Helmet>
       <HeaderSlider image={pageData.body.page_header.image} />
       <BreadcrumbsComponent data={breadcrumbs} />
@@ -110,7 +120,7 @@ export const LegalInformationPage: FC = () => {
                             .toLowerCase(),
                         },
                       )}
-                      key={'link' + el.title + el.order}
+                      key={"link" + el.title + el.order}
                     >
                       {el.title}
                     </a>

@@ -38,7 +38,17 @@ export const TechSupportPage: FC = () => {
   return (
     <div className={styles.wrapper}>
       <Helmet>
-        <title>{pageData.body.page_header.title}</title>
+        <title>Техническое обслуживание автомобилей Shineray</title>
+        <meta
+          name="description"
+          property="og:description"
+          content={`Периодическое техническое обслуживание (ТО) автомобилей Shineray: цели, задачи, регламент, перечень работ, периодичность проведения.`}
+        />
+        <meta
+          name="keywords"
+          property="og:keywords"
+          content={`Shineray, SRM, брэнд, бренд, марка, гарантия, гарантийная, политика, обязательства, условия, техническое обслуживание, ТО, документация`}
+        />
       </Helmet>
       <HeaderSlider image={pageData.body.page_header.image} />
       <BreadcrumbsComponent data={breadcrumbs} />

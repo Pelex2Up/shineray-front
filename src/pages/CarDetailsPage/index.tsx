@@ -74,6 +74,16 @@ export const CarDetailsPage: FC = () => {
     <motion.div className={styles.wrapper}>
       <Helmet>
         <title>{AutoModel.title}</title>
+        <meta
+          name="description"
+          property="og:description"
+          content={`${AutoModel.title}. ${AutoModel.description.replace(/(<([^>]+)>)/gi, '')} Узнайте о модели больше!`}
+        />
+        <meta
+          name="keywords"
+          property="og:keywords"
+          content={`Shineray, SRM, ${AutoModel.name}, коммерческий, автомобиль, транспорт, модель, пассажирский, грузовой, фургон, карго, логистика, перевозки, минивэн, микроавтобус, описание, технические характеристики, фото`}
+        />
       </Helmet>
       <PreviewModal
         slides={AutoModel.slider_1.images}

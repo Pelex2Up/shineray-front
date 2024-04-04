@@ -160,7 +160,17 @@ export const TechDocsPage: FC = () => {
     <ThemeProvider theme={themeUI}>
       <div className={styles.wrapper}>
         <Helmet>
-          <title>{pageData.body.page_header.title}</title>
+          <title>Техническая документация на автомобили Shineray</title>
+          <meta
+            name="description"
+            property="og:description"
+            content={`Документация на автомобили Shineray: технические характеристики, руководство по эксплуатации, сервисная книжка, карта технического обслуживания. Выберите модель для поиска необходимой документации.`}
+          />
+          <meta
+            name="keywords"
+            property="og:keywords"
+            content={`Shineray, SRM, брэнд, бренд, марка, гарантия, гарантийная, политика, обязательства, условия, техническое обслуживание, ТО, техническая документация`}
+          />
         </Helmet>
         <HeaderSlider image={pageData.body.page_header.image} />
         <BreadcrumbsComponent data={breadcrumbs} />
@@ -274,7 +284,7 @@ export const TechDocsPage: FC = () => {
               </TabPanel>
             ))}
           </SwipeableViews>
-          <div id='car-docs' style={{margin: '-1rem 0'}}></div>
+          <div id="car-docs" style={{ margin: "-1rem 0" }}></div>
           {currentDocs && (
             <div className={styles.wrapper_content_docs}>
               <div

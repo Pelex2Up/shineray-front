@@ -47,7 +47,17 @@ export const DealerDetailsPage: FC = () => {
   return (
     <div className={styles.wrapper}>
       <Helmet>
-        <title>{`«${dealerData.name}» официальный дилер Shineray`}</title>
+        <title>{`«${dealerData.name}» официальный дилер Shineray в ${dealerData.city || "Беларуси"}`}</title>
+        <meta
+          name="description"
+          property="og:description"
+          content={`Официальный дилер Shineray ${dealerData.city}: продажа новых автомобилей Shineray, периодическое техническое обслуживание (ТО), гарантийное и сервисное обслуживание, оригинальные запасные части.`}
+        />
+        <meta
+          name="keywords"
+          property="og:keywords"
+          content={`Shineray, SRM, брэнд, бренд, марка, дилер, официальный, Республика Беларусь, Беларусь, дилеры, ${dealerData.city}, область,регион`}
+        />
       </Helmet>
       <HeaderSlider image={dealerData.header_image} />
       <BreadcrumbsComponent data={breadcrumbs} />

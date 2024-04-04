@@ -41,7 +41,17 @@ export const RepresentativeOfficePage: FC = () => {
   return (
     <>
       <Helmet>
-        <title>{pageData.body.about_company.title}</title>
+        <title>О нас и бренде Shineray в Республике Беларусь</title>
+        <meta
+          name="description"
+          property="og:description"
+          content={`О компании ООО "Лакшери Моторс групп" | Официальный представитель и эксклюзивный дистрибьютор Shineray в Республике Беларусь | Дилерская сеть Shineray`}
+        />
+        <meta
+          name="keywords"
+          property="og:keywords"
+          content={`Shineray, SRM, SWM, официальный, представитель, дистрибьютор, марка, брэнд, бренд, дилер, дилерская, сеть, Республика Беларусь, Беларусь`}
+        />
       </Helmet>
       <div className={styles.wrapper}>
         <HeaderSlider image={pageData.body.about_company.image_header} />

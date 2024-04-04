@@ -70,7 +70,19 @@ export const AboutCompanyPage: FC = () => {
   return (
     <div className={styles.wrapper}>
       <Helmet>
-        <title>{pageData.body.about_company.title}</title>
+        <title>{`Shineray Group полное название East Shineray Group Co.,Ltd - китайский конгломерат, крупное, масштабное предприятие.`}</title>
+        <meta
+          name="description"
+          property="og:description"
+          content={
+            "Информация о компании Shineray Group. Бренды Shieray, SRM, SWM. Миссия, ценности, цель. История."
+          }
+        />
+        <meta
+          name="keywords"
+          property="og:keywords"
+          content="Shineray, SRM, SWM, официальный, представитель, дистрибьютор, марка, брэнд, бренд, Республика Беларусь, Беларусь, контакты, информация, контактная"
+        />
       </Helmet>
       <HeaderSlider image={pageData.body.about_company.image_header} />
       <BreadcrumbsComponent data={breadcrumbs} />

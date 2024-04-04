@@ -96,7 +96,17 @@ export const BecomeDealerPage: FC = () => {
   return (
     <div className={styles.pageWrapper}>
       <Helmet>
-        <title>{pageData.body.content.title}</title>
+        <title>{`Стать официальным дилером Shineray в Республике Беларусь`}</title>
+        <meta
+          name="description"
+          property="og:description"
+          content={`Хотите стать официальным дилером Shineray? Заполните и отправьте нам свою заявку, мы свяжемся с Вами для обсуждения всех необходимых для этого деталей!`}
+        />
+        <meta
+          name="keywords"
+          property="og:keywords"
+          content="Shineray, SRM, SWM, официальный, представитель, дистрибьютор, марка, брэнд, бренд, дилер, Республика Беларусь, Беларусь"
+        />
       </Helmet>
       <HeaderSlider image={pageData.body.page_header.image} />
       <BreadcrumbsComponent data={breadcrumbs} />

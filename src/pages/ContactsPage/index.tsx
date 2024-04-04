@@ -104,7 +104,19 @@ export const ContactsPage: FC = () => {
   return (
     <div className={styles.pageWrapper}>
       <Helmet>
-        <title>Контакты</title>
+        <title>Контактная информация ООО "Лакшери Моторс групп"</title>
+        <meta
+          name="description"
+          property="og:description"
+          content={
+            'Контактная информация | ООО "Лакшери Моторг групп" | Официальный представитель и эксклюзивный дистрибьютор Shineray в Республике Беларусь | Связаться с нами'
+          }
+        />
+        <meta
+          name="keywords"
+          property="og:keywords"
+          content="Shineray, SRM, SWM, официальный, представитель, дистрибьютор, марка, брэнд, бренд, Республика Беларусь, Беларусь, контакты, информация, контактная"
+        />
       </Helmet>
       <HeaderSlider image={pageData.body.page_header.image} />
       <BreadcrumbsComponent data={breadcrumbs} />
