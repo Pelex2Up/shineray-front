@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { Preloader } from "components/Preloader";
 import parse from "html-react-parser";
 import { Path } from "enum/PathE";
-import { Link } from "@mui/material";
+import { Link, Typography } from "@mui/material";
 import { BreadcrumbsComponent } from "components/breadcrumbs";
 import { generatePath, useNavigate, useParams } from "react-router-dom";
 import { transliterate } from "transliteration";
@@ -39,6 +39,24 @@ export const CarModelsPage: FC = () => {
     </Link>,
   ];
 
+  useEffect(() => {
+    if (breadcrumbs.length === 2 && currentCategory !== 0) {
+      breadcrumbs.push(
+        <Typography key="3" color="text.primary">
+          {carModels?.body.categories[currentCategory - 1].name}
+        </Typography>,
+      );
+    } else if (breadcrumbs.length === 3 && currentCategory !== 0) {
+      breadcrumbs[2] = (
+        <Typography key="3" color="text.primary">
+          {carModels?.body.categories[currentCategory - 1].name}
+        </Typography>
+      );
+    } else {
+      breadcrumbs.pop();
+    }
+  }, [currentCategory, breadcrumbs]);
+
   if (!carModels || isLoadingPage) {
     return <Preloader />;
   }
@@ -55,8 +73,20 @@ export const CarModelsPage: FC = () => {
         <title>
           {currentCategory === 0
             ? `Модельный ряд Shineray в Республике Беларусь`
-            : `${carModels.body.categories[currentCategory - 1].name}`}
+            : `${carModels.body.categories[currentCategory - 1].name} бренда Shineray`}
         </title>
+        <meta
+          name="description"
+          property="og:description"
+          content={
+            "Модельный ряд бренда Shineray представлен коммерческой линейкой автомобилей: минивэны, микроавтобусы, электромобили, мини-грузовики. Узнайте о коммерческом транспорте Shineray больше!"
+          }
+        />
+        <meta
+          name="keywords"
+          property="og:keywords"
+          content="Shineray, SRM, коммерческий, автомобиль, транспорт, модель, пассажирский, грузовой, фургон, карго, логистика, перевозки, минивэн, микроавтобус, электромобиль, электрический, Республика Беларусь, Беларусь, купить, продажа"
+        />
       </Helmet>
       {carModels && (
         <HeaderSlider
