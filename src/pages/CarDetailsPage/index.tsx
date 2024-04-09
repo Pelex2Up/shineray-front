@@ -266,7 +266,7 @@ export const CarDetailsPage: FC = () => {
               <LinkButton
                 className={styles.techButton}
                 text={`Технические характеристики`}
-                href={`https://shineray.by/pdf/${AutoModel.tech_pdf}`}
+                href={`https://shineray.by/media/${AutoModel.tech_pdf}`}
                 target="_blank"
                 rel="norefferrer"
               >

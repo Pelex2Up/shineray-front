@@ -19,7 +19,7 @@ export const NotFound404: FC = () => {
         <LinkButton href={Path.Home} text={"Вернуться на главную"}>
           <ArrowBack />
         </LinkButton>
-      H</div>
+      </div>
     </div>
   );
 };

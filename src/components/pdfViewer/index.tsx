@@ -8,7 +8,7 @@ export const PDFViewer: FC = () => {
     <div
       style={{
         width: "100vw",
-        height: "100vh",
+        minHeight: "100vh",
         display: "flex",
         justifyContent: "center",
         alignItems: "flex-start",
@@ -20,8 +20,13 @@ export const PDFViewer: FC = () => {
         className={styles.pdf}
         title={"Shineray-PDF-viewer"}
       >
-        PDF файлы не поддерживаются вашим браузером. Пожалуйста загрузите файл
-        на ваше устройство, для просмотра.
+        <p>
+          PDF файлы не поддерживаются вашим браузером. Пожалуйста загрузите файл
+          на ваше устройство, для просмотра.{" "}
+          <a href={pdfURL.split("https://shineray.by")[1]} download>
+            Ссылка для скачивания
+          </a>
+        </p>
       </object>
     </div>
   );
