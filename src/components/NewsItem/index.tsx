@@ -28,7 +28,7 @@ export const NewsItem: FC<NewsItemT> = ({ data, ...restProps }) => {
     <a {...restProps} className={styles.container}>
       <img src={`https://shineray.by/media/${image}`} loading="lazy" alt={`${title}`} />
       <div className={styles.container_description}>
-        <h1 className={styles.container_description_title}>{title}</h1>
+        <h2 className={styles.container_description_title}>{title}</h2>
         <p className={styles.container_description_text}>
           {description.slice(0, 100)}
           {description.length > 100 ? "..." : ""}

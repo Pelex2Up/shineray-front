@@ -4,7 +4,6 @@ import { HeaderT } from "types/componentTypes";
 import { generatePath } from "react-router-dom";
 import { Path } from "enum/PathE";
 import { motion } from "framer-motion";
-import { transliterate } from "transliteration";
 
 export const ModelCarsMenu: FC<HeaderT> = ({ data }) => {
   const [currentType, setCurrentType] = useState<number>(0);
@@ -34,7 +33,7 @@ export const ModelCarsMenu: FC<HeaderT> = ({ data }) => {
             style={{ textDecoration: "none" }}
             key={index + car.id}
             href={generatePath(Path.ModelAuto, {
-              category: `${currentType + 1}-${transliterate(data.menu.automobile[currentType].name)}`,
+              category: `${car.category}-car-preview`,
               carModel: `${car.id}-shineray-automobile-${car.name}`,
             })}
           >

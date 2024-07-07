@@ -58,7 +58,7 @@ export const RepresentativeOfficePage: FC = () => {
         <BreadcrumbsComponent data={breadcrumbs} />
         <div className={styles.wrapper_container}>
           <div className={styles.wrapper_container_title}>
-            <h3>{pageData.body.about_company.title}</h3>
+            <h1>{pageData.body.about_company.title}</h1>
           </div>
           <div className={styles.wrapper_container_contentBox}>
             <div className={styles.wrapper_container_contentBox_description}>

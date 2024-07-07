@@ -1,5 +1,11 @@
 import styles from "./App.module.scss";
-import { Routes, Route, useLocation } from "react-router-dom";
+import {
+  Routes,
+  Route,
+  useLocation,
+  useNavigate,
+  generatePath,
+} from "react-router-dom";
 import { Path } from "enum/PathE";
 import { MainLayout } from "components/MainLayout";
 import { HomePage } from "pages/HomePage";
@@ -24,12 +30,30 @@ import { TechSupportPage } from "pages/TechSupportPage";
 import { WarrantyPage } from "pages/WarrantyPage";
 import { PDFViewer } from "components/pdfViewer";
 import { NotFound404 } from "pages/NotFound";
+import { useEffect } from "react";
 
 export const App = () => {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
+
+  function hasOnlySlashes(url: string) {
+    return /^\/\/+$/.test(url);
+  }
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   pathname.split("/")[1] !== "auto" && useScrollToTop();
+
+  useEffect(() => {
+    if (
+      hasOnlySlashes(pathname) ||
+      pathname === "/index.php" ||
+      pathname === "/home.php" ||
+      pathname === "/index.htm" ||
+      pathname === "/home..htm"
+    ) {
+      navigate(generatePath(Path.Home));
+    }
+  });
 
   return (
     <div className={styles.container}>

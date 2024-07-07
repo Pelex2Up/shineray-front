@@ -33,8 +33,9 @@ export const HeaderSlider: FC<HeaderSliderT> = ({ images, image }) => {
       id={"header-slider"}
     >
       <Slider {...settings}>
-        {images.map(({ image, url }, index) => (
+        {images.map(({ image, url, name }, index) => (
           <a
+            key={image + index}
             href={url}
             rel="noreferrer"
             target="_blank"
@@ -45,7 +46,7 @@ export const HeaderSlider: FC<HeaderSliderT> = ({ images, image }) => {
               key={index}
               width={"100%"}
               rel="preload"
-              alt="header-page-preview"
+              alt={name}
             />
           </a>
         ))}

@@ -62,6 +62,7 @@ export const HomePage: FC = () => {
     <div className={styles.container}>
       <HeaderSlider images={HomePageData.body.main_slider.images} />
       <div className={styles.container_carSelector}>
+        <h1 style={{display: 'none'}}>Shineray.by - официальный представитель Shineray в Республике Беларусь</h1>
         <p className={styles.container_carSelector_title} id="scroll-point">
           Модельный ряд
         </p>

@@ -1,7 +1,7 @@
 import { FC } from "react";
 import styles from "./CarItemCard.module.scss";
 import { Card, CardContent, Typography } from "@mui/material";
-import { generatePath, useNavigate } from "react-router-dom";
+import { generatePath } from "react-router-dom";
 import { Path } from "enum/PathE";
 import { ICar } from "types/componentTypes";
 import { motion } from "framer-motion";

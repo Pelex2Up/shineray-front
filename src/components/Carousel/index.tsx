@@ -61,6 +61,7 @@ export const Carousel: FC<CarouselT> = ({ data, currentIndex, setCurrentIndex })
           initial={direction === 'right' ? 'hiddenRight' : 'hiddenLeft'}
           animate="visible"
           exit="exit"
+          alt={data[currentIndex].name}
         />
       </AnimatePresence>
       <div className={styles.carouselWrapper_slide_direction}>

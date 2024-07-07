@@ -16,11 +16,7 @@ export type ButtonT = DefaultButtonPropsType & {
   children?: DetailedHTMLProps<HTMLAttributes<SVGElement>, SVGElement>;
 };
 
-export interface ICarPreview {
-  id: number;
-  image: string;
-  name: string;
-}
+export type ICarPreview = ICar
 
 export type CarsCategoryT = {
   id: number;

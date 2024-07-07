@@ -18,7 +18,7 @@ export const HotNews: FC<HotNewsT> = ({ data }) => {
       >
         <img
           src={`https://shineray.by/media/${data.image}`}
-          alt={`${data.id}_hotNewsImage`}
+          alt={data.title}
         />
         <div className={styles.hotWrapper_text}>
           <p>{data.title}</p>
