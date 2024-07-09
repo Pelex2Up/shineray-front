@@ -75,7 +75,7 @@ export const CarElement: FC<ICarElement> = ({ car, selected, ...props }) => {
               component="div"
               sx={{ textAlign: "center", height: "4rem" }}
             >
-              {car.title.replace(car.title.split(" ")[0], "")}
+              {`${car.brand ? `${car.brand} ${car.name}`: car.title.replace(car.title.split(" ")[0], "")}`}
             </Typography>
             <LinkButton
               style={{ width: "80%", alignSelf: "center" }}

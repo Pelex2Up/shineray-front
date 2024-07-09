@@ -40,7 +40,7 @@ export const DealerDetailsPage: FC = () => {
     </Typography>,
   ];
 
-  if (!dealerData || isFetching) {
+  if (!dealerData) {
     return <Preloader />;
   }
 

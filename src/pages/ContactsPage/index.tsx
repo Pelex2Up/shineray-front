@@ -97,7 +97,7 @@ export const ContactsPage: FC = () => {
     sendForm(formData);
   };
 
-  if (!pageData || isFetching) {
+  if (!pageData) {
     return <Preloader />;
   }
 

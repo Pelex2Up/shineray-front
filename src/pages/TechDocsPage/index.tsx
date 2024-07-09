@@ -153,7 +153,7 @@ export const TechDocsPage: FC = () => {
     </Typography>,
   ];
 
-  if (!pageData || isFetching || isLoading) {
+  if (!pageData) {
     return <Preloader />;
   }
   return (

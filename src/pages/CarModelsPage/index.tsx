@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useCallback, useEffect, useState } from "react";
 import styles from "./CarModelsPage.module.scss";
 import { HeaderSlider } from "components/HeaderCarousel";
 import { CarItemCard } from "components/CarItemCard";
@@ -14,11 +14,15 @@ import { transliterate } from "transliteration";
 import { Helmet } from "react-helmet-async";
 
 export const CarModelsPage: FC = () => {
-  const [fetchData, { data: carModels, isFetching: isLoadingPage }] =
+  const [fetchData, { data: carModels, isFetching: isLoadingPage, error }] =
     useLazyUseFetchModelsPageDataQuery();
   const params = useParams();
   const navigate = useNavigate();
   const [currentCategory, setCurrentCategory] = useState<number>(0);
+
+  const handleRefresh = useCallback(() => {
+    fetchData();
+  }, [fetchData]);
 
   useEffect(() => {
     if (params && params.category) {
@@ -27,8 +31,10 @@ export const CarModelsPage: FC = () => {
   }, [params]);
 
   useEffect(() => {
-    fetchData();
-  }, [fetchData]);
+    if (!carModels && !isLoadingPage) {
+      handleRefresh();
+    }
+  }, []);
 
   const breadcrumbs = [
     <Link underline="hover" key="1" color="inherit" href={Path.Home}>
@@ -55,9 +61,9 @@ export const CarModelsPage: FC = () => {
     } else {
       breadcrumbs.pop();
     }
-  }, [currentCategory, breadcrumbs]);
+  }, [currentCategory, carModels?.body.categories]);
 
-  if (!carModels || isLoadingPage) {
+  if (!carModels) {
     return <Preloader />;
   }
 
@@ -73,7 +79,7 @@ export const CarModelsPage: FC = () => {
         <title>
           {currentCategory === 0
             ? `Модельный ряд Shineray в Республике Беларусь`
-            : `${carModels.body.categories[currentCategory - 1].name} бренда Shineray`}
+            : `${carModels.body.categories[currentCategory !== 0 ? currentCategory - 1 : currentCategory].name} бренда Shineray`}
         </title>
         <meta
           name="description"

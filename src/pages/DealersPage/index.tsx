@@ -214,7 +214,7 @@ export const DealersPage: FC = () => {
     scrollToElement(isDesktopOrMobile ? "page-title" : "yandex-map");
   };
 
-  if (!pageData || isLoading) {
+  if (!pageData) {
     return <Preloader />;
   }
 

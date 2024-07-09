@@ -27,7 +27,7 @@ export const ForOwnersPage: FC = () => {
     }
   }, [fetchData, pageData, isFetching, isLoading]);
 
-  if (isFetching || isLoading || !pageData) {
+  if (!pageData) {
     return <Preloader />;
   }
 

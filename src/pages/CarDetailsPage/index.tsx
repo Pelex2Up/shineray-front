@@ -66,7 +66,7 @@ export const CarDetailsPage: FC = () => {
     </Typography>,
   ];
 
-  if (!AutoModel || isLoading) {
+  if (!AutoModel) {
     return <Preloader />;
   }
 
@@ -77,7 +77,7 @@ export const CarDetailsPage: FC = () => {
         <meta
           name="description"
           property="og:description"
-          content={`${AutoModel.title}. ${AutoModel.description.replace(/(<([^>]+)>)/gi, '')} Узнайте о модели больше!`}
+          content={`${AutoModel.title}. ${AutoModel.description.replace(/(<([^>]+)>)/gi, "")} Узнайте о модели больше!`}
         />
         <meta
           name="keywords"
@@ -180,7 +180,7 @@ export const CarDetailsPage: FC = () => {
             <h1 className={styles.wrapper_main_preview_shortDescription_title}>
               {AutoModel.title}
             </h1>
-            <div style={{ fontWeight: "400", fontSize: '18px' }}>
+            <div style={{ fontWeight: "400", fontSize: "18px" }}>
               {parse(AutoModel?.description)}
             </div>
             <hr></hr>
@@ -204,7 +204,9 @@ export const CarDetailsPage: FC = () => {
               {AutoModel?.name && (
                 <li>
                   <strong>Модель: </strong>
-                  Shineray {AutoModel.name}
+                  {AutoModel.brand
+                    ? `${AutoModel.brand} ${AutoModel.name}`
+                    : AutoModel.name}
                 </li>
               )}
               {AutoModel?.engine && (

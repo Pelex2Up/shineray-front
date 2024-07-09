@@ -54,7 +54,7 @@ export const HomePage: FC = () => {
     }
   };
 
-  if (!HomePageData || isFetching) {
+  if (!HomePageData) {
     return <Preloader />;
   }
 
@@ -62,7 +62,9 @@ export const HomePage: FC = () => {
     <div className={styles.container}>
       <HeaderSlider images={HomePageData.body.main_slider.images} />
       <div className={styles.container_carSelector}>
-        <h1 style={{display: 'none'}}>Shineray.by - официальный представитель Shineray в Республике Беларусь</h1>
+        <h1 style={{ display: "none" }}>
+          Shineray.by - официальный представитель Shineray в Республике Беларусь
+        </h1>
         <p className={styles.container_carSelector_title} id="scroll-point">
           Модельный ряд
         </p>
@@ -123,7 +125,7 @@ export const HomePage: FC = () => {
             text={"Подробнее о модели"}
             href={generatePath(Path.ModelAuto, {
               category: `${HomePageData.body.car_models[currentIndex && currentIndex > 0 ? currentIndex : 0].category}-car-preview`,
-              carModel: `${HomePageData.body.car_models[currentIndex && currentIndex > 0 ? currentIndex : 0].id}-shineray-automobile-${HomePageData?.body.car_models[currentIndex && currentIndex > 0 ? currentIndex : 0].name}`,
+              carModel: `${HomePageData.body.car_models[currentIndex && currentIndex > 0 ? currentIndex : 0].id}${HomePageData.body.car_models[currentIndex && currentIndex > 0 ? currentIndex : 0].brand ? `-${HomePageData.body.car_models[currentIndex && currentIndex > 0 ? currentIndex : 0].brand}` : ""}-automobile-${HomePageData?.body.car_models[currentIndex && currentIndex > 0 ? currentIndex : 0].name}`,
             })}
             className={styles.modelCarDetail}
             key={currentIndex + "_details"}

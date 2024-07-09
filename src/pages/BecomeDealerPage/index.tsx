@@ -89,7 +89,7 @@ export const BecomeDealerPage: FC = () => {
     </Link>,
   ];
 
-  if (!pageData || isFetching) {
+  if (!pageData) {
     return <Preloader />;
   }
 

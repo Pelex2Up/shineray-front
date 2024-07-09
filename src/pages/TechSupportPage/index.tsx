@@ -31,7 +31,7 @@ export const TechSupportPage: FC = () => {
     </Typography>,
   ];
 
-  if (!pageData || isFetching || isLoading) {
+  if (!pageData) {
     return <Preloader />;
   }
 

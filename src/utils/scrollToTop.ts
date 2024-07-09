@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 export const useScrollToTop = () => {
   const { pathname } = useLocation();
 
-  useEffect(() => {
+  return useEffect(() => {
     const canControlScrollRestoration = "scrollRestoration" in window.history;
     if (canControlScrollRestoration) {
       window.history.scrollRestoration = "manual";

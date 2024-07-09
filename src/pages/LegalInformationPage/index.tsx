@@ -64,7 +64,7 @@ export const LegalInformationPage: FC = () => {
     }
   }, [fetchPage, pageData, isFetching]);
 
-  if (!pageData || isFetching) {
+  if (!pageData) {
     return <Preloader />;
   }
 

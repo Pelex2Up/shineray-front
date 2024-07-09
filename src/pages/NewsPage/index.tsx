@@ -48,7 +48,7 @@ export const NewsPage: FC = () => {
     }
   }, [fetchData, currentPage]);
 
-  if (!pageData || isFetching) {
+  if (!pageData) {
     return <Preloader />;
   }
 

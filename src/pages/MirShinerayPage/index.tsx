@@ -25,7 +25,7 @@ export const MirShinerayPage: FC = () => {
     </Link>,
   ];
 
-  if (!MirShineray || isFetching) {
+  if (!MirShineray) {
     return <Preloader />;
   }
 

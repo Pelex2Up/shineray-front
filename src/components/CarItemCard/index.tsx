@@ -6,7 +6,7 @@ import { Path } from "enum/PathE";
 import { ICar } from "types/componentTypes";
 import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
-import { LinkButton } from "components/common/Buttons";
+import { CommonButton } from "components/common/Buttons";
 
 type CardItemT = {
   car: ICar;
@@ -27,7 +27,7 @@ export const CarItemCard: FC<CardItemT> = ({ car }) => {
           : { width: "100%", textDecoration: "none" }
       }
       href={generatePath(Path.ModelAuto, {
-        carModel: `${car.id}-shineray-automobile-${car.name}`,
+        carModel: `${car.id}${car.brand ? `-${car.brand}` : ""}-automobile-${car.name}`,
         category: `${car.category}-car-preview`,
       })}
     >
@@ -56,10 +56,10 @@ export const CarItemCard: FC<CardItemT> = ({ car }) => {
             component="div"
             sx={{ textAlign: "center", fontSize: "20px" }}
           >
-            {`Shineray ${car.name}`}
+            {`${car.brand ? `${car.brand + " " + car.name}` : car.name}`}
           </Typography>
           <div className={styles.autoCard_buttonsBlock}>
-            <LinkButton
+            <CommonButton
               text={"Подробнее"}
               className={styles.autoCard_buttonsBlock_detailsButton}
               // href={generatePath(Path.ModelAuto, {

@@ -19,7 +19,6 @@ import { RepresentativeOfficePage } from "pages/RepresentativeOfficePage";
 import { ContactsPage } from "pages/ContactsPage";
 import { BecomeDealerPage } from "pages/BecomeDealerPage";
 import { DealerDetailsPage } from "pages/DealerDetailsPage";
-import { useScrollToTop } from "utils/scrollToTop";
 import { NewsPage } from "pages/NewsPage";
 import { NewsDetailsPage } from "pages/NewsDetailsPage";
 import { LegalInformationPage } from "pages/LegalInformationPage";
@@ -40,8 +39,15 @@ export const App = () => {
     return /^\/\/+$/.test(url);
   }
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  pathname.split("/")[1] !== "auto" && useScrollToTop();
+  useEffect(() => {
+    if (pathname.split("/")[1] !== "auto") {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+      });
+    }
+  }, [pathname]);
 
   useEffect(() => {
     if (

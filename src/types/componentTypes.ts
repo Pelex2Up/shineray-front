@@ -47,6 +47,7 @@ export interface ISlider {
 }
 
 export interface ICar {
+  brand: string;
   id: number;
   slider_1: ISlider;
   slider_2: ISlider;
