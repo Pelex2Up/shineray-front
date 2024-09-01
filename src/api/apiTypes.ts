@@ -137,6 +137,11 @@ export interface IDealer {
   latitude: number;
   longitude: number;
   web_site: string;
+  media: {
+    form_image: string
+    form_image_background: string
+    image: string
+  }
 }
 
 export interface IHeader {
@@ -251,3 +256,10 @@ export type WarrantyDataT = {
     };
   };
 };
+
+export type DealerMessageT = {
+  name: string
+  phone_number: string
+  email: string
+  message_text: string
+}

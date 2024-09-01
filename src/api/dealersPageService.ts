@@ -1,6 +1,6 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { baseQuery } from "./baseApi";
-import { DealersPageT, IDealer } from "./apiTypes";
+import { DealerMessageT, DealersPageT, IDealer } from "./apiTypes";
 
 export const DealersPageService = createApi({
   reducerPath: "DealersPageService",
@@ -25,9 +25,16 @@ export const DealersPageService = createApi({
       }),
       providesTags: ["DealerDetailPage"],
     }),
+    sendDealerMessage: build.mutation<any, { dealerId: number, data: DealerMessageT }>({
+      query: (args) => ({
+        url: `/dealers/send-message/${args.dealerId}/`,
+        method: 'POST',
+        body: args.data
+      })
+    }),
   }),
   refetchOnMountOrArgChange: true,
 });
 
-export const { useLazyFetchDealersPageDataQuery, useFetchDealerDataQuery, useLazyFetchDealerDetailsQuery } =
+export const { useSendDealerMessageMutation, useLazyFetchDealersPageDataQuery, useFetchDealerDataQuery, useLazyFetchDealerDetailsQuery } =
   DealersPageService;

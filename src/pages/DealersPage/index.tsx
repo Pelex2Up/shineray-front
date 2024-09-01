@@ -4,16 +4,18 @@ import { HeaderSlider } from "components/HeaderCarousel";
 import { YMaps, Map, Placemark } from "react-yandex-maps";
 import { useLazyFetchDealersPageDataQuery } from "api/dealersPageService";
 import { Preloader } from "components/Preloader";
-import { CommonButton, LinkButton } from "components/common/Buttons";
+import { CommonButton, ContactDealerButton, LinkButton } from "components/common/Buttons";
 import { Construction, DirectionsCar, NoCrash } from "@mui/icons-material";
 import { Path } from "enum/PathE";
 import { generatePath } from "react-router-dom";
 import { DealersPageT } from "api/apiTypes";
 import {
+  Box,
   FormControl,
   FormControlLabel,
   FormLabel,
   Link,
+  Modal,
   Radio,
   RadioGroup,
   ThemeProvider,
@@ -22,6 +24,8 @@ import {
 import { BreadcrumbsComponent } from "components/breadcrumbs";
 import { useMediaQuery } from "react-responsive";
 import { Helmet } from "react-helmet-async";
+import { useBoolean } from "customHooks/useBoolean";
+import { DealerMessageForm } from "components/modal/dealerForm";
 
 const theme = createTheme({
   components: {
@@ -54,43 +58,43 @@ const mapEndpoints: {
   zoom: number;
   controls: string[];
 }[] = [
-  {
-    city: "Минск",
-    center: [53.902735, 27.555696],
-    zoom: 11,
-    controls: ["zoomControl", "fullscreenControl"],
-  },
-  {
-    city: "Брест",
-    center: [52.093754, 23.685107],
-    zoom: 12,
-    controls: ["zoomControl", "fullscreenControl"],
-  },
-  {
-    city: "Витебск",
-    center: [55.184217, 30.202878],
-    zoom: 12,
-    controls: ["zoomControl", "fullscreenControl"],
-  },
-  {
-    city: "Гомель",
-    center: [52.435159, 31.019465],
-    zoom: 12,
-    controls: ["zoomControl", "fullscreenControl"],
-  },
-  {
-    city: "Гродно",
-    center: [53.674757, 23.840581],
-    zoom: 12,
-    controls: ["zoomControl", "fullscreenControl"],
-  },
-  {
-    city: "Могилёв",
-    center: [53.894548, 30.330654],
-    zoom: 12,
-    controls: ["zoomControl", "fullscreenControl"],
-  },
-];
+    {
+      city: "Минск",
+      center: [53.902735, 27.555696],
+      zoom: 11,
+      controls: ["zoomControl", "fullscreenControl"],
+    },
+    {
+      city: "Брест",
+      center: [52.093754, 23.685107],
+      zoom: 12,
+      controls: ["zoomControl", "fullscreenControl"],
+    },
+    {
+      city: "Витебск",
+      center: [55.184217, 30.202878],
+      zoom: 12,
+      controls: ["zoomControl", "fullscreenControl"],
+    },
+    {
+      city: "Гомель",
+      center: [52.435159, 31.019465],
+      zoom: 12,
+      controls: ["zoomControl", "fullscreenControl"],
+    },
+    {
+      city: "Гродно",
+      center: [53.674757, 23.840581],
+      zoom: 12,
+      controls: ["zoomControl", "fullscreenControl"],
+    },
+    {
+      city: "Могилёв",
+      center: [53.894548, 30.330654],
+      zoom: 12,
+      controls: ["zoomControl", "fullscreenControl"],
+    },
+  ];
 
 export const DealersPage: FC = () => {
   const [fetchPage, { data: responseData, isLoading, isSuccess }] =
@@ -104,6 +108,20 @@ export const DealersPage: FC = () => {
     zoom: number;
     controls: string[];
   }>();
+  const [showModal, setShowModal] = useState<boolean>(false)
+  const [activeDealer, setActiveDealer] = useState<number | undefined>()
+
+  const modalStyle = {
+    position: 'absolute' as 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 'max-content',
+    maxWidth: '100%',
+    bgcolor: 'background.paper',
+    borderRadius: '0.5rem',
+    boxShadow: 24,
+  };
 
   const mapState = useMemo(
     () => ({
@@ -214,12 +232,18 @@ export const DealersPage: FC = () => {
     scrollToElement(isDesktopOrMobile ? "page-title" : "yandex-map");
   };
 
+  const handleClickMessage = (id: number) => {
+    setActiveDealer(id)
+    setShowModal(true)
+  }
+
   if (!pageData) {
     return <Preloader />;
   }
 
   return (
     <div className={styles.dealersWrapper}>
+
       <Helmet>
         <title>Официальные дилеры Shineray в Республике Беларусь</title>
         <meta
@@ -233,6 +257,14 @@ export const DealersPage: FC = () => {
           content={`Shineray, SRM, брэнд, бренд, марка, дилер, официальный, Республика Беларусь, Беларусь, дилеры, дилерская, сеть`}
         />
       </Helmet>
+      {showModal && activeDealer &&
+        <Modal open={showModal}
+          onClose={() => setShowModal(false)}
+          aria-labelledby="modal-modal-dealer-message"
+          aria-describedby="modal-modal-dealer-message"
+        >
+          <DealerMessageForm dealer={activeDealer} closeModal={() => setShowModal(false)} />
+        </Modal>}
       <HeaderSlider image={pageData.body.page_header.image} />
       <BreadcrumbsComponent data={breadcrumbs} />
       <div className={styles.dealersWrapper_title} id="page-title">
@@ -415,6 +447,8 @@ export const DealersPage: FC = () => {
                     }
                     text={"Показать на карте"}
                   />
+                  <CommonButton text={'Связаться с дилером'} style={{backgroundColor: 'grey'}} onClick={() => handleClickMessage(dealer.id)}/>
+                  {/* <ContactDealerButton text={'Связаться с дилером'} onClick={() => handleClickMessage(dealer.id)} /> */}
                 </div>
               </div>
             )),

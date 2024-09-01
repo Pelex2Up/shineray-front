@@ -24,7 +24,7 @@ import formLogo from "../../assets/logo/formLogo.png";
 import InputMask from "react-input-mask";
 import { Helmet } from "react-helmet-async";
 
-const theme = createTheme({
+export const theme = createTheme({
   components: {
     MuiFormLabel: {
       styleOverrides: {
