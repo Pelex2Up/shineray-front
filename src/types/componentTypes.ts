@@ -107,3 +107,9 @@ export type AboutCompanyT = {
     histories: IHistory[];
   };
 };
+
+export type MiniBlockPropsT = {
+  title: string
+  description: string
+  icon: string
+}

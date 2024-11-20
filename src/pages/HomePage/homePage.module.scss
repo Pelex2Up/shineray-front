@@ -8,6 +8,31 @@
   gap: 2em;
   overflow-x: hidden;
 
+  &_mainPageText {
+    max-width: 1600px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    @media screen and (max-width: 1024px) {
+      padding: 2rem 1rem;
+    }
+
+    &_title {
+      text-align: center;
+      font-size: $font-title-size;
+      font-weight: bold;
+    }
+
+    &_description {
+      color: black;
+      font-size: $font-default-size;
+    }
+  }
+
   &_news {
     &_title {
       font-size: $font-title-size;
@@ -18,6 +43,7 @@
     @include display(flex, row, center, center);
     padding: 3rem;
     gap: 2rem;
+    max-width: 1600px;
   }
 
   &_carousel {
@@ -106,6 +132,12 @@
   padding: 2rem 1rem;
 }
 
+.homePageTextWrapperBlock {
+  background: rgb(237, 237, 237);
+  @include display(flex, column, center, center);
+  padding: 2rem 1rem;
+}
+
 .moreButton {
   justify-self: center;
   padding-bottom: 0.15rem;
@@ -148,4 +180,19 @@
 .swiper {
   @include display(flex, center, center);
   max-width: 100vw;
+}
+
+.miniBlocksWrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 400px));
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  gap: 2rem;
+  padding: 2rem 3rem;
+  justify-content: center;
+
+  @media screen and (max-width: 1024px) {
+    padding: 2rem 1rem;
+  }
 }

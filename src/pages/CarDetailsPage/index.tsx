@@ -8,8 +8,13 @@ import { Navigation, Thumbs } from "swiper/modules";
 import { useBoolean } from "customHooks/useBoolean";
 import { PreviewModal } from "components/modal/PreviewModal";
 import { Preloader } from "components/Preloader";
-import { LinkButton } from "components/common/Buttons";
-import { PictureAsPdf } from "@mui/icons-material";
+import { CommonButton, LinkButton } from "components/common/Buttons";
+import { Email, PictureAsPdf } from "@mui/icons-material";
+import { Path } from "enum/PathE";
+import { Link, Modal, Typography } from "@mui/material";
+import { BreadcrumbsComponent } from "components/breadcrumbs";
+import { Helmet } from "react-helmet-async";
+import { FindDealerForm } from "components/modal/findDealerForm";
 import parse from "html-react-parser";
 
 import styles from "./CarDetailsPage.module.scss";
@@ -17,10 +22,6 @@ import "swiper/css";
 import "swiper/css/zoom";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
-import { Path } from "enum/PathE";
-import { Link, Typography } from "@mui/material";
-import { BreadcrumbsComponent } from "components/breadcrumbs";
-import { Helmet } from "react-helmet-async";
 
 export const CarDetailsPage: FC = () => {
   const params = useParams();
@@ -28,12 +29,15 @@ export const CarDetailsPage: FC = () => {
   const [fetchData, { data: AutoModel, isLoading }] =
     useFetchCarModelDataMutation();
   const [imagePreview, { onToggle: toggleImage }] = useBoolean(false);
+  const [galleryPreview, { onToggle: toggleGallery }] = useBoolean(false);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [galleryIndex, setGalleryIndex] = useState<number>(0);
   const [instanceModel, setInstanceModel] = useState<SwiperClass | null>(null);
   const [instanceThumb, setInstanceThumb] = useState<SwiperClass | null>(null);
   const swiperRefModel = useRef<SwiperRef | null>(null);
   const thumbsRefModel = useRef<SwiperRef | null>(null);
   const swiper2RefGallery = useRef<SwiperRef | null>(null);
+  const [showModal, setShowModal] = useState<boolean>(false);
 
   useEffect(() => {
     if (carModel) {
@@ -46,13 +50,13 @@ export const CarDetailsPage: FC = () => {
   }, [carModel, fetchData]);
 
   useEffect(() => {
-    if (imagePreview) {
+    if (imagePreview || galleryPreview) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflowX = "hidden";
       document.body.style.overflowY = "auto";
     }
-  }, [imagePreview]);
+  }, [imagePreview, galleryPreview]);
 
   const breadcrumbs = [
     <Link underline="hover" key="1" color="inherit" href={Path.Home}>
@@ -92,14 +96,13 @@ export const CarDetailsPage: FC = () => {
         currentIndex={currentIndex}
         imagePreview={imagePreview}
       />
-      {/* {imagePreview && AutoModel && (
-        <PreviewModal
-          slides={AutoModel.slider_2.images}
-          toggleModal={toggleImage}
-          changeIndex={setCurrentIndex}
-          currentIndex={currentIndex}
-        />
-      )} */}
+      <PreviewModal
+        slides={AutoModel.slider_2.images}
+        toggleModal={toggleGallery}
+        changeIndex={setGalleryIndex}
+        currentIndex={galleryIndex}
+        imagePreview={galleryPreview}
+      />
       <HeaderSlider image={AutoModel.header_image} />
       <BreadcrumbsComponent data={breadcrumbs} />
       <div className={styles.wrapper_main}>
@@ -131,7 +134,7 @@ export const CarDetailsPage: FC = () => {
                       <img
                         onClick={toggleImage}
                         style={{
-                          cursor: "zoom-in",
+                          cursor: "pointer",
                           objectFit: "cover",
                           height: "100%",
                           width: "100%",
@@ -272,9 +275,16 @@ export const CarDetailsPage: FC = () => {
                 target="_blank"
                 rel="norefferrer"
               >
-                <PictureAsPdf style={{ marginRight: "0.2rem" }} />
+                <PictureAsPdf style={{ marginRight: "0.3rem" }} />
               </LinkButton>
             )}
+            <CommonButton
+              className={styles.techButton}
+              text="Запросить предложение"
+              onClick={() => setShowModal(true)}
+            >
+              <Email style={{ marginRight: "0.3rem" }} />
+            </CommonButton>
           </div>
         </div>
         <div className={styles.wrapper_main_proText}>
@@ -295,12 +305,20 @@ export const CarDetailsPage: FC = () => {
               speed={500}
               modules={[Navigation]}
               className={styles.swiper}
+              onSlideChange={(swiper) => {
+                setGalleryIndex(swiper.realIndex);
+              }}
             >
               {AutoModel.slider_2.images.map((el, index) => (
                 <SwiperSlide key={el.id + el.order}>
                   <img
+                    onClick={() => {
+                      toggleGallery();
+                      setGalleryIndex(index);
+                    }}
                     style={{
                       objectFit: "cover",
+                      cursor: "pointer",
                       height: "100%",
                       width: "100%",
                       border: "1px solid rgba(193, 193, 193, 0.6)",
@@ -315,6 +333,16 @@ export const CarDetailsPage: FC = () => {
           )}
         </div>
       </div>
+      {showModal && (
+        <Modal
+          open={showModal}
+          onClose={() => setShowModal(false)}
+          aria-labelledby="modal-modal-dealer-message"
+          aria-describedby="modal-modal-dealer-message"
+        >
+          <FindDealerForm closeModal={() => setShowModal(false)} />
+        </Modal>
+      )}
     </motion.div>
   );
 };

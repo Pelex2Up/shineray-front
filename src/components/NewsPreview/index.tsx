@@ -51,6 +51,7 @@ export const NewsPreview: FC<NewsPreviewT> = ({ data }) => {
               <Badge
                 sx={{ marginLeft: "1rem" }}
                 color="error"
+                max={1000}
                 badgeContent={data.views}
               >
                 <Visibility />

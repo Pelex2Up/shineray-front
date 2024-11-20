@@ -11,6 +11,24 @@ export type HomePageRespT = {
     main_slider: ISlider;
     latest_news: INews[];
     car_models: ICar[];
+    site_desc: {
+      title: string;
+      description: string;
+    };
+    main_sections: {
+      warranty: {
+        image_header: string;
+        title: string;
+      };
+      maintenance: {
+        image_header: string;
+        title: string;
+      };
+      documentation: {
+        image_header: string;
+        title: string;
+      };
+    };
   };
 };
 
@@ -138,10 +156,10 @@ export interface IDealer {
   longitude: number;
   web_site: string;
   media: {
-    form_image: string
-    form_image_background: string
-    image: string
-  }
+    form_image: string;
+    form_image_background: string;
+    image: string;
+  };
 }
 
 export interface IHeader {
@@ -258,8 +276,12 @@ export type WarrantyDataT = {
 };
 
 export type DealerMessageT = {
-  name: string
-  phone_number: string
-  email: string
-  message_text: string
+  name: string;
+  phone_number: string;
+  email: string;
+  message_text: string;
+};
+
+export interface IDealerCitiesResp {
+  cities: string[];
 }

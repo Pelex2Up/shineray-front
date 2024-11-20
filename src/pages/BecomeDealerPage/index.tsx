@@ -29,10 +29,6 @@ export const theme = createTheme({
     MuiFormLabel: {
       styleOverrides: {
         root: {
-          color: "rgba(0, 0, 0, 0.4)",
-          "&.Mui-focused": {
-            color: "rgba(0, 0, 0, 0.6)",
-          },
           fontSize: "16px",
         },
       },
@@ -40,16 +36,51 @@ export const theme = createTheme({
     MuiInputBase: {
       styleOverrides: {
         root: {
-          ":before": {
-            color: "rgba(0, 0, 0, 0.4)",
-          },
           "&.Mui-focused": {
-            color: "rgba(0, 0, 0, 0.4)",
+            borderColor: "rgba(0, 0, 0, 0.4)",
+          },
+          ":after": {
+            borderColor: "rgba(0, 0, 0, 0.6)",
+          },
+        },
+        formControl: {
+          "&.Mui-focused": {
             borderColor: "rgba(0, 0, 0, 0.4)",
           },
         },
       },
     },
+    MuiSelect: {
+      styleOverrides: {
+        root: {
+          ":before": {
+            borderColor: "rgba(0, 0, 0, 0.4)",
+          },
+          "&.Mui-focused": {
+            borderColor: "rgba(0, 0, 0, 0.4)",
+          },
+          ":after": {
+            borderColor: "rgba(0, 0, 0, 0.6)",
+          },
+        },
+      },
+    },
+    // MuiOutlinedInput: {
+    //   styleOverrides: {
+    //     root: {
+    //       "&.Mui-focused": {
+    //         borderColor: "rgba(0, 0, 0, 0.4)",
+    //       },
+    //       ":before": {
+    //         color: "rgba(0, 0, 0, 0.4)",
+    //         borderColor: "rgba(0, 0, 0, 0.4)",
+    //       },
+    //       ":after": {
+    //         borderColor: "rgba(0, 0, 0, 0.6)",
+    //       },
+    //     },
+    //   },
+    // },
     MuiInput: {
       styleOverrides: {
         root: {

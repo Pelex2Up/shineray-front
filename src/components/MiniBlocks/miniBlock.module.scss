@@ -1,0 +1,49 @@
+@import "../../scss/mixin.scss";
+@import "../../scss/variable.scss";
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid rgb(228, 228, 228);
+  border-radius: 8px;
+  width: 100%;
+  min-height: 120px;
+  padding: 1rem;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s linear;
+  background: transparent;
+  cursor: default;
+
+  &:hover {
+    background: linear-gradient(75deg, rgb(255, 255, 255), rgb(234, 234, 234));
+  }
+
+  &_iconWrapper {
+    height: calc(120px - 2rem);
+  }
+
+  &_textWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: rgb(67, 67, 67);
+
+    &_title {
+      font-size: $font-default-size;
+      font-weight: 600;
+      text-align: center;
+      text-wrap: wrap;
+      word-wrap: break-word;
+    }
+
+    &_description {
+      font-size: $font-small-size;
+      text-align: justify;
+      word-break: normal;
+      word-wrap: break-word;
+      hyphens: auto;
+    }
+  }
+}

@@ -87,6 +87,7 @@ export const NewsDetailsPage: FC = () => {
             <Badge
               sx={{ marginLeft: "1rem" }}
               color="error"
+              max={1000}
               badgeContent={pageData.views}
             >
               <Visibility />
